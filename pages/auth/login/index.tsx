@@ -70,6 +70,7 @@ export default function Login() {
                 />
               )}
             </div>
+            {/*
             <div className={styles.forgetPassword__container}>
               <div className={styles.forgetPassword__content}>
                 <p
@@ -133,6 +134,7 @@ export default function Login() {
                 </span>
               </div>
             </div>
+          */}
           </div>
         </div>
       </div>

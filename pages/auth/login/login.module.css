@@ -1,13 +1,16 @@
 .container {
   @apply flex h-screen w-screen items-center justify-center bg-primary;
-  @apply sm:flex sm:h-screen sm:w-screen sm:items-center sm:justify-center sm:bg-secondary;
-  @apply md:flex md:h-screen md:w-screen md:items-center md:justify-center md:bg-success;
-  @apply lg:flex lg:h-screen lg:w-screen lg:items-center lg:justify-center lg:bg-google;
-  @apply xl:flex xl:h-screen xl:w-screen xl:items-center xl:justify-center xl:bg-facebook;
+  @apply sm:h-screen sm:w-screen;
+  @apply md:h-screen md:w-screen;
+  @apply lg:h-screen lg:w-screen;
+  @apply xl:h-screen xl:w-screen;
 }
 
 .card {
-  @apply h-646 w-450 rounded-10 bg-primaryLight py-48 px-28;
+  @apply h-546 w-350 rounded-10 bg-primaryLight py-48 px-28;
+  @apply md:h-646 md:w-450;
+  @apply lg:h-646 lg:w-450;
+  @apply xl:h-646 xl:w-450;
 }
 
 .card__container {
@@ -15,23 +18,38 @@
 }
 
 .logo__container {
-  @apply flex h-70 w-250 items-center justify-center;
+  @apply flex h-70 w-190 items-center justify-center;
+  @apply md:h-70 md:w-250;
+  @apply lg:h-70 lg:w-250;
+  @apply xl:h-70 xl:w-250;
 }
 
 .card__bodyContainer {
-  @apply h-480 w-394;
+  @apply h-380 w-294;
+  @apply md:h-480 md:w-394;
+  @apply lg:h-480 lg:w-394;
+  @apply xl:h-480 xl:w-394;
 }
 
 .card__textContainer {
   @apply h-102;
+  /* @apply md:h-102;
+  @apply lg:h-102;
+  @apply xl:h-102; */
 }
 
 .primary__text {
-  @apply h-38 text-xl text-white;
+  @apply h-38 text-lg text-white;
+  @apply md:text-lg;
+  @apply lg:text-lg;
+  @apply xl:text-lg;
 }
 
 .secondary__text {
-  @apply h-24 text-xl font-semibold text-white;
+  @apply h-24 text-lg font-semibold text-white;
+  @apply md:text-lg;
+  @apply lg:text-lg;
+  @apply xl:text-lg;
 }
 
 .email__inputContainer {
@@ -40,10 +58,10 @@
 
 .email__input {
   @apply h-56 w-full rounded-8 bg-primaryLight px-16 py-16
-    text-right text-white opacity-20 
-    outline
+  text-right text-white opacity-20 
+  outline
   outline-inputOutline  
-    placeholder:text-right focus:opacity-100 focus:outline-secondary;
+  placeholder:text-right focus:opacity-100 focus:outline-secondary;
 }
 
 .password__inputContainer {
@@ -52,15 +70,16 @@
 
 .password__input {
   @apply w-full rounded-8 bg-primaryLight px-16 py-16
-                    text-right text-white opacity-20 
-                    outline
-                  outline-inputOutline  
-                    placeholder:text-right focus:opacity-100 focus:outline-secondary;
+  text-right text-white opacity-20 
+  outline
+  outline-inputOutline  
+  placeholder:text-right focus:opacity-100 focus:outline-secondary;
 }
 
 .icon {
   @apply absolute top-16 left-16 cursor-pointer opacity-50;
 }
+/*
 
 .forgetPassword__container {
   @apply h-36;
@@ -120,4 +139,4 @@
 
 .register__actionText {
   @apply cursor-pointer text-secondary;
-}
+} */
