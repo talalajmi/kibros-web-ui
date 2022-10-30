@@ -1,0 +1,31 @@
+.container {
+  @apply h-screen w-screen bg-primary;
+}
+
+.content {
+  @apply flex h-full w-full flex-col items-center justify-center space-y-29 px-614 py-90 text-center text-white;
+}
+
+.logo__container {
+  @apply flex h-76 w-322 items-center justify-center;
+}
+
+.error__header {
+  @apply h-70 w-70 text-xl;
+}
+
+.error_body {
+  @apply h-70 w-410 text-xl font-semibold;
+}
+
+.button__container {
+  @apply h-70 w-244;
+}
+
+.error__button {
+  @apply h-44 w-full rounded-8 bg-secondary px-14 py-10 text-xl font-semibold;
+}
+
+.image__container {
+  @apply h-500 w-750;
+}
