@@ -8,7 +8,7 @@ import styles from "./payment-failed.module.css";
 import logo from "../../../public/assets/images/logo/kibros-logo.png";
 import errorImage from "../../../public/assets/images/pages/payment-failed.svg";
 
-const PaymentFailed = () => {
+function PaymentFailed() {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -33,6 +33,6 @@ const PaymentFailed = () => {
       </div>
     </div>
   );
-};
+}
 
 export default PaymentFailed;

@@ -8,7 +8,7 @@ import styles from "./404.module.css";
 import logo from "../../../public/assets/images/logo/kibros-logo.png";
 import errorImage from "../../../public/assets/images/pages/404.svg";
 
-const Error404 = () => {
+function Error404() {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -28,6 +28,6 @@ const Error404 = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Error404;

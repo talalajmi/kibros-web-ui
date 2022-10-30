@@ -8,7 +8,7 @@ import styles from "./401.module.css";
 import logo from "../../../public/assets/images/logo/kibros-logo.png";
 import errorImage from "../../../public/assets/images/pages/401.svg";
 
-const Error401 = () => {
+function Error401() {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -28,6 +28,6 @@ const Error401 = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Error401;

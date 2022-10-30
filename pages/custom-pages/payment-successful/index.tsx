@@ -8,7 +8,7 @@ import styles from "./payment-successful.module.css";
 import logo from "../../../public/assets/images/logo/kibros-logo.png";
 import errorImage from "../../../public/assets/images/pages/payment-successful.svg";
 
-const PaymentSuccessful = () => {
+function PaymentSuccessful() {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -33,6 +33,6 @@ const PaymentSuccessful = () => {
       </div>
     </div>
   );
-};
+}
 
 export default PaymentSuccessful;

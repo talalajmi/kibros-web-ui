@@ -8,7 +8,7 @@ import styles from "./500.module.css";
 import logo from "../../../public/assets/images/logo/kibros-logo.png";
 import errorImage from "../../../public/assets/images/pages/500.svg";
 
-const PaymentSuccessful = () => {
+function Error500() {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -28,6 +28,6 @@ const PaymentSuccessful = () => {
       </div>
     </div>
   );
-};
+}
 
-export default PaymentSuccessful;
+export default Error500;

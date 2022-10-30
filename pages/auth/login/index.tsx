@@ -16,7 +16,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { AuthorizationRoutes } from "../../../routes";
 
-function Login() {
+export default function Login() {
   const [isPasswordShown, setIsPasswordShown] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isUnsuccessfull, setIsUnsuccessfull] = useState(false);
@@ -139,5 +139,3 @@ function Login() {
     </div>
   );
 }
-
-export default Login;

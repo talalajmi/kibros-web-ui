@@ -14,7 +14,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { AuthorizationRoutes } from "../../../routes";
 
-function ForgotPassword() {
+export default function ForgotPassword() {
   const router = useRouter();
 
   return (
@@ -56,5 +56,3 @@ function ForgotPassword() {
     </div>
   );
 }
-
-export default ForgotPassword;

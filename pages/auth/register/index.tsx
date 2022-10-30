@@ -13,7 +13,7 @@ import { iconColor } from "../../../utils/colors";
 //Logo Path
 import logo from "../../../public/assets/images/logo/kibros-logo.png";
 
-function Register() {
+export default function Register() {
   return (
     <div className={styles.container}>
       <div className={styles.card}>
@@ -89,5 +89,3 @@ function Register() {
     </div>
   );
 }
-
-export default Register;
