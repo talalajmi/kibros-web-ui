@@ -124,8 +124,8 @@
 
 .social__icon {
   @apply absolute right-70 top-10;
-  @apply md:right-10 md:top-10;
-  @apply lg:right-10 lg:top-10;
+  @apply md:right-90 md:top-10;
+  @apply lg:right-90 lg:top-10;
   @apply xl:right-90 xl:top-10;
 }
 
