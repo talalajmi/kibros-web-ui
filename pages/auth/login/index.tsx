@@ -70,7 +70,6 @@ export default function Login() {
                 />
               )}
             </div>
-            {/*
             <div className={styles.forgetPassword__container}>
               <div className={styles.forgetPassword__content}>
                 <p
@@ -86,9 +85,7 @@ export default function Login() {
             <button className={styles.submit__button}>تسجيل الدخول</button>
             <div className={styles.socialLogin__container}>
               <div className={styles.facebookButton__content}>
-                <button className={styles.facebook__button}>
-                  تسجيل الدخول باستعمال فيسبوك
-                </button>
+                <button className={styles.facebook__button}></button>
                 <div className={styles.social__icon}>
                   <Image
                     src={facebookIcon}
@@ -99,9 +96,7 @@ export default function Login() {
                 </div>
               </div>
               <div className={styles.googleButton__content}>
-                <button className={styles.google__button}>
-                  تسجيل الدخول باستعمال فيسبوك
-                </button>
+                <button className={styles.google__button}></button>
                 <div className={styles.social__icon}>
                   <Image
                     src={googleIcon}
@@ -134,7 +129,6 @@ export default function Login() {
                 </span>
               </div>
             </div>
-          */}
           </div>
         </div>
       </div>

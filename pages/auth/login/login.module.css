@@ -32,10 +32,10 @@
 }
 
 .card__textContainer {
-  @apply h-102;
-  /* @apply md:h-102;
+  @apply h-80;
+  @apply md:h-102;
   @apply lg:h-102;
-  @apply xl:h-102; */
+  @apply xl:h-102;
 }
 
 .primary__text {
@@ -57,40 +57,54 @@
 }
 
 .email__input {
-  @apply h-56 w-full rounded-8 bg-primaryLight px-16 py-16
-  text-right text-white opacity-20 
+  @apply h-46 w-full rounded-8 bg-primaryLight px-16 py-16
+  text-right text-white opacity-20
   outline
   outline-inputOutline  
-  placeholder:text-right focus:opacity-100 focus:outline-secondary;
+  placeholder:text-right autofill:bg-primaryLight focus:opacity-50 focus:outline-secondary;
+  @apply md:h-56;
+  @apply lg:h-56;
+  @apply xl:h-56;
 }
 
 .password__inputContainer {
-  @apply relative h-56;
+  @apply relative h-46;
+  @apply md:h-56;
+  @apply lg:h-56;
+  @apply xl:h-56;
 }
 
 .password__input {
-  @apply w-full rounded-8 bg-primaryLight px-16 py-16
+  @apply h-full w-full rounded-8 bg-primaryLight px-16 py-16
   text-right text-white opacity-20 
   outline
   outline-inputOutline  
-  placeholder:text-right focus:opacity-100 focus:outline-secondary;
+  placeholder:text-right focus:opacity-50 focus:outline-secondary;
 }
 
 .icon {
-  @apply absolute top-16 left-16 cursor-pointer opacity-50;
+  @apply absolute top-12 left-16 cursor-pointer opacity-50;
+  @apply md:top-16 md:left-16;
+  @apply lg:top-16 lg:left-16;
+  @apply xl:top-16 xl:left-16;
 }
-/*
 
 .forgetPassword__container {
   @apply h-36;
 }
 
 .forgetPassword__content {
-  @apply h-20 text-left text-secondary;
+  @apply h-20 text-left text-sm text-secondary;
+  @apply md:text-base;
+  @apply lg:text-base;
+  @apply xl:text-base;
 }
 
 .submit__button {
-  @apply h-40 w-full rounded-8 bg-secondary text-xl font-semibold text-white;
+  @apply h-36 w-full rounded-8 bg-secondary text-lg font-semibold text-white;
+  @apply md:h-40 md:text-lg;
+  @apply lg:h-40 lg:text-lg;
+  @apply xl:h-40 xl:text-lg;
 }
 
 .socialLogin__container {
@@ -102,11 +116,17 @@
 }
 
 .facebook__button {
-  @apply flex h-40 w-190 items-center justify-between rounded-8 bg-facebook p-10 text-left text-sm text-white opacity-50;
+  @apply flex h-36 w-140 items-center justify-center rounded-8 bg-facebook p-10 text-left text-sm text-white opacity-50;
+  @apply md:h-40 md:w-190;
+  @apply lg:h-40 lg:w-190;
+  @apply xl:h-40 xl:w-190;
 }
 
 .social__icon {
-  @apply absolute right-10 top-10;
+  @apply absolute right-70 top-10;
+  @apply md:right-10 md:top-10;
+  @apply lg:right-10 lg:top-10;
+  @apply xl:right-90 xl:top-10;
 }
 
 .googleButton__content {
@@ -114,11 +134,17 @@
 }
 
 .google__button {
-  @apply h-40 w-190 rounded-8 bg-google p-10 text-left text-sm text-white opacity-50;
+  @apply flex h-36 w-140 items-center justify-center rounded-8 bg-google p-10 text-left text-sm text-white opacity-50;
+  @apply md:h-40 md:w-190;
+  @apply lg:h-40 lg:w-190;
+  @apply xl:h-40 xl:w-190;
 }
 
 .divider__container {
-  @apply flex h-64 items-center justify-center;
+  @apply flex h-44 items-center justify-center;
+  @apply md:h-64;
+  @apply lg:h-64;
+  @apply xl:h-64;
 }
 
 .hr {
@@ -139,4 +165,4 @@
 
 .register__actionText {
   @apply cursor-pointer text-secondary;
-} */
+}
