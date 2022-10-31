@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
 import React from "react";
-import Login from "./auth/login";
+import { CategoryModal } from "../components";
 
 const Home: NextPage = () => {
-  return <Login />;
+  return <CategoryModal title="Add Category" />;
 };
 
 export default Home;

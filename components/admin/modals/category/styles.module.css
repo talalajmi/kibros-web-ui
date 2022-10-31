@@ -1,0 +1,51 @@
+.modal {
+  @apply flex h-screen items-center justify-center;
+}
+
+.modal__card {
+  @apply h-540 w-350 space-y-20 rounded-10 bg-primaryLight p-29;
+  @apply md:h-540 md:w-600 md:space-y-20 md:rounded-10 md:bg-primaryLight md:p-29;
+  @apply lg:h-540 lg:w-600 lg:space-y-20 lg:rounded-10 lg:bg-primaryLight lg:p-29;
+  @apply xl:h-540 xl:w-600 xl:space-y-20 xl:rounded-10 xl:bg-primaryLight xl:p-29;
+}
+
+.modal__close {
+  @apply flex justify-end;
+}
+
+.modal__title {
+  @apply h-40 text-center text-2xl text-white;
+}
+
+.modal__circleContainer {
+  @apply flex h-186 w-full items-center justify-center;
+}
+
+.modal__circle {
+  @apply relative h-full w-186 rounded-100 bg-lightBlue opacity-10;
+}
+
+.modal__icon {
+  @apply absolute;
+}
+
+.modal__inputContainer {
+  @apply flex h-72 items-center justify-center;
+}
+
+.modal__input {
+  @apply h-56 w-480 rounded-8 bg-primaryLight p-10 text-white 
+  opacity-20 outline outline-1 outline-inputOutline;
+}
+
+.modal__buttonContainer {
+  @apply flex items-center justify-center space-x-20;
+}
+
+.modal__submitButton {
+  @apply h-44 w-100 rounded-10 bg-secondary p-10 text-white;
+}
+
+.modal__cancelButton {
+  @apply h-44 w-100 rounded-10 bg-primaryLight p-10 text-white opacity-20 outline outline-1 outline-inputOutline;
+}

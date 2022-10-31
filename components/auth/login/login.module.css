@@ -57,11 +57,8 @@
 }
 
 .email__input {
-  @apply h-46 w-full rounded-8 bg-primaryLight px-16 py-16
-  text-right text-white opacity-20
-  outline
-  outline-inputOutline  
-  placeholder:text-right autofill:bg-primaryLight focus:opacity-50 focus:outline-secondary;
+  @apply h-46 w-full rounded-8 bg-primaryLight px-16 py-16 text-right text-white opacity-20 outline outline-inputOutline placeholder:text-right autofill:bg-primaryLight
+  focus:opacity-50 focus:outline-secondary;
   @apply md:h-56;
   @apply lg:h-56;
   @apply xl:h-56;
