@@ -1,0 +1,52 @@
+.modal {
+  @apply flex h-screen items-center justify-center;
+}
+
+.modal__card {
+  @apply max-h-screen w-350 space-y-[30px] rounded-10 bg-primaryLight p-[40px];
+  @apply md:h-[860px] md:w-600;
+  @apply lg:h-[860px] lg:w-600;
+  @apply xl:h-[860px] xl:w-600;
+}
+
+.modal__close {
+  @apply flex justify-end;
+}
+
+.modal__title {
+  @apply h-40 text-center text-2xl text-white;
+}
+
+.modal__circleContainer {
+  @apply relative flex h-[130px] w-full items-center justify-center;
+  @apply md:h-186 lg:h-186 xl:h-186;
+}
+
+.modal__image {
+  @apply object-contain;
+}
+
+.modal__form {
+  @apply grid h-full w-full grid-rows-4 space-y-[24px];
+}
+
+.modal__formRow {
+  @apply flex items-end justify-center space-x-[24px];
+}
+
+.modal__input {
+  @apply h-56 w-full rounded-8 bg-primaryLight p-10 text-white 
+    opacity-20 outline outline-1 outline-inputOutline;
+}
+
+.modal__submitButton {
+  @apply h-44 w-100 rounded-10 bg-secondary p-10 text-white;
+}
+
+.modal__cancelButton {
+  @apply h-44 w-100 rounded-10 bg-primaryLight p-10 text-white opacity-20 outline outline-1 outline-inputOutline;
+}
+
+.modal__note {
+  @apply w-[283px] text-center text-white;
+}
