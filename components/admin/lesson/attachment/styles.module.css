@@ -3,7 +3,11 @@
 }
 
 .modal__card {
-  @apply h-[460px] w-[807px] rounded-10 bg-primaryLight p-[30px];
+  @apply container w-[350px] rounded-10 bg-primaryLight p-[30px];
+  @apply md:container md:h-[460px] md:w-[807px];
+  @apply lg:container lg:h-[460px] lg:w-[807px];
+  @apply xl:container xl:h-[460px] xl:w-[807px];
+  @apply 2xl:container 2xl:h-[460px] 2xl:w-[807px];
 }
 
 .modal__icon {
@@ -11,31 +15,23 @@
 }
 
 .modal__content {
-  @apply h-[420px] w-[747px] space-y-[40px];
+  @apply space-y-[40px];
 }
 .modal__header {
   @apply grid grid-flow-col grid-rows-2 gap-10 text-center text-white;
 }
 
 .modal__body {
-  @apply grid h-[152px] grid-flow-col grid-rows-1 gap-[76px];
+  @apply grid grid-flow-col grid-rows-2 gap-[20px];
+  @apply md:grid-rows-1 md:gap-[76px];
 }
 
 .modal__inputs {
-  @apply grid h-full grid-flow-col grid-rows-2 gap-20 p-10;
-}
-
-.modal__input {
-  @apply h-full w-full appearance-none rounded-8 border border-inputOutline/[0.22] bg-primaryLight p-12 text-sm
-  text-darkText placeholder:p-10 focus:border-secondary/[0.22] focus:outline-none focus:ring-0;
-}
-
-.modal__label {
-  @apply absolute bottom-[2.8rem] left-[1rem] z-10 bg-primaryLight px-5 text-darkTextSecondary/[0.68];
+  @apply grid grid-flow-col grid-rows-2 gap-20 p-10;
 }
 
 .modal__pillsContainer {
-  @apply h-[152px] items-center justify-center space-y-20 p-10;
+  @apply items-center justify-center space-y-20 p-10;
 }
 
 .modal__pillRow {
@@ -47,7 +43,8 @@
 }
 
 .modal__footer {
-  @apply flex items-center justify-between p-10;
+  @apply grid grid-flow-col grid-rows-2  gap-10 p-10;
+  @apply md:flex md:items-center md:justify-between md:p-10;
 }
 
 .modal__addButton {
