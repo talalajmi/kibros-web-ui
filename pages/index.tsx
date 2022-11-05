@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
 import React from "react";
-import { AddAdminModal, CategoryModal } from "../components";
+import { AddAttchmentModal } from "../components";
 
 const Home: NextPage = () => {
-  return <AddAdminModal />;
+  return <AddAttchmentModal />;
 };
 
 export default Home;

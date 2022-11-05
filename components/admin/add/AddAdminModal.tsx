@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
-import { iconColor } from "../../../../utils/colors";
-import { X } from "../../../icons";
+import { iconColor } from "../../../utils/colors";
+import { X } from "../../icons";
 import styles from "./styles.module.css";
 
 const AddAdminModal = () => {
@@ -16,8 +16,6 @@ const AddAdminModal = () => {
           <Image
             src={"/assets/images/avatar.png"}
             alt="avatar-image"
-            width={186}
-            height={186}
             layout="fill"
             objectFit="contain"
           />

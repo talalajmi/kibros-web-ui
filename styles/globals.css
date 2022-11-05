@@ -5,3 +5,11 @@
 body {
   @apply bg-primary;
 }
+
+.darkTextSecondary {
+  @apply text-[#E7E3FC] opacity-70;
+}
+
+.outlined {
+  @apply opacity-20 outline outline-inputOutline;
+}

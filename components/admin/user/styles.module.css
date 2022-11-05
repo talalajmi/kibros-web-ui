@@ -1,0 +1,60 @@
+.modal {
+  @apply flex h-screen items-center justify-center;
+}
+
+.modal__card {
+  @apply h-[601px] w-350 rounded-10 bg-primaryLight p-[30px];
+  @apply md:h-[702px] md:w-[602px];
+  @apply lg:h-[702px] lg:w-[602px];
+  @apply xl:h-[702px] xl:w-[602px];
+}
+
+.modal__container {
+  @apply h-[541px] w-[340px] space-y-20 p-20 xl:h-[662px] xl:w-[544px];
+}
+
+.modal__icon {
+  @apply flex justify-end;
+}
+
+.modal__title {
+  @apply text-center text-[1.5rem] text-white;
+}
+
+.modal__circleContainer {
+  @apply relative flex h-[130px] w-full items-center justify-center;
+  @apply md:h-186 lg:h-186 xl:h-186;
+}
+
+.modal__input {
+  @apply h-56 w-full rounded-8 bg-primaryLight p-10 text-white 
+  opacity-20 outline outline-1 outline-inputOutline;
+}
+
+.modal__form {
+  @apply space-y-20 p-10;
+}
+
+.modal__row {
+  @apply grid grid-flow-col grid-rows-1 space-x-10;
+}
+
+.modal__emailContainter {
+  @apply w-[306px];
+}
+
+.modal__dropdownContainer {
+  @apply relative w-[166px];
+}
+
+.modal__switch {
+  @apply h-[38px] w-[58px] rounded-100;
+}
+
+.modal__submitButton {
+  @apply h-44 w-100 rounded-10 bg-secondary p-10 text-white;
+}
+
+.modal__cancelButton {
+  @apply h-44 w-100 rounded-10 bg-primaryLight p-10 text-white opacity-20 outline outline-1 outline-inputOutline;
+}

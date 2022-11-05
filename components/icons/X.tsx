@@ -1,10 +1,19 @@
 import React from "react";
 
-const X = ({ size, color }: { size: string; color: string }) => {
+const X = ({
+  size,
+  color,
+  className,
+}: {
+  size: string;
+  color: string;
+  className?: string;
+}) => {
   return (
     <svg
       width={size}
       height={size}
+      className={className}
       viewBox="0 0 24 25"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

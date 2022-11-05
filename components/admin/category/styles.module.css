@@ -3,10 +3,10 @@
 }
 
 .modal__card {
-  @apply h-540 w-350 space-y-20 rounded-10 bg-primaryLight p-29;
-  @apply md:h-540 md:w-600 md:space-y-20 md:rounded-10 md:bg-primaryLight md:p-29;
-  @apply lg:h-540 lg:w-600 lg:space-y-20 lg:rounded-10 lg:bg-primaryLight lg:p-29;
-  @apply xl:h-540 xl:w-600 xl:space-y-20 xl:rounded-10 xl:bg-primaryLight xl:p-29;
+  @apply h-540 w-350 space-y-[20px] rounded-10 bg-primaryLight p-[20px];
+  @apply md:h-540 md:w-600 md:space-y-[20px] md:rounded-10 md:bg-primaryLight md:p-[20px];
+  @apply lg:h-540 lg:w-600 lg:space-y-[20px] lg:rounded-10 lg:bg-primaryLight lg:p-[20px];
+  @apply xl:h-540 xl:w-600 xl:space-y-[20px] xl:rounded-10 xl:bg-primaryLight xl:p-[20px];
 }
 
 .modal__close {

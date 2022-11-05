@@ -5,7 +5,7 @@ import React from "react";
 import styles from "./forgot-password.module.css";
 
 // Constants
-import { ArrowLeft } from "../../../components/icons";
+import { ArrowLeft } from "../../icons";
 import { kiBrosDarkBlueColor } from "../../../utils/colors";
 
 // Logo Path
