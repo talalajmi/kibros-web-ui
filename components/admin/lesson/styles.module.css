@@ -1,0 +1,27 @@
+.modal {
+  @apply flex h-screen items-center justify-center;
+}
+
+.modal__card {
+  @apply container h-[966px] w-[864px] rounded-10 bg-primaryLight px-[30px] py-20;
+}
+
+.modal__icon {
+  @apply flex justify-end;
+}
+
+.modal__body {
+  @apply space-y-[20px] p-10;
+}
+
+.modal__header {
+  @apply grid grid-flow-col grid-rows-2 gap-10 text-center text-white;
+}
+
+.modal__form {
+  @apply space-y-20;
+}
+
+.modal__inputs {
+  @apply grid grid-flow-col grid-rows-1 gap-[24px] py-10;
+}

@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
 import React from "react";
-import { AddAttchmentModal } from "../components";
+import { LessonModal } from "../components";
 
 const Home: NextPage = () => {
-  return <AddAttchmentModal />;
+  return <LessonModal />;
 };
 
 export default Home;

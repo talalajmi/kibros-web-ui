@@ -3,6 +3,7 @@ import {
   AddAdminModal,
   EditUserModal,
   AddAttchmentModal,
+  LessonModal,
 } from "./admin";
 import { Login, Register, ForgotPassword } from "./auth";
 import { Footer, Navbar } from "./layout";
@@ -13,11 +14,11 @@ export {
   AddAdminModal,
   EditUserModal,
   AddAttchmentModal,
-  Login,
-  Register,
-  ForgotPassword,
-  Footer,
-  Navbar,
-  Input,
-  Label,
+  LessonModal,
 };
+
+export { Login, Register, ForgotPassword };
+
+export { Footer, Navbar };
+
+export { Input, Label };
