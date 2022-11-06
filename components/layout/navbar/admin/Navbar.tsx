@@ -1,14 +1,14 @@
 import Image from "next/image";
 import React, { useState } from "react";
-import SettingsIcon from "../../icons/SettingsIcon";
-import { iconColor } from "../../../utils/colors";
-import LogoutIcon from "../../icons/LogoutIcon";
-import HomeIcon from "../../icons/HomeIcon";
-import LessonsIcon from "../../icons/LessonsIcon";
-import FileIcon from "../../icons/FileIcon";
-import { Filter } from "../../icons";
-import UserIcon from "../../icons/UserIcon";
-import { avatar, logo } from "../../../constants";
+import SettingsIcon from "../../../icons/SettingsIcon";
+import { iconColor } from "../../../../utils/colors";
+import LogoutIcon from "../../../icons/LogoutIcon";
+import HomeIcon from "../../../icons/HomeIcon";
+import LessonsIcon from "../../../icons/LessonsIcon";
+import FileIcon from "../../../icons/FileIcon";
+import { Filter } from "../../../icons";
+import UserIcon from "../../../icons/UserIcon";
+import { avatar, logo } from "../../../../constants";
 
 const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -42,7 +42,7 @@ const Navbar = () => {
                 showDropdown ? "block" : "hidden"
               } absolute top-58 right-0 h-[170px] w-[230px] rounded-8 bg-primaryLight`}
             >
-              <div className="flex items-center justify-between py-14 px-20">
+              <div className="flex items-center justify-start space-x-10 py-14 px-20">
                 <Image
                   src={avatar}
                   alt="avatar-image"
@@ -55,11 +55,11 @@ const Navbar = () => {
                   <p className="text-darkTextSecondary/[0.38]">Admin</p>
                 </div>
               </div>
-              <div className="flex cursor-pointer items-center justify-start space-x-10 border border-x-0 border-darkText/[0.12] py-10 px-20">
+              <div className="flex cursor-pointer items-center justify-start space-x-10 border border-x-0 border-darkText/[0.12] py-10 px-20 hover:bg-primary/[0.2]">
                 <SettingsIcon size="20" color={iconColor} />
                 <p className="text-white">Settings</p>
               </div>
-              <div className="flex cursor-pointer items-center justify-start space-x-10 border-darkText/[0.12] py-10 px-20">
+              <div className="flex cursor-pointer items-center justify-start space-x-10 border-darkText/[0.12] py-10 px-20 hover:bg-primary/[0.5]">
                 <LogoutIcon size="20" color={iconColor} />
                 <p className="text-white">Logout</p>
               </div>

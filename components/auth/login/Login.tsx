@@ -2,16 +2,13 @@ import Image from "next/image";
 import { useState } from "react";
 
 // Icons
-import { Eye, EyeCrossed } from "../../icons";
-import facebookIcon from "../../../components/icons/facebook.svg";
-import googleIcon from "../../../components/icons/google.svg";
+import { Eye, EyeCrossed, FacebookIcon, GoogleIcon } from "../../icons";
 
 // Styles
 import styles from "./login.module.css";
 import { iconColor } from "../../../utils/colors";
 
 //Logo Path
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { AuthorizationRoutes } from "../../../routes";
 import { logo } from "../../../constants";
@@ -87,23 +84,13 @@ export default function Login() {
               <div className={styles.facebookButton__content}>
                 <button className={styles.facebook__button}></button>
                 <div className={styles.social__icon}>
-                  <Image
-                    src={facebookIcon}
-                    alt="facebook-logo"
-                    width={10}
-                    height={18}
-                  />
+                  <FacebookIcon />
                 </div>
               </div>
               <div className={styles.googleButton__content}>
                 <button className={styles.google__button}></button>
                 <div className={styles.social__icon}>
-                  <Image
-                    src={googleIcon}
-                    alt="facebook-logo"
-                    width={17}
-                    height={17}
-                  />
+                  <GoogleIcon />
                 </div>
               </div>
             </div>

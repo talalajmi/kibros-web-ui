@@ -10,6 +10,8 @@ import LessonsIcon from "./LessonsIcon";
 import LogoutIcon from "./LogoutIcon";
 import SettingsIcon from "./SettingsIcon";
 import UserIcon from "./UserIcon";
+import FacebookIcon from "./FacebookIcon";
+import GoogleIcon from "./GoogleIcon";
 
 export {
   ArrowLeft,
@@ -24,4 +26,6 @@ export {
   LogoutIcon,
   SettingsIcon,
   UserIcon,
+  FacebookIcon,
+  GoogleIcon,
 };

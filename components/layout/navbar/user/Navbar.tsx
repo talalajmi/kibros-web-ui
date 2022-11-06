@@ -1,10 +1,10 @@
 import Image from "next/image";
 import React, { useState } from "react";
-import { avatar, logo } from "../../../constants";
-import { iconColor } from "../../../utils/colors";
-import { LogoutIcon, SearchIcon, SettingsIcon } from "../../icons";
+import { avatar, logo } from "../../../../constants";
+import { iconColor } from "../../../../utils/colors";
+import { LogoutIcon, SearchIcon, SettingsIcon } from "../../../icons";
 
-const UserNavbar = () => {
+const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   return (
@@ -81,4 +81,4 @@ const UserNavbar = () => {
   );
 };
 
-export default UserNavbar;
+export default Navbar;

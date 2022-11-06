@@ -1,5 +1,3 @@
-import Footer from "./footer/Footer";
-import Navbar from "./navbar/Navbar";
-import UserNavbar from "./navbar/UserNavbar";
-
-export { Navbar, Footer, UserNavbar };
+export { default as Navbar } from "./navbar/admin/Navbar";
+export { default as UserNavbar } from "./navbar/user/Navbar";
+export { default as Footer } from "./footer/Footer";
