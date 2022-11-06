@@ -7,9 +7,17 @@ import { Footer, Navbar } from "../components";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
-      <Navbar />
-      <Component {...pageProps} />;
-      <Footer />
+      <div className="flex h-screen flex-col justify-between">
+        <header className="sticky top-0 z-50">
+          <Navbar />
+        </header>
+        <main>
+          <Component {...pageProps} />
+        </main>
+        <footer>
+          <Footer />
+        </footer>
+      </div>
     </ThemeProvider>
   );
 }

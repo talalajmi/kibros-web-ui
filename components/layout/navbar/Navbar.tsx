@@ -16,7 +16,7 @@ const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   return (
-    <div className="relative flex flex-col">
+    <div className="flex flex-col bg-primary">
       <div className="flex items-center justify-between py-[15px]">
         <div className="flex items-center justify-start">
           <Image

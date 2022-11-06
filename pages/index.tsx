@@ -4,7 +4,7 @@ import { LessonModal, Navbar } from "../components";
 
 const Home: NextPage = () => {
   return (
-    <div className="flex h-screen w-full flex-col items-center justify-center text-white"></div>
+    <div className="flex flex-col items-center justify-center text-white"></div>
   );
 };
 
