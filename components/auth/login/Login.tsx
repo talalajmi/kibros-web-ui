@@ -11,10 +11,10 @@ import styles from "./login.module.css";
 import { iconColor } from "../../../utils/colors";
 
 //Logo Path
-import logo from "../../../public/assets/images/logo/kibros-logo.png";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { AuthorizationRoutes } from "../../../routes";
+import { logo } from "../../../constants";
 
 export default function Login() {
   const [isPasswordShown, setIsPasswordShown] = useState(false);

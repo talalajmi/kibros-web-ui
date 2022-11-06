@@ -5,8 +5,8 @@ import React from "react";
 import styles from "./payment-failed.module.css";
 
 // Image Paths
-import logo from "../../../public/assets/images/logo/kibros-logo.png";
 import errorImage from "../../../public/assets/images/pages/payment-failed.svg";
+import { logo } from "../../../constants";
 
 function PaymentFailed() {
   return (

@@ -2,14 +2,14 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { ThemeProvider } from "@emotion/react";
 import { theme } from "../theme";
-import { Footer, Navbar } from "../components";
+import { Footer, Navbar, UserNavbar } from "../components";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
       <div className="flex h-screen flex-col justify-between">
         <header className="sticky top-0 z-50">
-          <Navbar />
+          <UserNavbar />
         </header>
         <main>
           <Component {...pageProps} />

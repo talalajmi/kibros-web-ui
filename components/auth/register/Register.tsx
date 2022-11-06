@@ -9,9 +9,7 @@ import googleIcon from "../../../components/icons/google.svg";
 // Styles
 import styles from "./register.module.css";
 import { iconColor } from "../../../utils/colors";
-
-//Logo Path
-import logo from "../../../public/assets/images/logo/kibros-logo.png";
+import { logo } from "../../../constants";
 
 export default function Register() {
   return (

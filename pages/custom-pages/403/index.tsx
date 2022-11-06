@@ -5,8 +5,8 @@ import React from "react";
 import styles from "./403.module.css";
 
 // Image Paths
-import logo from "../../../public/assets/images/logo/kibros-logo.png";
 import errorImage from "../../../public/assets/images/pages/403.svg";
+import { logo } from "../../../constants";
 
 function Error403() {
   return (

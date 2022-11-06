@@ -8,9 +8,7 @@ import LessonsIcon from "../../icons/LessonsIcon";
 import FileIcon from "../../icons/FileIcon";
 import { Filter } from "../../icons";
 import UserIcon from "../../icons/UserIcon";
-
-const logo = "/assets/images/logo/kibros-logo.png";
-const avatar = "/assets/images/avatar.png";
+import { avatar, logo } from "../../../constants";
 
 const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);

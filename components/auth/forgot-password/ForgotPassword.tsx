@@ -9,9 +9,9 @@ import { ArrowLeft } from "../../icons";
 import { kiBrosDarkBlueColor } from "../../../utils/colors";
 
 // Logo Path
-import logo from "../../../public/assets/images/logo/kibros-logo.png";
 import { useRouter } from "next/router";
 import { AuthorizationRoutes } from "../../../routes";
+import { logo } from "../../../constants";
 
 export default function ForgotPassword() {
   const router = useRouter();

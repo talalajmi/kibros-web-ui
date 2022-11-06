@@ -6,7 +6,7 @@ import {
   LessonModal,
 } from "./admin";
 import { Login, Register, ForgotPassword } from "./auth";
-import { Footer, Navbar } from "./layout";
+import { Footer, Navbar, UserNavbar } from "./layout";
 import { Input, Label } from "./form";
 
 export {
@@ -19,6 +19,6 @@ export {
 
 export { Login, Register, ForgotPassword };
 
-export { Footer, Navbar };
+export { Footer, Navbar, UserNavbar };
 
 export { Input, Label };
