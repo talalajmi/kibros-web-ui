@@ -42,6 +42,9 @@ module.exports = {
       "2xl": "1536px",
     },
     extend: {
+      gridTemplateRows: {
+        9: "repeat(9, minmax(0, 1fr))",
+      },
       width: {
         70: "70px",
         100: "100px",

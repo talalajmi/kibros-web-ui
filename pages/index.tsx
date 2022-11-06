@@ -1,9 +1,11 @@
 import type { NextPage } from "next";
 import React from "react";
-import { LessonModal } from "../components";
+import { LessonModal, Navbar } from "../components";
 
 const Home: NextPage = () => {
-  return <LessonModal />;
+  return (
+    <div className="flex h-screen w-full flex-col items-center justify-center text-white"></div>
+  );
 };
 
 export default Home;

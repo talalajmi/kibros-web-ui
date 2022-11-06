@@ -3,7 +3,7 @@
 }
 
 .modal__card {
-  @apply container h-[966px] w-[864px] rounded-10 bg-primaryLight px-[30px] py-20;
+  @apply h-[966px] w-[864px] rounded-10 bg-primaryLight px-[30px] py-20;
 }
 
 .modal__icon {
@@ -19,9 +19,9 @@
 }
 
 .modal__form {
-  @apply space-y-20;
+  @apply flex flex-col space-y-20;
 }
 
 .modal__inputs {
-  @apply grid grid-flow-col grid-rows-1 gap-[24px] py-10;
+  @apply flex flex-row space-x-[20px];
 }
