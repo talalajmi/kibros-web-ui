@@ -1,0 +1,47 @@
+.settings__container {
+  @apply flex items-center justify-center;
+}
+
+.settings__card {
+  @apply flex  w-[1132px] flex-col space-y-16 rounded-10 bg-primaryLight;
+}
+
+.settings__header {
+  @apply flex items-start justify-end border border-t-0 border-r-0 border-l-0 border-inputOutline/[0.2];
+}
+
+.settings__activeTab {
+  @apply flex items-center justify-center space-x-10 border border-t-0 border-r-0 border-l-0 border-b-secondary p-20 text-secondary;
+}
+
+.settings__tab {
+  @apply flex items-center justify-center space-x-10 border border-t-0 border-r-0 border-l-0 border-b-primaryLight p-20 text-darkTextSecondary/[0.68];
+}
+
+.settings__body {
+  @apply flex flex-col space-y-[24px] p-20;
+}
+
+.settings__row {
+  @apply grid grid-flow-col grid-rows-1 gap-[24px];
+}
+
+.settings__buttons {
+  @apply flex items-center justify-end space-x-16;
+}
+
+.settings__submitButton {
+  @apply rounded-8 bg-secondary py-10 px-20 font-bold text-white;
+}
+
+.divider {
+  @apply bg-darkTextSecondary;
+}
+
+.textContainer {
+  @apply flex flex-col items-start text-white;
+}
+
+.bulletPoint {
+  @apply list-inside list-disc text-right text-sm;
+}

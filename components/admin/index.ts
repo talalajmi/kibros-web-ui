@@ -3,6 +3,7 @@ import CategoryModal from "./category/CategoryModal";
 import EditUserModal from "./user/EditUserModal";
 import AddAttchmentModal from "./lesson/attachment/AddAttchmentModal";
 import LessonModal from "./lesson/LessonModal";
+import AdminSettings from "./settings/AdminSettings";
 
 export {
   CategoryModal,
@@ -10,4 +11,5 @@ export {
   EditUserModal,
   AddAttchmentModal,
   LessonModal,
+  AdminSettings,
 };

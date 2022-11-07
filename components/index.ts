@@ -4,10 +4,12 @@ import {
   EditUserModal,
   AddAttchmentModal,
   LessonModal,
+  AdminSettings,
 } from "./admin";
 import { Login, Register, ForgotPassword } from "./auth";
 import { Footer, Navbar, UserNavbar } from "./layout";
 import { Input, Label } from "./form";
+import { UserSettings } from "./user";
 
 export {
   CategoryModal,
@@ -15,7 +17,10 @@ export {
   EditUserModal,
   AddAttchmentModal,
   LessonModal,
+  AdminSettings,
 };
+
+export { UserSettings };
 
 export { Login, Register, ForgotPassword };
 

@@ -34,8 +34,8 @@
 }
 
 .modal__input {
-  @apply h-56 w-480 rounded-8 bg-primaryLight p-10 text-white 
-  opacity-20 outline outline-1 outline-inputOutline;
+  @apply h-56 w-480 rounded-8 border border-inputOutline bg-primaryLight 
+  p-10 text-white opacity-20;
 }
 
 .modal__buttonContainer {
@@ -47,5 +47,5 @@
 }
 
 .modal__cancelButton {
-  @apply h-44 w-100 rounded-10 bg-primaryLight p-10 text-white opacity-20 outline outline-1 outline-inputOutline;
+  @apply h-44 w-100 rounded-10 border border-inputOutline bg-primaryLight p-10 text-white opacity-20;
 }
