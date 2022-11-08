@@ -1,8 +1,8 @@
 import React from "react";
-import { AddAttchmentModal } from "../../../components";
+import { AddAttachmentModal } from "../../../components";
 
 const index = () => {
-  return <AddAttchmentModal />;
+  return <AddAttachmentModal />;
 };
 
 export default index;
