@@ -3,9 +3,9 @@ import React from "react";
 import { iconColor } from "../../../../utils/colors";
 import { Input, Label } from "../../../form";
 import { X } from "../../../icons";
-import styles from "./styles.module.css";
+import styles from "./AddAttachmentModal.module.css";
 
-const AddAttchmentModal = () => {
+const AddAttachmentModal = () => {
   return (
     <div className={styles.modal}>
       <div className={styles.modal__card}>
@@ -79,4 +79,4 @@ const AddAttchmentModal = () => {
   );
 };
 
-export default AddAttchmentModal;
+export default AddAttachmentModal;

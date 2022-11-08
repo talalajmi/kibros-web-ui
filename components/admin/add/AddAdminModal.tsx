@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import { iconColor } from "../../../utils/colors";
 import { X } from "../../icons";
-import styles from "./styles.module.css";
+import styles from "./AddAdminModal.module.css";
 
 const AddAdminModal = () => {
   return (

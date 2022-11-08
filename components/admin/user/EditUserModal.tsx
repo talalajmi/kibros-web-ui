@@ -12,12 +12,11 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import React, { useState } from "react";
+import { avatar } from "../../../constants";
 import { iconColor } from "../../../utils/colors";
 import { Input } from "../../form";
 import { X } from "../../icons";
-import styles from "./styles.module.css";
-
-const avatar = "/assets/images/avatar.png";
+import styles from "./EditUserModal.module.css";
 
 const EditUserModal = () => {
   const [enabled, setEnabled] = useState(false);

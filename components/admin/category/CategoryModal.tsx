@@ -1,6 +1,6 @@
 import React from "react";
 import { Filter, X } from "../../icons";
-import styles from "./styles.module.css";
+import styles from "./CategoryModal.module.css";
 import { iconColor, lightBlue } from "../../../utils/colors";
 
 const CategoryModal = ({ title }: { title: string }) => {
