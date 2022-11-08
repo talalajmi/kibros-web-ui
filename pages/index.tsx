@@ -1,10 +1,9 @@
 import type { NextPage } from "next";
 import React from "react";
-import { AdminSettings } from "../components";
-import CategoryTable from "../components/admin/category/CategoryTable";
+import { Invoice } from "../components";
 
 const Home: NextPage = () => {
-  return <CategoryTable />;
+  return <Invoice />;
 };
 
 export default Home;

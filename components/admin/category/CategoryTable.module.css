@@ -45,3 +45,7 @@
 .cardFooter {
   @apply flex items-center justify-end space-x-[26px] p-20 text-white;
 }
+
+.footerArrows {
+  @apply flex items-center justify-center space-x-20;
+}

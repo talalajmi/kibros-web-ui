@@ -63,7 +63,7 @@ const CategoryTable = () => {
           </div>
           <div className={styles.cardFooter}>
             <p>1-5 of 13</p>
-            <div className="flex items-center justify-center space-x-20">
+            <div className={styles.footerArrows}>
               <ArrowLeft size={17} color={iconColor} opacity={0.5} />
               <ArrowRight size={17} color={iconColor} />
             </div>
