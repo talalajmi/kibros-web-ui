@@ -26,7 +26,7 @@ const CategoryTable = () => {
             </div>
             <div className={styles.tableHeaderCell}>
               <div className="w-[515px]">
-                <p>Number</p>
+                <p>Name</p>
               </div>
               <div className={styles.seperator}></div>
             </div>
