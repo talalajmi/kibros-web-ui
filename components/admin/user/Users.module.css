@@ -1,5 +1,5 @@
 .container {
-  @apply flex flex-col items-center justify-center space-y-[24px] px-[155px] py-60;
+  @apply flex flex-col items-center justify-center space-y-[24px] px-[120px] py-60;
 }
 
 .filtersCard {
