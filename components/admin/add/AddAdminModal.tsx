@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import { avatar } from "../../../constants";
 import { iconColor } from "../../../utils/colors";
 import { X } from "../../icons";
 import styles from "./AddAdminModal.module.css";
@@ -14,7 +15,7 @@ const AddAdminModal = () => {
         <div className={styles.modal__title}>Add Admin</div>
         <div className={styles.modal__circleContainer}>
           <Image
-            src={"/assets/images/avatar.png"}
+            src={avatar}
             alt="avatar-image"
             layout="fill"
             objectFit="contain"
