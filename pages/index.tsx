@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
 import React from "react";
-import { Invoice } from "../components";
+import { Users } from "../components";
 
 const Home: NextPage = () => {
-  return <Invoice />;
+  return <Users />;
 };
 
 export default Home;

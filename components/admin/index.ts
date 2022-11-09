@@ -5,6 +5,7 @@ import AddAttachmentModal from "./lesson/attachment/AddAttachmentModal";
 import LessonModal from "./lesson/LessonModal";
 import AdminSettings from "./settings/AdminSettings";
 import CategoryTable from "./category/CategoryTable";
+import Users from "./user/Users";
 
 export {
   CategoryModal,
@@ -14,4 +15,5 @@ export {
   AddAttachmentModal,
   LessonModal,
   AdminSettings,
+  Users,
 };

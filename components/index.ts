@@ -6,12 +6,13 @@ import {
   AddAttachmentModal,
   LessonModal,
   AdminSettings,
+  Users,
 } from "./admin";
 import { Login, Register, ForgotPassword } from "./auth";
 import { Footer, Navbar, UserNavbar } from "./layout";
 import { Input, Label } from "./form";
 import { UserSettings } from "./user";
-import Invoice from "./shared/Invoice";
+import InvoiceAr from "./shared/InvoiceAr";
 
 export {
   CategoryModal,
@@ -21,6 +22,7 @@ export {
   AddAttachmentModal,
   LessonModal,
   AdminSettings,
+  Users,
 };
 
 export { UserSettings };
@@ -31,4 +33,4 @@ export { Footer, Navbar, UserNavbar };
 
 export { Input, Label };
 
-export { Invoice };
+export { InvoiceAr };

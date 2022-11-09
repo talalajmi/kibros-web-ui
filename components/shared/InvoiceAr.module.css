@@ -1,0 +1,35 @@
+.container {
+  @apply flex items-center justify-center;
+}
+
+.card {
+  @apply max-h-fit w-[842px] space-y-10 rounded-10 bg-primaryLight;
+}
+
+.header {
+  @apply space-y-10 p-20;
+}
+
+.row {
+  @apply flex items-center justify-between;
+}
+
+.companyDetail {
+  @apply text-justify text-darkTextSecondary/[0.68];
+}
+
+.customerInformation {
+  @apply flex flex-col justify-between space-y-20 p-20 text-justify;
+}
+
+.table {
+  @apply bg-primary p-20 text-white;
+}
+
+.amountContainer {
+  @apply flex flex-col items-end space-y-20 p-20;
+}
+
+.print {
+  @apply rounded-10 bg-secondary py-10 px-28 uppercase text-white;
+}

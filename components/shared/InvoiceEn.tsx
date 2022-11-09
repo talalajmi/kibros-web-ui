@@ -1,12 +1,12 @@
 import Image from "next/image";
 import React from "react";
 import { logo } from "../../constants";
-import styles from "./Invoice.module.css";
+import styles from "./InvoiceEn.module.css";
 import { iconColor } from "../../utils/colors";
 
-const Invoice = () => {
+const InvoiceEn = () => {
   return (
-    <div className={styles.container}>
+    <div dir="" className={styles.container}>
       <div className={styles.card}>
         <div className={styles.header}>
           <div className={styles.row}>
@@ -87,4 +87,4 @@ const Invoice = () => {
   );
 };
 
-export default Invoice;
+export default InvoiceEn;
