@@ -1,14 +1,7 @@
 import React from "react";
+import { ISvg } from "../../interfaces";
 
-const X = ({
-  size,
-  color,
-  className,
-}: {
-  size: string;
-  color: string;
-  className?: string;
-}) => {
+const X = ({ size, color, className, opacity }: ISvg) => {
   return (
     <svg
       width={size}
@@ -21,7 +14,7 @@ const X = ({
       <path
         d="M19 6.63708L17.59 5.22708L12 10.8171L6.41 5.22708L5 6.63708L10.59 12.2271L5 17.8171L6.41 19.2271L12 13.6371L17.59 19.2271L19 17.8171L13.41 12.2271L19 6.63708Z"
         fill={color}
-        fillOpacity="0.54"
+        fillOpacity={opacity}
       />
     </svg>
   );

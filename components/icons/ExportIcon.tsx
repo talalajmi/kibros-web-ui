@@ -1,16 +1,7 @@
 import React from "react";
+import { ISvg } from "../../interfaces";
 
-const ExportIcon = ({
-  size,
-  color,
-  className,
-  opacity,
-}: {
-  size: string;
-  color: string;
-  className?: string;
-  opacity?: string;
-}) => {
+const ExportIcon = ({ size, color, className, opacity }: ISvg) => {
   return (
     <svg
       width={size}
@@ -18,6 +9,7 @@ const ExportIcon = ({
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className={className}
     >
       <g clipPath="url(#clip0_9849_84402)">
         <path

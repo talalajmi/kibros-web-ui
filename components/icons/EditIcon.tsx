@@ -1,16 +1,7 @@
 import React from "react";
+import { ISvg } from "../../interfaces";
 
-const EditIcon = ({
-  size,
-  color,
-  className,
-  opacity,
-}: {
-  size: string;
-  color: string;
-  className?: string;
-  opacity?: string;
-}) => {
+const EditIcon = ({ size, color, className, opacity }: ISvg) => {
   return (
     <svg
       width={size}
