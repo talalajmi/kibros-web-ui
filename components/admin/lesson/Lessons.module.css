@@ -30,6 +30,14 @@
   @apply flex items-center justify-center space-x-20;
 }
 
+.tableBodyRow {
+  @apply flex border border-t-0 border-l-0 border-r-0 border-inputOutline/[0.2] text-darkTextSecondary/[0.68];
+}
+
+.tablePill {
+  @apply flex items-center justify-center rounded-100 bg-success/[0.2] text-success;
+}
+
 .tableCell {
   @apply flex-1 py-16 px-20 text-sm font-medium;
 }

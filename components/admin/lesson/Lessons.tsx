@@ -34,16 +34,14 @@ const Lessons = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className="flex border border-t-0 border-l-0 border-r-0 border-inputOutline/[0.2] text-darkTextSecondary/[0.68]">
+            <tr className={styles.tableBodyRow}>
               <td className={styles.tableCell}>1</td>
               <td className={`${styles.tableCell}`}>اساسيات التصوير</td>
               <td dir="rtl" className={`${styles.tableCell} truncate`}>
                 ذيييثييثثييث هكذا يبدا التصوير دعقد
               </td>
               <td className={styles.tableCell}>
-                <div className="flex items-center justify-center rounded-100 bg-success/[0.2] text-success">
-                  Activated
-                </div>
+                <div className={styles.tablePill}>Activated</div>
               </td>
               <td className={styles.tableCell}>2</td>
               <td className={styles.tableCell}>02/02/2022</td>
@@ -53,16 +51,14 @@ const Lessons = () => {
                 <TrashIcon size="20" color={iconColor} opacity="0.68" />
               </td>
             </tr>
-            <tr className="flex border border-t-0 border-l-0 border-r-0 border-inputOutline/[0.2] text-darkTextSecondary/[0.68]">
+            <tr className={styles.tableBodyRow}>
               <td className={styles.tableCell}>1</td>
               <td className={`${styles.tableCell}`}>اساسيات التصوير</td>
               <td dir="rtl" className={`${styles.tableCell} truncate`}>
                 ذيييثييثثييث هكذا يبدا التصوير دعقد
               </td>
               <td className={styles.tableCell}>
-                <div className="flex items-center justify-center rounded-100 bg-success/[0.2] text-success">
-                  Activated
-                </div>
+                <div className={styles.tablePill}>Activated</div>
               </td>
               <td className={styles.tableCell}>2</td>
               <td className={styles.tableCell}>02/02/2022</td>
@@ -72,16 +68,14 @@ const Lessons = () => {
                 <TrashIcon size="20" color={iconColor} opacity="0.68" />
               </td>
             </tr>
-            <tr className="flex border border-t-0 border-l-0 border-r-0 border-inputOutline/[0.2] text-darkTextSecondary/[0.68]">
+            <tr className={styles.tableBodyRow}>
               <td className={styles.tableCell}>1</td>
               <td className={`${styles.tableCell}`}>اساسيات التصوير</td>
               <td dir="rtl" className={`${styles.tableCell} truncate`}>
                 ذيييثييثثييث هكذا يبدا التصوير دعقد
               </td>
               <td className={styles.tableCell}>
-                <div className="flex items-center justify-center rounded-100 bg-success/[0.2] text-success">
-                  Activated
-                </div>
+                <div className={styles.tablePill}>Activated</div>
               </td>
               <td className={styles.tableCell}>2</td>
               <td className={styles.tableCell}>02/02/2022</td>
@@ -91,16 +85,14 @@ const Lessons = () => {
                 <TrashIcon size="20" color={iconColor} opacity="0.68" />
               </td>
             </tr>
-            <tr className="flex border border-t-0 border-l-0 border-r-0 border-inputOutline/[0.2] text-darkTextSecondary/[0.68]">
+            <tr className={styles.tableBodyRow}>
               <td className={styles.tableCell}>1</td>
               <td className={`${styles.tableCell}`}>اساسيات التصوير</td>
               <td dir="rtl" className={`${styles.tableCell} truncate`}>
                 ذيييثييثثييث هكذا يبدا التصوير دعقد
               </td>
               <td className={styles.tableCell}>
-                <div className="flex items-center justify-center rounded-100 bg-success/[0.2] text-success">
-                  Activated
-                </div>
+                <div className={styles.tablePill}>Activated</div>
               </td>
               <td className={styles.tableCell}>2</td>
               <td className={styles.tableCell}>02/02/2022</td>
@@ -110,16 +102,14 @@ const Lessons = () => {
                 <TrashIcon size="20" color={iconColor} opacity="0.68" />
               </td>
             </tr>
-            <tr className="flex border border-t-0 border-l-0 border-r-0 border-inputOutline/[0.2] text-darkTextSecondary/[0.68]">
+            <tr className={styles.tableBodyRow}>
               <td className={styles.tableCell}>1</td>
               <td className={`${styles.tableCell}`}>اساسيات التصوير</td>
               <td dir="rtl" className={`${styles.tableCell} truncate`}>
                 ذيييثييثثييث هكذا يبدا التصوير دعقد
               </td>
               <td className={styles.tableCell}>
-                <div className="flex items-center justify-center rounded-100 bg-success/[0.2] text-success">
-                  Activated
-                </div>
+                <div className={styles.tablePill}>Activated</div>
               </td>
               <td className={styles.tableCell}>2</td>
               <td className={styles.tableCell}>02/02/2022</td>
