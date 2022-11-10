@@ -1,7 +1,7 @@
 import React from "react";
-import { iconColor } from "../../../utils/colors";
-import { Input, Label } from "../../form";
-import { X } from "../../icons";
+import { iconColor } from "../../../../utils/colors";
+import { Input, Label } from "../../../form";
+import { X } from "../../../icons";
 import styles from "./LessonModal.module.css";
 
 const LessonModal = () => {

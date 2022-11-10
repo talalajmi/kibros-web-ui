@@ -1,0 +1,7 @@
+.button {
+  @apply flex flex-row space-x-10 rounded-8 px-16 py-[8px];
+}
+
+.buttonActive {
+  @apply flex flex-row space-x-10 rounded-8 bg-secondary px-16 py-[8px];
+}
