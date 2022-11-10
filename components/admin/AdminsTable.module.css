@@ -1,0 +1,31 @@
+.container {
+  @apply flex flex-col items-center justify-center space-y-[24px];
+}
+
+.tableCard {
+  @apply max-h-fit w-[1300px] space-y-20 rounded-10 bg-primaryLight;
+}
+
+.header {
+  @apply flex flex-row items-center justify-between p-20;
+}
+
+.searchContainer {
+  @apply space-x-20;
+}
+
+.exportButton {
+  @apply flex space-x-10 rounded-8 border border-inputOutline border-opacity-20 bg-primaryLight p-12 text-darkTextSecondary/[0.68];
+}
+
+.addButton {
+  @apply rounded-8 bg-secondary py-10 px-20 text-white;
+}
+
+.cardFooter {
+  @apply flex items-center justify-end space-x-[26px] p-20 text-white;
+}
+
+.footerArrows {
+  @apply flex items-center justify-center space-x-20;
+}
