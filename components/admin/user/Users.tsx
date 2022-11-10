@@ -55,7 +55,7 @@ const Users = () => {
               <td className="flex-1">User</td>
               <td className="flex-1">
                 <div className="flex w-1/2 items-center justify-center rounded-100 bg-success/[0.2] text-success">
-                  Subscribed
+                  Premium
                 </div>
               </td>
               <td className="flex-1 cursor-pointer uppercase">
@@ -72,7 +72,7 @@ const Users = () => {
               <td className="flex-1">User</td>
               <td className="flex-1">
                 <div className="flex w-1/2 items-center justify-center rounded-100 bg-success/[0.2] text-success">
-                  Subscribed
+                  Premium
                 </div>
               </td>
               <td className="flex-1 cursor-pointer uppercase">
@@ -89,7 +89,7 @@ const Users = () => {
               <td className="flex-1">User</td>
               <td className="flex-1">
                 <div className="flex w-1/2 items-center justify-center rounded-100 bg-success/[0.2] text-success">
-                  Subscribed
+                  Premium
                 </div>
               </td>
               <td className="flex-1 cursor-pointer uppercase">
@@ -106,7 +106,7 @@ const Users = () => {
               <td className="flex-1">User</td>
               <td className="flex-1">
                 <div className="flex w-1/2 items-center justify-center rounded-100 bg-secondary/[0.2] text-secondary">
-                  Not Subscribed
+                  Free
                 </div>
               </td>
               <td className="flex-1 cursor-pointer uppercase">
@@ -123,7 +123,7 @@ const Users = () => {
               <td className="flex-1">User</td>
               <td className="flex-1">
                 <div className="flex w-1/2 items-center justify-center rounded-100 bg-success/[0.2] text-success">
-                  Subscribed
+                  Premium
                 </div>
               </td>
               <td className="flex-1 cursor-pointer uppercase">

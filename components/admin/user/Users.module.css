@@ -1,9 +1,9 @@
 .container {
-  @apply flex flex-col items-center justify-center space-y-[24px] px-[120px] py-60;
+  @apply flex flex-col items-center justify-center space-y-[24px];
 }
 
 .filtersCard {
-  @apply max-h-fit w-full space-y-16 rounded-10 bg-primaryLight p-20;
+  @apply max-h-fit w-[1300px] space-y-16 rounded-10 bg-primaryLight p-20;
 }
 
 .inputs {
@@ -11,7 +11,7 @@
 }
 
 .tableCard {
-  @apply max-h-fit w-full space-y-20 rounded-10 bg-primaryLight;
+  @apply max-h-fit w-[1300px] space-y-20 rounded-10 bg-primaryLight;
 }
 
 .header {
