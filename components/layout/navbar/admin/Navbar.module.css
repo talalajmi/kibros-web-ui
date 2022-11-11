@@ -27,7 +27,7 @@
 }
 
 .dropdownButton {
-  @apply flex cursor-pointer items-center justify-start space-x-10 border border border-x-0 py-10 px-20 text-darkText/[0.12] text-white hover:bg-primary/[0.5];
+  @apply flex cursor-pointer items-center justify-start space-x-10 border border-x-0 py-10 px-20 text-darkText/[0.12] text-white hover:bg-primary/[0.5];
 }
 
 .dropdownLastButton {
