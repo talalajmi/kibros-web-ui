@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-import styles from "./NavbarButton.module.css";
+import styles from "./Navbarbutton.module.css";
 import { AdminRoute } from "../../../../routes/AdminRoutes";
 
 const NavbarButton = ({ icon, name, path }: AdminRoute) => {
