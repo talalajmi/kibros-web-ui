@@ -1,59 +1,73 @@
 .container {
-  @apply flex h-screen w-screen items-center justify-center bg-primary;
+  @apply flex h-screen items-center justify-center bg-primary;
+  @apply px-[355px] py-[32px];
 }
 
 .card {
-  @apply flex h-891 w-729 flex-col items-center justify-center space-y-14 rounded-10 bg-primaryLight py-58 px-28;
+  @apply flex flex-col items-center justify-center space-y-[15px] rounded-10 bg-primaryLight py-58 px-28;
 }
 
 .logo__container {
-  @apply flex h-70 w-250 items-center justify-center;
+  @apply flex items-center justify-center;
 }
 
 .card__content {
-  @apply h-694 w-673 text-white;
+  @apply space-y-20 text-white;
 }
 
 .texts__container {
-  @apply h-90 text-center text-xl;
-}
-
-.primary__textContainer {
-  @apply h-38;
-}
-
-.secondary__textContainer {
-  @apply h-24;
+  @apply space-y-[15px] text-center text-xl;
 }
 
 .form__content {
-  @apply grid grid-rows-4 items-center justify-between;
+  @apply flex flex-col space-y-10;
 }
 
 .row {
-  @apply grid grid-cols-2 gap-10;
+  @apply flex flex-row space-x-10;
 }
 
 .row__inputContainer {
-  @apply h-72 w-332;
+  @apply w-[300px];
 }
 
 .input {
-  @apply h-56 w-full rounded-8 bg-primaryLight px-16 py-16
-    text-right text-white opacity-20 
-    outline
-outline-inputOutline  
+  @apply w-full rounded-8 border border-inputOutline/[0.2] bg-primaryLight
+    p-16 text-right 
+    text-white
     placeholder:text-right focus:opacity-100 focus:outline-secondary;
 }
 
 .column__inputContainer {
-  @apply h-72;
+  @apply relative flex;
 }
 
 .terms__container {
-  @apply flex h-58 items-center justify-end space-x-5;
+  @apply flex items-center justify-end space-x-5 py-12 text-lg;
 }
 
 .action__text {
   @apply text-secondary;
+}
+
+.password__input {
+  @apply flex-1 rounded-8 border border-inputOutline/[0.2] bg-primaryLight
+  p-16 text-right 
+  text-white
+  placeholder:text-right focus:outline-secondary;
+}
+
+.icon {
+  @apply absolute top-12 left-16 cursor-pointer opacity-50;
+  @apply md:top-16 md:left-16;
+  @apply lg:top-16 lg:left-16;
+  @apply xl:top-16 xl:left-16;
+}
+
+.submitButton {
+  @apply rounded-8 bg-secondary p-10 text-lg font-bold text-white;
+}
+
+.divider {
+  @apply flex items-center justify-center;
 }

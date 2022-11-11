@@ -3,8 +3,16 @@ import type { AppProps } from "next/app";
 import { ThemeProvider } from "@emotion/react";
 import { theme } from "../theme";
 import { Footer, Navbar } from "../components";
+import { useRouter } from "next/router";
+import { AuthorizationRoutes } from "../routes";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+
+  if (Object.values(AuthorizationRoutes).includes(router.pathname)) {
+    return <Component {...pageProps} />;
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <div className="flex h-screen flex-col justify-between">

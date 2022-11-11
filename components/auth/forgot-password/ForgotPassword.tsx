@@ -6,7 +6,7 @@ import styles from "./forgot-password.module.css";
 
 // Constants
 import { ArrowLeft } from "../../icons";
-import { kiBrosDarkBlueColor } from "../../../utils/colors";
+import { kiBrosOrangeColor } from "../../../utils/colors";
 
 // Logo Path
 import { useRouter } from "next/router";
@@ -42,7 +42,7 @@ export default function ForgotPassword() {
           </div>
           <button className={styles.submit__button}>ارسال</button>
           <div className={styles.previousPage__container}>
-            <ArrowLeft size={20} color={kiBrosDarkBlueColor} />
+            <ArrowLeft size={15} color={kiBrosOrangeColor} />
             <p
               className="cursor-pointer"
               onClick={() => router.push(AuthorizationRoutes.login)}
