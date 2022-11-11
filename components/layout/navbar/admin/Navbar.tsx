@@ -61,7 +61,7 @@ const Navbar = () => {
             height={50}
             objectFit="cover"
           />
-          <p className="text-xl font-bold text-darkText">Admin Panel</p>
+          <p className="text-darkText text-xl font-bold">Admin Panel</p>
         </div>
         <div className={styles.iconContainer}>
           <div className="relative">
@@ -87,7 +87,7 @@ const Navbar = () => {
                 />
                 <div className="flex flex-col">
                   <p className="text-white">Yasser Al Kiyomi</p>
-                  <p className="text-darkTextSecondary/[0.38]">Admin</p>
+                  <p className="text-darkTextSecondary/[0.68][0.38]">Admin</p>
                 </div>
               </div>
               <div

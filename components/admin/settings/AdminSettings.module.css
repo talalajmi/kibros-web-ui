@@ -15,7 +15,7 @@
 }
 
 .settings__tab {
-  @apply flex items-center justify-center space-x-10 border border-t-0 border-r-0 border-l-0 border-b-primaryLight p-20 text-darkTextSecondary;
+  @apply flex items-center justify-center space-x-10 border border-t-0 border-r-0 border-l-0 border-b-primaryLight p-20 text-darkTextSecondary/[0.68];
 }
 
 .settings__body {
@@ -39,7 +39,7 @@
 }
 
 .divider {
-  @apply bg-darkTextSecondary;
+  @apply text-darkTextSecondary/[0.68];
 }
 
 .textContainer {

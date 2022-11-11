@@ -15,7 +15,7 @@
 }
 
 .companyDetail {
-  @apply text-justify text-darkTextSecondary/[0.68];
+  @apply text-darkTextSecondary/[0.68] text-justify;
 }
 
 .customerInformation {

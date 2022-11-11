@@ -22,7 +22,7 @@ const Lessons = () => {
         </div>
         <table className="w-full">
           <thead>
-            <tr className="flex bg-primary uppercase text-darkText">
+            <tr className="text-darkText flex bg-primary uppercase">
               <td className={styles.tableCell}>#</td>
               <td className="flex-1 py-16 px-20 text-sm font-medium">Name</td>
               <td className={styles.tableCell}>Description</td>

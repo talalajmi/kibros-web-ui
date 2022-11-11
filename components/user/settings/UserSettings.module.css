@@ -35,7 +35,7 @@
 }
 
 .divider {
-  @apply bg-darkTextSecondary;
+  @apply text-darkTextSecondary/[0.68];
 }
 
 .textContainer {

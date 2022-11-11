@@ -39,7 +39,7 @@ const Users = () => {
         </div>
         <table className="w-full">
           <thead>
-            <tr className="flex bg-primary py-10 px-20 uppercase text-darkText">
+            <tr className="text-darkText flex bg-primary py-10 px-20 uppercase">
               <td className="flex-1">User</td>
               <td className="flex-1">Email</td>
               <td className="flex-1">Role</td>
@@ -49,7 +49,7 @@ const Users = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className="flex border border-t-0 border-l-0 border-r-0 border-inputOutline/[0.2] py-[15px] px-20 text-darkTextSecondary/[0.68]">
+            <tr className="text-darkTextSecondary/[0.68] flex border border-t-0 border-l-0 border-r-0 border-inputOutline/[0.2] py-[15px] px-20">
               <td className="flex-1">Benedetto Rossiter</td>
               <td className="flex-1">estelle.Bailey10@gmail.com</td>
               <td className="flex-1">User</td>
@@ -66,7 +66,7 @@ const Users = () => {
                 <TrashIcon size="20" color={iconColor} opacity="0.68" />
               </td>
             </tr>
-            <tr className="flex border border-t-0 border-l-0 border-r-0 border-inputOutline/[0.2] py-[15px] px-20 text-darkTextSecondary/[0.68]">
+            <tr className="text-darkTextSecondary/[0.68] flex border border-t-0 border-l-0 border-r-0 border-inputOutline/[0.2] py-[15px] px-20">
               <td className="flex-1">Benedetto Rossiter</td>
               <td className="flex-1">estelle.Bailey10@gmail.com</td>
               <td className="flex-1">User</td>
@@ -83,7 +83,7 @@ const Users = () => {
                 <TrashIcon size="20" color={iconColor} opacity="0.68" />
               </td>
             </tr>
-            <tr className="flex border border-t-0 border-l-0 border-r-0 border-inputOutline/[0.2] py-[15px] px-20 text-darkTextSecondary/[0.68]">
+            <tr className="text-darkTextSecondary/[0.68] flex border border-t-0 border-l-0 border-r-0 border-inputOutline/[0.2] py-[15px] px-20">
               <td className="flex-1">Benedetto Rossiter</td>
               <td className="flex-1">estelle.Bailey10@gmail.com</td>
               <td className="flex-1">User</td>
@@ -100,7 +100,7 @@ const Users = () => {
                 <TrashIcon size="20" color={iconColor} opacity="0.68" />
               </td>
             </tr>
-            <tr className="flex border border-t-0 border-l-0 border-r-0 border-inputOutline/[0.2] py-[15px] px-20 text-darkTextSecondary/[0.68]">
+            <tr className="text-darkTextSecondary/[0.68] flex border border-t-0 border-l-0 border-r-0 border-inputOutline/[0.2] py-[15px] px-20">
               <td className="flex-1">Benedetto Rossiter</td>
               <td className="flex-1">estelle.Bailey10@gmail.com</td>
               <td className="flex-1">User</td>
@@ -117,7 +117,7 @@ const Users = () => {
                 <TrashIcon size="20" color={iconColor} opacity="0.68" />
               </td>
             </tr>
-            <tr className="flex border border-t-0 border-l-0 border-r-0 border-inputOutline/[0.2] py-[15px]  px-20 text-darkTextSecondary/[0.68]">
+            <tr className="text-darkTextSecondary/[0.68] flex border border-t-0 border-l-0 border-r-0 border-inputOutline/[0.2]  py-[15px] px-20">
               <td className="flex-1">Benedetto Rossiter</td>
               <td className="flex-1">estelle.Bailey10@gmail.com</td>
               <td className="flex-1">User</td>

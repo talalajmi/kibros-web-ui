@@ -15,7 +15,7 @@
 }
 
 .exportButton {
-  @apply flex space-x-10 rounded-8 border border-inputOutline border-opacity-20 bg-primaryLight p-12 text-darkTextSecondary/[0.68];
+  @apply text-darkTextSecondary/[0.68] flex space-x-10 rounded-8 border border-inputOutline border-opacity-20 bg-primaryLight p-12;
 }
 
 .addButton {

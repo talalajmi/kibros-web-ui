@@ -46,7 +46,7 @@ const EditUserModal = () => {
               <div className={styles.modal__dropdownContainer}>
                 <label
                   htmlFor="role"
-                  className="darkTextSecondary absolute bottom-[45px] left-16 z-10 flex w-48 items-center justify-center bg-primaryLight"
+                  className="text-darkTextSecondary/[0.68] absolute bottom-[45px] left-16 z-10 flex w-48 items-center justify-center bg-primaryLight"
                 >
                   Role
                 </label>
@@ -63,11 +63,11 @@ const EditUserModal = () => {
             <div className={styles.modal__row}>
               <div className="flex flex-row items-center">
                 <Switch defaultChecked color="secondary" disabled />
-                <p className="darkTextSecondary">Email Activated</p>
+                <p className="text-darkTextSecondary/[0.68]">Email Activated</p>
               </div>
               <div className="flex flex-row items-center">
                 <Switch defaultChecked color="secondary" />
-                <p className="darkTextSecondary">Suspend</p>
+                <p className="text-darkTextSecondary/[0.68]">Suspend</p>
               </div>
             </div>
             <div className={styles.modal__row}>

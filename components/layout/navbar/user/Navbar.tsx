@@ -63,11 +63,11 @@ const Navbar = () => {
                       />
                     </div>
                   </div>
-                  <div className="flex cursor-pointer items-center justify-end space-x-10 border border-x-0 border-darkText/[0.12] py-10 px-20">
+                  <div className="border-text-darkText/[0.12] flex cursor-pointer items-center justify-end space-x-10 border border-x-0 py-10 px-20">
                     <p className="text-white">الإعدادات</p>
                     <SettingsIcon size="20" color={iconColor} />
                   </div>
-                  <div className="flex cursor-pointer items-center justify-end space-x-10 border-darkText/[0.12] py-10 px-20">
+                  <div className="border-text-darkText/[0.12] flex cursor-pointer items-center justify-end space-x-10 py-10 px-20">
                     <p className="text-white">تسجيل الخروج</p>
                     <LogoutIcon size="20" color={iconColor} />
                   </div>

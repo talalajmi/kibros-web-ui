@@ -39,7 +39,7 @@
 }
 
 .modal__pill {
-  @apply flex h-[30px] items-center justify-between rounded-8 border border-inputOutline/[0.22] p-10 text-darkText/[0.5];
+  @apply text-darkText/[0.5] flex h-[30px] items-center justify-between rounded-8 border border-inputOutline/[0.22] p-10;
 }
 
 .modal__footer {

@@ -39,7 +39,7 @@
 }
 
 .tableCell {
-  @apply flex w-[566.5px] items-center justify-between border border-x-0 border-t-0 border-inputOutline/[0.2] py-16 px-20 text-darkTextSecondary/[0.68];
+  @apply text-darkTextSecondary/[0.68] flex w-[566.5px] items-center justify-between border border-x-0 border-t-0 border-inputOutline/[0.2] py-16 px-20;
 }
 
 .cardFooter {
