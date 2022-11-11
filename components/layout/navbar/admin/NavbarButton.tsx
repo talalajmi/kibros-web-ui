@@ -6,8 +6,6 @@ import { AdminRoute } from "../../../../routes/AdminRoutes";
 const NavbarButton = ({ icon, name, path }: AdminRoute) => {
   const router = useRouter();
 
-  const [isActive, setIsActive] = useState(false);
-
   return (
     <button
       id={name}
