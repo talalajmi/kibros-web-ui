@@ -7,9 +7,5 @@ body {
 }
 
 .darkTextSecondary {
-  @apply text-[#E7E3FC] opacity-70;
-}
-
-.outlined {
-  @apply opacity-20 outline outline-inputOutline;
+  @apply text-[#E7E3FC]/[0.7];
 }
