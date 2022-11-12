@@ -6,4 +6,5 @@ export const customPagesRoutes = {
   error: "/custom-pages/error",
   paymentFailed: "/custom-pages/payment-failed",
   paymentSuccessful: "/custom-pages/payment-successful",
+  premiumErrorPage: "/custom-pages/premium-error-page",
 };
