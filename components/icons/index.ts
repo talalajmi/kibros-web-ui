@@ -12,6 +12,9 @@ import SettingsIcon from "./SettingsIcon";
 import UserIcon from "./UserIcon";
 import FacebookIcon from "./FacebookIcon";
 import GoogleIcon from "./GoogleIcon";
+import InstagramIcon from "./InstagramIcon";
+import YoutubeIcon from "./YoutubeIcon";
+import TwitterIcon from "./TwitterIcon";
 
 export {
   ArrowLeft,
@@ -28,4 +31,7 @@ export {
   UserIcon,
   FacebookIcon,
   GoogleIcon,
+  InstagramIcon,
+  YoutubeIcon,
+  TwitterIcon,
 };

@@ -1,3 +1,4 @@
 import { AuthorizationRoutes } from "./AuthorizationRoutes";
+import { publicRoutes, customPages } from "./PublicRoutes";
 
-export { AuthorizationRoutes };
+export { AuthorizationRoutes, publicRoutes, customPages };
