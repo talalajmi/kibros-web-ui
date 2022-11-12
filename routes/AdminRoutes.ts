@@ -1,6 +1,3 @@
-import React from "react";
-import { LessonsIcon } from "../components/icons";
-
 export const AdminRoutes = {
   settingsPage: "/admin/settings",
   lessonsPage: "/admin/lessons",

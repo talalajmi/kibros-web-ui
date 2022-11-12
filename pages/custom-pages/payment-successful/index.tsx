@@ -2,32 +2,35 @@ import Image from "next/image";
 import React from "react";
 
 // Styles
-import styles from "./payment-successful.module.css";
+import styles from "./payment-success.module.css";
 
 // Image Paths
-import errorImage from "../../../public/assets/images/pages/payment-successful.svg";
+import errorImage from "../../../public/assets/images/pages/payment-successful.gif";
 import { logo } from "../../../constants";
 
 function PaymentSuccessful() {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <div className={styles.logo__container}>
-          <Image src={logo} alt="kibros-logo" width={322} height={322} />
-        </div>
-        <p className={styles.error__header}>نعتذر</p>
-        <p className={styles.error_body}>لم نستطع العثور على الصفحة المطلوبة</p>
-        <div className={styles.button__container}>
-          <button className={styles.error__button}>
-            ارجع الى الصفحة الماضية
-          </button>
-        </div>
-        <div className={styles.image__container}>
+        <Image
+          src={logo}
+          alt="kibros-logo"
+          width={300}
+          height={100}
+          objectFit="cover"
+        />
+        <p className="text-xl">نعتذر</p>
+        <p className="text-xl">لم نستطع العثور على الصفحة المطلوبة</p>
+        <button className={styles.error__button}>
+          ارجع الى الصفحة الماضية
+        </button>
+        <div className="pt-[150px]">
           <Image
             src={errorImage}
-            alt="payment-successful-image"
-            width={750}
-            height={500}
+            alt="payment-failed-image"
+            width={300}
+            height={300}
+            objectFit="cover"
           />
         </div>
       </div>

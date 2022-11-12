@@ -2,13 +2,13 @@ import Image from "next/image";
 import React from "react";
 
 // Styles
-import styles from "./payment-failed.module.css";
+import styles from "./error.module.css";
 
 // Image Paths
-import errorImage from "../../../public/assets/images/pages/Payment-failure.gif";
+import errorImage from "../../../public/assets/images/pages/error.gif";
 import { logo } from "../../../constants";
 
-function PaymentFailed() {
+function Error() {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -24,12 +24,12 @@ function PaymentFailed() {
         <button className={styles.error__button}>
           ارجع الى الصفحة الماضية
         </button>
-        <div className="pt-90">
+        <div className="pt-[150px]">
           <Image
             src={errorImage}
-            alt="payment-failed-image"
-            width={530}
-            height={400}
+            alt="error-image"
+            width={300}
+            height={300}
             objectFit="cover"
           />
         </div>
@@ -38,4 +38,4 @@ function PaymentFailed() {
   );
 }
 
-export default PaymentFailed;
+export default Error;

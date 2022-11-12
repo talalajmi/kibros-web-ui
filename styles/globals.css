@@ -5,15 +5,3 @@
 body {
   @apply bg-primary;
 }
-
-.outlinedBorder {
-  @apply border border-inputOutline/[0.2];
-}
-
-.darkTextSecondary {
-  @apply text-[#E7E3FC]/[0.68];
-}
-
-.text-darkText {
-  @apply text-[#EAEAFF];
-}

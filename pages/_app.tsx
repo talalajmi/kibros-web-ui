@@ -5,11 +5,15 @@ import { theme } from "../theme";
 import { Footer, Navbar } from "../components";
 import { useRouter } from "next/router";
 import { AuthorizationRoutes } from "../routes";
+import { customPagesRoutes } from "../routes/PublicRoutes";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
-  if (Object.values(AuthorizationRoutes).includes(router.pathname)) {
+  if (
+    Object.values(AuthorizationRoutes).includes(router.pathname) ||
+    Object.values(customPagesRoutes).includes(router.pathname)
+  ) {
     return <Component {...pageProps} />;
   }
 
