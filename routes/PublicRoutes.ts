@@ -8,6 +8,7 @@ export const publicRoutes = {
   404: "/custom-pages/404",
   500: "/custom-pages/500",
   error: "/custom-pages/error",
+  lesson: "/lesson/:id",
   paymentFailed: "/custom-pages/payment-failed",
   paymentSuccessful: "/custom-pages/payment-successful",
   premiumErrorPage: "/custom-pages/premium-error-page",

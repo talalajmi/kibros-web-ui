@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     return <Component {...pageProps} />;
   } else if (Object.values(publicRoutes).includes(router.pathname)) {
     return (
-      <div className="flex h-screen flex-col">
+      <div className="flex h-screen flex-col justify-between">
         <header className="sticky top-0 z-50">
           <Navbar />
         </header>

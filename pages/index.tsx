@@ -1,10 +1,18 @@
 import type { NextPage } from "next";
 import React from "react";
-import { Users } from "../components";
-import AdminsTable from "../components/admin/AdminsTable";
+import Lesson from "../components/user/lesson/Lesson";
+import img from "/public/assets/images/lesson/lesson.png";
 
 const Home: NextPage = () => {
-  return <AdminsTable />;
+  return (
+    <Lesson
+      lessonName="مراحل الانتاج الاساسية"
+      lessonDuration="٣ دقايق و ٣٢ ثانية"
+      isNew={true}
+      isPaid={true}
+      imagePath={img}
+    />
+  );
 };
 
 export default Home;

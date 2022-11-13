@@ -9,9 +9,8 @@ const Banner = ({ pageName }: { pageName: string }) => {
       <Image
         src={banner}
         alt="kibros-logo"
-        objectFit="contain"
         className="w-screen"
-        layout="fill"
+        objectFit="cover"
       />
       <p>{pageName}</p>
     </div>
