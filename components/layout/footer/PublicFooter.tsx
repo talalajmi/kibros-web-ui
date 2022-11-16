@@ -16,7 +16,7 @@ import { publicRoutes } from "../../../routes/PublicRoutes";
 const PublicFooter = () => {
   const router = useRouter();
   return (
-    <>
+    <footer>
       <div className={styles.container}>
         <div className="flex flex-col items-end justify-end space-y-20 pl-[40px]">
           <p className="text-lg">جهات التواصل</p>
@@ -92,7 +92,7 @@ const PublicFooter = () => {
       <div className={styles.footer}>
         <p className="text-center text-white">© KIBROS WORKSHOPS 2022 </p>
       </div>
-    </>
+    </footer>
   );
 };
 

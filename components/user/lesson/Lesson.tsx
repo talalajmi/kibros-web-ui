@@ -21,9 +21,15 @@ const Lesson = (props: LessonProps) => {
     <div className="flex justify-center">
       <div
         className={styles.container}
-        onClick={() => router.push(publicRoutes.lesson.replace(":id", "1"))}
+        onClick={() => router.push(publicRoutes.lesson.replace("id", "1"))}
       >
-        <Image src={props.imagePath} alt="kibros-logo" layout="fixed" />
+        <Image
+          src={props.imagePath}
+          alt="kibros-logo"
+          objectFit="fill"
+          height={307}
+          width={490}
+        />
         <div className="absolute top-0 right-0 flex h-full flex-col items-end justify-between p-20">
           <div className="relative ">
             <Circle
@@ -44,7 +50,7 @@ const Lesson = (props: LessonProps) => {
         </div>
         {props.isNew && (
           <div className="absolute top-0">
-            <Image src={newimg} alt="kibros-logo" objectFit="cover" />
+            <Image src={newimg} alt="kibros-logo" objectFit="fill" />
           </div>
         )}
         <div

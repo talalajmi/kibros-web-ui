@@ -7,7 +7,7 @@ import { logo } from "../../../constants";
 
 const Navbar = () => {
   return (
-    <div className={styles.container}>
+    <header className={styles.container}>
       <div className={styles.actionButtons}>
         <SearchIcon size={24} color={iconColor} />
         <UserIcon size={24} color={iconColor} />
@@ -25,7 +25,7 @@ const Navbar = () => {
           />
         </div>
       </div>
-    </div>
+    </header>
   );
 };
 

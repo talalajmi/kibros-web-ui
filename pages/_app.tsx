@@ -8,7 +8,7 @@ import { AuthorizationRoutes, customPages, publicRoutes } from "../routes";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
-
+  console.log(router.pathname);
   if (
     Object.values(AuthorizationRoutes).includes(router.pathname) ||
     Object.values(customPages).includes(router.pathname)
@@ -17,15 +17,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   } else if (Object.values(publicRoutes).includes(router.pathname)) {
     return (
       <div className="flex h-screen flex-col justify-between">
-        <header className="sticky top-0 z-50">
-          <Navbar />
-        </header>
-        <main>
-          <Component {...pageProps} />
-        </main>
-        <footer>
-          <PublicFooter />
-        </footer>
+        <Navbar />
+        <Component {...pageProps} />
+        <PublicFooter />
       </div>
     );
   }

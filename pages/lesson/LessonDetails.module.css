@@ -1,0 +1,23 @@
+.container {
+  @apply flex flex-col items-end space-y-[75px] px-[75px] py-[100px];
+}
+
+.lessonDetails {
+  @apply flex flex-row items-start justify-end space-x-[75px];
+}
+
+.lessonOverview {
+  @apply flex max-w-fit flex-[2] flex-col space-y-[15px];
+}
+
+.verticalDivider {
+  @apply h-[23px] w-[1px] bg-white;
+}
+
+.lessonHighlights {
+  @apply flex flex-1 flex-col items-end space-y-60;
+}
+
+.lessonDescription {
+  @apply flex flex-col space-y-10 pt-[105px] text-justify text-white;
+}
