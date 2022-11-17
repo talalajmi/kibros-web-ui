@@ -1,0 +1,36 @@
+.container {
+  @apply h-full p-60;
+}
+
+.content {
+  @apply flex flex-col items-center  font-bold text-white;
+}
+
+.banner {
+  @apply flex items-center justify-center text-2xl font-bold;
+}
+
+.faqs {
+  @apply mt-[30px] flex flex-col items-center space-y-[38px];
+}
+
+.faq {
+  @apply flex w-full items-center justify-between rounded-10 bg-primaryLight p-14 text-lg;
+  @apply md:w-[722px] md:text-2xl;
+  @apply lg:w-[822px];
+}
+
+.activeFaq {
+  @apply w-full;
+  @apply md:w-[722px];
+  @apply lg:w-[822px];
+  @apply xl:w-[822px];
+}
+
+.activeFaqHeader {
+  @apply flex items-center justify-between rounded-tr-10  rounded-tl-10 bg-secondary p-14;
+}
+
+.activeFaqAnswer {
+  @apply rounded-bl-10 rounded-br-10 bg-primaryLight py-[30px] px-14  text-right;
+}

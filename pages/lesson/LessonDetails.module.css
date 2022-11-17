@@ -1,23 +1,31 @@
 .container {
-  @apply flex flex-col items-end space-y-[75px] px-[75px] py-[100px];
+  @apply flex flex-col items-start space-y-[75px] px-[75px] py-[100px];
+}
+
+.content {
+  @apply flex flex-row items-center justify-start space-y-20 space-x-[75px];
+}
+
+.lessonInformation {
+  @apply flex flex-row;
+}
+
+.lesson {
+  @apply flex  flex-col items-end justify-start space-y-10 text-start text-white;
 }
 
 .lessonDetails {
-  @apply flex flex-row items-start justify-end space-x-[75px];
-}
-
-.lessonOverview {
-  @apply flex max-w-fit flex-[2] flex-col space-y-[15px];
+  @apply space-y-10;
 }
 
 .verticalDivider {
   @apply h-[23px] w-[1px] bg-white;
 }
 
-.lessonHighlights {
-  @apply flex flex-1 flex-col items-end space-y-60;
+.relatedLessonsSection {
+  @apply flex flex-col space-y-10 text-white;
 }
 
-.lessonDescription {
-  @apply flex flex-col space-y-10 pt-[105px] text-justify text-white;
+.relatedLessons {
+  @apply flex flex-row space-x-[30px];
 }

@@ -6,7 +6,7 @@ import { iconColor } from "../../utils/colors";
 
 const InvoiceEn = () => {
   return (
-    <div dir="" className={styles.container}>
+    <div className={styles.container}>
       <div className={styles.card}>
         <div className={styles.header}>
           <div className={styles.row}>
