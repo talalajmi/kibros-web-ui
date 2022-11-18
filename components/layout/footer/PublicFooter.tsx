@@ -11,12 +11,12 @@ import {
   YoutubeIcon,
 } from "../../icons";
 import styles from "./PublicFooter.module.css";
-import { publicRoutes } from "../../../routes/PublicRoutes";
+import { publicRoutes } from "../../../routes";
 
 const PublicFooter = () => {
   const router = useRouter();
   return (
-    <footer>
+    <footer className="bottom-0 mt-60">
       <div className={styles.container}>
         <div className="flex flex-col items-end justify-end space-y-20 pl-[40px]">
           <p className="text-lg">جهات التواصل</p>
