@@ -28,9 +28,11 @@
 }
 
 .activeFaqHeader {
-  @apply flex items-center justify-between rounded-tr-10  rounded-tl-10 bg-secondary p-14;
+  @apply flex items-center justify-between rounded-tr-10 rounded-tl-10 bg-secondary p-14 text-lg;
+  @apply md:text-2xl;
 }
 
 .activeFaqAnswer {
-  @apply rounded-bl-10 rounded-br-10 bg-primaryLight py-[30px] px-14  text-right;
+  @apply rounded-bl-10 rounded-br-10 bg-primaryLight py-[30px] px-14 text-right text-lg;
+  @apply md:text-xl;
 }

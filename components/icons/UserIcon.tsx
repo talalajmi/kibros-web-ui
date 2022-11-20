@@ -1,7 +1,7 @@
 import React from "react";
 import { ISvg } from "../../interfaces";
 
-const UserIcon = ({ size, color, className, opacity }: ISvg) => {
+const UserIcon = ({ size, color, className, opacity, onClick }: ISvg) => {
   return (
     <svg
       width={(size as number) + 6}
@@ -10,6 +10,7 @@ const UserIcon = ({ size, color, className, opacity }: ISvg) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
+      onClick={onClick}
     >
       <g clipPath="url(#clip0_128_5723)">
         <path

@@ -3,4 +3,5 @@ export interface ISvg {
   color: string;
   opacity?: string | number;
   className?: string;
+  onClick?: any;
 }

@@ -3,9 +3,27 @@
 }
 
 .actionButtons {
-  @apply flex flex-row space-x-10 px-20;
+  @apply hidden flex-row space-x-10 px-20 md:flex;
 }
 
 .routes {
-  @apply flex cursor-pointer flex-row items-center justify-end space-x-[30px] text-xl font-bold;
+  @apply hidden cursor-pointer flex-row items-center justify-end space-x-[30px] text-xl font-bold md:flex;
+}
+
+.menuButton {
+  @apply p-5 md:hidden;
+}
+
+.mobileDropdown {
+  @apply absolute left-5 top-[6.5rem] z-10 flex w-11/12 flex-col
+   items-center space-y-20 bg-primaryLight py-20 shadow-2xl  md:hidden;
+}
+
+.mobileDropdownHidden {
+  @apply absolute  top-[6.5rem] z-10  hidden
+   w-11/12 flex-col items-center space-y-20 bg-primaryLight  py-20;
+}
+
+.mobileActionButtons {
+  @apply flex items-center space-x-20 md:hidden;
 }

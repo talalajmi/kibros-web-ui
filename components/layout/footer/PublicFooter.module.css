@@ -1,5 +1,5 @@
 .container {
-  @apply flex items-center justify-between bg-primaryLight p-20 text-white;
+  @apply flex flex-col items-end justify-between space-y-20 bg-primaryLight py-20 px-[60px] text-white md:flex-row md:items-center;
 }
 
 .footer {

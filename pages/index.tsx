@@ -5,9 +5,10 @@ import img from "/public/assets/images/pages/banner.png";
 import Image from "next/image";
 import FAQ from "../components/public/faq/FAQ";
 import AboutUs from "../components/public/about-us/AboutUs";
+import Home from "../components/public/home/Home";
 
-const Home: NextPage = () => {
-  return <AboutUs />;
+const Index: NextPage = () => {
+  return <Home />;
 };
 
-export default Home;
+export default Index;

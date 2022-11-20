@@ -31,7 +31,7 @@ const AboutUs = () => {
         <div className={styles.column}>
           <div className={styles.columnContent}>
             <MailIcon size={82} color={kiBrosGreenColor} />
-            <p className="text-right text-2xl">contact@kibros.com </p>
+            <p className="text-2xl">contact@kibros.com </p>
           </div>
         </div>
       </div>

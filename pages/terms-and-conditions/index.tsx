@@ -1,5 +1,5 @@
 import React from "react";
-import TermsAndConditions from "../../components/user/terms/TermsAndConditions";
+import TermsAndConditions from "../../components/public/terms/TermsAndConditions";
 
 const index = () => {
   return <TermsAndConditions />;
