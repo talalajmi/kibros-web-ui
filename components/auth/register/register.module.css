@@ -35,7 +35,7 @@
   @apply w-full rounded-8 border border-inputOutline/[0.2] bg-primaryLight
     p-16 text-right 
     text-white
-    placeholder:text-right focus:opacity-100 focus:outline-secondary;
+    placeholder:text-right focus:border-secondary/[0.2];
 }
 
 .column__inputContainer {
@@ -54,7 +54,7 @@
   @apply flex-1 rounded-8 border border-inputOutline/[0.2] bg-primaryLight
   p-16 text-right 
   text-white
-  placeholder:text-right focus:outline-secondary;
+  placeholder:text-right focus:border-secondary/[0.2];
 }
 
 .icon {

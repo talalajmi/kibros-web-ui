@@ -7,11 +7,14 @@ import styles from "./forgot-password.module.css";
 // Constants
 import { ArrowLeft } from "../../icons";
 import { kiBrosOrangeColor } from "../../../utils/colors";
-
-// Logo Path
-import { useRouter } from "next/router";
 import { AuthorizationRoutes } from "../../../routes";
 import { logo } from "../../../constants";
+
+// Hooks
+import { useRouter } from "next/router";
+
+// Third Party Imports
+import { motion } from "framer-motion";
 
 export default function ForgotPassword() {
   const router = useRouter();

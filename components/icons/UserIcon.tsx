@@ -4,7 +4,7 @@ import { ISvg } from "../../interfaces";
 const UserIcon = ({ size, color, className, opacity, onClick }: ISvg) => {
   return (
     <svg
-      width={(size as number) + 6}
+      width={size}
       height={size}
       viewBox="0 0 25 24"
       fill="none"

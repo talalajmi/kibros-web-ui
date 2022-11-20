@@ -2,6 +2,10 @@
   @apply flex flex-col items-center justify-center space-y-[24px];
 }
 
+.blurryContainer {
+  @apply flex flex-col items-center justify-center space-y-[24px] blur-sm;
+}
+
 .tableCard {
   @apply max-h-fit w-[1300px] space-y-20 rounded-10 bg-primaryLight;
 }
@@ -15,7 +19,7 @@
 }
 
 .exportButton {
-  @apply text-darkTextSecondary/[0.68] flex space-x-10 rounded-8 border border-inputOutline border-opacity-20 bg-primaryLight p-12;
+  @apply flex space-x-10 rounded-8 border border-inputOutline border-opacity-20 bg-primaryLight p-12 text-darkTextSecondary/[0.68];
 }
 
 .addButton {

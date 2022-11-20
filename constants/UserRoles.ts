@@ -1,6 +1,6 @@
 export const UserRoles = {
-  Admin: "Admin",
-  Staff: "Staff",
-  PremiumUser: "PremiumUser",
-  FreeUser: "FreeUser",
+  0: { title: "FreeUser" },
+  1: { title: "PremiumUser" },
+  2: { title: "Staff" },
+  3: { title: "Admin" },
 };

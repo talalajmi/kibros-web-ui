@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 
 // Icons
 import { Eye, EyeCrossed, FacebookIcon, GoogleIcon } from "../../icons";
@@ -8,20 +8,50 @@ import { Eye, EyeCrossed, FacebookIcon, GoogleIcon } from "../../icons";
 import styles from "./login.module.css";
 import { iconColor } from "../../../utils/colors";
 
-//Logo Path
+// Hooks
 import { useRouter } from "next/router";
+
+// Constants
 import { AuthorizationRoutes } from "../../../routes";
 import { logo } from "../../../constants";
+import { AuthController } from "../../../controllers";
+import { LoginModel } from "../../../models";
+import { useQuery } from "react-query";
+import { hashPassword } from "../../../helpers";
+
+// Third Party Imports
+import { useForm, Controller } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { AdminRoute, AdminRoutes } from "../../../routes/AdminRoutes";
+import { motion } from "framer-motion";
 
 export default function Login() {
+  // States
   const [isPasswordShown, setIsPasswordShown] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isUnsuccessfull, setIsUnsuccessfull] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
+  // Hooks
   const router = useRouter();
 
   const showPassword = () => {
     setIsPasswordShown((current) => !current);
+  };
+
+  const onSubmit = async (
+    e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
+  ) => {
+    e.preventDefault();
+    const accessToken = await new AuthController(router).login(
+      new LoginModel(email, password)
+    );
+
+    if (!accessToken) {
+      return;
+    }
+
+    router.push(AdminRoutes.staffsPage);
   };
 
   return (
@@ -43,6 +73,7 @@ export default function Login() {
                 className={styles.email__input}
                 placeholder="البريد الالكتروني"
                 type="email"
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className={styles.password__inputContainer}>
@@ -50,6 +81,7 @@ export default function Login() {
                 className={styles.password__input}
                 placeholder="كلمة المرور"
                 type={`${isPasswordShown ? "text" : "password"}`}
+                onChange={(e) => setPassword(e.target.value)}
               />
               {isPasswordShown ? (
                 <EyeCrossed
@@ -79,18 +111,25 @@ export default function Login() {
                 </p>
               </div>
             </div>
-            <button className={styles.submit__button}>تسجيل الدخول</button>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.8 }}>
+              <button
+                className={styles.submit__button}
+                onClick={(e) => onSubmit(e)}
+              >
+                تسجيل الدخول
+              </button>
+            </motion.div>
             <div className={styles.socialLogin__container}>
               <div className={styles.facebookButton__content}>
                 <button className={styles.facebook__button}></button>
                 <div className={styles.social__icon}>
-                  <FacebookIcon />
+                  <FacebookIcon size="18" color={"#3b5998"} />
                 </div>
               </div>
               <div className={styles.googleButton__content}>
                 <button className={styles.google__button}></button>
                 <div className={styles.social__icon}>
-                  <GoogleIcon />
+                  <GoogleIcon size="18" color={"#De5246"} />
                 </div>
               </div>
             </div>

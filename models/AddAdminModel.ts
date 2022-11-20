@@ -4,14 +4,14 @@ export default class AddAdminModel {
   public lastname: string;
   public PhoneNumber: string;
   public Country: string;
-  public role: string;
+  public role: number;
   constructor(
     email: string,
     firstname: string,
     lastname: string,
     PhoneNumber: string,
     Country: string,
-    role: string
+    role: number
   ) {
     this.email = email;
     this.firstname = firstname;

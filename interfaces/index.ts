@@ -4,3 +4,4 @@ export { type ISavedCard } from "./SavedCard";
 export { type ICharge } from "./Charge";
 export { type ITerm } from "./Terms";
 export { type IResponseModel } from "./ResponseModel";
+export { type IAdmin } from "./Admin";

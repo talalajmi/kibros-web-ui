@@ -1,20 +1,60 @@
 import Image from "next/image";
-import React, { useState } from "react";
-
-// Icons
-import { Eye, EyeCrossed, FacebookIcon, GoogleIcon } from "../../icons";
+import React, { MouseEvent, useState } from "react";
 
 // Styles
 import styles from "./register.module.css";
+
+// Constants
+import { Eye, EyeCrossed } from "../../icons";
 import { logo } from "../../../constants";
 import { iconColor } from "../../../utils/colors";
-import { useRouter } from "next/router";
 import { AuthorizationRoutes } from "../../../routes";
+import { RegisterModel } from "../../../models";
+import { AuthController } from "../../../controllers";
+import { hashPassword } from "../../../helpers";
+
+// Hooks
+import { useRouter } from "next/router";
+
+// Third library Imports
+import { motion } from "framer-motion";
 
 export default function Register() {
+  // States
   const [isPasswordShown, setIsPasswordShown] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [country, setCountry] = useState("");
 
+  // Hooks
   const router = useRouter();
+
+  const onSubmit = async (
+    e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
+  ) => {
+    e.preventDefault();
+
+    const accessToken = await new AuthController(router).register(
+      new RegisterModel(
+        email,
+        await hashPassword(password),
+        firstName,
+        lastName,
+        phoneNumber,
+        country
+      )
+    );
+
+    if (!accessToken) {
+      return;
+    }
+
+    router.push(AuthorizationRoutes.login);
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.card}>
@@ -42,14 +82,16 @@ export default function Register() {
                 <input
                   className={styles.input}
                   placeholder="الاسم الاخير"
-                  type="email"
+                  type="text"
+                  onChange={(e) => setLastName(e.target.value)}
                 />
               </div>
               <div className={styles.row__inputContainer}>
                 <input
                   className={styles.input}
                   placeholder="الأسم"
-                  type="email"
+                  type="text"
+                  onChange={(e) => setFirstName(e.target.value)}
                 />
               </div>
             </div>
@@ -58,6 +100,7 @@ export default function Register() {
                 className={styles.input}
                 placeholder="البريد الالكتروني"
                 type="email"
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className={styles.row}>
@@ -65,14 +108,16 @@ export default function Register() {
                 <input
                   className={styles.input}
                   placeholder="الدولة"
-                  type="email"
+                  type="text"
+                  onChange={(e) => setCountry(e.target.value)}
                 />
               </div>
               <div className={styles.row__inputContainer}>
                 <input
                   className={styles.input}
                   placeholder="رقم الهاتف"
-                  type="email"
+                  type="text"
+                  onChange={(e) => setPhoneNumber(e.target.value)}
                 />
               </div>
             </div>
@@ -81,6 +126,7 @@ export default function Register() {
                 className={styles.password__input}
                 placeholder="كلمة المرور"
                 type={`${isPasswordShown ? "text" : "password"}`}
+                onChange={(e) => setPassword(e.target.value)}
               />
               {isPasswordShown ? (
                 <EyeCrossed
@@ -105,7 +151,12 @@ export default function Register() {
               </p>
               <input type="checkbox" />
             </div>
-            <button className={styles.submitButton}>انشاء حساب</button>
+            <button
+              className={styles.submitButton}
+              onClick={(e) => onSubmit(e)}
+            >
+              انشاء حساب
+            </button>
           </form>
           <div className={styles.divider}>
             <hr style={{ width: "100%", opacity: "0.2" }} />

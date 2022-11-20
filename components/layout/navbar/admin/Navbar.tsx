@@ -1,16 +1,19 @@
 import Image from "next/image";
 import React, { useState } from "react";
-import SettingsIcon from "../../../icons/SettingsIcon";
 import { iconColor } from "../../../../utils/colors";
-import LogoutIcon from "../../../icons/LogoutIcon";
-import HomeIcon from "../../../icons/HomeIcon";
-import LessonsIcon from "../../../icons/LessonsIcon";
-import { Filter } from "../../../icons";
-import UserIcon from "../../../icons/UserIcon";
 import { avatar, logo } from "../../../../constants";
-import styles from "./Navbar.module.css";
 import { useRouter } from "next/router";
 import { AdminRoute, AdminRoutes } from "../../../../routes/AdminRoutes";
+import { AuthorizationRoutes } from "../../../../routes";
+import {
+  SettingsIcon,
+  LogoutIcon,
+  HomeIcon,
+  LessonsIcon,
+  UserIcon,
+  Filter,
+} from "../../../icons";
+import styles from "./Navbar.module.css";
 import NavbarButton from "./NavbarButton";
 
 const getAdminRoutes = () => {
@@ -46,6 +49,10 @@ const getAdminRoutes = () => {
 
 const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
+
+  const logout = () => {
+    router.push(AuthorizationRoutes.login);
+  };
 
   const routes = getAdminRoutes();
   const router = useRouter();
@@ -100,7 +107,10 @@ const Navbar = () => {
                 <SettingsIcon size="20" color={iconColor} />
                 <p>Settings</p>
               </div>
-              <div className={styles.dropdownLastButton}>
+              <div
+                className={styles.dropdownLastButton}
+                onClick={() => logout()}
+              >
                 <LogoutIcon size="20" color={iconColor} />
                 <p>Logout</p>
               </div>

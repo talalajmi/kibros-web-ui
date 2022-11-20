@@ -1,14 +1,17 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { ThemeProvider } from "@emotion/react";
 import { theme } from "../theme";
 import { Footer, AdminNavbar, Navbar, PublicFooter } from "../components";
 import { useRouter } from "next/router";
 import { AuthorizationRoutes, customPages, publicRoutes } from "../routes";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { Toaster } from "react-hot-toast";
+
+const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  console.log(router.pathname);
+
   if (
     Object.values(AuthorizationRoutes).includes(router.pathname) ||
     Object.values(customPages).includes(router.pathname)
@@ -16,28 +19,36 @@ function MyApp({ Component, pageProps }: AppProps) {
     return <Component {...pageProps} />;
   } else if (Object.values(publicRoutes).includes(router.pathname)) {
     return (
-      <div>
+      <QueryClientProvider client={queryClient}>
         <Navbar />
         <Component {...pageProps} />
+        <Toaster
+          position="top-right"
+          toastOptions={{ className: "react-hot-toast" }}
+        />
         <PublicFooter />
-      </div>
+      </QueryClientProvider>
     );
   }
 
   return (
-    <ThemeProvider theme={theme}>
+    <QueryClientProvider client={queryClient}>
       <div className="flex h-screen flex-col justify-between">
         <header className="sticky top-0 z-50">
           <AdminNavbar />
         </header>
         <main>
           <Component {...pageProps} />
+          <Toaster
+            position="top-right"
+            toastOptions={{ className: "react-hot-toast" }}
+          />
         </main>
         <footer>
           <Footer />
         </footer>
       </div>
-    </ThemeProvider>
+    </QueryClientProvider>
   );
 }
 

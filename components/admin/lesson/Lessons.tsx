@@ -22,7 +22,7 @@ const Lessons = () => {
         </div>
         <table className="w-full">
           <thead>
-            <tr className="text-darkText flex bg-primary uppercase">
+            <tr className="flex bg-primary uppercase text-darkText">
               <td className={styles.tableCell}>#</td>
               <td className="flex-1 py-16 px-20 text-sm font-medium">Name</td>
               <td className={styles.tableCell}>Description</td>
@@ -115,8 +115,18 @@ const Lessons = () => {
               <td className={styles.tableCell}>02/02/2022</td>
               <td className={styles.tableCell}>02/02/2022</td>
               <td className={styles.actionsCell}>
-                <EditIcon size="20" color={iconColor} opacity="0.68" />
-                <TrashIcon size="20" color={iconColor} opacity="0.68" />
+                <EditIcon
+                  size="20"
+                  color={iconColor}
+                  opacity="0.68"
+                  className="cursor-pointer"
+                />
+                <TrashIcon
+                  size="20"
+                  color={iconColor}
+                  opacity="0.68"
+                  className="cursor-pointer"
+                />
               </td>
             </tr>
           </tbody>
