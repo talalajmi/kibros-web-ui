@@ -1,0 +1,71 @@
+.container {
+  @apply grid grid-flow-row grid-cols-1 items-start space-y-[40px] px-10 py-[100px] md:px-[75px];
+}
+
+.lessonOverview {
+  @apply grid grid-flow-col grid-rows-1 justify-end;
+}
+
+.lessonOverviewContent {
+  @apply grid grid-flow-row grid-cols-1 gap-5 text-white;
+}
+
+.lessonName {
+  @apply text-end font-lalezar text-[40px];
+}
+
+.lessonOverviewRow {
+  @apply grid grid-flow-col grid-rows-1 justify-start gap-20 text-xl;
+}
+
+.idk {
+  @apply flex flex-row space-x-10;
+}
+
+.column {
+  @apply flex flex-col-reverse md:flex-row md:space-x-[40px];
+}
+
+.verticalDivider {
+  @apply h-[23px] w-[1px] bg-white;
+}
+
+.lessonDescription {
+  @apply mt-20 flex flex-1 flex-col space-y-[40px] text-white md:mt-0 md:space-y-0;
+}
+
+.lessonDescriptionContent {
+  @apply flex-[2] space-y-10;
+}
+
+.lessonDescriptionTitle {
+  @apply text-end font-lalezar text-2xl text-secondary;
+}
+
+.lessonDescriptionOverview {
+  @apply flex flex-1 flex-col items-end justify-end space-y-10;
+}
+
+.lessonDescriptionColumn {
+  @apply flex flex-col text-end text-xl;
+}
+
+.lessonImage {
+  @apply flex flex-[2] justify-end;
+}
+
+.relatedLessonsContainer {
+  @apply grid grid-flow-col grid-rows-1 items-center justify-end;
+}
+
+.realtedLessonsRow {
+  @apply grid grid-flow-row grid-cols-1 gap-20;
+}
+
+.realtedLessonsTitle {
+  @apply text-end font-lalezar text-[40px] text-white;
+}
+
+.relatedLessons {
+  @apply grid grid-flow-col grid-rows-1 justify-start gap-[30px] overflow-x-scroll py-[50px];
+}

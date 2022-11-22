@@ -1,6 +1,6 @@
 import Image, { StaticImageData } from "next/image";
 import styles from "./Lesson.module.css";
-import newimg from "../../../public/assets/images/lesson/new-lesson.png";
+import newimg from "../../../assets/images/lesson/new-lesson.png";
 import Circle from "../../icons/Circle";
 import { kiBrosGreenColor, kiBrosOrangeColor } from "../../../utils/colors";
 import PlayIcon from "../../icons/PlayIcon";

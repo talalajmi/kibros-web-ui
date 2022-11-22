@@ -5,3 +5,13 @@
 body {
   @apply bg-primary;
 }
+
+@font-face {
+  font-family: "tajwal";
+  src: url("../assets/fonts/tajwal/Tajawal-Black.ttf");
+}
+
+@font-face {
+  font-family: "lalezar";
+  src: url("../assets/fonts/lalezar/Lalezar-Regular.ttf");
+}

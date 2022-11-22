@@ -5,7 +5,7 @@ import React from "react";
 import styles from "./payment-success.module.css";
 
 // Image Paths
-import errorImage from "../../../public/assets/images/pages/payment-successful.gif";
+import errorImage from "../../../assets/images/pages/payment-successful.gif";
 import { logo } from "../../../constants";
 
 function PaymentSuccessful() {

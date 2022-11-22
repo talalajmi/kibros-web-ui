@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-import banner from "../../../public/assets/images/pages/banner.png";
+import banner from "../../../assets/images/pages/banner.png";
 
 const Banner = ({ pageName }: { pageName: string }) => {
   return (

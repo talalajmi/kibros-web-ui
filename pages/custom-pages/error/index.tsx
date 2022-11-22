@@ -5,7 +5,7 @@ import React from "react";
 import styles from "./error.module.css";
 
 // Image Paths
-import errorImage from "../../../public/assets/images/pages/error.gif";
+import errorImage from "../../../assets/images/pages/error.gif";
 import { logo } from "../../../constants";
 import { useRouter } from "next/router";
 

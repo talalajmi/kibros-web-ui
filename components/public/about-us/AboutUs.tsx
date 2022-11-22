@@ -4,9 +4,9 @@ import styles from "./AboutUs.module.css";
 import { kiBrosGreenColor } from "../../../utils/colors";
 import MailIcon from "../../icons/MailIcon";
 import Image from "next/image";
-import sulaiman from "/public/assets/images/founders/sulaiman.png";
-import dawood from "/public/assets/images/founders/dawood.png";
-import yasser from "/public/assets/images/founders/yasser.png";
+import sulaiman from "/assets/images/founders/sulaiman.png";
+import dawood from "/assets/images/founders/dawood.png";
+import yasser from "/assets/images/founders/yasser.png";
 
 const AboutUs = () => {
   return (

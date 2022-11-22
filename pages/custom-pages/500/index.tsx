@@ -5,7 +5,7 @@ import React from "react";
 import styles from "./500.module.css";
 
 // Image Paths
-import errorImage from "../../../public/assets/images/pages/500.svg";
+import errorImage from "../../../assets/images/pages/500.svg";
 import { logo } from "../../../constants";
 
 function Error500() {

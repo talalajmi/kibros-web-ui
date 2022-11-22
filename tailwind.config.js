@@ -16,6 +16,10 @@ module.exports = {
       facebook: "#3b5998",
       lightBlue: "#26C6F9",
     },
+    fontFamily: {
+      tajwal: ["tajwal"],
+      lalezar: ["lalezar"],
+    },
     spacing: {
       0: "0px",
       5: "5px",
