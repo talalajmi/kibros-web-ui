@@ -80,7 +80,7 @@ const Navbar = () => {
           الرئيسية
         </p>
       </div>
-      <div className="relative left-20">
+      <div className="relative left-[60px] md:left-20">
         <Image
           src={logo}
           alt="kibros-logo"

@@ -1,102 +1,119 @@
-import Image from "next/image";
 import React from "react";
+import { SearchIcon } from "../../icons";
 import styles from "./Home.module.css";
+import { iconColor } from "../../../utils/colors";
+import Lesson from "../lesson/Lesson";
+import img from "/assets/images/lesson/lesson.png";
 
 const Home = () => {
   return (
-    <div
-      id="carouselExampleCaptions"
-      className="carousel slide relative"
-      data-bs-ride="carousel"
-    >
-      <div className="carousel-indicators mb-4 absolute right-0 bottom-0 left-0 flex justify-center p-0">
-        <button
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide-to="0"
-          className="active"
-          aria-current="true"
-          aria-label="Slide 1"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide-to="1"
-          aria-label="Slide 2"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide-to="2"
-          aria-label="Slide 3"
-        ></button>
+    <>
+      <div className="carousel"></div>
+      <div className={styles.container}>
+        <div className="flex justify-end space-x-20">
+          <div className="w-[300px]">
+            <select
+              dir="rtl"
+              className="w-full rounded-8 border border-inputOutline/[.2] bg-primary p-12 text-right text-white"
+            >
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+            </select>
+          </div>
+          <div className="relative w-[300px]">
+            <input
+              placeholder="بحث"
+              className="w-full rounded-8 border border-inputOutline/[.2] bg-primary p-12 text-end text-white placeholder:p-12"
+            />
+            <SearchIcon
+              size={20}
+              color={iconColor}
+              className="absolute top-16 left-10 bg-primary"
+            />
+          </div>
+        </div>
+        <div className="flex justify-end space-x-20">
+          <div className="space-y-20">
+            <div className="text-right text-[30px] font-semibold text-secondary">
+              الدروس المجّانية
+            </div>
+            <div className="grid grid-flow-row grid-cols-1">
+              <div className="grid grid-flow-col grid-rows-1 gap-[40px] overflow-x-scroll py-[40px]">
+                <Lesson
+                  lessonName="مراحل الانتاج الاساسية"
+                  lessonDuration="٣ دقايق و ٣٢ ثانية"
+                  isNew={false}
+                  isPaid={false}
+                  imagePath={img}
+                />
+                <Lesson
+                  lessonName="مراحل الانتاج الاساسية"
+                  lessonDuration="٣ دقايق و ٣٢ ثانية"
+                  isNew={false}
+                  isPaid={false}
+                  imagePath={img}
+                />
+                <Lesson
+                  lessonName="مراحل الانتاج الاساسية"
+                  lessonDuration="٣ دقايق و ٣٢ ثانية"
+                  isNew={true}
+                  isPaid={false}
+                  imagePath={img}
+                />
+                <Lesson
+                  lessonName="مراحل الانتاج الاساسية"
+                  lessonDuration="٣ دقايق و ٣٢ ثانية"
+                  isNew={false}
+                  isPaid={false}
+                  imagePath={img}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr style={{ color: "white" }} />
+        <div className="flex justify-end space-x-20">
+          <div className="space-y-20">
+            <div className="text-right text-[30px] font-semibold text-success">
+              دروس العضويّة الخاصة
+            </div>
+            <div className="grid grid-flow-row grid-cols-1">
+              <div className="grid grid-flow-col grid-rows-1 gap-[40px] overflow-x-scroll py-[40px]">
+                <Lesson
+                  lessonName="مراحل الانتاج الاساسية"
+                  lessonDuration="٣ دقايق و ٣٢ ثانية"
+                  isNew={true}
+                  isPaid={true}
+                  imagePath={img}
+                />
+                <Lesson
+                  lessonName="مراحل الانتاج الاساسية"
+                  lessonDuration="٣ دقايق و ٣٢ ثانية"
+                  isNew={true}
+                  isPaid={true}
+                  imagePath={img}
+                />
+                <Lesson
+                  lessonName="مراحل الانتاج الاساسية"
+                  lessonDuration="٣ دقايق و ٣٢ ثانية"
+                  isNew={true}
+                  isPaid={true}
+                  imagePath={img}
+                />
+                <Lesson
+                  lessonName="مراحل الانتاج الاساسية"
+                  lessonDuration="٣ دقايق و ٣٢ ثانية"
+                  isNew={true}
+                  isPaid={true}
+                  imagePath={img}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="carousel-inner relative w-full overflow-hidden">
-        <div className="carousel-item active relative float-left w-full">
-          <Image
-            src="/assets/images/founders/yasser.png"
-            className="block w-full"
-            alt="..."
-            width={100}
-            height={100}
-          />
-          <div className="carousel-caption absolute hidden text-center md:block">
-            <h5 className="text-xl">First slide label</h5>
-            <p>Some representative placeholder content for the first slide.</p>
-          </div>
-        </div>
-        <div className="carousel-item relative float-left w-full">
-          <Image
-            src="/assets/images/founders/dawood.png"
-            className="block w-full"
-            alt="..."
-            width={100}
-            height={100}
-          />
-          <div className="carousel-caption absolute hidden text-center md:block">
-            <h5 className="text-xl">Second slide label</h5>
-            <p>Some representative placeholder content for the second slide.</p>
-          </div>
-        </div>
-        <div className="carousel-item relative float-left w-full">
-          <Image
-            src="/assets/images/founders/sulaiman.png"
-            className="block w-full"
-            alt="..."
-            width={100}
-            height={100}
-          />
-          <div className="carousel-caption absolute hidden text-center md:block">
-            <h5 className="text-xl">Third slide label</h5>
-            <p>Some representative placeholder content for the third slide.</p>
-          </div>
-        </div>
-      </div>
-      <button
-        className="carousel-control-prev absolute top-0 bottom-0 left-0 flex items-center justify-center border-0 p-0 text-center hover:no-underline hover:outline-none focus:no-underline focus:outline-none"
-        type="button"
-        data-bs-target="#carouselExampleCaptions"
-        data-bs-slide="prev"
-      >
-        <span
-          className="carousel-control-prev-icon inline-block bg-no-repeat"
-          aria-hidden="true"
-        ></span>
-        <span className="visually-hidden">Previous</span>
-      </button>
-      <button
-        className="carousel-control-next absolute top-0 bottom-0 right-0 flex items-center justify-center border-0 p-0 text-center hover:no-underline hover:outline-none focus:no-underline focus:outline-none"
-        type="button"
-        data-bs-target="#carouselExampleCaptions"
-        data-bs-slide="next"
-      >
-        <span
-          className="carousel-control-next-icon inline-block bg-no-repeat"
-          aria-hidden="true"
-        ></span>
-        <span className="visually-hidden">Next</span>
-      </button>
-    </div>
+    </>
   );
 };
 

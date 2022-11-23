@@ -1,0 +1,3 @@
+.container {
+  @apply space-y-60 p-20 md:p-60;
+}

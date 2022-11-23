@@ -1,5 +1,5 @@
 .container {
-  @apply flex flex-col items-end justify-between space-y-20 bg-primaryLight py-20 px-[60px] text-white md:flex-row md:items-center;
+  @apply flex flex-col space-y-[50px] overflow-clip bg-primaryLight py-20 px-[20px] text-white md:flex-row md:items-center md:justify-between md:px-[60px];
 }
 
 .footer {

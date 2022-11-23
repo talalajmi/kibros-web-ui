@@ -1,5 +1,5 @@
 .container {
-  @apply h-full p-60;
+  @apply h-full p-20 md:p-60;
 }
 
 .content {
@@ -7,7 +7,7 @@
 }
 
 .banner {
-  @apply flex items-center justify-center text-2xl font-bold;
+  @apply flex items-center justify-center font-lalezar text-[30px] md:text-[40px];
 }
 
 .faqs {

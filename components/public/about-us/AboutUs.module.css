@@ -3,15 +3,15 @@
 }
 
 .pageTitle {
-  @apply p-60 text-center text-[32px] font-bold;
+  @apply p-20 text-center font-lalezar text-[30px] md:p-60 md:text-[40px];
 }
 
 .aboutUs {
-  @apply p-60 px-[80px] text-justify text-[28px];
+  @apply p-20 text-justify text-[25px] md:p-60 md:text-[30px];
 }
 
 .infoSection {
-  @apply grid grid-flow-row grid-rows-1 space-y-20 bg-primaryLight p-60;
+  @apply grid grid-flow-row grid-rows-1 space-y-[60px] bg-primaryLight p-60;
   @apply md:grid-flow-col md:grid-rows-1 md:space-y-0;
 }
 
@@ -25,7 +25,7 @@
 }
 
 .foundersText {
-  @apply p-60 text-center text-[32px] font-bold text-success;
+  @apply p-60 text-center font-lalezar text-[40px] text-success;
 }
 
 .foundersSection {
@@ -34,7 +34,7 @@
 }
 
 .founderName {
-  @apply text-right text-xl text-success;
+  @apply text-right font-lalezar text-xl text-success md:text-2xl;
 }
 
 .founderRole {

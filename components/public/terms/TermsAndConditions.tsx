@@ -3,9 +3,14 @@ import styles from "./TermsAndConditions.module.css";
 
 const TermsAndConditions = () => {
   return (
-    <div className="flex h-screen flex-col items-center space-y-60 p-[20px] text-white md:p-[40px] lg:p-[50px] xl:p-[60px]">
-      <p className="text-2xl font-bold">الشروط و الأحكام</p>
-      <p dir="rtl" className="text-justify text-[18px] font-medium ">
+    <div className="flex flex-col items-center space-y-60 p-[20px] text-white md:p-[40px] lg:p-[50px] xl:p-[60px]">
+      <p className="font-lalezar text-[30px] md:text-[40px]">
+        الشروط و الأحكام
+      </p>
+      <p
+        dir="rtl"
+        className="text-justify text-base font-medium md:w-1/2 md:text-2xl "
+      >
         تقدم منصة كيبروز ووركشوبز (KI-BROS Workshops) دوراتٍ تدريبيةٍ متخصصةٍ في
         مجال التصوير والجرافيكس، وننوه أن جميع محتويات المنصة والدروس المقدمة هي
         نتاج اجتهادٍ مهنيٍ وعمليِ دام لأكثر من 15 سنة، لذلك فإن محتويات المنصة

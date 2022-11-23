@@ -1,5 +1,5 @@
 .container {
-  @apply sticky top-0 z-50 flex flex-row items-center justify-between space-x-12 bg-primaryLight p-[20px] text-white;
+  @apply sticky top-0 z-50 flex flex-row items-center justify-between space-x-12 overflow-clip bg-primaryLight p-20 text-white;
 }
 
 .actionButtons {

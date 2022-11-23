@@ -20,18 +20,20 @@ const PublicFooter = () => {
     <footer className="bottom-0 mt-60">
       <div className={styles.container}>
         <div className="flex flex-col items-end justify-end space-y-20 pl-[40px]">
-          <p className="text-lg">جهات التواصل</p>
-          <p className="text-right text-lg">
-            أدخل عنوان بريدك الإلكتروني للتسجيل في الاشتراك في <br />
-            النشرة الإخبارية
-          </p>
+          <div className="space-y-20 text-right text-lg">
+            <p className="text-lg">جهات التواصل</p>
+            <p className="text-lg">
+              أدخل عنوان بريدك الإلكتروني للتسجيل في الاشتراك في <br />
+              النشرة الإخبارية
+            </p>
+          </div>
           <div className="flex flex-col-reverse items-end md:flex-row md:items-center md:justify-center md:space-x-20">
             <button className="flex flex-row items-center space-x-10 rounded-8 bg-secondary px-20 py-10">
               <ArrowLeft size={17} color={"#ffffff"} />
               <span className="text-lg">اشترك الأن</span>
             </button>
             <input
-              className="mt-5 rounded-8 p-12 text-right text-primary placeholder:text-right md:mt-0"
+              className="mb-10 rounded-8 p-12 text-right text-primary placeholder:text-right md:mt-0"
               placeholder="بريدك الإكتروني"
             />
           </div>

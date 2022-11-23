@@ -39,7 +39,7 @@
 }
 
 .lessonDescriptionTitle {
-  @apply text-end font-lalezar text-2xl text-secondary;
+  @apply text-end font-lalezar text-[30px] text-secondary;
 }
 
 .lessonDescriptionOverview {
@@ -47,7 +47,7 @@
 }
 
 .lessonDescriptionColumn {
-  @apply flex flex-col text-end text-xl;
+  @apply flex flex-col text-end text-xl md:text-2xl;
 }
 
 .lessonImage {
