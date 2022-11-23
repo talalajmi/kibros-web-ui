@@ -1,6 +1,5 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { theme } from "../theme";
 import { Footer, AdminNavbar, Navbar, PublicFooter } from "../components";
 import { useRouter } from "next/router";
 import { AuthorizationRoutes, customPages, publicRoutes } from "../routes";
