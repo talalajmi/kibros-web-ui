@@ -35,7 +35,7 @@ const Home = () => {
         </div>
         <div className="flex justify-end space-x-20">
           <div className="space-y-20">
-            <div className="text-secondary text-right text-[30px] font-semibold">
+            <div className="text-right text-[30px] font-semibold text-secondary-base">
               الدروس المجّانية
             </div>
             <div className="grid grid-flow-row grid-cols-1">
@@ -75,7 +75,7 @@ const Home = () => {
         <hr style={{ color: "white" }} />
         <div className="flex justify-end space-x-20">
           <div className="space-y-20">
-            <div className="text-success text-right text-[30px] font-semibold">
+            <div className="text-right text-[30px] font-semibold text-success-base">
               دروس العضويّة الخاصة
             </div>
             <div className="grid grid-flow-row grid-cols-1">
