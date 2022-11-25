@@ -179,7 +179,7 @@ export default function Register() {
           <p className="text-center text-lg">
             لديك حساب؟
             <span
-              className="cursor-pointer text-secondary"
+              className="cursor-pointer text-secondary-base"
               onClick={() => router.push(AuthorizationRoutes.login)}
             >
               {" "}

@@ -49,7 +49,7 @@ const AdminsTable = () => {
             <div className={styles.searchContainer}>
               <input
                 placeholder="Search User"
-                className="rounded-8 border border-inputOutline border-opacity-20 bg-primaryLight p-10 text-white"
+                className="rounded-8 border border-inputOutline border-opacity-20 bg-primary-light p-10 text-white"
               />
               <button
                 className={styles.addButton}
@@ -61,7 +61,7 @@ const AdminsTable = () => {
           </div>
           <table className="w-full">
             <thead>
-              <tr className="flex bg-primary py-10 px-20 uppercase text-darkText">
+              <tr className="flex bg-primary-base py-10 px-20 uppercase text-darkText">
                 <td className="flex-1">User</td>
                 <td className="flex-1">Email</td>
                 <td className="flex-1">Role</td>

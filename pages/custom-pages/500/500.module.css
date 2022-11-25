@@ -1,5 +1,5 @@
 .container {
-  @apply h-screen w-screen bg-primary;
+  @apply h-screen w-screen bg-primary-base;
 }
 
 .content {
@@ -23,7 +23,7 @@
 }
 
 .error__button {
-  @apply h-44 w-full rounded-8 bg-secondary px-14 py-10 text-xl font-semibold;
+  @apply h-44 w-full rounded-8 bg-secondary-base px-14 py-10 text-xl font-semibold;
 }
 
 .image__container {

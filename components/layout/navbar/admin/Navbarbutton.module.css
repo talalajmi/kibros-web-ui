@@ -3,5 +3,5 @@
 }
 
 .buttonActive {
-  @apply flex flex-row space-x-10 rounded-8 bg-secondary px-16 py-[8px];
+  @apply flex flex-row space-x-10 rounded-8 bg-secondary-base px-16 py-[8px];
 }

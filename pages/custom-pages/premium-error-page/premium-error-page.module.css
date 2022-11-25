@@ -7,5 +7,5 @@
 }
 
 .error__button {
-  @apply rounded-8 bg-secondary px-[30px] py-10 text-xl font-semibold;
+  @apply rounded-8 bg-secondary-base px-[30px] py-10 text-xl font-semibold;
 }

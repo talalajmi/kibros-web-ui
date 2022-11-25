@@ -28,7 +28,7 @@ const PublicFooter = () => {
             </p>
           </div>
           <div className="flex flex-col-reverse items-end md:flex-row md:items-center md:justify-center md:space-x-20">
-            <button className="flex flex-row items-center space-x-10 rounded-8 bg-secondary-base px-20 py-10 transition duration-[200ms] ease-in-out hover:bg-secondary-dark">
+            <button className="hover:bg-secondary-base-dark flex flex-row items-center space-x-10 rounded-8 bg-secondary-base px-20 py-10 transition duration-[200ms] ease-in-out">
               <ArrowLeft size={17} color={"#ffffff"} />
               <span className="text-lg">اشترك الأن</span>
             </button>

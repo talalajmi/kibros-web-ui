@@ -15,11 +15,11 @@ const Users = () => {
         <div className={styles.inputs}>
           <select
             placeholder="Select Role"
-            className="flex-1 rounded-8 border border-inputOutline border-opacity-20 bg-primaryLight p-12 placeholder:px-12"
+            className="flex-1 rounded-8 border border-inputOutline border-opacity-20 bg-primary-light p-12 placeholder:px-12"
           ></select>
           <select
             placeholder="User Status"
-            className="flex-1 rounded-8 border border-inputOutline border-opacity-20 bg-primaryLight p-12 placeholder:px-12"
+            className="flex-1 rounded-8 border border-inputOutline border-opacity-20 bg-primary-light p-12 placeholder:px-12"
           ></select>
         </div>
       </div>
@@ -32,14 +32,14 @@ const Users = () => {
           <div className={styles.searchContainer}>
             <input
               placeholder="Search User"
-              className="rounded-8 border border-inputOutline border-opacity-20 bg-primaryLight p-10 text-white"
+              className="rounded-8 border border-inputOutline border-opacity-20 bg-primary-light p-10 text-white"
             />
             <button className={styles.addButton}>Add User</button>
           </div>
         </div>
         <table className="w-full">
           <thead>
-            <tr className="text-darkText flex bg-primary py-10 px-20 uppercase">
+            <tr className="flex bg-primary-base py-10 px-20 uppercase text-darkText">
               <td className="flex-1">User</td>
               <td className="flex-1">Email</td>
               <td className="flex-1">Role</td>
@@ -49,12 +49,12 @@ const Users = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className="text-darkTextSecondary/[0.68] flex border border-t-0 border-l-0 border-r-0 border-inputOutline/[0.2] py-[15px] px-20">
+            <tr className="flex border border-t-0 border-l-0 border-r-0 border-inputOutline/[0.2] py-[15px] px-20 text-darkTextSecondary/[0.68]">
               <td className="flex-1">Benedetto Rossiter</td>
               <td className="flex-1">estelle.Bailey10@gmail.com</td>
               <td className="flex-1">User</td>
               <td className="flex-1">
-                <div className="flex w-1/2 items-center justify-center rounded-100 bg-success/[0.2] text-success">
+                <div className="flex w-1/2 items-center justify-center rounded-100 bg-success-base/[0.2] text-success-base">
                   Premium
                 </div>
               </td>
@@ -66,12 +66,12 @@ const Users = () => {
                 <TrashIcon size="20" color={iconColor} opacity="0.68" />
               </td>
             </tr>
-            <tr className="text-darkTextSecondary/[0.68] flex border border-t-0 border-l-0 border-r-0 border-inputOutline/[0.2] py-[15px] px-20">
+            <tr className="flex border border-t-0 border-l-0 border-r-0 border-inputOutline/[0.2] py-[15px] px-20 text-darkTextSecondary/[0.68]">
               <td className="flex-1">Benedetto Rossiter</td>
               <td className="flex-1">estelle.Bailey10@gmail.com</td>
               <td className="flex-1">User</td>
               <td className="flex-1">
-                <div className="flex w-1/2 items-center justify-center rounded-100 bg-success/[0.2] text-success">
+                <div className="flex w-1/2 items-center justify-center rounded-100 bg-success-base/[0.2] text-success-base">
                   Premium
                 </div>
               </td>
@@ -83,12 +83,12 @@ const Users = () => {
                 <TrashIcon size="20" color={iconColor} opacity="0.68" />
               </td>
             </tr>
-            <tr className="text-darkTextSecondary/[0.68] flex border border-t-0 border-l-0 border-r-0 border-inputOutline/[0.2] py-[15px] px-20">
+            <tr className="flex border border-t-0 border-l-0 border-r-0 border-inputOutline/[0.2] py-[15px] px-20 text-darkTextSecondary/[0.68]">
               <td className="flex-1">Benedetto Rossiter</td>
               <td className="flex-1">estelle.Bailey10@gmail.com</td>
               <td className="flex-1">User</td>
               <td className="flex-1">
-                <div className="flex w-1/2 items-center justify-center rounded-100 bg-success/[0.2] text-success">
+                <div className="flex w-1/2 items-center justify-center rounded-100 bg-success-base/[0.2] text-success-base">
                   Premium
                 </div>
               </td>
@@ -100,12 +100,12 @@ const Users = () => {
                 <TrashIcon size="20" color={iconColor} opacity="0.68" />
               </td>
             </tr>
-            <tr className="text-darkTextSecondary/[0.68] flex border border-t-0 border-l-0 border-r-0 border-inputOutline/[0.2] py-[15px] px-20">
+            <tr className="flex border border-t-0 border-l-0 border-r-0 border-inputOutline/[0.2] py-[15px] px-20 text-darkTextSecondary/[0.68]">
               <td className="flex-1">Benedetto Rossiter</td>
               <td className="flex-1">estelle.Bailey10@gmail.com</td>
               <td className="flex-1">User</td>
               <td className="flex-1">
-                <div className="flex w-1/2 items-center justify-center rounded-100 bg-secondary/[0.2] text-secondary">
+                <div className="flex w-1/2 items-center justify-center rounded-100 bg-secondary-base/[0.2] text-secondary-base">
                   Free
                 </div>
               </td>
@@ -117,12 +117,12 @@ const Users = () => {
                 <TrashIcon size="20" color={iconColor} opacity="0.68" />
               </td>
             </tr>
-            <tr className="text-darkTextSecondary/[0.68] flex border border-t-0 border-l-0 border-r-0 border-inputOutline/[0.2]  py-[15px] px-20">
+            <tr className="flex border border-t-0 border-l-0 border-r-0 border-inputOutline/[0.2] py-[15px]  px-20 text-darkTextSecondary/[0.68]">
               <td className="flex-1">Benedetto Rossiter</td>
               <td className="flex-1">estelle.Bailey10@gmail.com</td>
               <td className="flex-1">User</td>
               <td className="flex-1">
-                <div className="flex w-1/2 items-center justify-center rounded-100 bg-success/[0.2] text-success">
+                <div className="flex w-1/2 items-center justify-center rounded-100 bg-success-base/[0.2] text-success-base">
                   Premium
                 </div>
               </td>

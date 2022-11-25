@@ -46,14 +46,14 @@ const EditUserModal = () => {
               <div className={styles.modal__dropdownContainer}>
                 <label
                   htmlFor="role"
-                  className="text-darkTextSecondary/[0.68] absolute bottom-[45px] left-16 z-10 flex w-48 items-center justify-center bg-primaryLight"
+                  className="absolute bottom-[45px] left-16 z-10 flex w-48 items-center justify-center bg-primary-light text-darkTextSecondary/[0.68]"
                 >
                   Role
                 </label>
                 <select
                   name="role"
                   id="role"
-                  className="outlined h-[56px] w-full rounded-8 bg-primaryLight p-12 text-white "
+                  className="outlined h-[56px] w-full rounded-8 bg-primary-light p-12 text-white "
                 >
                   <option value="admin">Admin</option>
                   <option value="staff">Staff</option>

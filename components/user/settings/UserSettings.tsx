@@ -137,8 +137,8 @@ const UserSettings = () => {
                   <Label>Role</Label>
                 </div>
               </div>
-              <div className="flex items-center justify-end space-x-10 rounded-8 bg-secondary/[0.4] p-10">
-                <p className="pt-[4px] text-secondary">
+              <div className="flex items-center justify-end space-x-10 rounded-8 bg-secondary-base/[0.4] p-10">
+                <p className="pt-[4px] text-secondary-base">
                   حسابك غير مفعل، الرجاء تفعيل حسابك من خلال الرسالة التي وصلتك
                   في بريدك الالكتروني
                 </p>

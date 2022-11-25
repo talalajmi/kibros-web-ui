@@ -1,5 +1,5 @@
 .conatiner {
-  @apply flex flex-col bg-primary;
+  @apply flex flex-col bg-primary-base;
 }
 
 .content {
@@ -15,11 +15,11 @@
 }
 
 .dropdown {
-  @apply absolute top-58 right-0 h-[170px] w-[230px] rounded-8 bg-primaryLight;
+  @apply absolute top-58 right-0 h-[170px] w-[230px] rounded-8 bg-primary-light;
 }
 
 .dropdownHidden {
-  @apply absolute top-58 right-0 hidden h-[170px] w-[230px] rounded-8 bg-primaryLight;
+  @apply absolute top-58 right-0 hidden h-[170px] w-[230px] rounded-8 bg-primary-light;
 }
 
 .dropdownContainer {
@@ -27,13 +27,13 @@
 }
 
 .dropdownButton {
-  @apply flex cursor-pointer items-center justify-start space-x-10 border border-x-0 border-inputOutline/[0.2] py-10 px-20 text-darkText/[0.12] text-white hover:bg-primary/[0.5];
+  @apply flex cursor-pointer items-center justify-start space-x-10 border border-x-0 border-inputOutline/[0.2] py-10 px-20 text-darkText/[0.12] text-white hover:bg-primary-base/[0.5];
 }
 
 .dropdownLastButton {
-  @apply flex cursor-pointer items-center justify-start space-x-10 py-10 px-20 text-darkText/[0.12] text-white hover:bg-primary/[0.5];
+  @apply flex cursor-pointer items-center justify-start space-x-10 py-10 px-20 text-darkText/[0.12] text-white hover:bg-primary-base/[0.5];
 }
 
 .routesContainer {
-  @apply flex flex-row space-x-[8px] bg-primaryLight py-16 px-[24px];
+  @apply flex flex-row space-x-[8px] bg-primary-light py-16 px-[24px];
 }

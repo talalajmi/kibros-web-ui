@@ -15,14 +15,14 @@ const Lessons = () => {
           <div className={styles.searchContainer}>
             <input
               placeholder="Search Lesson"
-              className="rounded-8 border border-inputOutline border-opacity-20 bg-primaryLight p-10 text-white"
+              className="rounded-8 border border-inputOutline border-opacity-20 bg-primary-light p-10 text-white"
             />
             <button className={styles.addButton}>Add Lesson</button>
           </div>
         </div>
         <table className="w-full">
           <thead>
-            <tr className="flex bg-primary uppercase text-darkText">
+            <tr className="flex bg-primary-base uppercase text-darkText">
               <td className={styles.tableCell}>#</td>
               <td className="flex-1 py-16 px-20 text-sm font-medium">Name</td>
               <td className={styles.tableCell}>Description</td>

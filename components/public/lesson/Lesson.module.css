@@ -1,3 +1,7 @@
 .container {
-  @apply relative cursor-pointer rounded-10;
+  @apply relative cursor-pointer rounded-10 transition duration-300 ease-in-out hover:scale-105;
+}
+
+.identifier {
+  @apply mb-[30px] mt-[63px] h-full w-full rounded-bl-10 rounded-br-10;
 }

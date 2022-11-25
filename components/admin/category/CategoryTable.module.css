@@ -3,7 +3,7 @@
 }
 
 .card {
-  @apply rounded-8 bg-primaryLight;
+  @apply rounded-8 bg-primary-light;
 }
 
 .card__header {
@@ -11,11 +11,11 @@
 }
 
 .searchInput {
-  @apply rounded-8 border border-inputOutline/[0.2] bg-primaryLight p-10 text-white placeholder:p-12 focus:border-secondary/[0.22] focus:outline-none focus:ring-0;
+  @apply rounded-8 border border-inputOutline/[0.2] bg-primary-light p-10 text-white placeholder:p-12 focus:border-secondary-base/[0.22] focus:outline-none focus:ring-0;
 }
 
 .searchButton {
-  @apply rounded-8 bg-secondary py-10 px-20 text-white;
+  @apply rounded-8 bg-secondary-base py-10 px-20 text-white;
 }
 
 .table {
@@ -23,7 +23,7 @@
 }
 
 .tableHeader {
-  @apply grid grid-flow-col grid-rows-1 items-center justify-start bg-primary text-white;
+  @apply grid grid-flow-col grid-rows-1 items-center justify-start bg-primary-base text-white;
 }
 
 .tableHeaderCell {
@@ -31,7 +31,7 @@
 }
 
 .seperator {
-  @apply h-14 w-[2px] bg-primaryLight;
+  @apply h-14 w-[2px] bg-primary-light;
 }
 
 .tableRow {

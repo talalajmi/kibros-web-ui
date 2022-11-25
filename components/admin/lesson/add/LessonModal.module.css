@@ -3,7 +3,7 @@
 }
 
 .modal__card {
-  @apply h-[966px] w-[864px] rounded-10 bg-primaryLight px-[30px] py-20;
+  @apply h-[966px] w-[864px] rounded-10 bg-primary-light px-[30px] py-20;
 }
 
 .modal__icon {

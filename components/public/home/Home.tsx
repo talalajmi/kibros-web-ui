@@ -1,9 +1,20 @@
 import React from "react";
 import { SearchIcon } from "../../icons";
 import styles from "./Home.module.css";
-import { iconColor } from "../../../utils/colors";
+import {
+  borderColor,
+  iconColor,
+  kiBrosDarkBlueColor,
+} from "../../../utils/colors";
 import Lesson from "../lesson/Lesson";
 import img from "../../../public/assets/images/lesson/lesson.png";
+import Select from "react-select";
+import {
+  getReactSelectTheme,
+  reactSelectStyles,
+} from "../../../utils/ReactSelectTheme";
+
+const options = [{ label: "1" }, { label: "2" }, { label: "3" }];
 
 const Home = () => {
   return (
@@ -12,14 +23,12 @@ const Home = () => {
       <div className={styles.container}>
         <div className="flex justify-end space-x-20">
           <div className="w-[300px]">
-            <select
-              dir="rtl"
-              className="w-full rounded-8 border border-inputOutline/[.2] bg-primary-base p-12 text-right text-white"
-            >
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-            </select>
+            <Select
+              options={options}
+              styles={reactSelectStyles}
+              isRtl
+              theme={getReactSelectTheme}
+            />
           </div>
           <div className="relative w-[300px]">
             <input
@@ -29,15 +38,15 @@ const Home = () => {
             <SearchIcon
               size={20}
               color={iconColor}
-              className="bg-primary absolute top-16 left-10"
+              className="absolute top-16 left-10 bg-primary-base"
             />
           </div>
         </div>
         <div className="flex justify-end space-x-20">
           <div className="space-y-20">
-            <div className="text-right text-[30px] font-semibold text-secondary-base">
+            <p className="text-right text-[30px] font-semibold text-secondary-base">
               الدروس المجّانية
-            </div>
+            </p>
             <div className="grid grid-flow-row grid-cols-1">
               <div className="grid grid-flow-col grid-rows-1 gap-[40px] overflow-x-scroll py-[40px]">
                 <Lesson
@@ -75,9 +84,9 @@ const Home = () => {
         <hr style={{ color: "white" }} />
         <div className="flex justify-end space-x-20">
           <div className="space-y-20">
-            <div className="text-right text-[30px] font-semibold text-success-base">
+            <p className="text-success-base-base text-right text-[30px] font-semibold">
               دروس العضويّة الخاصة
-            </div>
+            </p>
             <div className="grid grid-flow-row grid-cols-1">
               <div className="grid grid-flow-col grid-rows-1 gap-[40px] overflow-x-scroll py-[40px]">
                 <Lesson

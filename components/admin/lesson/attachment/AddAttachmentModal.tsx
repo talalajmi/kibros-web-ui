@@ -64,12 +64,12 @@ const AddAttachmentModal = () => {
             </div>
           </div>
           <div className={styles.modal__footer}>
-            <button className="rounded-8 bg-secondary p-10">
+            <button className="rounded-8 bg-secondary-base p-10">
               <span className="py-[7px] px-[22px] text-white">
                 ADD ATTACHMENT
               </span>
             </button>
-            <button className="rounded-8 bg-success p-10">
+            <button className="rounded-8 bg-success-base p-10">
               <span className="py-[7px] px-[22px] text-white">SUBMIT</span>
             </button>
           </div>
