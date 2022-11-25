@@ -28,12 +28,12 @@ const PublicFooter = () => {
             </p>
           </div>
           <div className="flex flex-col-reverse items-end md:flex-row md:items-center md:justify-center md:space-x-20">
-            <button className="flex flex-row items-center space-x-10 rounded-8 bg-secondary px-20 py-10">
+            <button className="flex flex-row items-center space-x-10 rounded-8 bg-secondary-base px-20 py-10 transition duration-[200ms] ease-in-out hover:bg-secondary-dark">
               <ArrowLeft size={17} color={"#ffffff"} />
               <span className="text-lg">اشترك الأن</span>
             </button>
             <input
-              className="mb-10 rounded-8 p-12 text-right text-primary placeholder:text-right md:mt-0"
+              className="text-primary mb-10 rounded-8 p-12 text-right placeholder:text-right md:mb-0"
               placeholder="بريدك الإكتروني"
             />
           </div>
@@ -41,13 +41,13 @@ const PublicFooter = () => {
         <div className="flex flex-col items-end justify-end space-y-20 text-lg font-bold">
           <p>الروابط</p>
           <p
-            className="cursor-pointer"
+            className={styles.link}
             onClick={() => router.push(publicRoutes.termaAndConditions)}
           >
             الشروط و الأحكام
           </p>
           <p
-            className="cursor-pointer"
+            className={styles.link}
             onClick={() => router.push(publicRoutes.faq)}
           >
             الأسئلة المتكررة
@@ -73,44 +73,28 @@ const PublicFooter = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <InstagramIcon
-                size={27}
-                color={kiBrosOrangeColor}
-                className="cursor-pointer"
-              />
+              <InstagramIcon size={27} className={styles.svg} />
             </a>
             <a
               href="https://twitter.com/kibrosworkshops"
               target="_blank"
               rel="noreferrer"
             >
-              <TwitterIcon
-                size={27}
-                color={kiBrosOrangeColor}
-                className="cursor-pointer"
-              />
+              <TwitterIcon size={27} className={styles.svg} />
             </a>
             <a
               href="https://www.youtube.com/channel/UC0KbIFUFUVjVPBLwUR61Vog"
               target="_blank"
               rel="noreferrer"
             >
-              <YoutubeIcon
-                size={27}
-                color={kiBrosOrangeColor}
-                className="cursor-pointer"
-              />
+              <YoutubeIcon size={27} className={styles.svg} />
             </a>
             <a
               href="https://www.facebook.com/kibrosworkshops"
               target="_blank"
               rel="noreferrer"
             >
-              <FacebookIcon
-                size={27}
-                color={kiBrosOrangeColor}
-                className="cursor-pointer"
-              />
+              <FacebookIcon size={27} className={styles.svg} />
             </a>
           </div>
         </div>

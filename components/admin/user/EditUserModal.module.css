@@ -3,7 +3,7 @@
 }
 
 .modal__card {
-  @apply h-[601px] w-350 rounded-10 bg-primaryLight p-[30px];
+  @apply h-[601px] w-350 rounded-10 bg-primary-light p-[30px];
   @apply md:h-[702px] md:w-[602px];
   @apply lg:h-[702px] lg:w-[602px];
   @apply xl:h-[702px] xl:w-[602px];
@@ -27,7 +27,7 @@
 }
 
 .modal__input {
-  @apply h-56 w-full rounded-8 bg-primaryLight p-10 text-white 
+  @apply h-56 w-full rounded-8 bg-primary-light p-10 text-white 
   opacity-20 outline outline-1 outline-inputOutline;
 }
 
@@ -52,9 +52,9 @@
 }
 
 .modal__submitButton {
-  @apply h-44 w-100 rounded-10 bg-secondary p-10 text-white;
+  @apply h-44 w-100 rounded-10 bg-secondary-base p-10 text-white;
 }
 
 .modal__cancelButton {
-  @apply h-44 w-100 rounded-10 bg-primaryLight p-10 text-white opacity-20 outline outline-1 outline-inputOutline;
+  @apply h-44 w-100 rounded-10 bg-primary-light p-10 text-white opacity-20 outline outline-1 outline-inputOutline;
 }

@@ -3,7 +3,7 @@
 }
 
 .filtersCard {
-  @apply max-h-fit w-[1300px] space-y-16 rounded-10 bg-primaryLight p-20;
+  @apply max-h-fit w-[1300px] space-y-16 rounded-10 bg-primary-light p-20;
 }
 
 .inputs {
@@ -11,7 +11,7 @@
 }
 
 .tableCard {
-  @apply max-h-fit w-[1300px] space-y-20 rounded-10 bg-primaryLight;
+  @apply max-h-fit w-[1300px] space-y-20 rounded-10 bg-primary-light;
 }
 
 .header {
@@ -23,11 +23,11 @@
 }
 
 .exportButton {
-  @apply text-darkTextSecondary/[0.68] flex space-x-10 rounded-8 border border-inputOutline border-opacity-20 bg-primaryLight p-12;
+  @apply flex space-x-10 rounded-8 border border-inputOutline border-opacity-20 bg-primary-light p-12 text-darkTextSecondary/[0.68];
 }
 
 .addButton {
-  @apply rounded-8 bg-secondary py-10 px-20 text-white;
+  @apply rounded-8 bg-secondary-base py-10 px-20 text-white;
 }
 
 .cardFooter {

@@ -15,7 +15,7 @@
 }
 
 .faq {
-  @apply flex w-full items-center justify-between rounded-10 bg-primaryLight p-14 text-lg;
+  @apply flex w-full items-center justify-between rounded-10 bg-primary-light p-14 text-lg;
   @apply md:w-[722px] md:text-2xl;
   @apply lg:w-[822px];
 }
@@ -28,11 +28,11 @@
 }
 
 .activeFaqHeader {
-  @apply flex items-center justify-between rounded-tr-10 rounded-tl-10 bg-secondary p-14 text-lg;
+  @apply flex items-center justify-between rounded-tr-10 rounded-tl-10 bg-secondary-base p-14 text-lg;
   @apply md:text-2xl;
 }
 
 .activeFaqAnswer {
-  @apply rounded-bl-10 rounded-br-10 bg-primaryLight py-[30px] px-14 text-right text-lg;
+  @apply rounded-bl-10 rounded-br-10 bg-primary-light py-[30px] px-14 text-justify text-lg;
   @apply md:text-xl;
 }

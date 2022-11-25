@@ -1,13 +1,12 @@
-import React, { ReactNode, useEffect, useRef, useState } from "react";
-import { SearchIcon, UserIcon } from "../../icons";
+import React, { useState } from "react";
+import { HomeIcon, SearchIcon, UserIcon } from "../../icons";
 import styles from "./Navbar.module.css";
-import { iconColor } from "../../../utils/colors";
 import Image from "next/image";
 import { logo } from "../../../constants";
 import { useRouter } from "next/router";
 import { publicRoutes } from "../../../routes/PublicRoutes";
-import MenuIcon from "../../icons/MenuIcon";
 import { AuthorizationRoutes } from "../../../routes";
+import AboutUsIcon from "../../icons/AboutUsIcon";
 
 const Navbar = () => {
   // States
@@ -17,70 +16,55 @@ const Navbar = () => {
   const router = useRouter();
 
   const redirectToRoute = (route: string) => {
+    console.log(route);
     router.push(route);
-    setShowMobileDropdown((current) => !current);
   };
 
   return (
     <header className={styles.container}>
       <div className={styles.actionButtons}>
-        <SearchIcon size={24} color={iconColor} />
+        <SearchIcon size={24} className={styles.svg} />
         <UserIcon
           size={24}
-          color={iconColor}
+          className={styles.svg}
           onClick={() => redirectToRoute(AuthorizationRoutes.login)}
         />
       </div>
 
-      <MenuIcon
-        className={styles.menuButton}
-        size={36}
-        color={iconColor}
-        onClick={() => setShowMobileDropdown((current) => !current)}
+      <SearchIcon className={`${styles.svg} ${styles.menuButton}`} size={40} />
+      <UserIcon
+        className={`${styles.svg} ${styles.menuButton}`}
+        size={40}
+        onClick={() => redirectToRoute(AuthorizationRoutes.login)}
       />
-      <div
-        className={
-          showMobileDropdown
-            ? styles.mobileDropdown
-            : styles.mobileDropdownHidden
-        }
-      >
-        <p
-          className="cursor-pointer text-xl"
-          onClick={() => redirectToRoute(publicRoutes.aboutUs)}
-        >
-          من نحن
-        </p>
-        <p
-          className="cursor-pointer text-xl"
-          onClick={() => redirectToRoute(publicRoutes.home)}
-        >
-          الرئيسية
-        </p>
-        <div className={styles.mobileActionButtons}>
-          <SearchIcon size={20} color={iconColor} />
-          <UserIcon
-            size={20}
-            color={iconColor}
-            onClick={() => redirectToRoute(AuthorizationRoutes.login)}
-          />
-        </div>
-      </div>
+      <AboutUsIcon
+        className={`${styles.svg} ${styles.menuButton}`}
+        size={40}
+        onClick={() => redirectToRoute(publicRoutes.aboutUs)}
+      />
+      <HomeIcon
+        className={`${styles.svg} ${styles.menuButton}`}
+        size={46}
+        onClick={() => redirectToRoute(publicRoutes.home)}
+      />
       <div className={styles.routes}>
         <p
-          className="cursor-pointer"
+          className="cursor-pointer text-2xl transition duration-[200ms] hover:text-secondary-base"
           onClick={() => router.push(publicRoutes.aboutUs)}
         >
           من نحن
         </p>
         <p
-          className="cursor-pointer"
+          className="cursor-pointer text-2xl transition duration-[200ms] hover:text-secondary-base"
           onClick={() => router.push(publicRoutes.home)}
         >
           الرئيسية
         </p>
       </div>
-      <div className="relative left-[60px] md:left-20">
+      <div
+        className="relative left-[44px] cursor-pointer md:left-20"
+        onClick={() => router.push("/")}
+      >
         <Image
           src={logo}
           alt="kibros-logo"

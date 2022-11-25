@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 body {
-  @apply bg-primary;
+  @apply bg-primary-base;
 }
 
 @font-face {
   font-family: "tajwal";
-  src: url("../assets/fonts/tajwal/Tajawal-Black.ttf");
+  src: url("/assets/fonts/tajwal/Tajawal-Black.ttf");
 }
 
 @font-face {
   font-family: "lalezar";
-  src: url("../assets/fonts/lalezar/Lalezar-Regular.ttf");
+  src: url("/assets/fonts/lalezar/Lalezar-Regular.ttf");
 }

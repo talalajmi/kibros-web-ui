@@ -1,7 +1,15 @@
 .container {
-  @apply flex flex-col space-y-[50px] overflow-clip bg-primaryLight py-20 px-[20px] text-white md:flex-row md:items-center md:justify-between md:px-[60px];
+  @apply flex flex-col space-y-[50px] overflow-clip bg-primary-light py-20 px-[20px] text-white md:flex-row md:items-center md:justify-between md:px-[60px];
+}
+
+.link {
+  @apply cursor-pointer transition duration-[400ms] hover:text-secondary-base;
+}
+
+.svg {
+  @apply cursor-pointer fill-secondary-base transition duration-[200ms] ease-in-out hover:fill-secondary-dark;
 }
 
 .footer {
-  @apply bg-primaryLight p-20;
+  @apply bg-primary-light p-20;
 }

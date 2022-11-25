@@ -39,7 +39,7 @@
 }
 
 .lessonDescriptionTitle {
-  @apply text-end font-lalezar text-[30px] text-secondary;
+  @apply text-end font-lalezar text-[30px] text-secondary-base;
 }
 
 .lessonDescriptionOverview {

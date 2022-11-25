@@ -5,7 +5,7 @@ import { kiBrosOrangeColor } from "../../../../utils/colors";
 import GlobeIcon from "../../../../components/icons/GlobeIcon";
 import SignalIcon from "../../../../components/icons/SignalIcon";
 import Image from "next/image";
-import img from "/assets/images/lesson/lesson.png";
+import img from "../../../../public/assets/images/lesson/lesson.png";
 import Lesson from "../../../../components/public/lesson/Lesson";
 
 const LessonDetails = () => {
@@ -54,15 +54,15 @@ const LessonDetails = () => {
             <div className={styles.lessonDescriptionColumn}>
               <p>
                 مستوى الدرس:
-                <span className="mr-10 text-success">متوسط</span>
+                <span className="mr-10 text-success-base">متوسط</span>
               </p>
               <p>
                 العضوية:
-                <span className="mr-10 text-success">العضوية الخاصة</span>
+                <span className="mr-10 text-success-base">العضوية الخاصة</span>
               </p>
               <p>
                 المرفقات:
-                <span className="mr-10 cursor-pointer text-secondary">
+                <span className="mr-10 cursor-pointer text-secondary-base">
                   تحميل
                 </span>
               </p>

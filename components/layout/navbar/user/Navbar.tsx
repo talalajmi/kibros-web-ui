@@ -9,7 +9,7 @@ const Navbar = () => {
 
   return (
     <div className="flex items-center justify-center p-[50px]">
-      <div className="w-full rounded-10 bg-primaryLight py-10 px-20 text-white">
+      <div className="w-full rounded-10 bg-primary-light py-10 px-20 text-white">
         <div className="grid grid-flow-col grid-rows-1 gap-[456px]">
           <div className="grid grid-flow-col items-center justify-start">
             <SearchIcon size="24" color={iconColor} />
@@ -28,7 +28,7 @@ const Navbar = () => {
               <div className="grid grid-cols-1 text-end">
                 <div className="grid grid-rows-2">
                   <p className="text-white">Talal Al Ajmi</p>
-                  <p className="text-success">Premium User</p>
+                  <p className="text-success-base">Premium User</p>
                 </div>
               </div>
               <div className="w-40 relative grid h-40 grid-cols-1">
@@ -44,13 +44,13 @@ const Navbar = () => {
                 <div
                   className={`${
                     showDropdown ? "block" : "hidden"
-                  } absolute top-58 right-0 h-[170px] w-[230px] rounded-8 bg-primaryLight`}
+                  } bg-primaryLight absolute top-58 right-0 h-[170px] w-[230px] rounded-8`}
                 >
                   <div className="grid grid-flow-col grid-rows-1 items-center justify-end gap-20 py-14 px-20">
                     <div className="grid grid-cols-1 text-end">
                       <div className="grid grid-rows-2">
                         <p className="text-white">Talal Al Ajmi</p>
-                        <p className="text-success">Premium User</p>
+                        <p className="text-success-base">Premium User</p>
                       </div>
                     </div>
                     <div className="grid grid-cols-1">

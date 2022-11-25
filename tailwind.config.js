@@ -5,16 +5,27 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
-  plugins: [require("flowbite/plugin")],
   theme: {
     colors: {
-      primary: "#162530",
-      primaryLight: "#1B2E3C",
-      secondary: "#FF8400",
-      success: "#00d18a",
+      primary: {
+        base: "#162530",
+        light: "#1B2E3C",
+      },
+      secondary: {
+        base: "#FF8400",
+        dark: "#DC7200",
+      },
+      success: {
+        base: "#00d18a",
+        dark: "#00A971",
+      },
       google: "#De5246",
       facebook: "#3b5998",
       lightBlue: "#26C6F9",
+      white: "#ffffff",
+      darkText: "#EAEAFF",
+      darkTextSecondary: "#E7E3FC",
+      inputOutline: "#EAF2FF",
     },
     fontFamily: {
       tajwal: ["tajwal"],
@@ -113,16 +124,6 @@ module.exports = {
         646: "646px",
         694: "694px",
         891: "891px",
-      },
-      colors: {
-        primary: "#162530",
-        primaryLight: "#1B2E3C",
-        secondary: "#FF8400",
-        success: "#00d18a",
-        white: "#ffffff",
-        darkText: "#EAEAFF",
-        darkTextSecondary: "#E7E3FC",
-        inputOutline: "#EAF2FF",
       },
       opacity: {
         87: "87%",

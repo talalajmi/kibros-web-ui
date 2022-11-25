@@ -3,7 +3,7 @@
 }
 
 .modal__card {
-  @apply container w-[350px] rounded-10 bg-primaryLight p-[30px];
+  @apply container w-[350px] rounded-10 bg-primary-light p-[30px];
   @apply md:container md:h-[460px] md:w-[807px];
   @apply lg:container lg:h-[460px] lg:w-[807px];
   @apply xl:container xl:h-[460px] xl:w-[807px];
@@ -39,7 +39,7 @@
 }
 
 .modal__pill {
-  @apply text-darkText/[0.5] flex h-[30px] items-center justify-between rounded-8 border border-inputOutline/[0.22] p-10;
+  @apply flex h-[30px] items-center justify-between rounded-8 border border-inputOutline/[0.22] p-10 text-darkText/[0.5];
 }
 
 .modal__footer {
@@ -48,9 +48,9 @@
 }
 
 .modal__addButton {
-  @apply rounded-10 bg-secondary p-10 text-white;
+  @apply rounded-10 bg-secondary-base p-10 text-white;
 }
 
 .modal__submitButton {
-  @apply rounded-10 bg-success p-10 text-white;
+  @apply rounded-10 bg-success-base p-10 text-white;
 }

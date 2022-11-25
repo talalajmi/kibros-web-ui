@@ -1,6 +1,6 @@
 import Image, { StaticImageData } from "next/image";
 import styles from "./Lesson.module.css";
-import newimg from "../../../assets/images/lesson/new-lesson.png";
+import newimg from "../../../public/assets/images/lesson/new-lesson.png";
 import Circle from "../../icons/Circle";
 import { kiBrosGreenColor, kiBrosOrangeColor } from "../../../utils/colors";
 import PlayIcon from "../../icons/PlayIcon";
@@ -17,6 +17,7 @@ interface LessonProps {
 
 const Lesson = (props: LessonProps) => {
   const router = useRouter();
+
   return (
     <div
       className={styles.container}
@@ -26,19 +27,19 @@ const Lesson = (props: LessonProps) => {
         src={props.imagePath}
         alt="kibros-logo"
         objectFit="fill"
-        height={307}
-        width={490}
+        height={267}
+        width={430}
       />
-      <div className="absolute top-0 right-0 flex h-full flex-col items-end justify-between p-20">
+      <div className="absolute top-0 right-0 flex h-full flex-col items-end justify-between pl-20 pt-20 pr-20 pb-48">
         <div className="relative ">
           <Circle
-            size={61}
+            size={50}
             color={props.isPaid ? kiBrosGreenColor : kiBrosOrangeColor}
           />
           <PlayIcon
-            size={24}
+            size={20}
             color="#000000"
-            className="absolute top-20 left-[19px]"
+            className="absolute top-[15px] left-[16px]"
           />
         </div>
 
@@ -54,14 +55,16 @@ const Lesson = (props: LessonProps) => {
       )}
       <div
         className={`${
-          props.isPaid ? "bg-success" : "bg-secondary"
+          props.isPaid ? "bg-success-base" : "bg-secondary-base"
         } relative bottom-12 h-5 rounded-bl-10 rounded-br-10 `}
       ></div>
       <div className="flex items-center justify-end">
         <div
           className={`flex w-140 items-center justify-center rounded-100 ${
-            props.isPaid ? "bg-success/[0.2]" : "bg-secondary/[0.2]"
-          } text-center ${props.isPaid ? "text-success" : "text-secondary"}`}
+            props.isPaid ? "bg-success-base/[0.2]" : "bg-secondary-base/[0.2]"
+          } text-center ${
+            props.isPaid ? "text-success-base" : "text-secondary-base"
+          }`}
         >
           {props.isPaid ? "عضوية خاصه" : "مجاني"}
         </div>

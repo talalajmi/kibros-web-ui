@@ -3,7 +3,7 @@
 }
 
 .card {
-  @apply max-h-fit w-[842px] space-y-10 rounded-10 bg-primaryLight;
+  @apply max-h-fit w-[842px] space-y-10 rounded-10 bg-primary-light;
 }
 
 .header {
@@ -15,7 +15,7 @@
 }
 
 .companyDetail {
-  @apply text-darkTextSecondary/[0.68] text-justify;
+  @apply text-justify text-darkTextSecondary/[0.68];
 }
 
 .customerInformation {
@@ -23,7 +23,7 @@
 }
 
 .table {
-  @apply bg-primary p-20 text-white;
+  @apply bg-primary-light p-20 text-white;
 }
 
 .amountContainer {
@@ -31,5 +31,5 @@
 }
 
 .print {
-  @apply rounded-10 bg-secondary py-10 px-28 uppercase text-white;
+  @apply rounded-10 bg-secondary-base py-10 px-28 uppercase text-white;
 }

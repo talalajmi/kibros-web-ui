@@ -3,7 +3,7 @@ import { SearchIcon } from "../../icons";
 import styles from "./Home.module.css";
 import { iconColor } from "../../../utils/colors";
 import Lesson from "../lesson/Lesson";
-import img from "/assets/images/lesson/lesson.png";
+import img from "../../../public/assets/images/lesson/lesson.png";
 
 const Home = () => {
   return (
@@ -14,7 +14,7 @@ const Home = () => {
           <div className="w-[300px]">
             <select
               dir="rtl"
-              className="w-full rounded-8 border border-inputOutline/[.2] bg-primary p-12 text-right text-white"
+              className="w-full rounded-8 border border-inputOutline/[.2] bg-primary-base p-12 text-right text-white"
             >
               <option>1</option>
               <option>2</option>
@@ -24,18 +24,18 @@ const Home = () => {
           <div className="relative w-[300px]">
             <input
               placeholder="بحث"
-              className="w-full rounded-8 border border-inputOutline/[.2] bg-primary p-12 text-end text-white placeholder:p-12"
+              className="w-full rounded-8 border border-inputOutline/[.2] bg-primary-base p-12 text-end text-white placeholder:p-12"
             />
             <SearchIcon
               size={20}
               color={iconColor}
-              className="absolute top-16 left-10 bg-primary"
+              className="bg-primary absolute top-16 left-10"
             />
           </div>
         </div>
         <div className="flex justify-end space-x-20">
           <div className="space-y-20">
-            <div className="text-right text-[30px] font-semibold text-secondary">
+            <div className="text-secondary text-right text-[30px] font-semibold">
               الدروس المجّانية
             </div>
             <div className="grid grid-flow-row grid-cols-1">
@@ -75,7 +75,7 @@ const Home = () => {
         <hr style={{ color: "white" }} />
         <div className="flex justify-end space-x-20">
           <div className="space-y-20">
-            <div className="text-right text-[30px] font-semibold text-success">
+            <div className="text-success text-right text-[30px] font-semibold">
               دروس العضويّة الخاصة
             </div>
             <div className="grid grid-flow-row grid-cols-1">

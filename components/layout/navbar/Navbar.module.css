@@ -1,5 +1,5 @@
 .container {
-  @apply sticky top-0 z-50 flex flex-row items-center justify-between space-x-12 overflow-clip bg-primaryLight p-20 text-white;
+  @apply sticky top-0 z-50 flex flex-row items-center justify-between space-x-12 overflow-clip bg-primary-light p-20 text-white;
 }
 
 .actionButtons {
@@ -16,14 +16,18 @@
 
 .mobileDropdown {
   @apply absolute left-5 top-[6.5rem] z-10 flex w-11/12 flex-col
-   items-center space-y-20 bg-primaryLight py-20 shadow-2xl  md:hidden;
+   items-center space-y-20 bg-primary-base py-20 shadow-2xl  md:hidden;
 }
 
 .mobileDropdownHidden {
   @apply absolute  top-[6.5rem] z-10  hidden
-   w-11/12 flex-col items-center space-y-20 bg-primaryLight  py-20;
+   w-11/12 flex-col items-center space-y-20 bg-primary-base  py-20;
 }
 
 .mobileActionButtons {
   @apply flex items-center space-x-20 md:hidden;
+}
+
+.svg {
+  @apply cursor-pointer fill-white transition  duration-300 ease-in-out hover:fill-secondary-base;
 }
