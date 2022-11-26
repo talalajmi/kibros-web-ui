@@ -1,10 +1,11 @@
 .container {
-  @apply flex h-screen items-center justify-center bg-primary-base;
-  @apply px-[355px] py-[32px];
+  @apply flex h-screen items-center justify-center px-[330px];
+  @apply md:px-[355px] md:py-[32px];
 }
 
 .card {
-  @apply flex flex-col items-center justify-center space-y-[15px] rounded-10 bg-primary-light py-58 px-28;
+  @apply flex flex-col items-center justify-center space-y-[15px] rounded-10 bg-primary-light p-29;
+  @apply md:py-58 md:px-28;
 }
 
 .logo__container {

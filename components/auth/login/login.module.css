@@ -1,5 +1,5 @@
 .container {
-  @apply flex h-screen w-screen items-center justify-center bg-primary-base;
+  @apply flex h-screen w-screen items-center justify-center;
   @apply sm:h-screen sm:w-screen;
   @apply md:h-screen md:w-screen;
   @apply lg:h-screen lg:w-screen;
@@ -7,14 +7,14 @@
 }
 
 .card {
-  @apply h-546 w-350 rounded-10 bg-primary-light py-48 px-28;
+  @apply h-[606px] w-350 rounded-10 bg-primary-light p-20;
   @apply md:h-646 md:w-450;
   @apply lg:h-646 lg:w-450;
   @apply xl:h-646 xl:w-450;
 }
 
 .card__container {
-  @apply flex h-full w-full flex-col items-center justify-center space-y-10 text-center;
+  @apply flex w-full flex-col items-center justify-center  text-center;
 }
 
 .logo__container {
@@ -32,21 +32,11 @@
 }
 
 .card__textContainer {
-  @apply h-80;
-  @apply md:h-102;
-  @apply lg:h-102;
-  @apply xl:h-102;
+  @apply my-10 flex flex-col space-y-10 text-white;
 }
 
 .primary__text {
   @apply h-38 text-lg text-white;
-  @apply md:text-lg;
-  @apply lg:text-lg;
-  @apply xl:text-lg;
-}
-
-.secondary__text {
-  @apply h-24 text-lg font-semibold text-white;
   @apply md:text-lg;
   @apply lg:text-lg;
   @apply xl:text-lg;
@@ -103,7 +93,7 @@
 }
 
 .socialLogin__container {
-  @apply flex h-60 items-end space-x-14;
+  @apply flex  items-end space-x-14;
 }
 
 .facebookButton__content {

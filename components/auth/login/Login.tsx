@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { MouseEvent, useState } from "react";
+import { MouseEvent, useState, useEffect } from "react";
 
 // Icons
 import { Eye, EyeCrossed, FacebookIcon, GoogleIcon } from "../../icons";
@@ -25,12 +25,14 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { AdminRoute, AdminRoutes } from "../../../routes/AdminRoutes";
 import { motion } from "framer-motion";
+import { motivationalQuotes } from "../../../constants/MotivationalQuotes";
 
 export default function Login() {
   // States
   const [isPasswordShown, setIsPasswordShown] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [quote, setQuote] = useState("");
 
   // Hooks
   const router = useRouter();
@@ -54,6 +56,18 @@ export default function Login() {
     router.push(AdminRoutes.staffsPage);
   };
 
+  const getMotivationalQuote = () => {
+    const motivationalQuote =
+      motivationalQuotes[Math.floor(Math.random() * motivationalQuotes.length)]
+        .quote;
+
+    setQuote(motivationalQuote);
+  };
+
+  useEffect(() => {
+    getMotivationalQuote();
+  }, []);
+
   return (
     <div className={styles.container}>
       <div className={styles.card}>
@@ -63,10 +77,9 @@ export default function Login() {
           </div>
           <div className={styles.card__bodyContainer}>
             <div className={styles.card__textContainer}>
-              <p className={styles.primary__text}>
-                !👋 مرحبا بك في ورشات كيبروس
-              </p>
-              <p className={styles.secondary__text}>تسجيل الدخول</p>
+              <p className="">!👋 مرحبا بك في ورشات كيبروس</p>
+              <p className="">{quote}</p>
+              <p className="">تسجيل الدخول</p>
             </div>
             <div className={styles.email__inputContainer}>
               <input
@@ -119,6 +132,17 @@ export default function Login() {
                 تسجيل الدخول
               </button>
             </motion.div>
+            <div className={styles.divider__container}>
+              <hr
+                className={styles.hr}
+                style={{ color: "white", width: "171px" }}
+              />
+              <p className={styles.divider__text}>او</p>
+              <hr
+                className={styles.hr}
+                style={{ color: "white", width: "171px" }}
+              />
+            </div>
             <div className={styles.socialLogin__container}>
               <div className={styles.facebookButton__content}>
                 <button className={styles.facebook__button}></button>

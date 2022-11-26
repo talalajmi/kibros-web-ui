@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { MouseEvent, useState } from "react";
+import React, { MouseEvent, useState, useEffect } from "react";
 
 // Styles
 import styles from "./register.module.css";
@@ -18,6 +18,7 @@ import { useRouter } from "next/router";
 
 // Third library Imports
 import { motion } from "framer-motion";
+import { motivationalQuotes } from "../../../constants/MotivationalQuotes";
 
 export default function Register() {
   // States
@@ -28,6 +29,7 @@ export default function Register() {
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [country, setCountry] = useState("");
+  const [quote, setQuote] = useState("");
 
   // Hooks
   const router = useRouter();
@@ -55,6 +57,18 @@ export default function Register() {
     router.push(AuthorizationRoutes.login);
   };
 
+  const getMotivationalQuote = () => {
+    const motivationalQuote =
+      motivationalQuotes[Math.floor(Math.random() * motivationalQuotes.length)]
+        .quote;
+
+    setQuote(motivationalQuote);
+  };
+
+  useEffect(() => {
+    getMotivationalQuote();
+  }, []);
+
   return (
     <div className={styles.container}>
       <div className={styles.card}>
@@ -71,6 +85,9 @@ export default function Register() {
           <div className={styles.texts__container}>
             <div className={styles.primary__textContainer}>
               <p>🚀 طريقك للنجاح يبدا هنا</p>
+            </div>
+            <div className={styles.primary__textContainer}>
+              <p>{quote}</p>
             </div>
             <div className={styles.secondary__textContainer}>
               <p>انشاء الحساب</p>

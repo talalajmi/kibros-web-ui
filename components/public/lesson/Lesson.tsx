@@ -20,44 +20,45 @@ const Lesson = (props: LessonProps) => {
 
   return (
     <div
-      className={styles.container}
+      className="relative cursor-pointer space-y-5 rounded-10 transition duration-300 ease-in-out hover:scale-105"
       onClick={() => router.push(publicRoutes.lesson.replace("[id]", "1"))}
     >
-      <Image
-        src={props.imagePath}
-        alt="kibros-logo"
-        objectFit="fill"
-        height={267}
-        width={430}
-      />
-      <div className="absolute top-0 right-0 flex h-full w-full flex-col items-end">
-        <div className="relative p-20">
-          <Circle
-            size={50}
-            color={props.isPaid ? kiBrosGreenColor : kiBrosOrangeColor}
-          />
-          <PlayIcon
-            size={20}
-            color="#000000"
-            className="absolute top-[35px] left-[35px] "
-          />
+      <div className="relative flex h-[217px] w-[350px] justify-end md:h-[267px] md:w-[430px]">
+        <Image src={props.imagePath} alt="kibros-logo" objectFit="cover" />
+        <div className="absolute grid h-full grid-flow-col grid-rows-2 p-20">
+          <div className="flex flex-col items-end justify-center space-y-5">
+            <p className="font-lalezar text-xl text-white">
+              {props.lessonName}
+            </p>
+            <p className="text-lg text-secondary-base" dir="rtl">
+              - اساسيات التفريغ
+            </p>
+            <p className="text-base text-white">{props.lessonDuration}</p>
+          </div>
+          <div className="relative flex items-end justify-end">
+            <Circle
+              size={50}
+              color={props.isPaid ? kiBrosGreenColor : kiBrosOrangeColor}
+            />
+            <PlayIcon
+              size={20}
+              color="#000000"
+              className="absolute bottom-[15px] right-[14px] "
+            />
+          </div>
         </div>
+        {props.isNew && (
+          <div className="absolute top-0 left-0">
+            <Image src={newimg} alt="kibros-logo" objectFit="cover" />
+          </div>
+        )}
 
-        <div className="p-20 text-right text-xl text-white">
-          <p>{props.lessonName}</p>
-          <p>{props.lessonDuration}</p>
-        </div>
+        <div
+          className={`absolute bottom-0 h-5 w-full rounded-br-8 rounded-bl-8 ${
+            props.isPaid ? "bg-success-base" : "bg-secondary-base"
+          }`}
+        ></div>
       </div>
-      {props.isNew && (
-        <div className="absolute top-0">
-          <Image src={newimg} alt="kibros-logo" objectFit="fill" />
-        </div>
-      )}
-      <div
-        className={`${props.isPaid ? "bg-success-base" : "bg-secondary-base"} ${
-          styles.identifier
-        } `}
-      ></div>
       <div className="flex items-center justify-end">
         <div
           className={`flex w-140 items-center justify-center rounded-100 ${
