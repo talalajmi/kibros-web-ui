@@ -28,12 +28,12 @@ const PublicFooter = () => {
             </p>
           </div>
           <div className="flex flex-col-reverse items-end md:flex-row md:items-center md:justify-center md:space-x-20">
-            <button className="hover:bg-secondary-base-dark flex flex-row items-center space-x-10 rounded-8 bg-secondary-base px-20 py-10 transition duration-[200ms] ease-in-out">
+            <button className="flex flex-row items-center space-x-10 rounded-8 bg-secondary-base px-20 py-10 transition duration-[200ms] ease-in-out hover:bg-secondary-dark">
               <ArrowLeft size={17} color={"#ffffff"} />
               <span className="text-lg">اشترك الأن</span>
             </button>
             <input
-              className="text-primary mb-10 rounded-8 p-12 text-right placeholder:text-right md:mb-0"
+              className="mb-10 rounded-8 p-12 text-right text-primary-base placeholder:text-right md:mb-0"
               placeholder="بريدك الإكتروني"
             />
           </div>
