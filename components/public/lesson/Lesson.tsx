@@ -49,7 +49,7 @@ const Lesson = (props: LessonProps) => {
         </div>
         <div
           className={`${
-            props.isPaid ? "bg-success-base-base" : "bg-secondary-base"
+            props.isPaid ? "bg-success-base" : "bg-secondary-base"
           } ${styles.identifier} `}
         ></div>
       </div>
@@ -61,11 +61,9 @@ const Lesson = (props: LessonProps) => {
       <div className="flex items-center justify-end">
         <div
           className={`flex w-140 items-center justify-center rounded-100 ${
-            props.isPaid
-              ? "bg-success-base-base/[0.2]"
-              : "bg-secondary-base/[0.2]"
+            props.isPaid ? "bg-success-base/[0.2]" : "bg-secondary-base/[0.2]"
           } text-center ${
-            props.isPaid ? "text-success-base-base" : "text-secondary-base"
+            props.isPaid ? "text-success-base" : "text-secondary-base"
           }`}
         >
           {props.isPaid ? "عضوية خاصه" : "مجاني"}

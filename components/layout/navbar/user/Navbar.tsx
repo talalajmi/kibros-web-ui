@@ -28,7 +28,7 @@ const Navbar = () => {
               <div className="grid grid-cols-1 text-end">
                 <div className="grid grid-rows-2">
                   <p className="text-white">Talal Al Ajmi</p>
-                  <p className="text-success-base-base">Premium User</p>
+                  <p className="text-success-base">Premium User</p>
                 </div>
               </div>
               <div className="w-40 relative grid h-40 grid-cols-1">
@@ -50,7 +50,7 @@ const Navbar = () => {
                     <div className="grid grid-cols-1 text-end">
                       <div className="grid grid-rows-2">
                         <p className="text-white">Talal Al Ajmi</p>
-                        <p className="text-success-base-base">Premium User</p>
+                        <p className="text-success-base">Premium User</p>
                       </div>
                     </div>
                     <div className="grid grid-cols-1">

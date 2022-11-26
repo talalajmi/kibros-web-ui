@@ -84,7 +84,7 @@ const Home = () => {
         <hr style={{ color: "white" }} />
         <div className="flex justify-end space-x-20">
           <div className="space-y-20">
-            <p className="text-success-base-base text-right text-[30px] font-semibold">
+            <p className="text-right text-[30px] font-semibold text-success-base">
               دروس العضويّة الخاصة
             </p>
             <div className="grid grid-flow-row grid-cols-1">

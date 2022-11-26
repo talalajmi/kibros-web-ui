@@ -54,13 +54,11 @@ const LessonDetails = () => {
             <div className={styles.lessonDescriptionColumn}>
               <p>
                 مستوى الدرس:
-                <span className="text-success-base-base mr-10">متوسط</span>
+                <span className="mr-10 text-success-base">متوسط</span>
               </p>
               <p>
                 العضوية:
-                <span className="text-success-base-base mr-10">
-                  العضوية الخاصة
-                </span>
+                <span className="mr-10 text-success-base">العضوية الخاصة</span>
               </p>
               <p>
                 المرفقات:
