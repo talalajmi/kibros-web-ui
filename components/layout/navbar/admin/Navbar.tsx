@@ -20,27 +20,27 @@ const getAdminRoutes = () => {
   const routes: AdminRoute[] = [
     {
       name: "Dashboard",
-      icon: <HomeIcon size="24" color={iconColor} />,
+      icon: <HomeIcon size="20" color={iconColor} />,
       path: "",
     },
     {
       name: "Lessons",
-      icon: <LessonsIcon size="24" color={iconColor} />,
+      icon: <LessonsIcon size="20" color={iconColor} />,
       path: AdminRoutes.lessonsPage,
     },
     {
       name: "Categories",
-      icon: <Filter size="24" color={iconColor} />,
+      icon: <Filter size="20" color={iconColor} />,
       path: AdminRoutes.categoriesPage,
     },
     {
       name: "Users",
-      icon: <UserIcon size="24" color={iconColor} />,
+      icon: <UserIcon size="20" color={iconColor} />,
       path: AdminRoutes.usersPage,
     },
     {
       name: "Staff / Admin",
-      icon: <UserIcon size="24" color={iconColor} />,
+      icon: <UserIcon size="20" color={iconColor} />,
       path: AdminRoutes.staffsPage,
     },
   ];

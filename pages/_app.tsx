@@ -5,6 +5,8 @@ import { useRouter } from "next/router";
 import { AuthorizationRoutes, customPages, publicRoutes } from "../routes";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Toaster } from "react-hot-toast";
+import { ThemeProvider } from "@mui/material/styles";
+import { materialUiTheme } from "../constants/MaterialUiTheme";
 
 const queryClient = new QueryClient();
 
@@ -19,34 +21,38 @@ function MyApp({ Component, pageProps }: AppProps) {
   } else if (Object.values(publicRoutes).includes(router.pathname)) {
     return (
       <QueryClientProvider client={queryClient}>
-        <Navbar />
-        <Component {...pageProps} />
-        <Toaster
-          position="top-right"
-          toastOptions={{ className: "react-hot-toast" }}
-        />
-        <PublicFooter />
+        <ThemeProvider theme={materialUiTheme}>
+          <Navbar />
+          <Component {...pageProps} />
+          <Toaster
+            position="top-right"
+            toastOptions={{ className: "react-hot-toast" }}
+          />
+          <PublicFooter />
+        </ThemeProvider>
       </QueryClientProvider>
     );
   }
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="flex h-screen flex-col justify-between">
-        <header className="sticky top-0 z-50">
-          <AdminNavbar />
-        </header>
-        <main>
-          <Component {...pageProps} />
-          <Toaster
-            position="top-right"
-            toastOptions={{ className: "react-hot-toast" }}
-          />
-        </main>
-        <footer>
-          <Footer />
-        </footer>
-      </div>
+      <ThemeProvider theme={materialUiTheme}>
+        <div className="flex h-screen flex-col justify-between">
+          <header className="sticky top-0 z-50">
+            <AdminNavbar />
+          </header>
+          <main>
+            <Component {...pageProps} />
+            <Toaster
+              position="top-right"
+              toastOptions={{ className: "react-hot-toast" }}
+            />
+          </main>
+          <footer>
+            <Footer />
+          </footer>
+        </div>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }

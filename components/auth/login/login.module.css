@@ -47,7 +47,7 @@
 }
 
 .email__input {
-  @apply h-46 w-full rounded-8 border border-inputOutline/[0.68] bg-primary-light px-16 py-16 text-right text-white placeholder:text-right focus:outline-secondary-base;
+  @apply h-46 w-full rounded-8 border border-inputOutline/[0.2] bg-primary-light px-16 py-16 text-right text-white placeholder:text-right;
   @apply md:h-56;
   @apply lg:h-56;
   @apply xl:h-56;
@@ -64,7 +64,7 @@
   @apply h-full w-full rounded-8 border border-inputOutline/[0.68] bg-primary-light
   px-16 py-16 text-right 
   text-white opacity-20
-  placeholder:text-right focus:opacity-50 focus:outline-secondary-base;
+  placeholder:text-right focus:opacity-50;
 }
 
 .icon {

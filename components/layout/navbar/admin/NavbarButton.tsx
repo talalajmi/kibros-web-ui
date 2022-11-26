@@ -23,7 +23,7 @@ const NavbarButton = ({ icon, name, path }: AdminRoute) => {
       onClick={(e) => redirectToPage(path, name)}
     >
       {icon}
-      <p className="text-darkText">{name}</p>
+      <p className="mt-[1px] text-darkText">{name}</p>
     </button>
   );
 };

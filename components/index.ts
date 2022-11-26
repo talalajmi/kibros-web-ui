@@ -4,7 +4,7 @@ import {
   AddAdminModal,
   EditUserModal,
   AddAttachmentModal,
-  LessonModal,
+  AddLessonModal,
   AdminSettings,
   Users,
 } from "./admin";
@@ -26,7 +26,7 @@ export {
   AddAdminModal,
   EditUserModal,
   AddAttachmentModal,
-  LessonModal,
+  AddLessonModal,
   AdminSettings,
   Users,
 };

@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { iconColor } from "../../../utils/colors";
 import { ArrowLeft } from "../../icons";
 import ArrowRight from "../../icons/ArrowRight";
 import EditIcon from "../../icons/EditIcon";
 import TrashIcon from "../../icons/TrashIcon";
+import AddLessonModal from "./add/AddLessonModal";
 
 import styles from "./Lessons.module.css";
 
 const Lessons = () => {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <div className={styles.container}>
       <div className={styles.tableCard}>
@@ -17,7 +20,12 @@ const Lessons = () => {
               placeholder="Search Lesson"
               className="rounded-8 border border-inputOutline border-opacity-20 bg-primary-light p-10 text-white"
             />
-            <button className={styles.addButton}>Add Lesson</button>
+            <button
+              className={styles.addButton}
+              onClick={() => setShowModal((current) => !current)}
+            >
+              Add Lesson
+            </button>
           </div>
         </div>
         <table className="w-full">
@@ -139,6 +147,7 @@ const Lessons = () => {
           </div>
         </div>
       </div>
+      <AddLessonModal showModal={showModal} setShowModal={setShowModal} />
     </div>
   );
 };

@@ -1,5 +1,9 @@
 .container {
-  @apply flex flex-col items-center justify-center space-y-[24px];
+  @apply relative flex flex-col items-center justify-center space-y-[24px];
+}
+
+.blurredContainer {
+  @apply relative flex flex-col items-center justify-center space-y-[24px] blur-sm;
 }
 
 .tableCard {
@@ -11,7 +15,7 @@
 }
 
 .searchContainer {
-  @apply space-x-20;
+  @apply flex items-center space-x-20;
 }
 
 .exportButton {
