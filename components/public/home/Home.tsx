@@ -49,7 +49,7 @@ const Home = () => {
               الدروس المجّانية
             </p>
             <div className="grid grid-flow-row grid-cols-1">
-              <div className="grid grid-flow-col grid-rows-1 gap-[40px] overflow-x-scroll py-[40px]">
+              <div className="grid grid-rows-1 gap-[40px] py-[40px] md:grid-flow-col md:overflow-x-scroll">
                 <Lesson
                   lessonName="مراحل الانتاج الاساسية"
                   lessonDuration="٣ دقايق و ٣٢ ثانية"
@@ -71,13 +71,6 @@ const Home = () => {
                   isPaid={false}
                   imagePath={img}
                 />
-                <Lesson
-                  lessonName="مراحل الانتاج الاساسية"
-                  lessonDuration="٣ دقايق و ٣٢ ثانية"
-                  isNew={false}
-                  isPaid={false}
-                  imagePath={img}
-                />
               </div>
             </div>
           </div>
@@ -89,7 +82,7 @@ const Home = () => {
               دروس العضويّة الخاصة
             </p>
             <div className="grid grid-flow-row grid-cols-1">
-              <div className="grid grid-flow-col grid-rows-1 gap-[40px] overflow-x-scroll py-[40px]">
+              <div className="grid grid-rows-1 gap-[40px] py-[40px] md:grid-flow-col md:overflow-x-scroll">
                 <Lesson
                   lessonName="مراحل الانتاج الاساسية"
                   lessonDuration="٣ دقايق و ٣٢ ثانية"

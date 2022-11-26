@@ -3,5 +3,5 @@
 }
 
 .identifier {
-  @apply mb-[30px] mt-[63px] h-full w-full rounded-bl-10 rounded-br-10;
+  @apply absolute bottom-[30px] h-5 w-full rounded-bl-10 rounded-br-10;
 }

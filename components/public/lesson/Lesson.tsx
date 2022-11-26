@@ -30,7 +30,7 @@ const Lesson = (props: LessonProps) => {
         height={267}
         width={430}
       />
-      <div className="absolute top-0 right-0 flex h-full w-full flex-col items-end justify-between">
+      <div className="absolute top-0 right-0 flex h-full w-full flex-col items-end">
         <div className="relative p-20">
           <Circle
             size={50}
@@ -47,17 +47,17 @@ const Lesson = (props: LessonProps) => {
           <p>{props.lessonName}</p>
           <p>{props.lessonDuration}</p>
         </div>
-        <div
-          className={`${
-            props.isPaid ? "bg-success-base" : "bg-secondary-base"
-          } ${styles.identifier} `}
-        ></div>
       </div>
       {props.isNew && (
         <div className="absolute top-0">
           <Image src={newimg} alt="kibros-logo" objectFit="fill" />
         </div>
       )}
+      <div
+        className={`${props.isPaid ? "bg-success-base" : "bg-secondary-base"} ${
+          styles.identifier
+        } `}
+      ></div>
       <div className="flex items-center justify-end">
         <div
           className={`flex w-140 items-center justify-center rounded-100 ${
