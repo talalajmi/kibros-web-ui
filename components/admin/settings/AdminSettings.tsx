@@ -47,17 +47,17 @@ const AdminSettings = () => {
               <div className={styles.settings__row}>
                 <div className="relative">
                   <Input type="password" />
-                  <Label>Current Password</Label>
+                  <Label text="">Current Password</Label>
                 </div>
               </div>
               <div className={styles.settings__row}>
                 <div className="relative">
                   <Input type="password" />
-                  <Label>New Password</Label>
+                  <Label text="">New Password</Label>
                 </div>
                 <div className="relative">
                   <Input type="password" />
-                  <Label>Confirm Password</Label>
+                  <Label text="">Confirm Password</Label>
                 </div>
               </div>
               <hr style={{ color: iconColor, opacity: 0.2 }} />
@@ -91,21 +91,21 @@ const AdminSettings = () => {
               <div className={styles.settings__row}>
                 <div className="relative">
                   <Input />
-                  <Label>First Name</Label>
+                  <Label text="">First Name</Label>
                 </div>
                 <div className="relative">
                   <Input />
-                  <Label>Last Name</Label>
+                  <Label text="">Last Name</Label>
                 </div>
               </div>
               <div className={styles.settings__row}>
                 <div className="relative">
                   <Input />
-                  <Label>Email</Label>
+                  <Label text="">Email</Label>
                 </div>
                 <div className="relative">
                   <Input />
-                  <Label>Role</Label>
+                  <Label text="">Role</Label>
                 </div>
               </div>
               <hr style={{ color: iconColor, opacity: 0.2 }} />

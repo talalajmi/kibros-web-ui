@@ -25,7 +25,7 @@
 }
 
 .foundersText {
-  @apply text-success-base-base p-60 text-center font-lalezar text-[40px];
+  @apply p-60 text-center font-lalezar text-[40px] text-success-base;
 }
 
 .foundersSection {
@@ -34,7 +34,7 @@
 }
 
 .founderName {
-  @apply text-success-base-base text-right font-lalezar text-xl md:text-2xl;
+  @apply text-right font-lalezar text-xl text-success-base md:text-2xl;
 }
 
 .founderRole {

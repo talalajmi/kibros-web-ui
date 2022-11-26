@@ -5,7 +5,7 @@ import React from "react";
 import styles from "./404.module.css";
 
 // Image Paths
-import errorImage from "../../../assets/images/pages/404.svg";
+import errorImage from "../../../public/assets/images/pages/404.svg";
 import { logo } from "../../../constants";
 
 function Error404() {

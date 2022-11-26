@@ -22,11 +22,11 @@ const LessonModal = () => {
             <div className={styles.modal__inputs}>
               <div className="relative">
                 <Input type="text" />
-                <Label>Lesson Name (AR)</Label>
+                <Label text={""}>Lesson Name (AR)</Label>
               </div>
               <div className="relative">
                 <Input type="text" />
-                <Label>Lesson Subtitle (AR)</Label>
+                <Label text={""}>Lesson Subtitle (AR)</Label>
               </div>
             </div>
             <div>

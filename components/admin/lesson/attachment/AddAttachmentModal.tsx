@@ -23,11 +23,11 @@ const AddAttachmentModal = () => {
             <div className={styles.modal__inputs}>
               <div className="relative">
                 <Input type="text" placeholder="My file" />
-                <Label>File Name</Label>
+                <Label text="">File Name</Label>
               </div>
               <div className="relative">
                 <Input type="text" placeholder="link" />
-                <Label>Download Link</Label>
+                <Label text="">Download Link</Label>
               </div>
             </div>
             <div className={styles.modal__pillsContainer}>

@@ -5,7 +5,7 @@ import React from "react";
 import styles from "./premium-error-page.module.css";
 
 // Image Paths
-import errorImage from "../../../assets/images/pages/premium-error-page.gif";
+import errorImage from "../../../public/assets/images/pages/premium-error-page.gif";
 import { logo } from "../../../constants";
 
 function Error() {
