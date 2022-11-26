@@ -25,6 +25,7 @@ const Home = () => {
           <div className="w-[300px]">
             <Select
               options={options}
+              placeholder="فرز"
               styles={reactSelectStyles}
               isRtl
               theme={getReactSelectTheme}

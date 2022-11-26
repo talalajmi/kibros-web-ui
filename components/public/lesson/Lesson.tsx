@@ -39,7 +39,7 @@ const Lesson = (props: LessonProps) => {
           <PlayIcon
             size={20}
             color="#000000"
-            className="absolute top-[36px] left-[36px] "
+            className="absolute top-[35px] left-[35px] "
           />
         </div>
 
