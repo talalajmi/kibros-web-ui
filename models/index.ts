@@ -6,7 +6,7 @@ import CreateCategorymodel from "./CreateCategoryModel";
 import CreateLessonModel from "./CreateLessonModel";
 import CreateNewFileModel from "./CreateNewFileModel";
 import CreateSubscriptionModel from "./CreateSubscriptionModel";
-import CreateSubscriptionsModel from "./CreateSubscriptionsModel";
+import CancelSubscriptionsModel from "./CancelSubscriptionsModel";
 import DeactivateLessonModel from "./DectivateLessonModel";
 import EditCategoryModel from "./EditCategoryModel";
 import EditFileModel from "./EditFileModel";
@@ -17,8 +17,10 @@ import PostUrlModel from "./PostUrlModel";
 import RegisterModel from "./RegisterModel";
 import SaveCardModel from "./SaveCardModel";
 import SubscribeToNewsletterModel from "./SubscribeToNewsletterModel";
-import UnsubscribeToNewsletterModel from "./UnsubscribeToNewsletterModel";
+import UnsubscribeFromNewsletterModel from "./UnsubscribeFromNewsletterModel";
 import UpdateLessonModel from "./UpdateLessonModel";
+import CreateForgetPasswordModel from "./CreateForgetPasswordModel";
+import ChangePasswordModel from "./ChangePasswordModel";
 
 export {
   ActivateAccountModel,
@@ -29,7 +31,9 @@ export {
   CreateLessonModel,
   CreateNewFileModel,
   CreateSubscriptionModel,
-  CreateSubscriptionsModel,
+  CancelSubscriptionsModel,
+  CreateForgetPasswordModel,
+  ChangePasswordModel,
   DeactivateLessonModel,
   EditCategoryModel,
   EditFileModel,
@@ -40,6 +44,6 @@ export {
   RegisterModel,
   SaveCardModel,
   SubscribeToNewsletterModel,
-  UnsubscribeToNewsletterModel,
+  UnsubscribeFromNewsletterModel,
   UpdateLessonModel,
 };

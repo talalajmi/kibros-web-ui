@@ -1,4 +1,4 @@
-export default class CreateSubscriptionsModel {
+export default class CancelSubscriptionsModel {
   public accountId: string;
   public sourceId: string;
   constructor(accountId: string, sourceId: string) {

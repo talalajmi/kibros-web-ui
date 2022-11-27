@@ -24,10 +24,15 @@ const Lesson = (props: LessonProps) => {
       onClick={() => router.push(publicRoutes.lesson.replace("[id]", "1"))}
     >
       <div className="relative flex h-[217px] w-[350px] justify-end md:h-[267px] md:w-[430px]">
-        <Image src={props.imagePath} alt="kibros-logo" objectFit="cover" />
+        <Image
+          src={props.imagePath}
+          alt="kibros-logo"
+          objectFit="cover"
+          className="rounded-8"
+        />
         <div className="absolute grid h-full grid-flow-col grid-rows-2 p-20">
           <div className="flex flex-col items-end justify-center space-y-5">
-            <p className="font-lalezar text-xl text-white">
+            <p className="font-lalezar text-2xl text-white">
               {props.lessonName}
             </p>
             <p className="text-lg text-secondary-base" dir="rtl">

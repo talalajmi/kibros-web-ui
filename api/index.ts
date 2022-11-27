@@ -1,8 +1,12 @@
 import { authEndpoints } from "./AuthApi";
 import { accountEndpoints } from "./AccountApi";
-
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL as string;
-const apiUrl = process.env.NEXT_PUBLIC_API_URL as string;
+import { categoryEndpoints } from "./CategoryApi";
+import { fileEndpoints } from "./FileApi";
+import { newsletterEndpoints } from "./NewsletterApi";
+import { subscriptionEndpoints } from "./SubscriptionApi";
+import { passwordEndpoints } from "./PasswordApi";
+import { lessonEndpoints } from "./LessonApi";
+import { tapEndpoints } from "./TapApi";
 
 const axiosConfigs = {
   headers: {
@@ -23,8 +27,13 @@ const getConfigsWithAccessToken = (accessToken: string) => {
 export {
   authEndpoints,
   accountEndpoints,
-  baseUrl,
-  apiUrl,
+  categoryEndpoints,
+  fileEndpoints,
+  newsletterEndpoints,
+  subscriptionEndpoints,
+  passwordEndpoints,
+  lessonEndpoints,
+  tapEndpoints,
   axiosConfigs,
   getConfigsWithAccessToken,
 };

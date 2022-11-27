@@ -36,7 +36,7 @@ const LessonDetails = () => {
         <div className={styles.lessonDescription}>
           <div className={styles.lessonDescriptionContent}>
             <p className={styles.lessonDescriptionTitle}>تفاصيل الدرس</p>
-            <p dir="rtl" className="text-xl md:text-2xl">
+            <p dir="rtl" className="text-justify text-xl md:text-2xl">
               في هذي الحلقة نتكلم عن المراحل الأساسية في معظم الإنتاجات. بالنسبة
               لسؤال الحلقة: بإمكانكم كتابة الفكرة بشكل مبسط، وأريد اعرف ويش
               التجهيزات اللي بتسووها خلال مرحلة ما قبل الإنتاج. فكرة السؤال هو

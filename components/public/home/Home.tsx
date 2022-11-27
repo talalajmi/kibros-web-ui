@@ -1,11 +1,7 @@
 import React from "react";
-import { SearchIcon } from "../../icons";
+import { ArrowLeft, SearchIcon } from "../../icons";
 import styles from "./Home.module.css";
-import {
-  borderColor,
-  iconColor,
-  kiBrosDarkBlueColor,
-} from "../../../utils/colors";
+import { iconColor } from "../../../utils/colors";
 import Lesson from "../lesson/Lesson";
 import img from "../../../public/assets/images/lesson/thumbnail.jpg";
 import Select from "react-select";
@@ -17,25 +13,60 @@ import Image from "next/image";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+import ArrowRight from "../../icons/ArrowRight";
 
 const options = [{ label: "1" }, { label: "2" }, { label: "3" }];
+
+const RightArrow = ({ clickHandler }: { clickHandler: () => void }) => {
+  return (
+    <ArrowRight
+      size={24}
+      className="absolute top-1/2 right-10 cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
+      onClick={clickHandler}
+    />
+  );
+};
+const LeftArrow = ({
+  clickHandler,
+  hasPrev,
+}: {
+  clickHandler: () => void;
+  hasPrev: boolean;
+}) => {
+  return (
+    <ArrowLeft
+      size={24}
+      className="absolute top-1/2 left-10 cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
+      onClick={clickHandler}
+    />
+  );
+};
 
 const Home = () => {
   return (
     <>
-      <div className="h-1/2">
-        <Carousel>
-          <div>
-            <Image src={img} alt="kibros-logo" objectFit="none" />
-          </div>
-          <div>
-            <Image src={img} alt="kibros-logo" objectFit="none" />
-          </div>
-          <div>
-            <Image src={img} alt="kibros-logo" objectFit="none" />
-          </div>
-        </Carousel>
-      </div>
+      <Carousel
+        autoPlay={true}
+        showStatus={false}
+        renderArrowPrev={(clickHandler, hasPrev) => (
+          <LeftArrow clickHandler={clickHandler} hasPrev={hasPrev} />
+        )}
+        renderArrowNext={(clickHandler) => (
+          <RightArrow clickHandler={clickHandler} />
+        )}
+        className="relative"
+        showThumbs={false}
+      >
+        <div>
+          <Image src={img} alt="kibros-logo" objectFit="cover" />
+        </div>
+        <div>
+          <Image src={img} alt="kibros-logo" objectFit="cover" />
+        </div>
+        <div>
+          <Image src={img} alt="kibros-logo" objectFit="cover" />
+        </div>
+      </Carousel>
       <div className={styles.container}>
         <div className="flex justify-end space-x-20">
           <div className="w-[300px]">
@@ -65,6 +96,29 @@ const Home = () => {
               الدروس المجّانية
             </p>
             <div className="grid items-center justify-center">
+              <div className="scrollbar-hide flex justify-center space-x-[20px] py-[40px] md:grid-flow-col md:overflow-x-scroll">
+                <Lesson
+                  lessonName="مراحل الانتاج الاساسية"
+                  lessonDuration="٣ دقايق و ٣٢ ثانية"
+                  isNew={false}
+                  isPaid={false}
+                  imagePath={img}
+                />
+                <Lesson
+                  lessonName="مراحل الانتاج الاساسية"
+                  lessonDuration="٣ دقايق و ٣٢ ثانية"
+                  isNew={false}
+                  isPaid={false}
+                  imagePath={img}
+                />
+                <Lesson
+                  lessonName="مراحل الانتاج الاساسية"
+                  lessonDuration="٣ دقايق و ٣٢ ثانية"
+                  isNew={true}
+                  isPaid={false}
+                  imagePath={img}
+                />
+              </div>
               <div className="scrollbar-hide flex justify-center space-x-[20px] py-[40px] md:grid-flow-col md:overflow-x-scroll">
                 <Lesson
                   lessonName="مراحل الانتاج الاساسية"

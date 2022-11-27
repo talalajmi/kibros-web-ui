@@ -1,16 +1,18 @@
 import axios, { AxiosResponse } from "axios";
 import { NextRouter } from "next/router";
 import toast from "react-hot-toast";
-import { accountEndpoints } from "../api";
 import { isResponseModel } from "../helpers";
 import { IResponseModel } from "../interfaces";
 import { customPages } from "../routes";
 import { getConfigsWithAccessToken } from "../api/index";
-import AddAdminModel from "../models/AddAdminModel";
 import { AuthorizationRoutes } from "../routes/AuthorizationRoutes";
-import { ActivateAccountModel } from "../models";
+import {
+  SubscribeToNewsletterModel,
+  UnsubscribeFromNewsletterModel,
+} from "../models";
+import { newsletterEndpoints } from "../api/NewsletterApi";
 
-export default class AccountController {
+export default class NewsletterController {
   private readonly accessToken: string;
   private readonly router: NextRouter;
 
@@ -19,12 +21,12 @@ export default class AccountController {
     this.router = router;
   }
 
-  getAllAccounts = async () => {
+  getEmailList = async () => {
     try {
       const {
         data: { body, result },
       }: AxiosResponse<IResponseModel> = await axios.get(
-        accountEndpoints.getAllAccounts,
+        newsletterEndpoints.getEmailList,
         getConfigsWithAccessToken(this.accessToken)
       );
 
@@ -46,71 +48,45 @@ export default class AccountController {
     }
   };
 
-  addAdmin = async (addAdminModel: AddAdminModel) => {
-    try {
-      const {
-        data: { body, result },
-      }: AxiosResponse<IResponseModel> = await axios.post(
-        accountEndpoints.addAdmin,
-        addAdminModel,
-        getConfigsWithAccessToken(this.accessToken)
-      );
-
-      if (result === 200) {
-        return body;
-      }
-    } catch (error: any) {
-      if (isResponseModel(error?.response?.data)) {
-        if (error.response.data.result === 401) {
-          this.router.push(AuthorizationRoutes.login);
-        } else {
-          toast.error(error.response.data.message);
-        }
-        return;
-      } else {
-        this.router.push(customPages.error);
-        return;
-      }
-    }
-  };
-
-  getAccount = async (accountId: string) => {
-    try {
-      const {
-        data: { body, result },
-      }: AxiosResponse<IResponseModel> = await axios.get(
-        accountEndpoints.getAccount(accountId),
-        getConfigsWithAccessToken(this.accessToken)
-      );
-
-      if (result === 200) {
-        return body;
-      }
-    } catch (error: any) {
-      if (isResponseModel(error?.response?.data)) {
-        if (error.response.data.result === 401) {
-          this.router.push(AuthorizationRoutes.login);
-        } else {
-          toast.error(error.response.data.message);
-        }
-        return;
-      } else {
-        this.router.push(customPages.error);
-        return;
-      }
-    }
-  };
-
-  activateAccount = async (
-    accountId: string,
-    activateAccountModel: ActivateAccountModel
+  subscribeToNewsletter = async (
+    subscribeToNewsletterModel: SubscribeToNewsletterModel
   ) => {
     try {
       const {
         data: { body, result },
-      }: AxiosResponse<IResponseModel> = await axios.put(
-        accountEndpoints.activateAccount(accountId),
-        activateAccountModel,
+      }: AxiosResponse<IResponseModel> = await axios.post(
+        newsletterEndpoints.subscribeToNewsletter,
+        subscribeToNewsletterModel,
+        getConfigsWithAccessToken(this.accessToken)
+      );
+
+      if (result === 200) {
+        return body;
+      }
+    } catch (error: any) {
+      if (isResponseModel(error?.response?.data)) {
+        if (error.response.data.result === 401) {
+          this.router.push(AuthorizationRoutes.login);
+        } else {
+          toast.error(error.response.data.message);
+        }
+        return;
+      } else {
+        this.router.push(customPages.error);
+        return;
+      }
+    }
+  };
+
+  unsubscribeFromNewsletter = async (
+    unsubscribeFromNewsletterModel: UnsubscribeFromNewsletterModel
+  ) => {
+    try {
+      const {
+        data: { body, result },
+      }: AxiosResponse<IResponseModel> = await axios.post(
+        newsletterEndpoints.unubscribeFromNewsletter,
+        unsubscribeFromNewsletterModel,
         getConfigsWithAccessToken(this.accessToken)
       );
 

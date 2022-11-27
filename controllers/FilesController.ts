@@ -1,16 +1,14 @@
 import axios, { AxiosResponse } from "axios";
 import { NextRouter } from "next/router";
 import toast from "react-hot-toast";
-import { accountEndpoints } from "../api";
 import { isResponseModel } from "../helpers";
 import { IResponseModel } from "../interfaces";
 import { customPages } from "../routes";
-import { getConfigsWithAccessToken } from "../api/index";
-import AddAdminModel from "../models/AddAdminModel";
-import { AuthorizationRoutes } from "../routes/AuthorizationRoutes";
-import { ActivateAccountModel } from "../models";
+import { getConfigsWithAccessToken, fileEndpoints } from "../api";
+import { AuthorizationRoutes } from "../routes";
+import { CreateNewFileModel, EditFileModel } from "../models";
 
-export default class AccountController {
+export default class FilesController {
   private readonly accessToken: string;
   private readonly router: NextRouter;
 
@@ -19,12 +17,12 @@ export default class AccountController {
     this.router = router;
   }
 
-  getAllAccounts = async () => {
+  getFiles = async () => {
     try {
       const {
         data: { body, result },
       }: AxiosResponse<IResponseModel> = await axios.get(
-        accountEndpoints.getAllAccounts,
+        fileEndpoints.getFiles,
         getConfigsWithAccessToken(this.accessToken)
       );
 
@@ -46,13 +44,13 @@ export default class AccountController {
     }
   };
 
-  addAdmin = async (addAdminModel: AddAdminModel) => {
+  addFile = async (createFileModel: CreateNewFileModel) => {
     try {
       const {
         data: { body, result },
       }: AxiosResponse<IResponseModel> = await axios.post(
-        accountEndpoints.addAdmin,
-        addAdminModel,
+        fileEndpoints.addFile,
+        createFileModel,
         getConfigsWithAccessToken(this.accessToken)
       );
 
@@ -74,43 +72,13 @@ export default class AccountController {
     }
   };
 
-  getAccount = async (accountId: string) => {
+  editFile = async (fileId: string, editFileModel: EditFileModel) => {
     try {
       const {
         data: { body, result },
-      }: AxiosResponse<IResponseModel> = await axios.get(
-        accountEndpoints.getAccount(accountId),
-        getConfigsWithAccessToken(this.accessToken)
-      );
-
-      if (result === 200) {
-        return body;
-      }
-    } catch (error: any) {
-      if (isResponseModel(error?.response?.data)) {
-        if (error.response.data.result === 401) {
-          this.router.push(AuthorizationRoutes.login);
-        } else {
-          toast.error(error.response.data.message);
-        }
-        return;
-      } else {
-        this.router.push(customPages.error);
-        return;
-      }
-    }
-  };
-
-  activateAccount = async (
-    accountId: string,
-    activateAccountModel: ActivateAccountModel
-  ) => {
-    try {
-      const {
-        data: { body, result },
-      }: AxiosResponse<IResponseModel> = await axios.put(
-        accountEndpoints.activateAccount(accountId),
-        activateAccountModel,
+      }: AxiosResponse<IResponseModel> = await axios.post(
+        fileEndpoints.editFile(fileId),
+        editFileModel,
         getConfigsWithAccessToken(this.accessToken)
       );
 
