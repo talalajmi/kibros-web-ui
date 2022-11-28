@@ -2,6 +2,10 @@
   @apply flex flex-col items-center justify-center space-y-[24px];
 }
 
+.blurryContainer {
+  @apply relative flex flex-col items-center justify-center space-y-[24px] blur-sm;
+}
+
 .filtersCard {
   @apply max-h-fit w-[1300px] space-y-16 rounded-10 bg-primary-light p-20;
 }

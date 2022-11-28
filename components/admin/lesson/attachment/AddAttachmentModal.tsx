@@ -1,16 +1,31 @@
 import { Button } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { iconColor } from "../../../../utils/colors";
 import { Input, Label } from "../../../form";
 import { X } from "../../../icons";
+import AddFileIcon from "../../../icons/AddFileIcon";
 import styles from "./AddAttachmentModal.module.css";
 
-const AddAttachmentModal = () => {
+interface ModalProps {
+  showModal: boolean;
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  lesson: any;
+}
+
+const AddAttachmentModal = ({
+  showModal,
+  setShowModal,
+  lesson,
+}: ModalProps) => {
   return (
-    <div className={styles.modal}>
+    <div className={showModal ? styles.modal : styles.modalHidden}>
       <div className={styles.modal__card}>
         <div className={styles.modal__icon}>
-          <X size="24" color={iconColor} />
+          <X
+            size="24"
+            className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
+            onClick={() => setShowModal(false)}
+          />
         </div>
         <div className={styles.modal__content}>
           <div className={styles.modal__header}>
@@ -34,31 +49,49 @@ const AddAttachmentModal = () => {
               <div className={styles.modal__pillRow}>
                 <div className={styles.modal__pill}>
                   <p>My File</p>
-                  <X size="15" color={iconColor} className="cursor-pointer" />
+                  <X
+                    size="15"
+                    className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
+                  />
                 </div>
                 <div className={styles.modal__pill}>
                   <p>My File</p>
-                  <X size="15" color={iconColor} className="cursor-pointer" />
-                </div>
-              </div>
-              <div className={styles.modal__pillRow}>
-                <div className={styles.modal__pill}>
-                  <p>My File</p>
-                  <X size="15" color={iconColor} className="cursor-pointer" />
-                </div>
-                <div className={styles.modal__pill}>
-                  <p>My File</p>
-                  <X size="15" color={iconColor} className="cursor-pointer" />
+                  <X
+                    size="15"
+                    className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
+                  />
                 </div>
               </div>
               <div className={styles.modal__pillRow}>
                 <div className={styles.modal__pill}>
                   <p>My File</p>
-                  <X size="15" color={iconColor} className="cursor-pointer" />
+                  <X
+                    size="15"
+                    className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
+                  />
                 </div>
                 <div className={styles.modal__pill}>
                   <p>My File</p>
-                  <X size="15" color={iconColor} className="cursor-pointer" />
+                  <X
+                    size="15"
+                    className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
+                  />
+                </div>
+              </div>
+              <div className={styles.modal__pillRow}>
+                <div className={styles.modal__pill}>
+                  <p>My File</p>
+                  <X
+                    size="15"
+                    className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
+                  />
+                </div>
+                <div className={styles.modal__pill}>
+                  <p>My File</p>
+                  <X
+                    size="15"
+                    className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
+                  />
                 </div>
               </div>
             </div>

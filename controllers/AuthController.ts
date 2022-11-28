@@ -35,6 +35,7 @@ export default class AuthController {
     } catch (error: any) {
       if (isResponseModel(error?.response?.data)) {
         if (error.response.data.result === 401) {
+          console.log(error.response.data);
           return error.response.data;
         } else {
           toast.error(error.response.data.message);

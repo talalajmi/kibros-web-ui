@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-primary-base font-tajwal;
+  @apply bg-primary-base;
 }
 
 @font-face {

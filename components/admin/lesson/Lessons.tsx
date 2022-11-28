@@ -7,9 +7,12 @@ import TrashIcon from "../../icons/TrashIcon";
 import AddLessonModal from "./add/AddLessonModal";
 
 import styles from "./Lessons.module.css";
+import AddFileIcon from "../../icons/AddFileIcon";
+import AddAttachmentModal from "./attachment/AddAttachmentModal";
 
 const Lessons = () => {
-  const [showModal, setShowModal] = useState(false);
+  const [showAddLessonModal, setShowAddLessonModal] = useState(false);
+  const [showAddAttachmentModal, setShowAddAttachmentModal] = useState(false);
 
   return (
     <div className={styles.container}>
@@ -22,7 +25,7 @@ const Lessons = () => {
             />
             <button
               className={styles.addButton}
-              onClick={() => setShowModal((current) => !current)}
+              onClick={() => setShowAddLessonModal(true)}
             >
               Add Lesson
             </button>
@@ -32,7 +35,7 @@ const Lessons = () => {
           <thead>
             <tr className="flex bg-primary-base uppercase text-darkText">
               <td className={styles.tableCell}>#</td>
-              <td className="flex-1 py-16 px-20 text-sm font-medium">Name</td>
+              <td className={styles.tableCell}>Name</td>
               <td className={styles.tableCell}>Description</td>
               <td className={styles.tableCell}>Is Activated</td>
               <td className={styles.tableCell}>Sorting Number</td>
@@ -55,85 +58,150 @@ const Lessons = () => {
               <td className={styles.tableCell}>02/02/2022</td>
               <td className={styles.tableCell}>02/02/2022</td>
               <td className={styles.actionsCell}>
-                <EditIcon size="20" color={iconColor} opacity="0.68" />
-                <TrashIcon size="20" color={iconColor} opacity="0.68" />
-              </td>
-            </tr>
-            <tr className={styles.tableBodyRow}>
-              <td className={styles.tableCell}>1</td>
-              <td className={`${styles.tableCell}`}>اساسيات التصوير</td>
-              <td dir="rtl" className={`${styles.tableCell} truncate`}>
-                ذيييثييثثييث هكذا يبدا التصوير دعقد
-              </td>
-              <td className={styles.tableCell}>
-                <div className={styles.tablePill}>Activated</div>
-              </td>
-              <td className={styles.tableCell}>2</td>
-              <td className={styles.tableCell}>02/02/2022</td>
-              <td className={styles.tableCell}>02/02/2022</td>
-              <td className={styles.actionsCell}>
-                <EditIcon size="20" color={iconColor} opacity="0.68" />
-                <TrashIcon size="20" color={iconColor} opacity="0.68" />
-              </td>
-            </tr>
-            <tr className={styles.tableBodyRow}>
-              <td className={styles.tableCell}>1</td>
-              <td className={`${styles.tableCell}`}>اساسيات التصوير</td>
-              <td dir="rtl" className={`${styles.tableCell} truncate`}>
-                ذيييثييثثييث هكذا يبدا التصوير دعقد
-              </td>
-              <td className={styles.tableCell}>
-                <div className={styles.tablePill}>Activated</div>
-              </td>
-              <td className={styles.tableCell}>2</td>
-              <td className={styles.tableCell}>02/02/2022</td>
-              <td className={styles.tableCell}>02/02/2022</td>
-              <td className={styles.actionsCell}>
-                <EditIcon size="20" color={iconColor} opacity="0.68" />
-                <TrashIcon size="20" color={iconColor} opacity="0.68" />
-              </td>
-            </tr>
-            <tr className={styles.tableBodyRow}>
-              <td className={styles.tableCell}>1</td>
-              <td className={`${styles.tableCell}`}>اساسيات التصوير</td>
-              <td dir="rtl" className={`${styles.tableCell} truncate`}>
-                ذيييثييثثييث هكذا يبدا التصوير دعقد
-              </td>
-              <td className={styles.tableCell}>
-                <div className={styles.tablePill}>Activated</div>
-              </td>
-              <td className={styles.tableCell}>2</td>
-              <td className={styles.tableCell}>02/02/2022</td>
-              <td className={styles.tableCell}>02/02/2022</td>
-              <td className={styles.actionsCell}>
-                <EditIcon size="20" color={iconColor} opacity="0.68" />
-                <TrashIcon size="20" color={iconColor} opacity="0.68" />
-              </td>
-            </tr>
-            <tr className={styles.tableBodyRow}>
-              <td className={styles.tableCell}>1</td>
-              <td className={`${styles.tableCell}`}>اساسيات التصوير</td>
-              <td dir="rtl" className={`${styles.tableCell} truncate`}>
-                ذيييثييثثييث هكذا يبدا التصوير دعقد
-              </td>
-              <td className={styles.tableCell}>
-                <div className={styles.tablePill}>Activated</div>
-              </td>
-              <td className={styles.tableCell}>2</td>
-              <td className={styles.tableCell}>02/02/2022</td>
-              <td className={styles.tableCell}>02/02/2022</td>
-              <td className={styles.actionsCell}>
+                <AddFileIcon
+                  size="20"
+                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
+                  opacity="0.68"
+                  onClick={() => setShowAddAttachmentModal(true)}
+                />
                 <EditIcon
                   size="20"
-                  color={iconColor}
+                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
                   opacity="0.68"
-                  className="cursor-pointer"
                 />
                 <TrashIcon
                   size="20"
-                  color={iconColor}
+                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
                   opacity="0.68"
-                  className="cursor-pointer"
+                />
+                <AddAttachmentModal
+                  showModal={showAddAttachmentModal}
+                  setShowModal={setShowAddAttachmentModal}
+                  lesson={{}}
+                />
+                <AddLessonModal
+                  showModal={showAddLessonModal}
+                  setShowModal={setShowAddLessonModal}
+                />
+              </td>
+            </tr>
+            <tr className={styles.tableBodyRow}>
+              <td className={styles.tableCell}>1</td>
+              <td className={`${styles.tableCell}`}>اساسيات التصوير</td>
+              <td dir="rtl" className={`${styles.tableCell} truncate`}>
+                ذيييثييثثييث هكذا يبدا التصوير دعقد
+              </td>
+              <td className={styles.tableCell}>
+                <div className={styles.tablePill}>Activated</div>
+              </td>
+              <td className={styles.tableCell}>2</td>
+              <td className={styles.tableCell}>02/02/2022</td>
+              <td className={styles.tableCell}>02/02/2022</td>
+              <td className={styles.actionsCell}>
+                <AddFileIcon
+                  size="20"
+                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
+                  opacity="0.68"
+                />
+                <EditIcon
+                  size="20"
+                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
+                  opacity="0.68"
+                />
+                <TrashIcon
+                  size="20"
+                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
+                  opacity="0.68"
+                />
+              </td>
+            </tr>
+            <tr className={styles.tableBodyRow}>
+              <td className={styles.tableCell}>1</td>
+              <td className={`${styles.tableCell}`}>اساسيات التصوير</td>
+              <td dir="rtl" className={`${styles.tableCell} truncate`}>
+                ذيييثييثثييث هكذا يبدا التصوير دعقد
+              </td>
+              <td className={styles.tableCell}>
+                <div className={styles.tablePill}>Activated</div>
+              </td>
+              <td className={styles.tableCell}>2</td>
+              <td className={styles.tableCell}>02/02/2022</td>
+              <td className={styles.tableCell}>02/02/2022</td>
+              <td className={styles.actionsCell}>
+                <AddFileIcon
+                  size="20"
+                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
+                  opacity="0.68"
+                />
+                <EditIcon
+                  size="20"
+                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
+                  opacity="0.68"
+                />
+                <TrashIcon
+                  size="20"
+                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
+                  opacity="0.68"
+                />
+              </td>
+            </tr>
+            <tr className={styles.tableBodyRow}>
+              <td className={styles.tableCell}>1</td>
+              <td className={`${styles.tableCell}`}>اساسيات التصوير</td>
+              <td dir="rtl" className={`${styles.tableCell} truncate`}>
+                ذيييثييثثييث هكذا يبدا التصوير دعقد
+              </td>
+              <td className={styles.tableCell}>
+                <div className={styles.tablePill}>Activated</div>
+              </td>
+              <td className={styles.tableCell}>2</td>
+              <td className={styles.tableCell}>02/02/2022</td>
+              <td className={styles.tableCell}>02/02/2022</td>
+              <td className={styles.actionsCell}>
+                <AddFileIcon
+                  size="20"
+                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
+                  opacity="0.68"
+                />
+                <EditIcon
+                  size="20"
+                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
+                  opacity="0.68"
+                />
+                <TrashIcon
+                  size="20"
+                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
+                  opacity="0.68"
+                />
+              </td>
+            </tr>
+            <tr className={styles.tableBodyRow}>
+              <td className={styles.tableCell}>1</td>
+              <td className={`${styles.tableCell}`}>اساسيات التصوير</td>
+              <td dir="rtl" className={`${styles.tableCell} truncate`}>
+                ذيييثييثثييث هكذا يبدا التصوير دعقد
+              </td>
+              <td className={styles.tableCell}>
+                <div className={styles.tablePill}>Activated</div>
+              </td>
+              <td className={styles.tableCell}>2</td>
+              <td className={styles.tableCell}>02/02/2022</td>
+              <td className={styles.tableCell}>02/02/2022</td>
+              <td className={styles.actionsCell}>
+                <AddFileIcon
+                  size="20"
+                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
+                  opacity="0.68"
+                />
+                <EditIcon
+                  size="20"
+                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
+                  opacity="0.68"
+                />
+                <TrashIcon
+                  size="20"
+                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
+                  opacity="0.68"
                 />
               </td>
             </tr>
@@ -143,11 +211,13 @@ const Lessons = () => {
           <p>1-5 of 13</p>
           <div className={styles.footerArrows}>
             <ArrowLeft size={17} color={iconColor} opacity={0.5} />
-            <ArrowRight size={17} color={iconColor} />
+            <ArrowRight
+              size={17}
+              className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
+            />
           </div>
         </div>
       </div>
-      <AddLessonModal showModal={showModal} setShowModal={setShowModal} />
     </div>
   );
 };

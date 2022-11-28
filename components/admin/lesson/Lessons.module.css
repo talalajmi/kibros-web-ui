@@ -35,7 +35,7 @@
 }
 
 .tableBodyRow {
-  @apply flex border border-t-0 border-l-0 border-r-0 border-inputOutline/[0.2] text-darkTextSecondary/[0.68];
+  @apply flex border border-t-0 border-l-0 border-r-0 border-inputOutline/[0.2] text-darkTextSecondary/[0.68] hover:bg-primary-base;
 }
 
 .tablePill {

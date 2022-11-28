@@ -1,13 +1,14 @@
 .modal {
-  @apply flex h-screen items-center justify-center;
+  @apply fixed top-0 left-0 right-0 flex h-screen items-center justify-center backdrop-blur-sm;
+}
+
+.modalHidden {
+  @apply hidden;
 }
 
 .modal__card {
-  @apply container w-[350px] rounded-10 bg-primary-light p-[30px];
+  @apply container w-[350px] rounded-10 bg-primary-light p-[30px] shadow-2xl;
   @apply md:container md:h-[460px] md:w-[807px];
-  @apply lg:container lg:h-[460px] lg:w-[807px];
-  @apply xl:container xl:h-[460px] xl:w-[807px];
-  @apply 2xl:container 2xl:h-[460px] 2xl:w-[807px];
 }
 
 .modal__icon {
@@ -39,7 +40,7 @@
 }
 
 .modal__pill {
-  @apply flex h-[30px] items-center justify-between rounded-8 border border-inputOutline/[0.22] p-10 text-darkText/[0.5];
+  @apply flex h-[30px] items-center justify-between rounded-8 border border-inputOutline/[0.22] p-10 text-darkText/[0.5] transition duration-300 ease-in-out hover:bg-white/[0.05];
 }
 
 .modal__footer {

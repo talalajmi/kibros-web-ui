@@ -23,11 +23,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={materialUiTheme}>
           <Navbar />
-          <Component {...pageProps} />
           <Toaster
             position="top-right"
             toastOptions={{ className: "react-hot-toast" }}
           />
+          <Component {...pageProps} />
           <PublicFooter />
         </ThemeProvider>
       </QueryClientProvider>
@@ -42,11 +42,11 @@ function MyApp({ Component, pageProps }: AppProps) {
             <AdminNavbar />
           </header>
           <main>
-            <Component {...pageProps} />
             <Toaster
               position="top-right"
               toastOptions={{ className: "react-hot-toast" }}
             />
+            <Component {...pageProps} />
           </main>
           <footer>
             <Footer />
