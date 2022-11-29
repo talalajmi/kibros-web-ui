@@ -9,14 +9,10 @@ import { AuthorizationRoutes } from "../../../routes";
 import AboutUsIcon from "../../icons/AboutUsIcon";
 
 const Navbar = () => {
-  // States
-  const [showMobileDropdown, setShowMobileDropdown] = useState(false);
-
   // Hooks
   const router = useRouter();
 
   const redirectToRoute = (route: string) => {
-    console.log(route);
     router.push(route);
   };
 
@@ -49,21 +45,21 @@ const Navbar = () => {
       />
       <div className={styles.routes}>
         <p
-          className="cursor-pointer text-2xl transition duration-[200ms] hover:text-secondary-base"
-          onClick={() => router.push(publicRoutes.aboutUs)}
+          className="cursor-pointer text-2xl transition duration-[200ms] hover:text-secondary-base active:text-secondary-base"
+          onClick={() => redirectToRoute(publicRoutes.aboutUs)}
         >
           من نحن
         </p>
         <p
-          className="cursor-pointer text-2xl transition duration-[200ms] hover:text-secondary-base"
-          onClick={() => router.push(publicRoutes.home)}
+          className="cursor-pointer text-2xl transition duration-[200ms] hover:text-secondary-base active:text-secondary-base"
+          onClick={() => redirectToRoute(publicRoutes.home)}
         >
           الرئيسية
         </p>
       </div>
       <div
         className="relative left-[44px] cursor-pointer md:left-20"
-        onClick={() => router.push("/")}
+        onClick={(e) => router.push("/")}
       >
         <Image
           src={logo}

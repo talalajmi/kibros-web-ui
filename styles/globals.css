@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-primary-base;
+  @apply select-none bg-primary-base;
 }
 
 @font-face {

@@ -2,6 +2,10 @@
   @apply sticky top-0 z-50 flex flex-row items-center justify-between space-x-12 overflow-clip bg-primary-light p-20 text-white;
 }
 
+.selected {
+  @apply text-secondary-base;
+}
+
 .actionButtons {
   @apply hidden flex-row space-x-10 px-20 md:flex;
 }
