@@ -97,13 +97,13 @@ const AddAttachmentModal = ({
             </div>
           </div>
           <div className={styles.modal__footer}>
-            <button className="rounded-8 bg-secondary-base p-10 transition duration-300 ease-out hover:bg-secondary-dark">
+            <button className="rounded-8 bg-secondary-base p-10 uppercase transition duration-300 ease-out hover:bg-secondary-dark">
               <span className="py-[7px] px-[22px] text-white">
-                ADD ATTACHMENT
+                Add attachment
               </span>
             </button>
-            <button className="rounded-8 bg-success-base p-10 transition duration-300 ease-out hover:bg-success-dark">
-              <span className="py-[7px] px-[22px] text-white">SUBMIT</span>
+            <button className="rounded-8 bg-success-base p-10 uppercase transition duration-300 ease-out hover:bg-success-dark">
+              <span className="py-[7px] px-[22px] text-white">Submit</span>
             </button>
           </div>
         </div>

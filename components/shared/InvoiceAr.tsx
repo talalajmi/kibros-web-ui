@@ -27,9 +27,10 @@ const InvoiceAr = () => {
               <p>الخوير، مسقط، عمان</p>
               <p>contact@kibros.com</p>
             </div>
-            <p className="text-darkTextSecondary/[0.68]">
-              تاريخ الاصدار: 25/08/2020
-            </p>
+            <div className="flex flex-col space-y-10">
+              <p className="text-darkTextSecondary/[0.68]">من : 25/08/2020</p>
+              <p className="text-darkTextSecondary/[0.68]">الى : 25/09/2020</p>
+            </div>
           </div>
         </div>
         <hr style={{ color: iconColor, opacity: "0.2" }} />
@@ -42,38 +43,38 @@ const InvoiceAr = () => {
           </div>
         </div>
         <div className={styles.table}>
-          <table className="flex flex-col justify-between space-y-20">
+          <table className="grid flex-col">
             <thead>
-              <tr className="flex uppercase">
-                <td className="flex-1 text-sm">الغرض</td>
-                <td className="flex-1 text-sm">الوصف</td>
-                <td className="flex-1 text-sm">الكمية</td>
-                <td className="flex-1 text-sm">السعر</td>
+              <tr className="scrollbar-hide flex overflow-x-scroll bg-primary-base p-12">
+                <td className="flex-1 ">الغرض</td>
+                <td className="flex-1 ">الوصف</td>
+                <td className="flex-1 ">الكمية</td>
+                <td className="flex-1 ">السعر</td>
               </tr>
             </thead>
             <tbody>
-              <tr className="flex uppercase">
-                <td className="flex-1 text-sm">اشتراك شهري</td>
-                <td className="flex-1 text-sm">التحاق بورشة كيبروس الشهرية</td>
-                <td className="flex-1 text-sm">1</td>
-                <td className="flex-1 text-sm">20 OMR</td>
+              <tr className="scrollbar-hide flex overflow-x-scroll bg-primary-base p-12">
+                <td className="flex-1 ">اشتراك شهري</td>
+                <td className="flex-1 ">التحاق بورشة كيبروس الشهرية</td>
+                <td className="flex-1 ">1</td>
+                <td className="flex-1 ">20 OMR</td>
               </tr>
             </tbody>
           </table>
         </div>
         <div className={styles.amountContainer}>
-          <div className="flex flex-col">
-            <div className="space-x-50 flex items-center justify-between">
+          <div className="flex flex-col space-y-5">
+            <div className="flex items-center justify-between">
               <p className="text-darkTextSecondary/[0.68]">Subtotal:</p>
               <p className="font-bold text-white">20 OMR</p>
             </div>
-            <div className="space-x-50 flex items-center justify-between">
+            <div className="flex items-center justify-between">
               <p className="text-darkTextSecondary/[0.68]">تخفيض:</p>
               <p className="font-bold text-white">0 OMR</p>
             </div>
             <hr style={{ color: iconColor, opacity: "0.2" }} />
           </div>
-          <div className="space-x-50 flex items-center justify-between">
+          <div className="flex items-center justify-between">
             <p className="text-darkTextSecondary/[0.68]">المبلغ النهائي:</p>
             <p className="font-bold text-white">20 OMR</p>
           </div>

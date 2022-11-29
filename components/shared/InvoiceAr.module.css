@@ -23,7 +23,7 @@
 }
 
 .table {
-  @apply bg-primary-light p-20 text-white;
+  @apply bg-primary-light  text-white;
 }
 
 .amountContainer {

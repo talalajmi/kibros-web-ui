@@ -73,7 +73,7 @@ const Home = () => {
             <Select
               options={options}
               placeholder="فرز"
-              styles={reactSelectStyles}
+              styles={reactSelectStyles()}
               isRtl
               theme={getReactSelectTheme}
             />
@@ -99,21 +99,21 @@ const Home = () => {
               <div className="scrollbar-hide flex justify-center space-x-[20px] py-[40px] md:grid-flow-col md:overflow-x-scroll">
                 <Lesson
                   lessonName="مراحل الانتاج الاساسية"
-                  lessonDuration="٣ دقايق و ٣٢ ثانية"
+                  lessonDuration="3 دقايق و 23 ثانية"
                   isNew={false}
                   isPaid={false}
                   imagePath={img}
                 />
                 <Lesson
                   lessonName="مراحل الانتاج الاساسية"
-                  lessonDuration="٣ دقايق و ٣٢ ثانية"
+                  lessonDuration="3 دقايق و 23 ثانية"
                   isNew={false}
                   isPaid={false}
                   imagePath={img}
                 />
                 <Lesson
                   lessonName="مراحل الانتاج الاساسية"
-                  lessonDuration="٣ دقايق و ٣٢ ثانية"
+                  lessonDuration="3 دقايق و 23 ثانية"
                   isNew={true}
                   isPaid={false}
                   imagePath={img}
@@ -122,21 +122,21 @@ const Home = () => {
               <div className="scrollbar-hide flex justify-center space-x-[20px] py-[40px] md:grid-flow-col md:overflow-x-scroll">
                 <Lesson
                   lessonName="مراحل الانتاج الاساسية"
-                  lessonDuration="٣ دقايق و ٣٢ ثانية"
+                  lessonDuration="3 دقايق و 23 ثانية"
                   isNew={false}
                   isPaid={false}
                   imagePath={img}
                 />
                 <Lesson
                   lessonName="مراحل الانتاج الاساسية"
-                  lessonDuration="٣ دقايق و ٣٢ ثانية"
+                  lessonDuration="3 دقايق و 23 ثانية"
                   isNew={false}
                   isPaid={false}
                   imagePath={img}
                 />
                 <Lesson
                   lessonName="مراحل الانتاج الاساسية"
-                  lessonDuration="٣ دقايق و ٣٢ ثانية"
+                  lessonDuration="3 دقايق و 23 ثانية"
                   isNew={true}
                   isPaid={false}
                   imagePath={img}
@@ -155,44 +155,21 @@ const Home = () => {
               <div className="scrollbar-hide grid grid-rows-1 gap-[40px] py-[40px] md:grid-flow-col md:overflow-x-scroll">
                 <Lesson
                   lessonName="مراحل الانتاج الاساسية"
-                  lessonDuration="٣ دقايق و ٣٢ ثانية"
+                  lessonDuration="3 دقايق و 23 ثانية"
                   isNew={true}
                   isPaid={true}
                   imagePath={img}
                 />
                 <Lesson
                   lessonName="مراحل الانتاج الاساسية"
-                  lessonDuration="٣ دقايق و ٣٢ ثانية"
+                  lessonDuration="3 دقايق و 23 ثانية"
                   isNew={true}
                   isPaid={true}
                   imagePath={img}
                 />
                 <Lesson
                   lessonName="مراحل الانتاج الاساسية"
-                  lessonDuration="٣ دقايق و ٣٢ ثانية"
-                  isNew={true}
-                  isPaid={true}
-                  imagePath={img}
-                />
-              </div>
-              <div className="scrollbar-hide grid grid-rows-1 gap-[40px] py-[40px] md:grid-flow-col md:overflow-x-scroll">
-                <Lesson
-                  lessonName="مراحل الانتاج الاساسية"
-                  lessonDuration="٣ دقايق و ٣٢ ثانية"
-                  isNew={true}
-                  isPaid={true}
-                  imagePath={img}
-                />
-                <Lesson
-                  lessonName="مراحل الانتاج الاساسية"
-                  lessonDuration="٣ دقايق و ٣٢ ثانية"
-                  isNew={true}
-                  isPaid={true}
-                  imagePath={img}
-                />
-                <Lesson
-                  lessonName="مراحل الانتاج الاساسية"
-                  lessonDuration="٣ دقايق و ٣٢ ثانية"
+                  lessonDuration="3 دقايق و 23 ثانية"
                   isNew={true}
                   isPaid={true}
                   imagePath={img}
@@ -201,44 +178,21 @@ const Home = () => {
               <div className="scrollbar-hide grid grid-rows-1 gap-[40px] py-[40px] md:grid-flow-col md:overflow-x-scroll">
                 <Lesson
                   lessonName="مراحل الانتاج الاساسية"
-                  lessonDuration="٣ دقايق و ٣٢ ثانية"
+                  lessonDuration="3 دقايق و 23 ثانية"
                   isNew={true}
                   isPaid={true}
                   imagePath={img}
                 />
                 <Lesson
                   lessonName="مراحل الانتاج الاساسية"
-                  lessonDuration="٣ دقايق و ٣٢ ثانية"
+                  lessonDuration="3 دقايق و 23 ثانية"
                   isNew={true}
                   isPaid={true}
                   imagePath={img}
                 />
                 <Lesson
                   lessonName="مراحل الانتاج الاساسية"
-                  lessonDuration="٣ دقايق و ٣٢ ثانية"
-                  isNew={true}
-                  isPaid={true}
-                  imagePath={img}
-                />
-              </div>
-              <div className="scrollbar-hide grid grid-rows-1 gap-[40px] py-[40px] md:grid-flow-col md:overflow-x-scroll">
-                <Lesson
-                  lessonName="مراحل الانتاج الاساسية"
-                  lessonDuration="٣ دقايق و ٣٢ ثانية"
-                  isNew={true}
-                  isPaid={true}
-                  imagePath={img}
-                />
-                <Lesson
-                  lessonName="مراحل الانتاج الاساسية"
-                  lessonDuration="٣ دقايق و ٣٢ ثانية"
-                  isNew={true}
-                  isPaid={true}
-                  imagePath={img}
-                />
-                <Lesson
-                  lessonName="مراحل الانتاج الاساسية"
-                  lessonDuration="٣ دقايق و ٣٢ ثانية"
+                  lessonDuration="3 دقايق و 23 ثانية"
                   isNew={true}
                   isPaid={true}
                   imagePath={img}
@@ -247,21 +201,67 @@ const Home = () => {
               <div className="scrollbar-hide grid grid-rows-1 gap-[40px] py-[40px] md:grid-flow-col md:overflow-x-scroll">
                 <Lesson
                   lessonName="مراحل الانتاج الاساسية"
-                  lessonDuration="٣ دقايق و ٣٢ ثانية"
+                  lessonDuration="3 دقايق و 23 ثانية"
                   isNew={true}
                   isPaid={true}
                   imagePath={img}
                 />
                 <Lesson
                   lessonName="مراحل الانتاج الاساسية"
-                  lessonDuration="٣ دقايق و ٣٢ ثانية"
+                  lessonDuration="3 دقايق و 23 ثانية"
                   isNew={true}
                   isPaid={true}
                   imagePath={img}
                 />
                 <Lesson
                   lessonName="مراحل الانتاج الاساسية"
-                  lessonDuration="٣ دقايق و ٣٢ ثانية"
+                  lessonDuration="3 دقايق و 23 ثانية"
+                  isNew={true}
+                  isPaid={true}
+                  imagePath={img}
+                />
+              </div>
+              <div className="scrollbar-hide grid grid-rows-1 gap-[40px] py-[40px] md:grid-flow-col md:overflow-x-scroll">
+                <Lesson
+                  lessonName="مراحل الانتاج الاساسية"
+                  lessonDuration="3 دقايق و 23 ثانية"
+                  isNew={true}
+                  isPaid={true}
+                  imagePath={img}
+                />
+                <Lesson
+                  lessonName="مراحل الانتاج الاساسية"
+                  lessonDuration="3 دقايق و 23 ثانية"
+                  isNew={true}
+                  isPaid={true}
+                  imagePath={img}
+                />
+                <Lesson
+                  lessonName="مراحل الانتاج الاساسية"
+                  lessonDuration="3 دقايق و 23 ثانية"
+                  isNew={true}
+                  isPaid={true}
+                  imagePath={img}
+                />
+              </div>
+              <div className="scrollbar-hide grid grid-rows-1 gap-[40px] py-[40px] md:grid-flow-col md:overflow-x-scroll">
+                <Lesson
+                  lessonName="مراحل الانتاج الاساسية"
+                  lessonDuration="3 دقايق و 23 ثانية"
+                  isNew={true}
+                  isPaid={true}
+                  imagePath={img}
+                />
+                <Lesson
+                  lessonName="مراحل الانتاج الاساسية"
+                  lessonDuration="3 دقايق و 23 ثانية"
+                  isNew={true}
+                  isPaid={true}
+                  imagePath={img}
+                />
+                <Lesson
+                  lessonName="مراحل الانتاج الاساسية"
+                  lessonDuration="3 دقايق و 23 ثانية"
                   isNew={true}
                   isPaid={true}
                   imagePath={img}

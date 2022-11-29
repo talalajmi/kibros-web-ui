@@ -38,7 +38,9 @@ const Lesson = (props: LessonProps) => {
             <p className="text-lg text-secondary-base" dir="rtl">
               - اساسيات التفريغ
             </p>
-            <p className="text-base text-white">{props.lessonDuration}</p>
+            <p dir="rtl" className="text-base text-white">
+              {props.lessonDuration}
+            </p>
           </div>
           <div className="relative flex items-end justify-end">
             <Circle
