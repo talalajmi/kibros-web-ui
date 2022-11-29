@@ -89,6 +89,7 @@ const AddLessonModal = ({ showModal, setShowModal }: ModalProps) => {
                 }}
               />
             </div>
+            <Input type="file" className="p-0 file:p-[7px]" />
             <div className="flex space-x-20">
               <div className="flex items-center justify-center">
                 <Switch defaultChecked color="secondary" />

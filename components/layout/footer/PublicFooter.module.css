@@ -1,5 +1,5 @@
 .container {
-  @apply flex flex-col space-y-[50px] overflow-clip bg-primary-light py-20 px-[20px] text-white md:flex-row md:items-center md:justify-between md:px-[60px];
+  @apply flex flex-col space-y-[50px] overflow-clip bg-primary-light py-20 px-[20px] text-white md:flex-col md:items-end md:justify-between md:px-[60px] lg:flex-row;
 }
 
 .link {
