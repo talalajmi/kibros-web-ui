@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./payment-success.module.css";
 
 // Image Paths
-import errorImage from "../../../public/assets/images/pages/payment-successful.png";
+import errorImage from "../../../public/assets/images/pages/Payment-successful.png";
 import { logo } from "../../../constants";
 import { motivationalQuotes } from "../../../constants/MotivationalQuotes";
 

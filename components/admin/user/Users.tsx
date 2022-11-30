@@ -92,7 +92,7 @@ const Users = () => {
                   className="flex border border-t-0 border-l-0 border-r-0 border-inputOutline/[0.2] py-[15px] px-20 text-darkTextSecondary/[0.68] hover:bg-primary-base"
                 >
                   <td className="flex-1">{user.fullName}</td>
-                  <td className="flex-1">{user.email}</td>
+                  <td className="flex-1 truncate">{user.email}</td>
                   <td className="flex-1">User</td>
                   <td className="flex-1">
                     <div className="flex w-1/2 items-center justify-center rounded-100 bg-success-base/[0.2] text-success-base">

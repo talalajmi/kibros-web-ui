@@ -2,6 +2,10 @@
   @apply flex items-center justify-center;
 }
 
+.blurryContainer {
+  @apply flex items-center justify-center blur-sm;
+}
+
 .card {
   @apply rounded-8 bg-primary-light;
 }
@@ -27,7 +31,7 @@
 }
 
 .tableHeaderCell {
-  @apply flex w-[566.5px] items-center justify-between py-16 px-20;
+  @apply flex w-[400px] items-center justify-between py-16 px-20;
 }
 
 .seperator {
@@ -39,7 +43,7 @@
 }
 
 .tableCell {
-  @apply flex w-[566.5px] items-center justify-between border border-x-0 border-t-0 border-inputOutline/[0.2] py-16 px-20 text-darkTextSecondary/[0.68];
+  @apply flex w-[400px] items-center  space-x-20 border border-x-0 border-t-0 border-inputOutline/[0.2] py-16 px-20 text-darkTextSecondary/[0.68];
 }
 
 .cardFooter {
