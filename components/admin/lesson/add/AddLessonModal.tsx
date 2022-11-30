@@ -2,10 +2,14 @@ import React from "react";
 import { kiBrosLightBlueColor, borderColor } from "../../../../utils/colors";
 import { Input } from "../../../form";
 import { X } from "../../../icons";
-import styles from "./LessonModal.module.css";
+import styles from "./AddLessonModal.module.css";
 import Select from "react-select";
-import { getReactSelectTheme } from "../../../../utils/ReactSelectTheme";
+import {
+  reactSelectTheme,
+  getReactSelectStyles,
+} from "../../../../utils/ReactSelectTheme";
 import { Switch } from "@mui/material";
+import { lessonLevelOptions } from "../../../../helpers/lessonHelper";
 
 interface ModalProps {
   showModal: boolean;
@@ -49,15 +53,9 @@ const AddLessonModal = ({ showModal, setShowModal }: ModalProps) => {
               <Select
                 placeholder="Choose Level"
                 className="w-full"
-                theme={getReactSelectTheme}
-                styles={{
-                  control: (baseStyles: any) => ({
-                    ...baseStyles,
-                    backgroundColor: kiBrosLightBlueColor,
-                    borderColor: borderColor,
-                    padding: 3,
-                  }),
-                }}
+                theme={reactSelectTheme}
+                options={lessonLevelOptions}
+                styles={getReactSelectStyles(kiBrosLightBlueColor)}
               />
               <Input />
             </div>
@@ -65,7 +63,7 @@ const AddLessonModal = ({ showModal, setShowModal }: ModalProps) => {
               <Select
                 placeholder="Choose category"
                 className="w-full"
-                theme={getReactSelectTheme}
+                theme={reactSelectTheme}
                 styles={{
                   control: (baseStyles: any) => ({
                     ...baseStyles,
@@ -78,7 +76,7 @@ const AddLessonModal = ({ showModal, setShowModal }: ModalProps) => {
               <Select
                 placeholder="Choose Lessons"
                 className="w-full"
-                theme={getReactSelectTheme}
+                theme={reactSelectTheme}
                 styles={{
                   control: (baseStyles: any) => ({
                     ...baseStyles,

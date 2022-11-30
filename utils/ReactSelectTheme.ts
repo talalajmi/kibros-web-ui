@@ -5,7 +5,7 @@ import {
   whiteColor,
 } from "./colors";
 
-export const getReactSelectTheme = (theme: any) => ({
+export const reactSelectTheme = (theme: any) => ({
   ...theme,
   borderRadius: 8,
   colors: {
@@ -17,7 +17,7 @@ export const getReactSelectTheme = (theme: any) => ({
   },
 });
 
-export const reactSelectStyles = (color?: string) => {
+export const getReactSelectStyles = (color?: string) => {
   const styles = {
     control: (baseStyles: any) => ({
       ...baseStyles,

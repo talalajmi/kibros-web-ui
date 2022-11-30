@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 // Styles
 import styles from "./payment-success.module.css";
@@ -7,8 +7,23 @@ import styles from "./payment-success.module.css";
 // Image Paths
 import errorImage from "../../../public/assets/images/pages/payment-successful.png";
 import { logo } from "../../../constants";
+import { motivationalQuotes } from "../../../constants/MotivationalQuotes";
 
 function PaymentSuccessful() {
+  const [quote, setQuote] = useState("");
+
+  const getMotivationalQuote = () => {
+    const motivationalQuote =
+      motivationalQuotes[Math.floor(Math.random() * motivationalQuotes.length)]
+        .quote;
+
+    setQuote(motivationalQuote);
+  };
+
+  useEffect(() => {
+    getMotivationalQuote();
+  }, []);
+
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -19,8 +34,8 @@ function PaymentSuccessful() {
           height={100}
           objectFit="cover"
         />
-        <p className="text-xl">نعتذر</p>
-        <p className="text-xl">لم نستطع العثور على الصفحة المطلوبة</p>
+        <p className="text-xl">تم الدفع بنجاح</p>
+        <p className="text-justify text-xl">{quote}</p>
         <button className={styles.error__button}>
           ارجع الى الصفحة الماضية
         </button>
