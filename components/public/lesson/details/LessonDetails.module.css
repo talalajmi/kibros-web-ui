@@ -67,5 +67,5 @@
 }
 
 .relatedLessons {
-  @apply scrollbar-hide grid grid-flow-col grid-rows-1 justify-start gap-[30px] overflow-x-scroll py-[50px];
+  @apply grid grid-flow-col grid-rows-1 justify-start gap-[30px] overflow-x-scroll py-[50px];
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { EditUserModal } from "../../components";
 
 const index = () => {
-  return <EditUserModal />;
+  return <></>;
 };
 
 export default index;
