@@ -8,8 +8,8 @@ import styles from "./EditUserModal.module.css";
 import Select from "react-select";
 import { kiBrosLightBlueColor } from "../../../utils/colors";
 import {
-  getReactSelectTheme,
-  reactSelectStyles,
+  reactSelectTheme,
+  getReactSelectStyles,
 } from "../../../utils/ReactSelectTheme";
 import { IUser } from "../../../interfaces";
 import EditIcon from "../../icons/EditIcon";
@@ -67,8 +67,8 @@ const EditUserModal = ({ showModal, setShowModal }: ModalProps) => {
                 <Select
                   options={options}
                   placeholder="Please Select a role"
-                  styles={reactSelectStyles(kiBrosLightBlueColor)}
-                  theme={getReactSelectTheme}
+                  styles={getReactSelectStyles(kiBrosLightBlueColor)}
+                  theme={reactSelectTheme}
                 />
               </div>
               <div className={styles.modal__row}>
