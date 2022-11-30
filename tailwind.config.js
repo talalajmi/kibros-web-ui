@@ -30,6 +30,7 @@ module.exports = {
     fontFamily: {
       tajwal: ["tajwal"],
       lalezar: ["lalezar"],
+      sans: ["ui-sans-serif", "system-ui"],
     },
     spacing: {
       0: "0px",

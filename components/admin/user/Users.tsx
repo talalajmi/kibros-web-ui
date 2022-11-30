@@ -8,8 +8,8 @@ import styles from "./Users.module.css";
 import TrashIcon from "../../icons/TrashIcon";
 import Select from "react-select";
 import {
-  getReactSelectTheme,
-  reactSelectStyles,
+  reactSelectTheme,
+  getReactSelectStyles,
 } from "../../../utils/ReactSelectTheme";
 import { useRouter } from "next/router";
 import { AccountController } from "../../../controllers";
@@ -55,8 +55,8 @@ const Users = () => {
               options={options}
               placeholder="Please Select a status"
               className="w-full"
-              styles={reactSelectStyles(kiBrosLightBlueColor)}
-              theme={getReactSelectTheme}
+              styles={getReactSelectStyles(kiBrosLightBlueColor)}
+              theme={reactSelectTheme}
             />
           </div>
         </div>

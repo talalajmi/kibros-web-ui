@@ -1,13 +1,13 @@
 import React from "react";
 import { ArrowLeft, SearchIcon } from "../../icons";
 import styles from "./Home.module.css";
-import { iconColor } from "../../../utils/colors";
+import { iconColor, kiBrosDarkBlueColor } from "../../../utils/colors";
 import Lesson from "../lesson/Lesson";
 import img from "../../../public/assets/images/lesson/thumbnail.jpg";
 import Select from "react-select";
 import {
-  getReactSelectTheme,
-  reactSelectStyles,
+  reactSelectTheme,
+  getReactSelectStyles,
 } from "../../../utils/ReactSelectTheme";
 import Image from "next/image";
 
@@ -45,18 +45,7 @@ const LeftArrow = ({
 const Home = () => {
   return (
     <>
-      <Carousel
-        autoPlay={true}
-        showStatus={false}
-        renderArrowPrev={(clickHandler, hasPrev) => (
-          <LeftArrow clickHandler={clickHandler} hasPrev={hasPrev} />
-        )}
-        renderArrowNext={(clickHandler) => (
-          <RightArrow clickHandler={clickHandler} />
-        )}
-        className="relative"
-        showThumbs={false}
-      >
+      <Carousel autoPlay={true} showStatus={false} className="relative">
         <div>
           <Image src={img} alt="kibros-logo" objectFit="cover" />
         </div>
@@ -73,9 +62,9 @@ const Home = () => {
             <Select
               options={options}
               placeholder="فرز"
-              styles={reactSelectStyles()}
+              styles={getReactSelectStyles(kiBrosDarkBlueColor)}
               isRtl
-              theme={getReactSelectTheme}
+              theme={reactSelectTheme}
             />
           </div>
           <div className="relative w-[300px]">

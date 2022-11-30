@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 body {
-  @apply select-none bg-primary-base;
+  @apply select-none bg-primary-base font-tajwal;
 }
 
 @font-face {
   font-family: "tajwal";
-  src: url("/assets/fonts/tajwal/Tajawal-Light.ttf");
+  src: url("/assets/fonts/tajwal/Tajawal-Medium.ttf");
 }
 
 @font-face {

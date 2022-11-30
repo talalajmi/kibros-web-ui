@@ -37,7 +37,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={materialUiTheme}>
-        <div className="flex h-screen flex-col justify-between">
+        <div className="flex h-screen flex-col justify-between font-sans">
           <header className="sticky top-0 z-50">
             <AdminNavbar />
           </header>
