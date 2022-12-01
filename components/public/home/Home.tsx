@@ -14,6 +14,8 @@ import Image from "next/image";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import ArrowRight from "../../icons/ArrowRight";
+import CarouselRightArrow from "./CarouselRightArrow";
+import CarouselLeftArrow from "./CarouselLeftArrow";
 
 const options = [{ label: "1" }, { label: "2" }, { label: "3" }];
 
@@ -45,15 +47,25 @@ const LeftArrow = ({
 const Home = () => {
   return (
     <>
-      <Carousel autoPlay={true} showStatus={false} className="relative">
+      <Carousel
+        autoPlay={true}
+        showStatus={false}
+        infiniteLoop={true}
+        renderArrowPrev={(clickHandler) => (
+          <CarouselLeftArrow clickHandler={clickHandler} />
+        )}
+        renderArrowNext={(clickHandler) => (
+          <CarouselRightArrow clickHandler={clickHandler} />
+        )}
+      >
         <div>
-          <Image src={img} alt="kibros-logo" objectFit="cover" />
+          <Image src={img} alt="kibros-logo" layout="responsive" />
         </div>
         <div>
-          <Image src={img} alt="kibros-logo" objectFit="cover" />
+          <Image src={img} alt="kibros-logo" layout="responsive" />
         </div>
         <div>
-          <Image src={img} alt="kibros-logo" objectFit="cover" />
+          <Image src={img} alt="kibros-logo" layout="responsive" />
         </div>
       </Carousel>
       <div className={styles.container}>

@@ -3,12 +3,11 @@ import type { AppProps } from "next/app";
 import { Footer, AdminNavbar, Navbar, PublicFooter } from "../components";
 import { useRouter } from "next/router";
 import { AuthorizationRoutes, customPages, publicRoutes } from "../routes";
-import { QueryClient, QueryClientProvider } from "react-query";
 import { Toaster } from "react-hot-toast";
 import { ThemeProvider } from "@mui/material/styles";
 import { materialUiTheme } from "../constants/MaterialUiTheme";
-
-const queryClient = new QueryClient();
+import { Provider } from "react-redux";
+import { store } from "../redux/store";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -17,10 +16,14 @@ function MyApp({ Component, pageProps }: AppProps) {
     Object.values(AuthorizationRoutes).includes(router.pathname) ||
     Object.values(customPages).includes(router.pathname)
   ) {
-    return <Component {...pageProps} />;
+    return (
+      <Provider store={store}>
+        <Component {...pageProps} />;
+      </Provider>
+    );
   } else if (Object.values(publicRoutes).includes(router.pathname)) {
     return (
-      <QueryClientProvider client={queryClient}>
+      <Provider store={store}>
         <ThemeProvider theme={materialUiTheme}>
           <Navbar />
           <Toaster
@@ -30,12 +33,12 @@ function MyApp({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
           <PublicFooter />
         </ThemeProvider>
-      </QueryClientProvider>
+      </Provider>
     );
   }
 
   return (
-    <QueryClientProvider client={queryClient}>
+    <Provider store={store}>
       <ThemeProvider theme={materialUiTheme}>
         <div className="flex h-screen flex-col justify-between font-sans">
           <header className="sticky top-0 z-50">
@@ -53,7 +56,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           </footer>
         </div>
       </ThemeProvider>
-    </QueryClientProvider>
+    </Provider>
   );
 }
 

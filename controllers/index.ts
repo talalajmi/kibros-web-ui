@@ -1,6 +1,6 @@
 import AuthController from "./AuthController";
 import AccountController from "./AccountController";
-import CategoryController from "./TapController";
+import CategoryController from "./CategoryController";
 import FilesController from "./FilesController";
 import LessonController from "./LessonController";
 import NewsletterController from "./NewsletterController";

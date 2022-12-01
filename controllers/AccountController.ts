@@ -9,6 +9,7 @@ import { getConfigsWithAccessToken } from "../api/index";
 import AddAdminModel from "../models/AddAdminModel";
 import { AuthorizationRoutes } from "../routes/AuthorizationRoutes";
 import { ActivateAccountModel } from "../models";
+import { authEndpoints } from "../api/AuthApi";
 
 export default class AccountController {
   private readonly accessToken: string;
@@ -34,7 +35,8 @@ export default class AccountController {
     } catch (error: any) {
       if (isResponseModel(error?.response?.data)) {
         if (error.response.data.result === 401) {
-          return error.response.data;
+          this.router.push(AuthorizationRoutes.logout);
+          return;
         } else {
           toast.error(error.response.data.message);
         }
@@ -62,7 +64,7 @@ export default class AccountController {
     } catch (error: any) {
       if (isResponseModel(error?.response?.data)) {
         if (error.response.data.result === 401) {
-          this.router.push(AuthorizationRoutes.login);
+          this.router.push(AuthorizationRoutes.logout);
         } else {
           toast.error(error.response.data.message);
         }
@@ -89,7 +91,7 @@ export default class AccountController {
     } catch (error: any) {
       if (isResponseModel(error?.response?.data)) {
         if (error.response.data.result === 401) {
-          this.router.push(AuthorizationRoutes.login);
+          this.router.push(AuthorizationRoutes.logout);
         } else {
           toast.error(error.response.data.message);
         }
@@ -120,7 +122,7 @@ export default class AccountController {
     } catch (error: any) {
       if (isResponseModel(error?.response?.data)) {
         if (error.response.data.result === 401) {
-          this.router.push(AuthorizationRoutes.login);
+          this.router.push(AuthorizationRoutes.logout);
         } else {
           toast.error(error.response.data.message);
         }

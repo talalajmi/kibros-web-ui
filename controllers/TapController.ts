@@ -73,7 +73,7 @@ export default class TapController {
     } catch (error: any) {
       if (isResponseModel(error?.response?.data)) {
         if (error.response.data.result === 401) {
-          this.router.push(AuthorizationRoutes.login);
+          this.router.push(AuthorizationRoutes.logout);
         } else {
           toast.error(error.response.data.message);
         }
@@ -101,7 +101,7 @@ export default class TapController {
     } catch (error: any) {
       if (isResponseModel(error?.response?.data)) {
         if (error.response.data.result === 401) {
-          this.router.push(AuthorizationRoutes.login);
+          this.router.push(AuthorizationRoutes.logout);
         } else {
           toast.error(error.response.data.message);
         }
@@ -131,7 +131,7 @@ export default class TapController {
     } catch (error: any) {
       if (isResponseModel(error?.response?.data)) {
         if (error.response.data.result === 401) {
-          this.router.push(AuthorizationRoutes.login);
+          this.router.push(AuthorizationRoutes.logout);
         } else {
           toast.error(error.response.data.message);
         }
@@ -161,7 +161,7 @@ export default class TapController {
     } catch (error: any) {
       if (isResponseModel(error?.response?.data)) {
         if (error.response.data.result === 401) {
-          this.router.push(AuthorizationRoutes.login);
+          this.router.push(AuthorizationRoutes.logout);
         } else {
           toast.error(error.response.data.message);
         }
@@ -188,7 +188,7 @@ export default class TapController {
     } catch (error: any) {
       if (isResponseModel(error?.response?.data)) {
         if (error.response.data.result === 401) {
-          this.router.push(AuthorizationRoutes.login);
+          this.router.push(AuthorizationRoutes.logout);
         } else {
           toast.error(error.response.data.message);
         }
@@ -243,7 +243,7 @@ export default class TapController {
     } catch (error: any) {
       if (isResponseModel(error?.response?.data)) {
         if (error.response.data.result === 401) {
-          this.router.push(AuthorizationRoutes.login);
+          this.router.push(AuthorizationRoutes.logout);
         } else {
           toast.error(error.response.data.message);
         }
@@ -270,7 +270,7 @@ export default class TapController {
     } catch (error: any) {
       if (isResponseModel(error?.response?.data)) {
         if (error.response.data.result === 401) {
-          this.router.push(AuthorizationRoutes.login);
+          this.router.push(AuthorizationRoutes.logout);
         } else {
           toast.error(error.response.data.message);
         }

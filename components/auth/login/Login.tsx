@@ -10,13 +10,13 @@ import { iconColor } from "../../../utils/colors";
 
 // Hooks
 import { useRouter } from "next/router";
+import { useUser } from "../../../utils/hooks";
 
 // Constants
 import { AuthorizationRoutes } from "../../../routes";
 import { logo } from "../../../constants";
 import { AuthController } from "../../../controllers";
 import { LoginModel } from "../../../models";
-import { useQuery } from "react-query";
 import { hashPassword } from "../../../helpers";
 
 // Third Party Imports
@@ -26,6 +26,9 @@ import { motivationalQuotes } from "../../../constants/MotivationalQuotes";
 import { ErrorMessage, Field, Form, Formik, useFormik } from "formik";
 import { loginSchema } from "../../../schemas/loginSchema";
 import { FormInputs, initialValues } from "../../../helpers/loginHelper";
+import { IUser } from "../../../interfaces";
+import AccountController from "../../../controllers/AccountController";
+import jwtDecode from "jwt-decode";
 
 export default function Login() {
   // States
@@ -35,6 +38,7 @@ export default function Login() {
 
   // Hooks
   const router = useRouter();
+  const { setAccessToken, setUser } = useUser();
 
   const showPassword = () => {
     setIsPasswordShown((current) => !current);
@@ -50,6 +54,20 @@ export default function Login() {
       setIsLoading(false);
       return;
     }
+
+    const accessTokenDecoded: { nameid: string; role: string } =
+      jwtDecode(accessToken);
+    const user: IUser = await new AccountController(
+      accessToken,
+      router
+    ).getAccount(accessTokenDecoded.nameid);
+
+    if (!user) {
+      setIsLoading(false);
+      return;
+    }
+    setUser(user);
+    setAccessToken(accessToken);
     setIsLoading(false);
     router.push(AdminRoutes.staffsPage);
   };

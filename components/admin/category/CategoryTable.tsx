@@ -1,14 +1,47 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ArrowLeft } from "../../icons";
 import ArrowRight from "../../icons/ArrowRight";
 import styles from "./CategoryTable.module.css";
 import { iconColor } from "../../../utils/colors";
 import TrashIcon from "../../icons/TrashIcon";
 import EditIcon from "../../icons/EditIcon";
-import CategoryModal from "./CategoryModal";
+import AddCategoryModal from "./AddCategoryModal";
+import { CategoryController } from "../../../controllers";
+import { useRouter } from "next/router";
+import { ICategory } from "../../../interfaces/Category";
+import { useUser } from "../../../utils/hooks";
+import { useCategories } from "../../../utils/hooks/useCategories";
+import EditCategoryModal from "./EditCategoryModal";
 
 const CategoryTable = () => {
   const [showModal, setShowModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const { accessToken } = useUser();
+  const { categories, setCategories } = useCategories();
+  const router = useRouter();
+
+  useEffect(() => {
+    getCategories();
+  }, []);
+
+  const getCategories = async () => {
+    setIsLoading(true);
+    const categories = await new CategoryController(
+      accessToken,
+      router
+    ).getCategories();
+
+    if (!categories) {
+      return;
+    }
+    setCategories([...categories]);
+    setIsLoading(false);
+  };
+
+  if (isLoading) {
+    return <p className="text-center text-white">loading</p>;
+  }
 
   return (
     <>
@@ -27,128 +60,60 @@ const CategoryTable = () => {
               Add Category
             </button>
           </div>
-          <div className={styles.table}>
-            <div className={styles.tableHeader}>
-              <div className={styles.tableHeaderCell}>
-                <div className="w-[400px]">
-                  <p>#</p>
-                </div>
-                <div className={styles.seperator}></div>
-              </div>
-              <div className={styles.tableHeaderCell}>
-                <p>Name</p>
-                <div className={styles.seperator}></div>
-              </div>
-              <div className={styles.tableHeaderCell}>
-                <p>Actions</p>
-                <div className={styles.seperator}></div>
-              </div>
-            </div>
-            <div className={styles.tableRow}>
-              <div className={styles.tableCell}>1</div>
-              <div className={styles.tableCell}>
-                <p>Lighting</p>
-              </div>
-              <div className={styles.tableCell}>
-                <EditIcon
-                  size="24"
-                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
-                  opacity="0.68"
-                />
-                <TrashIcon
-                  size="24"
-                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
-                  opacity="0.68"
-                />
-              </div>
-            </div>
-            <div className={styles.tableRow}>
-              <div className={styles.tableCell}>2</div>
-              <div className={styles.tableCell}>
-                <p>Screening</p>
-              </div>
-              <div className={styles.tableCell}>
-                <EditIcon
-                  size="24"
-                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
-                  opacity="0.68"
-                />
-                <TrashIcon
-                  size="24"
-                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
-                  opacity="0.68"
-                />
-              </div>
-            </div>
-            <div className={styles.tableRow}>
-              <div className={styles.tableCell}>3</div>
-              <div className={styles.tableCell}>
-                <p>Editing</p>
-              </div>
-              <div className={styles.tableCell}>
-                <EditIcon
-                  size="24"
-                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
-                  opacity="0.68"
-                />
-                <TrashIcon
-                  size="24"
-                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
-                  opacity="0.68"
-                />
-              </div>
-            </div>
-            <div className={styles.tableRow}>
-              <div className={styles.tableCell}>5</div>
-              <div className={styles.tableCell}>
-                <p>Motion</p>
-              </div>
-              <div className={styles.tableCell}>
-                <EditIcon
-                  size="24"
-                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
-                  opacity="0.68"
-                />
-                <TrashIcon
-                  size="24"
-                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
-                  opacity="0.68"
-                />
-              </div>
-            </div>
-            <div className={styles.tableRow}>
-              <div className={styles.tableCell}>4</div>
-              <div className={styles.tableCell}>
-                <p>Blur</p>
-              </div>
-              <div className={styles.tableCell}>
-                <EditIcon
-                  size="24"
-                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
-                  opacity="0.68"
-                />
-                <TrashIcon
-                  size="24"
-                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
-                  opacity="0.68"
-                />
-              </div>
-            </div>
-            <div className={styles.cardFooter}>
-              <p>1-5 of 13</p>
-              <div className={styles.footerArrows}>
-                <ArrowLeft size={17} color={iconColor} opacity={0.5} />
-                <ArrowRight size={17} color={iconColor} />
-              </div>
+          <table className={styles.table}>
+            <thead className={styles.tableHeader}>
+              <tr className="flex">
+                <td className={styles.tableHeaderCell}>
+                  <div className="flex w-[400px] justify-self-start">
+                    <p>#</p>
+                  </div>
+                  <div className={styles.seperator}></div>
+                </td>
+                <td className={styles.tableHeaderCell}>
+                  <p>Name</p>
+                  <div className={styles.seperator}></div>
+                </td>
+                <td className={styles.tableHeaderCell}>
+                  <p>Actions</p>
+                  <div className={styles.seperator}></div>
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+              {categories.length !== 0 ? (
+                categories.slice(0, 5).map((category, i) => (
+                  <tr key={i} className="flex">
+                    <td className={styles.tableCell}>{i + 1}</td>
+                    <td className={styles.tableCell}>
+                      <p>{category.categoryName}</p>
+                    </td>
+                    <td className={styles.tableCell}>
+                      <EditCategoryModal category={category} />
+                      <TrashIcon
+                        size="20"
+                        className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
+                        opacity="0.68"
+                      />
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr className="flex justify-center p-20 text-white">
+                  <td>No Categories Found</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+          <div className={styles.cardFooter}>
+            <p>1-5 of 13</p>
+            <div className={styles.footerArrows}>
+              <ArrowLeft size={17} color={iconColor} opacity={0.5} />
+              <ArrowRight size={17} color={iconColor} />
             </div>
           </div>
         </div>
       </div>
-      <CategoryModal
-        title="Add Category"
-        showModal={showModal}
-        setShowModal={setShowModal}
-      />
+      <AddCategoryModal showModal={showModal} setShowModal={setShowModal} />
     </>
   );
 };

@@ -34,12 +34,12 @@
 }
 
 .modal__inputContainer {
-  @apply flex h-72 items-center justify-center;
+  @apply my-20 flex h-72 flex-col items-center justify-center;
 }
 
 .modal__input {
-  @apply h-56 w-480 rounded-8 border border-inputOutline bg-primary-light
-  p-10 text-white opacity-20;
+  @apply h-56 w-480 rounded-8 border border-inputOutline/[0.2] bg-primary-light
+  p-10 text-darkTextSecondary;
 }
 
 .modal__buttonContainer {
@@ -47,9 +47,9 @@
 }
 
 .modal__submitButton {
-  @apply h-44 w-100 rounded-10 bg-secondary-base p-10 text-white;
+  @apply h-44 w-100 rounded-10 bg-secondary-base p-10 text-white transition duration-300 ease-in-out hover:bg-secondary-dark;
 }
 
 .modal__cancelButton {
-  @apply h-44 w-100 rounded-10 border border-inputOutline bg-primary-light p-10 text-white opacity-20;
+  @apply h-44 w-100 rounded-10 border border-inputOutline bg-primary-light p-10 text-white opacity-20 transition duration-300 ease-in-out hover:bg-white/[0.05];
 }

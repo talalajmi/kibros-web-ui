@@ -10,12 +10,12 @@ import AddAdminModal from "./add/AddAdminModal";
 import styles from "./AdminsTable.module.css";
 import AccountController from "../../controllers/AccountController";
 import { useRouter } from "next/router";
-import { IAdmin } from "../../interfaces";
+import { IUser } from "../../interfaces";
 import { UserRoles } from "../../constants/UserRoles";
 
 const AdminsTable = () => {
   const [showModal, setShowModal] = useState(false);
-  const [users, setUsers] = useState<IAdmin[]>([]);
+  const [users, setUsers] = useState<IUser[]>([]);
 
   const router = useRouter();
 
@@ -69,7 +69,7 @@ const AdminsTable = () => {
               </tr>
             </thead>
             <tbody>
-              {users.map((user: IAdmin, index: number) => (
+              {users.map((user: IUser, index: number) => (
                 <tr
                   key={index}
                   className="flex border border-t-0 border-l-0 border-r-0 border-inputOutline/[0.2] py-[15px] px-20 text-darkTextSecondary/[0.68]"

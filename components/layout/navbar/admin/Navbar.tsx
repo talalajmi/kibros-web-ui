@@ -51,7 +51,7 @@ const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   const logout = () => {
-    router.push(AuthorizationRoutes.login);
+    router.push(AuthorizationRoutes.logout);
   };
 
   const routes = getAdminRoutes();

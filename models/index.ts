@@ -2,7 +2,7 @@ import ActivateAccountModel from "./ActivateAccountModel";
 import AddAdminModel from "./AddAdminModel";
 import ActivateLessonModel from "./DectivateLessonModel";
 import CreateCustomerModel from "./CreateCustomerModel";
-import CreateCategorymodel from "./CreateCategoryModel";
+import CreateCategoryModel from "./CreateCategoryModel";
 import CreateLessonModel from "./CreateLessonModel";
 import CreateNewFileModel from "./CreateNewFileModel";
 import CreateSubscriptionModel from "./CreateSubscriptionModel";
@@ -27,7 +27,7 @@ export {
   AddAdminModel,
   ActivateLessonModel,
   CreateCustomerModel,
-  CreateCategorymodel,
+  CreateCategoryModel,
   CreateLessonModel,
   CreateNewFileModel,
   CreateSubscriptionModel,
