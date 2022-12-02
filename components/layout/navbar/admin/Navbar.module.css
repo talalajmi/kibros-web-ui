@@ -1,5 +1,5 @@
 .conatiner {
-  @apply flex flex-col bg-primary-base;
+  @apply sticky top-0 z-50 flex flex-col bg-primary-base;
 }
 
 .content {

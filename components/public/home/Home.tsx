@@ -51,6 +51,7 @@ const Home = () => {
         autoPlay={true}
         showStatus={false}
         infiniteLoop={true}
+        showThumbs={false}
         renderArrowPrev={(clickHandler) => (
           <CarouselLeftArrow clickHandler={clickHandler} />
         )}

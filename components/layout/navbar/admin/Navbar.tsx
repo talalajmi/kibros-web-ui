@@ -58,7 +58,7 @@ const Navbar = () => {
   const router = useRouter();
 
   return (
-    <div className={styles.conatiner}>
+    <header className={styles.conatiner}>
       <div className={styles.content}>
         <div className={styles.logoContainer}>
           <Image
@@ -128,7 +128,7 @@ const Navbar = () => {
           />
         ))}
       </div>
-    </div>
+    </header>
   );
 };
 

@@ -1,16 +1,7 @@
 import React from "react";
+import { ISvg } from "../../interfaces/Svg";
 
-const Eye = ({
-  size,
-  color,
-  className,
-  onClick,
-}: {
-  size: number;
-  color: string;
-  className: string;
-  onClick: any;
-}) => {
+const Eye = ({ size, color, className, onClick }: ISvg) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
