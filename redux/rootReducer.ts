@@ -1,10 +1,11 @@
 // ** Reducers Imports
 import { combineReducers } from "redux";
 
-import { user, category } from "./";
+import { user, users, category } from "./";
 // ** Reducers Imports
 const rootReducer = combineReducers({
   user,
+  users,
   category,
 });
 

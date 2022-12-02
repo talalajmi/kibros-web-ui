@@ -37,6 +37,7 @@ const CategoryModal = ({ showModal, setShowModal }: ModalProps) => {
     const categoriesCopy = [...categories];
     categoriesCopy.unshift(category);
     setCategories([...categoriesCopy]);
+    setShowModal(false);
   };
 
   return (

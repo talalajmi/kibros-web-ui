@@ -21,10 +21,6 @@ const CategoryTable = () => {
   const { categories, setCategories } = useCategories();
   const router = useRouter();
 
-  useEffect(() => {
-    getCategories();
-  }, []);
-
   const getCategories = async () => {
     setIsLoading(true);
     const categories = await new CategoryController(
@@ -38,6 +34,12 @@ const CategoryTable = () => {
     setCategories([...categories]);
     setIsLoading(false);
   };
+
+  useEffect(() => {
+    if (categories.length === 0) {
+      getCategories();
+    }
+  }, []);
 
   if (isLoading) {
     return <p className="text-center text-white">loading</p>;
@@ -89,11 +91,6 @@ const CategoryTable = () => {
                     </td>
                     <td className={styles.tableCell}>
                       <EditCategoryModal category={category} />
-                      <TrashIcon
-                        size="20"
-                        className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
-                        opacity="0.68"
-                      />
                     </td>
                   </tr>
                 ))

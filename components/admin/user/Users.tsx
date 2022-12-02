@@ -15,6 +15,7 @@ import { useRouter } from "next/router";
 import { AccountController } from "../../../controllers";
 import { IUser } from "../../../interfaces";
 import { EditUserModal } from "..";
+import { useUsers } from "../../../utils/hooks";
 
 const options = [
   { label: "Free", value: "Free" },
@@ -22,7 +23,7 @@ const options = [
 ];
 
 const Users = () => {
-  const [users, setUsers] = useState<IUser[]>([]);
+  const { users, setUsers } = useUsers();
   const [showModal, setShowModal] = useState(false);
 
   const router = useRouter();
@@ -42,7 +43,9 @@ const Users = () => {
   };
 
   useEffect(() => {
-    getUsers();
+    if (users.length === 0) {
+      getUsers();
+    }
   }, []);
 
   return (
@@ -103,11 +106,7 @@ const Users = () => {
                     View subscription
                   </td>
                   <td className="flex flex-1 justify-start space-x-10">
-                    <EditUserModal
-                      showModal={showModal}
-                      setShowModal={setShowModal}
-                      user={user}
-                    />
+                    <EditUserModal user={user} />
                     <TrashIcon
                       size="20"
                       className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"

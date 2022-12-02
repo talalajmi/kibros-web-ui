@@ -21,7 +21,6 @@ export const getReactSelectStyles = (color?: string) => {
   const styles = {
     control: (baseStyles: any) => ({
       ...baseStyles,
-      color: color,
       backgroundColor: color ? color : kiBrosDarkBlueColor,
       borderColor: borderColor,
       padding: 6,

@@ -1,5 +1,5 @@
 .modal {
-  @apply fixed top-[10rem] right-[45rem] z-10 shadow-2xl;
+  @apply fixed top-58 left-0 right-0 bottom-0 z-10 flex items-center justify-center;
 }
 
 .modalHidden {
@@ -7,7 +7,7 @@
 }
 
 .modal__card {
-  @apply max-h-screen w-350 space-y-[30px] rounded-10 bg-primary-light p-[40px];
+  @apply max-h-screen w-350 space-y-[30px] rounded-10 bg-primary-light p-[40px] shadow-2xl;
   @apply md:h-[860px] md:w-600;
   @apply lg:h-[860px] lg:w-600;
   @apply xl:h-[860px] xl:w-600;

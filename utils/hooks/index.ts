@@ -1,4 +1,5 @@
 import { useUser } from "./useUser";
 import { useCategories } from "./useCategories";
+import { useUsers } from "./useUsers";
 
-export { useUser, useCategories };
+export { useUser, useUsers, useCategories };

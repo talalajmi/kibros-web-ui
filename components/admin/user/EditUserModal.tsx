@@ -15,8 +15,6 @@ import { IUser } from "../../../interfaces";
 import EditIcon from "../../icons/EditIcon";
 
 interface ModalProps {
-  showModal: boolean;
-  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   user: IUser;
 }
 
@@ -25,8 +23,8 @@ const options = [
   { label: "Admin", value: 3 },
 ];
 
-const EditUserModal = ({ showModal, setShowModal }: ModalProps) => {
-  const [enabled, setEnabled] = useState(false);
+const EditUserModal = ({ user }: ModalProps) => {
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <div>
@@ -60,10 +58,19 @@ const EditUserModal = ({ showModal, setShowModal }: ModalProps) => {
             </div>
             <form className={styles.modal__form}>
               <div className="flex-1">
-                <Input type="text" placeholder="Name" />
+                <Input
+                  type="text"
+                  placeholder="Name"
+                  defaultValue={user.fullName}
+                />
               </div>
               <div className={styles.modal__row}>
-                <Input type="email" placeholder="Email" className="p-10" />
+                <Input
+                  type="email"
+                  placeholder="Email"
+                  className="p-10"
+                  defaultValue={user.email}
+                />
                 <Select
                   options={options}
                   placeholder="Please Select a role"
