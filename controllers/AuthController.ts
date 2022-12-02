@@ -5,7 +5,7 @@ import { authEndpoints, axiosConfigs } from "../api";
 import { isResponseModel } from "../helpers";
 import { IResponseModel } from "../interfaces";
 import { LoginModel, RegisterModel } from "../models";
-import { publicRoutes } from "../routes";
+import { customPages } from "../routes";
 
 export default class AuthController {
   private readonly router: NextRouter;
@@ -40,7 +40,7 @@ export default class AuthController {
         }
         return;
       } else {
-        this.router.push(publicRoutes.error);
+        this.router.push(customPages.error);
         return;
       }
     }
@@ -72,7 +72,7 @@ export default class AuthController {
         }
         return;
       } else {
-        this.router.push(publicRoutes.error);
+        this.router.push(customPages.error);
         return;
       }
     }
