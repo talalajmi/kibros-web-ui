@@ -5,11 +5,11 @@ import React from "react";
 import { avatar } from "../../../constants";
 import AccountController from "../../../controllers/AccountController";
 import {
-  AddAdminFormInputs,
+  UserFormInputs,
   addAdminInitialValues,
 } from "../../../helpers/userHelper";
 import { AddAdminModel } from "../../../models";
-import { addAdminSchema } from "../../../schemas/addAdminSchema";
+import { addAdminSchema } from "../../../schemas/userSchema";
 import { useUser, useUsers } from "../../../utils/hooks";
 import { X } from "../../icons";
 import styles from "./AddAdminModal.module.css";
@@ -24,7 +24,7 @@ const AddAdminModal = ({ showModal, setShowModal }: ModalProps) => {
   const { accessToken } = useUser();
   const { admins, setAdmins } = useUsers();
 
-  const onSubmit = async (admin: AddAdminFormInputs) => {
+  const onSubmit = async (admin: UserFormInputs) => {
     const password = await new AccountController(accessToken, router).addAdmin(
       new AddAdminModel(
         admin.email,

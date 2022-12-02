@@ -21,10 +21,12 @@ import UnsubscribeFromNewsletterModel from "./UnsubscribeFromNewsletterModel";
 import UpdateLessonModel from "./UpdateLessonModel";
 import CreateForgetPasswordModel from "./CreateForgetPasswordModel";
 import ChangePasswordModel from "./ChangePasswordModel";
+import UpdateAccountModel from "./UpdateAccountModel";
 
 export {
   ActivateAccountModel,
   AddAdminModel,
+  UpdateAccountModel,
   ActivateLessonModel,
   CreateCustomerModel,
   CreateCategoryModel,

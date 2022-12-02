@@ -31,8 +31,7 @@
 }
 
 .modal__input {
-  @apply h-56 w-full rounded-8 bg-primary-light p-10 text-white 
-  opacity-20 outline outline-1 outline-inputOutline;
+  @apply w-full rounded-8 border border-inputOutline/[.2] bg-primary-light p-12 text-white;
 }
 
 .modal__form {

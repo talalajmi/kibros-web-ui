@@ -8,7 +8,6 @@ import { customPages } from "../routes";
 import { getConfigsWithAccessToken } from "../api/index";
 import { AuthorizationRoutes } from "../routes/AuthorizationRoutes";
 import {
-  CreateCategorymodel,
   CreateCustomerModel,
   CreateSubscriptionModel,
   GetTokenIdFromSavedCardModel,

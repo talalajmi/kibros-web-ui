@@ -1,5 +1,5 @@
 import {
-  CategoryModal,
+  AddCategoryModal,
   CategoryTable,
   AddAdminModal,
   EditUserModal,
@@ -21,7 +21,7 @@ import { UserSettings } from "./user";
 import InvoiceAr from "./shared/InvoiceAr";
 
 export {
-  CategoryModal,
+  AddCategoryModal,
   CategoryTable,
   AddAdminModal,
   EditUserModal,

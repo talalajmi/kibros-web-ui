@@ -13,6 +13,17 @@ import {
 } from "../../../utils/ReactSelectTheme";
 import { IUser } from "../../../interfaces";
 import EditIcon from "../../icons/EditIcon";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import {
+  editUserInitialValues,
+  UserFormInputs,
+} from "../../../helpers/userHelper";
+import { editUserSchema } from "../../../schemas/userSchema";
+import AccountController from "../../../controllers/AccountController";
+import { useUser } from "../../../utils/hooks/useUser";
+import { useRouter } from "next/router";
+import { UpdateAccountModel } from "../../../models";
+import { useUsers } from "../../../utils/hooks";
 
 interface ModalProps {
   user: IUser;
@@ -25,6 +36,42 @@ const options = [
 
 const EditUserModal = ({ user }: ModalProps) => {
   const [showModal, setShowModal] = useState(false);
+  const [role, setRole] = useState(2);
+
+  const { accessToken } = useUser();
+  const { users, admins, setUsers, setAdmins } = useUsers();
+  const router = useRouter();
+
+  const editUser = async (userFormInputs: UserFormInputs) => {
+    const updatedUser = await new AccountController(
+      accessToken,
+      router
+    ).updateAccount(
+      user.id,
+      new UpdateAccountModel(
+        userFormInputs.email,
+        userFormInputs.firstName,
+        userFormInputs.lastName,
+        userFormInputs.phoneNumber,
+        userFormInputs.country,
+        role
+      )
+    );
+
+    if (!updatedUser) {
+      return;
+    }
+    // Update users State
+    const usersCopy = [...users];
+    const userIndex = usersCopy.indexOf(user);
+    usersCopy.splice(userIndex, 1);
+    setUsers([...usersCopy]);
+
+    // Update Admins State
+    setAdmins([...admins, updatedUser]);
+
+    setShowModal(false);
+  };
 
   return (
     <div>
@@ -56,54 +103,78 @@ const EditUserModal = ({ user }: ModalProps) => {
                 objectFit="contain"
               />
             </div>
-            <form className={styles.modal__form}>
-              <div className="flex-1">
-                <Input
-                  type="text"
-                  placeholder="Name"
-                  defaultValue={user.fullName}
-                />
-              </div>
-              <div className={styles.modal__row}>
-                <Input
+            <Formik
+              initialValues={editUserInitialValues(user)}
+              onSubmit={editUser}
+              validationSchema={editUserSchema}
+            >
+              <Form className={styles.modal__form}>
+                <div className="flex flex-1 flex-row space-x-20">
+                  <Field
+                    name="firstName"
+                    type="text"
+                    placeholder="Name"
+                    className={styles.modal__input}
+                  />
+                  <ErrorMessage name="firstName" />
+
+                  <Field
+                    name="lastName"
+                    type="text"
+                    placeholder="Name"
+                    className={styles.modal__input}
+                  />
+                  <ErrorMessage name="lastName" />
+                </div>
+                <Field
+                  name="email"
                   type="email"
                   placeholder="Email"
-                  className="p-10"
-                  defaultValue={user.email}
+                  className={styles.modal__input}
                 />
+                <ErrorMessage name="email" />
                 <Select
                   options={options}
+                  defaultValue={options[0]}
+                  onChange={(e) => setRole(e!.value)}
+                  className="w-full"
                   placeholder="Please Select a role"
                   styles={getReactSelectStyles(kiBrosLightBlueColor)}
                   theme={reactSelectTheme}
                 />
-              </div>
-              <div className={styles.modal__row}>
-                <div className="flex flex-row items-center">
-                  <Switch defaultChecked color="secondary" disabled />
-                  <p className="text-darkTextSecondary/[0.68]">
-                    Email Activated
-                  </p>
+                <div className={styles.modal__row}>
+                  <div className="flex flex-row items-center">
+                    <Switch defaultChecked color="secondary" disabled />
+                    <p className="text-darkTextSecondary/[0.68]">
+                      Email Activated
+                    </p>
+                  </div>
+                  <div className="flex flex-row items-center">
+                    <Switch defaultChecked color="secondary" />
+                    <p className="text-darkTextSecondary/[0.68]">Suspend</p>
+                  </div>
                 </div>
-                <div className="flex flex-row items-center">
-                  <Switch defaultChecked color="secondary" />
-                  <p className="text-darkTextSecondary/[0.68]">Suspend</p>
+                <div className={styles.modal__row}>
+                  <div className="flex justify-end">
+                    <button
+                      className={styles.modal__submitButton}
+                      type="submit"
+                    >
+                      Submit
+                    </button>
+                  </div>
+                  <div className="flex justify-start">
+                    <button
+                      className={styles.modal__cancelButton}
+                      onClick={() => setShowModal((current) => !current)}
+                      type="button"
+                    >
+                      Cancel
+                    </button>
+                  </div>
                 </div>
-              </div>
-              <div className={styles.modal__row}>
-                <div className="flex justify-end">
-                  <button className={styles.modal__submitButton}>Submit</button>
-                </div>
-                <div className="flex justify-start">
-                  <button
-                    className={styles.modal__cancelButton}
-                    onClick={() => setShowModal((current) => !current)}
-                  >
-                    Cancel
-                  </button>
-                </div>
-              </div>
-            </form>
+              </Form>
+            </Formik>
           </div>
         </div>
       </div>

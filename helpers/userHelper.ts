@@ -1,4 +1,6 @@
-interface AddAdminFormInputs {
+import { IUser } from "../interfaces";
+
+interface UserFormInputs {
   firstName: string;
   lastName: string;
   email: string;
@@ -6,7 +8,7 @@ interface AddAdminFormInputs {
   country: string;
 }
 
-const addAdminInitialValues: AddAdminFormInputs = {
+const addAdminInitialValues: UserFormInputs = {
   firstName: "",
   lastName: "",
   email: "",
@@ -14,4 +16,15 @@ const addAdminInitialValues: AddAdminFormInputs = {
   country: "",
 };
 
-export { type AddAdminFormInputs, addAdminInitialValues };
+const editUserInitialValues = (user: IUser) => {
+  const initialValues: UserFormInputs = {
+    firstName: user.firstname,
+    lastName: user.lastname,
+    email: user.email,
+    phoneNumber: user.phoneNumber,
+    country: user.country,
+  };
+  return initialValues;
+};
+
+export { type UserFormInputs, addAdminInitialValues, editUserInitialValues };

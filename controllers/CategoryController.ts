@@ -7,7 +7,7 @@ import { IResponseModel } from "../interfaces";
 import { customPages } from "../routes";
 import { getConfigsWithAccessToken } from "../api/index";
 import { AuthorizationRoutes } from "../routes/AuthorizationRoutes";
-import { CreateCategorymodel } from "../models";
+import { CreateCategoryModel } from "../models";
 import EditCategoryModel from "../models/EditCategoryModel";
 
 export default class CategoryController {
@@ -46,7 +46,7 @@ export default class CategoryController {
     }
   };
 
-  addCategory = async (createCategoryModel: CreateCategorymodel) => {
+  addCategory = async (createCategoryModel: CreateCategoryModel) => {
     try {
       const {
         data: { body, result },

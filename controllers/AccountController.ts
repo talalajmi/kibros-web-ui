@@ -8,7 +8,7 @@ import { customPages } from "../routes";
 import { getConfigsWithAccessToken } from "../api/index";
 import AddAdminModel from "../models/AddAdminModel";
 import { AuthorizationRoutes } from "../routes/AuthorizationRoutes";
-import { ActivateAccountModel } from "../models";
+import { ActivateAccountModel, UpdateAccountModel } from "../models";
 import { authEndpoints } from "../api/AuthApi";
 
 export default class AccountController {
@@ -82,6 +82,37 @@ export default class AccountController {
         data: { body, result },
       }: AxiosResponse<IResponseModel> = await axios.get(
         accountEndpoints.getAccount(accountId),
+        getConfigsWithAccessToken(this.accessToken)
+      );
+
+      if (result === 200) {
+        return body;
+      }
+    } catch (error: any) {
+      if (isResponseModel(error?.response?.data)) {
+        if (error.response.data.result === 401) {
+          this.router.push(AuthorizationRoutes.logout);
+        } else {
+          toast.error(error.response.data.message);
+        }
+        return;
+      } else {
+        this.router.push(customPages.error);
+        return;
+      }
+    }
+  };
+
+  updateAccount = async (
+    accountId: string,
+    updateAccountModel: UpdateAccountModel
+  ) => {
+    try {
+      const {
+        data: { body, result },
+      }: AxiosResponse<IResponseModel> = await axios.put(
+        accountEndpoints.updateAccount(accountId),
+        updateAccountModel,
         getConfigsWithAccessToken(this.accessToken)
       );
 
