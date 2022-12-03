@@ -26,18 +26,12 @@ const ChangePassword = () => {
   const router = useRouter();
 
   const onSubmit = async ({ password }: FormInput) => {
-    const response = await new PasswordController(router).changePassword(
+    await new PasswordController(router).changePassword(
       new ChangePasswordModel(
         router.query.id as string,
         await hashPassword(password)
       )
     );
-
-    if (!response) {
-      return;
-    }
-
-    console.log(response);
   };
 
   return (
