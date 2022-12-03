@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { NextRouter } from "next/router";
-import toast from "react-hot-toast";
+import { toast } from "react-toastify";
 import { authEndpoints, axiosConfigs } from "../api";
 import { isResponseModel } from "../helpers";
 import { IResponseModel } from "../interfaces";
@@ -15,29 +15,26 @@ export default class AuthController {
   }
 
   login = async (loginModel: LoginModel) => {
+    toast.loading("Logging in...", { toastId: "loading" });
     try {
-      const { data }: AxiosResponse<IResponseModel> = await axios.post(
+      const response: AxiosResponse<IResponseModel> = await axios.post(
         authEndpoints.login,
         loginModel,
         axiosConfigs
       );
-      if (isResponseModel(data)) {
-        if (data.result === 200) {
+
+      if (isResponseModel(response.data)) {
+        if (response.data.result === 200) {
+          toast.dismiss("loading");
           toast.success("Login Successful");
-          localStorage.setItem("at", data.body.accessToken);
-          return data.body.accessToken as string;
-        } else {
-          toast.error(data.message);
-          return;
+          localStorage.setItem("at", response.data.body.accessToken);
+          return response.data.body.accessToken as string;
         }
       }
     } catch (error: any) {
+      toast.dismiss("loading");
       if (isResponseModel(error?.response?.data)) {
-        if (error.response.data.result === 401) {
-          return error.response.data;
-        } else {
-          toast.error(error.response.data.message);
-        }
+        toast.error(error.response.data.message);
         return;
       } else {
         this.router.push(customPages.error);
@@ -47,6 +44,7 @@ export default class AuthController {
   };
 
   register = async (registrationModel: RegisterModel) => {
+    toast.loading("Registering user...", { toastId: "loading" });
     try {
       const { data }: AxiosResponse<IResponseModel> = await axios.post(
         authEndpoints.register,
@@ -56,20 +54,18 @@ export default class AuthController {
 
       if (isResponseModel(data)) {
         if (data.result === 200) {
+          toast.dismiss("loading");
           toast.success("Registration Successful");
           return data.body.accessToken as string;
         } else {
+          toast.dismiss("loading");
           toast.error(data.message);
-          return;
         }
       }
     } catch (error: any) {
+      toast.dismiss("loading");
       if (isResponseModel(error.response.data)) {
-        if (error.response.data.result === 401) {
-          return error.response.data;
-        } else {
-          toast.error(error.response.data.message);
-        }
+        toast.error(error.response.data.message);
         return;
       } else {
         this.router.push(customPages.error);

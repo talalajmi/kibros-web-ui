@@ -12,9 +12,27 @@ import {
 } from "../../icons";
 import styles from "./PublicFooter.module.css";
 import { publicRoutes } from "../../../routes";
+import { Field, Form, Formik } from "formik";
+import { subscribeToNewsletterSchema } from "../../../schemas/SubscribeToNewsletterSchema";
+import { NewsletterController } from "../../../controllers";
+import { SubscribeToNewsletterModel } from "../../../models";
+
+interface FormInput {
+  email: string;
+}
+
+const initialValue: FormInput = {
+  email: "",
+};
 
 const PublicFooter = () => {
   const router = useRouter();
+
+  const subscribeToNewsletter = async ({ email }: FormInput) => {
+    await new NewsletterController(router).subscribeToNewsletter(
+      new SubscribeToNewsletterModel(email)
+    );
+  };
 
   return (
     <footer className="bottom-0 mt-60">
@@ -27,16 +45,26 @@ const PublicFooter = () => {
               النشرة الإخبارية
             </p>
           </div>
-          <div className="flex flex-col-reverse items-end md:flex-row md:items-center md:justify-center md:space-x-20">
-            <button className="flex flex-row items-center space-x-10 rounded-8 bg-secondary-base px-20 py-10 transition duration-[200ms] ease-in-out hover:bg-secondary-dark">
-              <ArrowLeft size={17} color={"#ffffff"} />
-              <span className="text-lg">اشترك الأن</span>
-            </button>
-            <input
-              className="mb-10 rounded-8 p-12 text-right text-primary-base placeholder:text-right md:mb-0"
-              placeholder="بريدك الإكتروني"
-            />
-          </div>
+          <Formik
+            onSubmit={subscribeToNewsletter}
+            initialValues={initialValue}
+            validationSchema={subscribeToNewsletterSchema}
+          >
+            <Form className="flex flex-col-reverse items-end md:flex-row md:items-center md:justify-center md:space-x-20">
+              <button
+                type="submit"
+                className="flex flex-row items-center space-x-10 rounded-8 bg-secondary-base px-20 py-10 transition duration-[200ms] ease-in-out hover:bg-secondary-dark"
+              >
+                <ArrowLeft size={17} color={"#ffffff"} />
+                <span className="text-lg">اشترك الأن</span>
+              </button>
+              <Field
+                name="email"
+                className="mb-10 rounded-8 p-12 text-right text-primary-base placeholder:text-right md:mb-0"
+                placeholder="بريدك الإكتروني"
+              />
+            </Form>
+          </Formik>
         </div>
         <div className="flex flex-col items-end justify-end space-y-20 text-lg font-bold">
           <p>الروابط</p>

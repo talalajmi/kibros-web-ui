@@ -1,6 +1,5 @@
 import axios, { AxiosResponse } from "axios";
 import { NextRouter } from "next/router";
-import toast from "react-hot-toast";
 import { subscriptionEndpoints } from "../api";
 import { isResponseModel } from "../helpers";
 import { IResponseModel } from "../interfaces";
@@ -9,6 +8,7 @@ import { getConfigsWithAccessToken } from "../api/index";
 import { AuthorizationRoutes } from "../routes/AuthorizationRoutes";
 import CreateSubscriptionsModel from "../models/CancelSubscriptionsModel";
 import CancelSubscriptionsModel from "../models/CancelSubscriptionsModel";
+import { toast } from "react-toastify";
 
 export default class SubscriptionController {
   private readonly accessToken: string;
@@ -47,6 +47,7 @@ export default class SubscriptionController {
   };
 
   createSubscription = async (createSubscription: CreateSubscriptionsModel) => {
+    const t = toast.loading("Creating subscription...", { toastId: "loading" });
     try {
       const {
         data: { body, result },
@@ -57,6 +58,11 @@ export default class SubscriptionController {
       );
 
       if (result === 200) {
+        toast.update(t, {
+          render: "Subscribed Successfully",
+          type: "success",
+          isLoading: false,
+        });
         return body;
       }
     } catch (error: any) {
@@ -64,7 +70,11 @@ export default class SubscriptionController {
         if (error.response.data.result === 401) {
           this.router.push(AuthorizationRoutes.logout);
         } else {
-          toast.error(error.response.data.message);
+          toast.update(t, {
+            render: error.response.data.message,
+            type: "error",
+            isLoading: false,
+          });
         }
         return;
       } else {
@@ -77,6 +87,9 @@ export default class SubscriptionController {
   cancelSubscription = async (
     cancelSubscriptionModel: CancelSubscriptionsModel
   ) => {
+    const t = toast.loading("Cancelling subscriptiont...", {
+      toastId: "loading",
+    });
     try {
       const {
         data: { body, result },
@@ -87,6 +100,11 @@ export default class SubscriptionController {
       );
 
       if (result === 200) {
+        toast.update(t, {
+          render: "Subscription Cancelled",
+          type: "success",
+          isLoading: false,
+        });
         return body;
       }
     } catch (error: any) {
@@ -94,7 +112,11 @@ export default class SubscriptionController {
         if (error.response.data.result === 401) {
           this.router.push(AuthorizationRoutes.logout);
         } else {
-          toast.error(error.response.data.message);
+          toast.update(t, {
+            render: error.response.data.message,
+            type: "error",
+            isLoading: false,
+          });
         }
         return;
       } else {

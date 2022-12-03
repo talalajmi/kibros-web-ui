@@ -1,7 +1,5 @@
 import axios, { AxiosResponse } from "axios";
 import { NextRouter } from "next/router";
-import toast from "react-hot-toast";
-import { categoryEndpoints } from "../api";
 import { isResponseModel } from "../helpers";
 import { IResponseModel } from "../interfaces";
 import { customPages } from "../routes";
@@ -13,9 +11,9 @@ import {
   GetTokenIdFromSavedCardModel,
   SaveCardModel,
 } from "../models";
-import EditCategoryModel from "../models/EditCategoryModel";
 import { tapEndpoints } from "../api/TapApi";
 import GetTokenFromSavedCardModel from "../models/GetTokenFromSavedCardModel";
+import { toast } from "react-toastify";
 
 export default class TapController {
   private readonly accessToken: string;

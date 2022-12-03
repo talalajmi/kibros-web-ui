@@ -1,6 +1,5 @@
 import axios, { AxiosResponse } from "axios";
 import { NextRouter } from "next/router";
-import toast from "react-hot-toast";
 import { categoryEndpoints } from "../api";
 import { isResponseModel } from "../helpers";
 import { IResponseModel } from "../interfaces";
@@ -9,6 +8,7 @@ import { getConfigsWithAccessToken } from "../api/index";
 import { AuthorizationRoutes } from "../routes/AuthorizationRoutes";
 import { CreateCategoryModel } from "../models";
 import EditCategoryModel from "../models/EditCategoryModel";
+import { toast } from "react-toastify";
 
 export default class CategoryController {
   private readonly accessToken: string;
@@ -47,6 +47,7 @@ export default class CategoryController {
   };
 
   addCategory = async (createCategoryModel: CreateCategoryModel) => {
+    const t = toast.loading("Adding category...", { toastId: "loading" });
     try {
       const {
         data: { body, result },
@@ -57,6 +58,11 @@ export default class CategoryController {
       );
 
       if (result === 200) {
+        toast.update(t, {
+          render: "Category Added",
+          type: "success",
+          isLoading: false,
+        });
         return body;
       }
     } catch (error: any) {
@@ -64,7 +70,11 @@ export default class CategoryController {
         if (error.response.data.result === 401) {
           this.router.push(AuthorizationRoutes.logout);
         } else {
-          toast.error(error.response.data.message);
+          toast.update(t, {
+            render: error.response.data.message,
+            type: "error",
+            isLoading: false,
+          });
         }
         return;
       } else {
@@ -78,6 +88,7 @@ export default class CategoryController {
     categoryId: string,
     editCategoryModel: EditCategoryModel
   ) => {
+    const t = toast.loading("Editing category...", { toastId: "loading" });
     try {
       const {
         data: { body, result },
@@ -88,6 +99,11 @@ export default class CategoryController {
       );
 
       if (result === 200) {
+        toast.update(t, {
+          render: "Category Edited",
+          type: "success",
+          isLoading: false,
+        });
         return body;
       }
     } catch (error: any) {
@@ -95,7 +111,11 @@ export default class CategoryController {
         if (error.response.data.result === 401) {
           this.router.push(AuthorizationRoutes.logout);
         } else {
-          toast.error(error.response.data.message);
+          toast.update(t, {
+            render: error.response.data.message,
+            type: "error",
+            isLoading: false,
+          });
         }
         return;
       } else {

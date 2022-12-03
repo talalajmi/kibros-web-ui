@@ -1,6 +1,5 @@
 import axios, { AxiosResponse } from "axios";
 import { NextRouter } from "next/router";
-import toast from "react-hot-toast";
 import { accountEndpoints } from "../api";
 import { isResponseModel } from "../helpers";
 import { IResponseModel } from "../interfaces";
@@ -9,7 +8,7 @@ import { getConfigsWithAccessToken } from "../api/index";
 import AddAdminModel from "../models/AddAdminModel";
 import { AuthorizationRoutes } from "../routes/AuthorizationRoutes";
 import { ActivateAccountModel, UpdateAccountModel } from "../models";
-import { authEndpoints } from "../api/AuthApi";
+import { toast } from "react-toastify";
 
 export default class AccountController {
   private readonly accessToken: string;
@@ -49,9 +48,10 @@ export default class AccountController {
   };
 
   addAdmin = async (addAdminModel: AddAdminModel) => {
+    const t = toast.loading("Logging in...", { toastId: "loading" });
     try {
       const {
-        data: { body, result },
+        data: { body, result, message },
       }: AxiosResponse<IResponseModel> = await axios.post(
         accountEndpoints.addAdmin,
         addAdminModel,
@@ -59,6 +59,11 @@ export default class AccountController {
       );
 
       if (result === 200) {
+        toast.update(t, {
+          render: message,
+          type: "success",
+          isLoading: false,
+        });
         return body;
       }
     } catch (error: any) {
@@ -66,7 +71,11 @@ export default class AccountController {
         if (error.response.data.result === 401) {
           this.router.push(AuthorizationRoutes.logout);
         } else {
-          toast.error(error.response.data.message);
+          toast.update(t, {
+            render: error.response.data.message,
+            type: "error",
+            isLoading: false,
+          });
         }
         return;
       } else {
@@ -107,6 +116,9 @@ export default class AccountController {
     accountId: string,
     updateAccountModel: UpdateAccountModel
   ) => {
+    const t = toast.loading("Updating user information...", {
+      toastId: "loading",
+    });
     try {
       const {
         data: { body, result },
@@ -117,6 +129,11 @@ export default class AccountController {
       );
 
       if (result === 200) {
+        toast.update(t, {
+          render: "User updated successfully",
+          type: "success",
+          isLoading: false,
+        });
         return body;
       }
     } catch (error: any) {
@@ -124,7 +141,11 @@ export default class AccountController {
         if (error.response.data.result === 401) {
           this.router.push(AuthorizationRoutes.logout);
         } else {
-          toast.error(error.response.data.message);
+          toast.update(t, {
+            render: error.response.data.message,
+            type: "error",
+            isLoading: false,
+          });
         }
         return;
       } else {
@@ -138,6 +159,7 @@ export default class AccountController {
     accountId: string,
     activateAccountModel: ActivateAccountModel
   ) => {
+    const t = toast.loading("Activating user...", { toastId: "loading" });
     try {
       const {
         data: { body, result },
@@ -148,6 +170,11 @@ export default class AccountController {
       );
 
       if (result === 200) {
+        toast.update(t, {
+          render: "Account activated",
+          type: "success",
+          isLoading: false,
+        });
         return body;
       }
     } catch (error: any) {
@@ -155,7 +182,11 @@ export default class AccountController {
         if (error.response.data.result === 401) {
           this.router.push(AuthorizationRoutes.logout);
         } else {
-          toast.error(error.response.data.message);
+          toast.update(t, {
+            render: error.response.data.message,
+            type: "error",
+            isLoading: false,
+          });
         }
         return;
       } else {

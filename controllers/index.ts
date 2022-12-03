@@ -1,7 +1,6 @@
 import AuthController from "./AuthController";
 import AccountController from "./AccountController";
 import CategoryController from "./CategoryController";
-import FilesController from "./FilesController";
 import LessonController from "./LessonController";
 import NewsletterController from "./NewsletterController";
 import PasswordController from "./PasswordController";
@@ -12,7 +11,6 @@ export {
   AuthController,
   AccountController,
   CategoryController,
-  FilesController,
   LessonController,
   NewsletterController,
   PasswordController,

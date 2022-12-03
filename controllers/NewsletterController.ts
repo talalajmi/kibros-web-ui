@@ -1,23 +1,21 @@
 import axios, { AxiosResponse } from "axios";
 import { NextRouter } from "next/router";
-import toast from "react-hot-toast";
 import { isResponseModel } from "../helpers";
 import { IResponseModel } from "../interfaces";
 import { customPages } from "../routes";
-import { getConfigsWithAccessToken } from "../api/index";
+import { axiosConfigs, getConfigsWithAccessToken } from "../api/index";
 import { AuthorizationRoutes } from "../routes/AuthorizationRoutes";
 import {
   SubscribeToNewsletterModel,
   UnsubscribeFromNewsletterModel,
 } from "../models";
 import { newsletterEndpoints } from "../api/NewsletterApi";
+import { toast } from "react-toastify";
 
 export default class NewsletterController {
-  private readonly accessToken: string;
   private readonly router: NextRouter;
 
-  constructor(accessToken: string, router: NextRouter) {
-    this.accessToken = accessToken;
+  constructor(router: NextRouter) {
     this.router = router;
   }
 
@@ -27,7 +25,7 @@ export default class NewsletterController {
         data: { body, result },
       }: AxiosResponse<IResponseModel> = await axios.get(
         newsletterEndpoints.getEmailList,
-        getConfigsWithAccessToken(this.accessToken)
+        axiosConfigs
       );
 
       if (result === 200) {
@@ -51,24 +49,30 @@ export default class NewsletterController {
   subscribeToNewsletter = async (
     subscribeToNewsletterModel: SubscribeToNewsletterModel
   ) => {
+    toast.loading("Subscribing to newsletter...", {
+      toastId: "loading",
+    });
     try {
       const {
         data: { body, result },
       }: AxiosResponse<IResponseModel> = await axios.post(
         newsletterEndpoints.subscribeToNewsletter,
         subscribeToNewsletterModel,
-        getConfigsWithAccessToken(this.accessToken)
+        axiosConfigs
       );
 
       if (result === 200) {
+        toast.dismiss("loading");
+        toast.success("Subscribed to newsletter");
         return body;
       }
     } catch (error: any) {
+      toast.dismiss("loading");
       if (isResponseModel(error?.response?.data)) {
         if (error.response.data.result === 401) {
           this.router.push(AuthorizationRoutes.logout);
         } else {
-          toast.error(error.response.data.message);
+          toast.update(error.response.data.message);
         }
         return;
       } else {
@@ -87,7 +91,7 @@ export default class NewsletterController {
       }: AxiosResponse<IResponseModel> = await axios.post(
         newsletterEndpoints.unubscribeFromNewsletter,
         unsubscribeFromNewsletterModel,
-        getConfigsWithAccessToken(this.accessToken)
+        axiosConfigs
       );
 
       if (result === 200) {

@@ -1,6 +1,6 @@
 import { baseUrl } from "../constants";
 
 export const passwordEndpoints = {
-  forgetPassword: `${baseUrl}ForgetPassword/create`,
+  createForgetPasswordRequest: `${baseUrl}ForgetPassword/create`,
   changePassword: `${baseUrl}ForgetPassword/change`,
 };

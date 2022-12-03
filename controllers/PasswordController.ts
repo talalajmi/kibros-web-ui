@@ -1,39 +1,40 @@
 import axios, { AxiosResponse } from "axios";
 import { NextRouter } from "next/router";
-import toast from "react-hot-toast";
 import { isResponseModel } from "../helpers";
 import { IResponseModel } from "../interfaces";
 import { customPages } from "../routes";
-import { getConfigsWithAccessToken } from "../api/index";
+import { axiosConfigs } from "../api/index";
 import { AuthorizationRoutes } from "../routes/AuthorizationRoutes";
 import { ChangePasswordModel, CreateForgetPasswordModel } from "../models";
 import { passwordEndpoints } from "../api/PasswordApi";
+import { toast } from "react-toastify";
 
 export default class SubscriptionController {
-  private readonly accessToken: string;
   private readonly router: NextRouter;
 
-  constructor(accessToken: string, router: NextRouter) {
-    this.accessToken = accessToken;
+  constructor(router: NextRouter) {
     this.router = router;
   }
 
   createForgetPasswordRequest = async (
     createForgetPasswordModel: CreateForgetPasswordModel
   ) => {
+    toast.loading("Creating request...", { toastId: "loading" });
     try {
-      const {
-        data: { body, result },
-      }: AxiosResponse<IResponseModel> = await axios.post(
-        passwordEndpoints.forgetPassword,
+      const response: AxiosResponse<IResponseModel> = await axios.post(
+        passwordEndpoints.createForgetPasswordRequest,
         createForgetPasswordModel,
-        getConfigsWithAccessToken(this.accessToken)
+        axiosConfigs
       );
+      console.log(response);
 
-      if (result === 200) {
-        return body;
+      if (response.status === 200) {
+        toast.dismiss("loading");
+        toast.success("Request created, please check your email");
+        return response.data.body;
       }
     } catch (error: any) {
+      toast.dismiss("loading");
       if (isResponseModel(error?.response?.data)) {
         if (error.response.data.result === 401) {
           return error.response.data;
@@ -49,20 +50,23 @@ export default class SubscriptionController {
   };
 
   changePassword = async (changePasswordModel: ChangePasswordModel) => {
+    toast.loading("Changing password...", { toastId: "loading" });
     try {
-      const {
-        data: { body, result },
-      }: AxiosResponse<IResponseModel> = await axios.post(
+      const response: AxiosResponse<IResponseModel> = await axios.post(
         passwordEndpoints.changePassword,
         changePasswordModel,
-        getConfigsWithAccessToken(this.accessToken)
+        axiosConfigs
       );
 
-      if (result === 200) {
-        return body;
+      if (response.status === 200) {
+        toast.dismiss("loading");
+        toast.success("Password Changed");
+        this.router.push(AuthorizationRoutes.login);
+        return;
       }
     } catch (error: any) {
-      if (isResponseModel(error?.response?.data)) {
+      toast.dismiss("loading");
+      if (isResponseModel(error.response.data)) {
         if (error.response.data.result === 401) {
           this.router.push(AuthorizationRoutes.logout);
         } else {

@@ -28,3 +28,7 @@
 .modal__inputs {
   @apply flex flex-row space-x-[20px];
 }
+
+.input {
+  @apply w-full rounded-8 border border-inputOutline/[.2] bg-primary-base p-12 text-white;
+}

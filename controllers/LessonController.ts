@@ -1,17 +1,19 @@
 import { getAllLessonsUrl, getHighlightedLessonsUrl } from "./../api/LessonApi";
 import axios, { AxiosResponse } from "axios";
 import { NextRouter } from "next/router";
-import toast from "react-hot-toast";
-import { categoryEndpoints, lessonEndpoints } from "../api";
+import { lessonEndpoints } from "../api";
 import { isResponseModel } from "../helpers";
 import { IResponseModel } from "../interfaces";
 import { customPages } from "../routes";
 import { getConfigsWithAccessToken } from "../api/index";
 import { AuthorizationRoutes } from "../routes/AuthorizationRoutes";
-import EditCategoryModel from "../models/EditCategoryModel";
-import CreateLessonModel from "../models/CreateLessonModel";
-import UpdateLessonModel from "../models/UpdateLessonModel";
-import { ActivateLessonModel, DeactivateLessonModel } from "../models";
+import {
+  ActivateLessonModel,
+  DeactivateLessonModel,
+  UpdateLessonModel,
+  CreateLessonModel,
+} from "../models";
+import { toast } from "react-toastify";
 
 export default class LessonController {
   private readonly accessToken: string;
@@ -77,6 +79,7 @@ export default class LessonController {
   };
 
   createLesson = async (createLessonModel: CreateLessonModel) => {
+    const t = toast.loading("Creating lesson...", { toastId: "loading" });
     try {
       const {
         data: { body, result },
@@ -87,6 +90,11 @@ export default class LessonController {
       );
 
       if (result === 200) {
+        toast.update(t, {
+          render: "Lesson Added",
+          type: "success",
+          isLoading: false,
+        });
         return body;
       }
     } catch (error: any) {
@@ -94,7 +102,11 @@ export default class LessonController {
         if (error.response.data.result === 401) {
           this.router.push(AuthorizationRoutes.logout);
         } else {
-          toast.error(error.response.data.message);
+          toast.update(t, {
+            render: error.response.data.message,
+            type: "error",
+            isLoading: false,
+          });
         }
         return;
       } else {
@@ -105,6 +117,7 @@ export default class LessonController {
   };
 
   uploadThumbnail = async (lessonId: string) => {
+    const t = toast.loading("Uploading thumbnail...", { toastId: "loading" });
     try {
       const {
         data: { body, result },
@@ -114,6 +127,11 @@ export default class LessonController {
       );
 
       if (result === 200) {
+        toast.update(t, {
+          render: "Thumbnail Uploaded",
+          type: "success",
+          isLoading: false,
+        });
         return body;
       }
     } catch (error: any) {
@@ -121,7 +139,11 @@ export default class LessonController {
         if (error.response.data.result === 401) {
           this.router.push(AuthorizationRoutes.logout);
         } else {
-          toast.error(error.response.data.message);
+          toast.update(t, {
+            render: error.response.data.message,
+            type: "error",
+            isLoading: false,
+          });
         }
         return;
       } else {
@@ -135,6 +157,7 @@ export default class LessonController {
     lessonId: string,
     updateLessonModel: UpdateLessonModel
   ) => {
+    const t = toast.loading("Updating lesson...", { toastId: "loading" });
     try {
       const {
         data: { body, result },
@@ -145,6 +168,11 @@ export default class LessonController {
       );
 
       if (result === 200) {
+        toast.update(t, {
+          render: "Lesson Updated",
+          type: "success",
+          isLoading: false,
+        });
         return body;
       }
     } catch (error: any) {
@@ -152,7 +180,11 @@ export default class LessonController {
         if (error.response.data.result === 401) {
           this.router.push(AuthorizationRoutes.logout);
         } else {
-          toast.error(error.response.data.message);
+          toast.update(t, {
+            render: error.response.data.message,
+            type: "error",
+            isLoading: false,
+          });
         }
         return;
       } else {
@@ -166,6 +198,7 @@ export default class LessonController {
     lessonId: string,
     activateLessonModel: ActivateLessonModel
   ) => {
+    const t = toast.loading("Activating lesson...", { toastId: "loading" });
     try {
       const {
         data: { body, result },
@@ -176,6 +209,11 @@ export default class LessonController {
       );
 
       if (result === 200) {
+        toast.update(t, {
+          render: "Lesson Activated",
+          type: "success",
+          isLoading: false,
+        });
         return body;
       }
     } catch (error: any) {
@@ -183,7 +221,11 @@ export default class LessonController {
         if (error.response.data.result === 401) {
           this.router.push(AuthorizationRoutes.logout);
         } else {
-          toast.error(error.response.data.message);
+          toast.update(t, {
+            render: error.response.data.message,
+            type: "error",
+            isLoading: false,
+          });
         }
         return;
       } else {
@@ -197,6 +239,7 @@ export default class LessonController {
     lessonId: string,
     deactivateLessonModel: DeactivateLessonModel
   ) => {
+    const t = toast.loading("Deactivating lesson...", { toastId: "loading" });
     try {
       const {
         data: { body, result },
@@ -207,6 +250,11 @@ export default class LessonController {
       );
 
       if (result === 200) {
+        toast.update(t, {
+          render: "Lesson Deactivated",
+          type: "success",
+          isLoading: false,
+        });
         return body;
       }
     } catch (error: any) {
@@ -214,7 +262,11 @@ export default class LessonController {
         if (error.response.data.result === 401) {
           this.router.push(AuthorizationRoutes.logout);
         } else {
-          toast.error(error.response.data.message);
+          toast.update(t, {
+            render: error.response.data.message,
+            type: "error",
+            isLoading: false,
+          });
         }
         return;
       } else {
