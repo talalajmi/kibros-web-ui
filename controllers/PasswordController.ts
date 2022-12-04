@@ -26,12 +26,10 @@ export default class SubscriptionController {
         createForgetPasswordModel,
         axiosConfigs
       );
-      console.log(response);
 
       if (response.status === 200) {
         toast.dismiss("loading");
         toast.success("Request created, please check your email");
-        return response.data.body;
       }
     } catch (error: any) {
       toast.dismiss("loading");

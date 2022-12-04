@@ -7,9 +7,15 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode;
 }
 
-const Button = ({ text, className, ...rest }: ButtonProps) => {
+const Button = ({ text, disabled, className, ...rest }: ButtonProps) => {
   return (
-    <button {...rest} className={`${styles.button} ${className}`}>
+    <button
+      {...rest}
+      className={`${
+        disabled ? styles.buttonDisabled : styles.button
+      } ${className}`}
+      disabled={disabled}
+    >
       {text}
     </button>
   );

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 
 // Styles
 import styles from "./forgot-password.module.css";
@@ -30,18 +30,16 @@ interface FormInput {
 const initialValues = { email: "" };
 
 export default function ForgotPassword() {
+  const [isLoading, setIsLoading] = useState(true);
+
   const router = useRouter();
 
   const onSubmit = async ({ email }: FormInput) => {
-    const response = await new PasswordController(
-      router
-    ).createForgetPasswordRequest(new CreateForgetPasswordModel(email));
-
-    if (!response) {
-      return;
-    }
-
-    console.log(response);
+    setIsLoading(true);
+    await new PasswordController(router).createForgetPasswordRequest(
+      new CreateForgetPasswordModel(email)
+    );
+    setIsLoading(false);
   };
 
   return (
@@ -68,22 +66,22 @@ export default function ForgotPassword() {
             onSubmit={onSubmit}
             validationSchema={forgetPasswordSchema}
           >
-            <Form className="flex flex-col items-end space-y-20">
+            <Form className="space-y-10">
               <Field
                 name="email"
                 placeholder="البريد الالكتروني"
-                className="w-full rounded-8 border border-inputOutline/[0.2] bg-primary-light p-12 text-end text-white"
+                component={Input}
+                isRtl={true}
               />
-              <ErrorMessage name="email" />
               <motion.div
                 className="w-full"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.8 }}
+                whileHover={isLoading ? { scale: 1 } : { scale: 1.05 }}
+                whileTap={isLoading ? { scale: 1 } : { scale: 0.8 }}
               >
                 <Button
                   text="ارسال"
-                  className="bg-secondary-base"
                   type="submit"
+                  disabled={isLoading && true}
                 />
               </motion.div>
               <div className="flex w-full items-center justify-center space-x-10">

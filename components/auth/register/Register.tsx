@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { MouseEvent, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 // Styles
 import styles from "./register.module.css";
@@ -7,7 +7,7 @@ import styles from "./register.module.css";
 // Constants
 import { Eye, EyeCrossed } from "../../icons";
 import { logo } from "../../../constants";
-import { iconColor } from "../../../utils/colors";
+import { iconColor, whiteColor } from "../../../utils/colors";
 import { AuthorizationRoutes } from "../../../routes";
 import { RegisterModel } from "../../../models";
 import { AuthController } from "../../../controllers";
@@ -19,41 +19,47 @@ import { useRouter } from "next/router";
 // Third library Imports
 import { motion } from "framer-motion";
 import { motivationalQuotes } from "../../../constants/MotivationalQuotes";
+import { Field, Form, Formik } from "formik";
+import { Button, Input } from "../../form";
+import {
+  registerFormInitialValues,
+  RegisterFormInputs,
+  registerSchema,
+} from "../../../schemas/RegisterSchema";
 
 export default function Register() {
   // States
   const [isPasswordShown, setIsPasswordShown] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [country, setCountry] = useState("");
   const [quote, setQuote] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
 
   // Hooks
   const router = useRouter();
 
-  const onSubmit = async (
-    e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
-  ) => {
-    e.preventDefault();
+  const showPassword = () => {
+    setIsPasswordShown((current) => !current);
+  };
 
+  const onSubmit = async (formInputs: RegisterFormInputs) => {
+    setIsLoading(true);
     const accessToken = await new AuthController(router).register(
       new RegisterModel(
-        email,
-        await hashPassword(password),
-        firstName,
-        lastName,
-        phoneNumber,
-        country
+        formInputs.email,
+        await hashPassword(formInputs.password),
+        formInputs.firstName,
+        formInputs.lastName,
+        formInputs.phoneNumber,
+        formInputs.country
       )
     );
 
     if (!accessToken) {
+      setIsLoading(false);
+
       return;
     }
-
+    setIsLoading(false);
     router.push(AuthorizationRoutes.login);
   };
 
@@ -72,137 +78,119 @@ export default function Register() {
   return (
     <div className={styles.container}>
       <div className={styles.card}>
-        <div className={styles.logo__container}>
-          <Image
-            src={logo}
-            alt="kibros-logo"
-            width={250}
-            height={70}
-            objectFit="cover"
-          />
-        </div>
-        <div className={styles.card__content}>
-          <div className={styles.texts__container}>
-            <div className={styles.primary__textContainer}>
-              <p>🚀 طريقك للنجاح يبدا هنا</p>
-            </div>
-            <div className={styles.primary__textContainer}>
-              <p>{quote}</p>
-            </div>
-            <div className={styles.secondary__textContainer}>
-              <p>انشاء الحساب</p>
-            </div>
+        <div className={styles.content}>
+          <div className={styles.imageContainer}>
+            <Image
+              src={logo}
+              alt="kibros-logo"
+              layout="fill"
+              objectFit="cover"
+            />
           </div>
-          <form className={styles.form__content}>
-            <div className={styles.row}>
-              <div className={styles.row__inputContainer}>
-                <input
-                  className={styles.input}
+          <div className={styles.cardHeader}>
+            <p>🚀 طريقك للنجاح يبدا هنا </p>
+            <p>{quote}</p>
+            <p>انشاء الحساب</p>
+          </div>
+          <Formik
+            initialValues={registerFormInitialValues}
+            validationSchema={registerSchema}
+            onSubmit={onSubmit}
+          >
+            <Form className={styles.form}>
+              <div className={styles.row}>
+                <Field
+                  name="lastName"
+                  component={Input}
                   placeholder="الاسم الاخير"
-                  type="text"
-                  onChange={(e) => setLastName(e.target.value)}
+                  isRtl
                 />
-              </div>
-              <div className={styles.row__inputContainer}>
-                <input
-                  className={styles.input}
+                <Field
+                  name="firstName"
+                  component={Input}
                   placeholder="الأسم"
-                  type="text"
-                  onChange={(e) => setFirstName(e.target.value)}
+                  isRtl
                 />
               </div>
-            </div>
-            <div className={styles.column__inputContainer}>
-              <input
-                className={styles.input}
+              <Field
+                name="email"
+                component={Input}
                 placeholder="البريد الالكتروني"
-                type="email"
-                onChange={(e) => setEmail(e.target.value)}
+                isRtl
               />
-            </div>
-            <div className={styles.row}>
-              <div className={styles.row__inputContainer}>
-                <input
-                  className={styles.input}
+              <div className={styles.row}>
+                <Field
+                  name="phoneNumber"
+                  component={Input}
                   placeholder="الدولة"
-                  type="text"
-                  onChange={(e) => setCountry(e.target.value)}
+                  isRtl
                 />
-              </div>
-              <div className={styles.row__inputContainer}>
-                <input
-                  className={styles.input}
+                <Field
+                  name="country"
+                  component={Input}
                   placeholder="رقم الهاتف"
-                  type="text"
-                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  isRtl
                 />
               </div>
-            </div>
-            <div className={styles.column__inputContainer}>
-              <input
-                className={styles.password__input}
-                placeholder="كلمة المرور"
-                type={`${isPasswordShown ? "text" : "password"}`}
-                onChange={(e) => setPassword(e.target.value)}
+              <div className="relative">
+                {isPasswordShown ? (
+                  <EyeCrossed
+                    size={24}
+                    className={styles.icon}
+                    onClick={() => showPassword()}
+                  />
+                ) : (
+                  <Eye
+                    size={24}
+                    className={styles.icon}
+                    onClick={() => showPassword()}
+                  />
+                )}
+                <Field
+                  name="password"
+                  component={Input}
+                  type={isPasswordShown ? "text" : "password"}
+                  placeholder="كلمة المرور"
+                  isRtl
+                />
+              </div>
+              <div className={`${styles.row} justify-end`}>
+                <p className="text-white">
+                  قبلت ب
+                  <span className="text-secondary-base">الشروط و الأحكام</span>
+                </p>
+                <input
+                  type="checkbox"
+                  onClick={() => setIsCheckboxChecked((current) => !current)}
+                />
+              </div>
+              <Button
+                text="انشاء حساب"
+                disabled={isLoading ? true : !isCheckboxChecked ? true : false}
+                type="submit"
               />
-              {isPasswordShown ? (
-                <EyeCrossed
-                  size={24}
-                  color={iconColor}
-                  className={styles.icon}
-                  onClick={() => setIsPasswordShown((current) => !current)}
-                />
-              ) : (
-                <Eye
-                  size={24}
-                  color={iconColor}
-                  className={styles.icon}
-                  onClick={() => setIsPasswordShown((current) => !current)}
-                />
-              )}
-            </div>
-            <div className={styles.terms__container}>
-              <p>
-                قبلت ب
-                <span className={styles.action__text}>الشروط و الأحكام</span>
-              </p>
-              <input type="checkbox" />
-            </div>
-            <button
-              className={styles.submitButton}
-              onClick={(e) => onSubmit(e)}
-            >
-              انشاء حساب
-            </button>
-          </form>
-          <div className={styles.divider}>
-            <hr style={{ width: "100%", opacity: "0.2" }} />
-            <p className="px-20 text-white">او</p>
-            <hr style={{ width: "100%", opacity: "0.2" }} />
-          </div>
-          <div className={styles.row}>
-            <button className="flex-1 rounded-8 bg-facebook p-10 text-white">
-              Facebook
-            </button>
-            <button className="flex-1 rounded-8 bg-google p-10 text-white">
-              Google
-            </button>
-          </div>
-          <div className={styles.divider}>
-            <hr style={{ width: "100%", opacity: "0.2" }} />
-            <p className="px-20 text-white">او</p>
-            <hr style={{ width: "100%", opacity: "0.2" }} />
-          </div>
-          <p className="text-center text-lg">
-            لديك حساب؟
-            <span
-              className="cursor-pointer text-secondary-base"
-              onClick={() => router.push(AuthorizationRoutes.login)}
-            >
-              {" "}
-              تسجيل الدخول
-            </span>
-          </p>
+              <div className={styles.divider}>
+                <hr style={{ color: whiteColor, width: " 100%" }} />
+                <p className={styles.dividertext}>او</p>
+                <hr style={{ color: whiteColor, width: "100%" }} />
+              </div>
+              <div className={styles.row}>
+                <Button text="facebook" type="button" />
+                <Button text="google" type="button" />
+              </div>
+              <div className={styles.divider}>
+                <hr style={{ color: whiteColor, width: " 100%" }} />
+                <p className={styles.dividertext}>او</p>
+                <hr style={{ color: whiteColor, width: "100%" }} />
+              </div>
+              <div className="text-center">
+                <p className="text-white">
+                  لديك حساب؟
+                  <span className="text-secondary-base">تسجيل الدخول</span>
+                </p>
+              </div>
+            </Form>
+          </Formik>
         </div>
       </div>
     </div>

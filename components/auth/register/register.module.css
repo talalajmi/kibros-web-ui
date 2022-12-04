@@ -1,74 +1,39 @@
 .container {
-  @apply flex h-screen items-center justify-center px-[330px];
-  @apply md:px-[355px] md:py-[32px];
+  @apply grid h-screen items-center justify-center overflow-y-scroll;
 }
 
 .card {
-  @apply flex flex-col items-center justify-center space-y-[15px] rounded-10 bg-primary-light p-29;
-  @apply md:py-58 md:px-28;
+  @apply w-[370px] rounded-8 bg-primary-light py-[60px] px-[30px] md:w-[730px];
 }
 
-.logo__container {
-  @apply flex items-center justify-center;
+.content {
+  @apply flex flex-col items-center space-y-20;
 }
 
-.card__content {
-  @apply space-y-20 text-white;
+.cardHeader {
+  @apply space-y-10 text-center text-white;
 }
 
-.texts__container {
-  @apply space-y-[15px] text-center text-xl;
+.imageContainer {
+  @apply relative h-50 w-[200px] md:h-70 md:w-[240px];
 }
 
-.form__content {
-  @apply flex flex-col space-y-10;
+.form {
+  @apply grid w-full grid-flow-row grid-cols-1 gap-20;
 }
 
 .row {
-  @apply flex flex-row space-x-10;
-}
-
-.row__inputContainer {
-  @apply w-[300px];
-}
-
-.input {
-  @apply w-full rounded-8 border border-inputOutline/[0.2] bg-primary-light
-    p-16 text-right 
-    text-white
-    placeholder:text-right focus:border-secondary-base/[0.2];
-}
-
-.column__inputContainer {
-  @apply relative flex;
-}
-
-.terms__container {
-  @apply flex items-center justify-end space-x-5 py-12 text-lg;
-}
-
-.action__text {
-  @apply text-secondary-base;
-}
-
-.password__input {
-  @apply flex-1 rounded-8 border border-inputOutline/[0.2] bg-primary-light
-  p-16 text-right 
-  text-white
-  placeholder:text-right focus:border-secondary-base/[0.2];
-}
-
-.icon {
-  @apply absolute top-12 left-16 cursor-pointer opacity-50;
-  @apply md:top-16 md:left-16;
-  @apply lg:top-16 lg:left-16;
-  @apply xl:top-16 xl:left-16;
-}
-
-.submitButton {
-  @apply rounded-8 bg-secondary-base p-10 text-lg font-bold text-white;
+  @apply grid grid-flow-col grid-rows-1 items-center gap-10;
 }
 
 .divider {
   @apply flex items-center justify-center;
+}
+
+.dividertext {
+  @apply px-20 text-center text-white;
+}
+
+.icon {
+  @apply absolute top-[13px] left-16 cursor-pointer fill-white opacity-50 transition duration-300 ease-in-out hover:fill-secondary-base;
 }

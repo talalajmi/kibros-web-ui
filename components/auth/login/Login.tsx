@@ -23,12 +23,13 @@ import { hashPassword } from "../../../helpers";
 import { AdminRoutes } from "../../../routes/AdminRoutes";
 import { motion } from "framer-motion";
 import { motivationalQuotes } from "../../../constants/MotivationalQuotes";
-import { ErrorMessage, Field, Form, Formik, useFormik } from "formik";
+import { Field, Form, Formik } from "formik";
 import { loginSchema } from "../../../schemas/loginSchema";
 import { FormInputs, initialValues } from "../../../helpers/loginHelper";
 import { IUser } from "../../../interfaces";
 import AccountController from "../../../controllers/AccountController";
 import jwtDecode from "jwt-decode";
+import { Input } from "../../form";
 
 export default function Login() {
   // States
@@ -103,32 +104,35 @@ export default function Login() {
                   <p>{quote}</p>
                   <p>تسجيل الدخول</p>
                 </div>
-                <div className={styles.email__inputContainer}>
-                  <Field name="email" className={styles.email__input} />
-                  <ErrorMessage name="email" />
-                </div>
-                <div className={styles.password__inputContainer}>
+                <div className="space-y-10">
                   <Field
-                    name="password"
-                    type={`${isPasswordShown ? "text" : "password"}`}
-                    className={styles.password__input}
+                    name="email"
+                    component={Input}
+                    isRtl={true}
+                    placeholder="البريد الالكتروني"
                   />
-                  {isPasswordShown ? (
-                    <EyeCrossed
-                      size={24}
-                      color={iconColor}
-                      className={styles.icon}
-                      onClick={() => showPassword()}
+                  <div className="relative">
+                    <Field
+                      name="password"
+                      component={Input}
+                      isRtl={true}
+                      placeholder="كلمة المرور"
+                      type={`${isPasswordShown ? "text" : "password"}`}
                     />
-                  ) : (
-                    <Eye
-                      size={24}
-                      color={iconColor}
-                      className={styles.icon}
-                      onClick={() => showPassword()}
-                    />
-                  )}
-                  <ErrorMessage name="password" />
+                    {isPasswordShown ? (
+                      <EyeCrossed
+                        size={24}
+                        className={styles.icon}
+                        onClick={() => showPassword()}
+                      />
+                    ) : (
+                      <Eye
+                        size={24}
+                        className={styles.icon}
+                        onClick={() => showPassword()}
+                      />
+                    )}
+                  </div>
                 </div>
                 <div className={styles.forgetPassword__container}>
                   <div className={styles.forgetPassword__content}>
@@ -143,10 +147,16 @@ export default function Login() {
                   </div>
                 </div>
                 <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.8 }}
+                  whileHover={isLoading ? { scale: 1 } : { scale: 1.05 }}
+                  whileTap={isLoading ? { scale: 1 } : { scale: 0.8 }}
                 >
-                  <button className={styles.submit__button} type="submit">
+                  <button
+                    className={
+                      isLoading ? styles.buttonDisabled : styles.button
+                    }
+                    type="submit"
+                    disabled={isLoading && true}
+                  >
                     {isLoading ? "...جاري تسجيل الدخول" : "تسجيل الدخول"}
                   </button>
                 </motion.div>

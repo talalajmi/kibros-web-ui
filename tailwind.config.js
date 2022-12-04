@@ -19,6 +19,7 @@ module.exports = {
         base: "#00d18a",
         dark: "#00A971",
       },
+      error: "#C63629",
       google: "#De5246",
       facebook: "#3b5998",
       lightBlue: "#26C6F9",

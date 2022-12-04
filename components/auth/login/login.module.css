@@ -14,7 +14,7 @@
 }
 
 .card__container {
-  @apply flex w-full flex-col items-center justify-center  text-center;
+  @apply flex w-full flex-col items-center  text-center;
 }
 
 .logo__container {
@@ -45,16 +45,8 @@
   @apply relative mb-20 flex flex-col items-end;
 }
 
-.email__input {
-  @apply w-full rounded-8 border border-inputOutline/[0.2] bg-primary-light px-16 py-16 text-right text-white placeholder:text-right;
-}
-
 .inputError {
   @apply w-full rounded-8 border border-[#b44035] bg-primary-light px-16 py-16 text-right text-white placeholder:text-right;
-}
-
-.password__inputContainer {
-  @apply relative flex flex-col items-end;
 }
 
 .password__input {
@@ -65,10 +57,8 @@
 }
 
 .icon {
-  @apply absolute top-12 left-16 cursor-pointer opacity-50;
-  @apply md:top-16 md:left-16;
-  @apply lg:top-16 lg:left-16;
-  @apply xl:top-16 xl:left-16;
+  @apply absolute top-12 left-16 cursor-pointer fill-white opacity-50 transition duration-300 ease-in-out hover:fill-secondary-base;
+  @apply md:top-14 md:left-16;
 }
 
 .forgetPassword__container {
@@ -82,8 +72,15 @@
   @apply xl:text-base;
 }
 
-.submit__button {
+.button {
   @apply flex h-36 w-full items-center justify-center space-x-20 rounded-8 bg-secondary-base text-lg text-white;
+  @apply md:h-40 md:text-lg;
+  @apply lg:h-40 lg:text-lg;
+  @apply xl:h-40 xl:text-lg;
+}
+
+.buttonDisabled {
+  @apply flex h-36 w-full cursor-default items-center justify-center space-x-20 rounded-8 bg-secondary-dark text-lg text-white;
   @apply md:h-40 md:text-lg;
   @apply lg:h-40 lg:text-lg;
   @apply xl:h-40 xl:text-lg;
