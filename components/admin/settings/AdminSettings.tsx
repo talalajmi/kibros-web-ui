@@ -1,3 +1,4 @@
+import { Field, Form, Formik } from "formik";
 import React, { useState } from "react";
 import { kiBrosOrangeColor, iconColor } from "../../../utils/colors";
 import { Input, Label } from "../../form";
@@ -41,87 +42,89 @@ const AdminSettings = () => {
             <p>SECURITY</p>
           </button>
         </div>
-        <form className={styles.settings__body}>
-          {isSecurityChosen ? (
-            <>
-              <div className={styles.settings__row}>
-                <div className="relative">
-                  <Input type="password" />
-                  <Label text="">Current Password</Label>
+        <Formik initialValues={{}} onSubmit={() => {}}>
+          <Form className={styles.settings__body}>
+            {isSecurityChosen ? (
+              <>
+                <div className={styles.settings__row}>
+                  <div className="relative">
+                    <Field component={Input} type="password" />
+                    <Label text="">Current Password</Label>
+                  </div>
                 </div>
-              </div>
-              <div className={styles.settings__row}>
-                <div className="relative">
-                  <Input type="password" />
-                  <Label text="">New Password</Label>
+                <div className={styles.settings__row}>
+                  <div className="relative">
+                    <Field component={Input} type="password" />
+                    <Label text="">New Password</Label>
+                  </div>
+                  <div className="relative">
+                    <Field component={Input} type="password" />
+                    <Label text="">Confirm Password</Label>
+                  </div>
                 </div>
-                <div className="relative">
-                  <Input type="password" />
-                  <Label text="">Confirm Password</Label>
+                <hr style={{ color: iconColor, opacity: 0.2 }} />
+                <div className={styles.textContainer}>
+                  <p>PASSWORD REQUIREMENTS</p>
+                  <ul>
+                    <li className={styles.bulletPoint}>
+                      Minimum 8 characters long - the more, the better.
+                    </li>
+                    <li className={styles.bulletPoint}>
+                      At least one lowercase character.
+                    </li>
+                    <li className={styles.bulletPoint}>
+                      At least one number, symbol.
+                    </li>
+                  </ul>
                 </div>
-              </div>
-              <hr style={{ color: iconColor, opacity: 0.2 }} />
-              <div className={styles.textContainer}>
-                <p>PASSWORD REQUIREMENTS</p>
-                <ul>
-                  <li className={styles.bulletPoint}>
-                    Minimum 8 characters long - the more, the better.
-                  </li>
-                  <li className={styles.bulletPoint}>
-                    At least one lowercase character.
-                  </li>
-                  <li className={styles.bulletPoint}>
-                    At least one number, symbol.
-                  </li>
-                </ul>
-              </div>
-              <div className={styles.settings__row}>
-                <div className={styles.settings__buttons}>
-                  <button className={styles.settings__submitButton}>
-                    SAVE CHANGES
-                  </button>
-                  <button className={styles.settings__cancelButton}>
-                    CANCEL
-                  </button>
+                <div className={styles.settings__row}>
+                  <div className={styles.settings__buttons}>
+                    <button className={styles.settings__submitButton}>
+                      SAVE CHANGES
+                    </button>
+                    <button className={styles.settings__cancelButton}>
+                      CANCEL
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </>
-          ) : (
-            <>
-              <div className={styles.settings__row}>
-                <div className="relative">
-                  <Input />
-                  <Label text="">First Name</Label>
+              </>
+            ) : (
+              <>
+                <div className={styles.settings__row}>
+                  <div className="relative">
+                    <Field component={Input} />
+                    <Label text="">First Name</Label>
+                  </div>
+                  <div className="relative">
+                    <Field component={Input} />
+                    <Label text="">Last Name</Label>
+                  </div>
                 </div>
-                <div className="relative">
-                  <Input />
-                  <Label text="">Last Name</Label>
+                <div className={styles.settings__row}>
+                  <div className="relative">
+                    <Field component={Input} />
+                    <Label text="">Email</Label>
+                  </div>
+                  <div className="relative">
+                    <Field component={Input} />
+                    <Label text="">Role</Label>
+                  </div>
                 </div>
-              </div>
-              <div className={styles.settings__row}>
-                <div className="relative">
-                  <Input />
-                  <Label text="">Email</Label>
+                <hr style={{ color: iconColor, opacity: 0.2 }} />
+                <div className={styles.settings__row}>
+                  <div className={styles.settings__buttons}>
+                    <button className={styles.settings__submitButton}>
+                      SAVE CHANGES
+                    </button>
+                    <button className={styles.settings__cancelButton}>
+                      CANCEL
+                    </button>
+                  </div>
                 </div>
-                <div className="relative">
-                  <Input />
-                  <Label text="">Role</Label>
-                </div>
-              </div>
-              <hr style={{ color: iconColor, opacity: 0.2 }} />
-              <div className={styles.settings__row}>
-                <div className={styles.settings__buttons}>
-                  <button className={styles.settings__submitButton}>
-                    SAVE CHANGES
-                  </button>
-                  <button className={styles.settings__cancelButton}>
-                    CANCEL
-                  </button>
-                </div>
-              </div>
-            </>
-          )}
-        </form>
+              </>
+            )}
+          </Form>
+        </Formik>
       </div>
     </div>
   );
