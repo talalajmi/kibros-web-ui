@@ -11,6 +11,7 @@ import { store } from "../redux/store";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { customPages } from "../routes/PublicRoutes";
+import "../styles/react-dataTable-component.scss";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();

@@ -1,37 +1,53 @@
 import React, { useEffect, useState } from "react";
-import { ArrowLeft } from "../../icons";
-import ArrowRight from "../../icons/ArrowRight";
 import styles from "./CategoryTable.module.css";
-import { iconColor } from "../../../utils/colors";
-import TrashIcon from "../../icons/TrashIcon";
-import EditIcon from "../../icons/EditIcon";
 import AddCategoryModal from "./AddCategoryModal";
 import { CategoryController } from "../../../controllers";
 import { useRouter } from "next/router";
-import { ICategory } from "../../../interfaces/Category";
 import { useUser } from "../../../utils/hooks";
 import { useCategories } from "../../../utils/hooks/useCategories";
 import EditCategoryModal from "./EditCategoryModal";
+import DataTable, { TableColumn } from "react-data-table-component";
+import { ICategory } from "../../../interfaces/Category";
+import TrashIcon from "../../icons/TrashIcon";
+import ArrowUp from "../../icons/ArrowUp";
+import { toast } from "react-toastify";
+import CustomPagination from "../table/CustomPagination";
 
 const CategoryTable = () => {
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchValue, setSearchValue] = useState("");
+  const [filteredData, setFilteredData] = useState<ICategory[]>([]);
+  const [isGettingCategories, setIsGettingCategories] = useState(false);
+  const [isNextPageDisabled, setIsNextPageDisabled] = useState(false);
 
   const { accessToken } = useUser();
-  const { categories, setCategories } = useCategories();
+  const { categories, pagesCalled, setPagesCalled, setCategories } =
+    useCategories();
   const router = useRouter();
 
   const getCategories = async () => {
     setIsLoading(true);
-    const categories = await new CategoryController(
+
+    const response = await new CategoryController(
       accessToken,
       router
-    ).getCategories();
+    ).getCategories(currentPage, 5);
 
     if (!categories) {
+      setIsLoading(false);
       return;
     }
-    setCategories([...categories]);
+
+    if (categories.length === 0) {
+      setIsLoading(false);
+      setCategories([...response]);
+      return;
+    }
+
+    setCategories([...categories, ...response]);
+    setCurrentPage(currentPage + 1);
     setIsLoading(false);
   };
 
@@ -40,6 +56,103 @@ const CategoryTable = () => {
       getCategories();
     }
   }, []);
+
+  const callNextPage = async (page: number) => {
+    if (pagesCalled.includes(page + 1)) {
+      setCurrentPage(page);
+    } else {
+      setIsGettingCategories(true);
+      const response = await new CategoryController(
+        accessToken,
+        router
+      ).getCategories(page + 1, 5);
+
+      if (!response) {
+        setIsGettingCategories(false);
+        return;
+      }
+
+      if (response.length === 0) {
+        setCurrentPage(page - 1);
+        setIsGettingCategories(false);
+        setIsNextPageDisabled(true);
+        toast.error("No more orders can be found");
+        return;
+      }
+
+      setIsGettingCategories(false);
+      setCategories([...categories, ...response]);
+      setPagesCalled(page + 1);
+      setCurrentPage(page);
+    }
+  };
+
+  const deleteCategory = async (categoryId: string) => {
+    const categoriesCopy = [...categories];
+    const categoryIndex = categoriesCopy.findIndex((c) => c.id === categoryId);
+    const isDeleted = await new CategoryController(
+      accessToken,
+      router
+    ).deleteCategory(categoryId);
+
+    if (!isDeleted) {
+      return;
+    }
+    categoriesCopy.splice(categoryIndex, 1);
+    setCategories([...categoriesCopy]);
+  };
+
+  const handleFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    let updatedData = [];
+    setSearchValue(value);
+
+    if (value.length) {
+      updatedData = categories.filter((category) => {
+        const startsWith = category.categoryName
+          .toLowerCase()
+          .startsWith(value.toLowerCase());
+
+        const includes = category.categoryName
+          .toLowerCase()
+          .includes(value.toLowerCase());
+
+        if (startsWith) {
+          return startsWith;
+        } else if (!startsWith && includes) {
+          return includes;
+        } else return null;
+      });
+      setFilteredData(updatedData);
+      setSearchValue(value);
+    }
+  };
+
+  const columns: TableColumn<ICategory>[] = [
+    {
+      name: "#",
+      cell: (category, index) => index + 1,
+    },
+    {
+      name: "Category Name",
+      sortable: true,
+      selector: (category) => category.categoryName,
+    },
+    {
+      name: "Actions",
+      cell: (category) => (
+        <div className="flex items-center justify-center space-x-10">
+          <EditCategoryModal category={category} />
+          <TrashIcon
+            size={19}
+            className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
+            opacity={0.68}
+            onClick={() => deleteCategory(category.id)}
+          />
+        </div>
+      ),
+    },
+  ];
 
   if (isLoading) {
     return <p className="text-center text-white">loading</p>;
@@ -54,59 +167,35 @@ const CategoryTable = () => {
               className={styles.searchInput}
               type="text"
               placeholder="Search Category"
+              onChange={handleFilter}
             />
             <button
-              className={styles.searchButton}
+              className={styles.addButton}
               onClick={() => setShowModal((current) => !current)}
             >
               Add Category
             </button>
           </div>
-          <table className={styles.table}>
-            <thead className={styles.tableHeader}>
-              <tr className="flex">
-                <td className={styles.tableHeaderCell}>
-                  <div className="flex w-[400px] justify-self-start">
-                    <p>#</p>
-                  </div>
-                  <div className={styles.seperator}></div>
-                </td>
-                <td className={styles.tableHeaderCell}>
-                  <p>Name</p>
-                  <div className={styles.seperator}></div>
-                </td>
-                <td className={styles.tableHeaderCell}>
-                  <p>Actions</p>
-                  <div className={styles.seperator}></div>
-                </td>
-              </tr>
-            </thead>
-            <tbody>
-              {categories.length !== 0 ? (
-                categories.slice(0, 5).map((category, i) => (
-                  <tr key={i} className="flex">
-                    <td className={styles.tableCell}>{i + 1}</td>
-                    <td className={styles.tableCell}>
-                      <p>{category.categoryName}</p>
-                    </td>
-                    <td className={styles.tableCell}>
-                      <EditCategoryModal category={category} />
-                    </td>
-                  </tr>
-                ))
-              ) : (
-                <tr className="flex justify-center p-20 text-white">
-                  <td>No Categories Found</td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-          <div className={styles.cardFooter}>
-            <p>1-5 of 13</p>
-            <div className={styles.footerArrows}>
-              <ArrowLeft size={17} color={iconColor} opacity={0.5} />
-              <ArrowRight size={17} color={iconColor} />
-            </div>
+          <div className="react-dataTable">
+            <DataTable
+              noHeader
+              pagination
+              columns={columns}
+              className="react-dataTable"
+              paginationPerPage={5}
+              sortIcon={
+                <ArrowUp
+                  size={18}
+                  className="fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
+                />
+              }
+              paginationDefaultPage={currentPage}
+              paginationComponent={() =>
+                CustomPagination(currentPage, isNextPageDisabled, callNextPage)
+              }
+              progressComponent={<p className="text-white">loading...</p>}
+              data={searchValue.length ? filteredData : categories}
+            />
           </div>
         </div>
       </div>

@@ -7,7 +7,7 @@
 }
 
 .card {
-  @apply rounded-8 bg-primary-light;
+  @apply w-[380px] rounded-8 bg-primary-light py-5 md:w-[750px] lg:w-[1032px] xl:w-[1132px];
 }
 
 .card__header {
@@ -15,11 +15,11 @@
 }
 
 .searchInput {
-  @apply rounded-8 border border-inputOutline/[0.2] bg-primary-light p-10 text-white placeholder:p-12 focus:border-secondary-base/[0.22] focus:outline-none focus:ring-0;
+  @apply rounded-8 border border-inputOutline/[0.2] bg-primary-light p-10 text-[15px] text-white transition duration-300 ease-in-out placeholder:p-12 focus:border-secondary-base/[0.22] focus:outline-none focus:ring-0;
 }
 
-.searchButton {
-  @apply rounded-8 bg-secondary-base py-10 px-20 text-white;
+.addButton {
+  @apply rounded-8 bg-secondary-base py-10 px-20 text-[15px] text-white transition duration-300 ease-in-out hover:bg-secondary-dark;
 }
 
 .table {

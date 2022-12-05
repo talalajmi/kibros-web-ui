@@ -1,0 +1,126 @@
+.react-dataTable {
+  border-radius: 0;
+  width: 100%;
+
+  .rdt_TableHead {
+    .rdt_TableHeadRow {
+      background-color: #162530;
+      border-color: rgba(234, 2340, 255, 0.12);
+      min-height: 0;
+      height: 54px;
+
+      .rdt_TableCol {
+        padding: 0.72rem 1.5rem;
+        .rdt_TableCol_Sortable {
+          color: rgba(234, 2340, 255, 0.87);
+          font-weight: bold;
+          font-style: 0.857rem;
+          letter-spacing: 0.5px;
+          text-transform: uppercase;
+          &:hover {
+            opacity: 1;
+          }
+          span {
+            margin-left: 0.35rem;
+          }
+        }
+        &:first-child {
+          .form-check {
+            transform: translateX(-10px);
+          }
+        }
+      }
+    }
+  }
+
+  .rdt_TableBody {
+    .rdt_TableRow {
+      background-color: #1b2e3c;
+      color: rgba(231, 227, 252, 0.68);
+      border: 1px solid;
+      border-left: 0;
+      border-right: 0;
+      border-top: 0;
+      border-color: rgba(234, 2340, 255, 0.12);
+      .rdt_TableCell {
+        height: 53px;
+        padding: 0.72rem 1.5rem;
+
+        .column-action {
+          svg {
+            stroke: #ffffff;
+          }
+
+          .dropdown-item:hover {
+            svg {
+              stroke: #ffffff;
+            }
+          }
+
+          .dropdown-item:active {
+            svg {
+              stroke: #ffffff;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .react-paginate {
+    &.separated-pagination {
+      .page-item:first-child .page-link,
+      .page-item:last-child .page-link {
+        border-radius: 50%;
+      }
+    }
+  }
+
+  &.roles-table {
+    .rdt_TableHead .rdt_TableHeadRow .rdt_TableCol:first-child .form-check {
+      transform: translateX(0);
+    }
+    .rdt_TableBody .rdt_TableRow .rdt_TableCell:first-child .form-check {
+      transform: translateX(10px);
+    }
+  }
+}
+
+.permission-header {
+  @media (max-width: 740px) {
+    .add-permission {
+      margin-top: 1rem !important;
+    }
+  }
+}
+
+.rdt_Pagination {
+  background-color: #1b2e3c !important;
+  color: rgba(231, 227, 252, 0.68) !important;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  svg {
+    fill: rgba(231, 227, 252, 0.68);
+  }
+  select {
+    min-width: 30px;
+    &:focus,
+    &:active {
+      outline: 0;
+    }
+  }
+}
+
+.dataTable-filter {
+  max-width: 220px;
+}
+
+.dataTable-select {
+  width: 5rem;
+  &:not([multiple="multiple"]) {
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+    background-position: calc(100% - 12px) 10px, calc(100% - 20px) 12px, 100% 0;
+    background-size: 10px 10px, 10px 10px;
+  }
+}

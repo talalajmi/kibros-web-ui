@@ -1,11 +1,16 @@
 // ** Store Imports
 import { useDispatch, useSelector } from "react-redux";
 import { ICategory } from "../../interfaces";
-import { handleCategories, handleReset } from "../../redux/categorySlice";
+import {
+  handleCategories,
+  handlePagesCalled,
+  handleReset,
+} from "../../redux/categorySlice";
 
 interface CategoryState {
   category: {
     categories: ICategory[];
+    pagesCalled: number[];
   };
 }
 
@@ -15,9 +20,16 @@ export const useCategories = () => {
   const categories = useSelector(
     (state: CategoryState) => state.category.categories
   );
+  const pagesCalled = useSelector(
+    (state: CategoryState) => state.category.pagesCalled
+  );
 
   const setCategories = (categories: ICategory[]) => {
     dispatch(handleCategories(categories));
+  };
+
+  const setPagesCalled = (page: number) => {
+    dispatch(handlePagesCalled(categories));
   };
 
   const resetCategoryState = () => {
@@ -26,7 +38,10 @@ export const useCategories = () => {
 
   return {
     categories,
+    pagesCalled,
+    setPagesCalled,
     setCategories,
+    handlePagesCalled,
     resetCategoryState,
   };
 };

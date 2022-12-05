@@ -1,4 +1,5 @@
 import ArrowLeft from "./ArrowLeft";
+import ArrowRight from "./ArrowRight";
 import Eye from "./Eye";
 import EyeCrossed from "./EyeCrossed";
 import X from "./X";
@@ -18,6 +19,7 @@ import TwitterIcon from "./TwitterIcon";
 
 export {
   ArrowLeft,
+  ArrowRight,
   Eye,
   EyeCrossed,
   X,

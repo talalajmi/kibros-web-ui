@@ -19,12 +19,12 @@ export default class CategoryController {
     this.router = router;
   }
 
-  getCategories = async () => {
+  getCategories = async (page: number, size: number) => {
     try {
       const {
         data: { body, result },
       }: AxiosResponse<IResponseModel> = await axios.get(
-        categoryEndpoints.getCategories,
+        categoryEndpoints.getCategories(page, size),
         getConfigsWithAccessToken(this.accessToken)
       );
 
@@ -116,6 +116,37 @@ export default class CategoryController {
             type: "error",
             isLoading: false,
           });
+        }
+        return;
+      } else {
+        this.router.push(customPages.error);
+        return;
+      }
+    }
+  };
+
+  deleteCategory = async (categoryId: string) => {
+    toast.loading("Deleting category...", { toastId: "loading" });
+    try {
+      const {
+        data: { body, result },
+      }: AxiosResponse<IResponseModel> = await axios.delete(
+        categoryEndpoints.deleteCategory(categoryId),
+        getConfigsWithAccessToken(this.accessToken)
+      );
+
+      if (result === 200) {
+        toast.dismiss("loading");
+        toast.success("Category Deleted");
+        return true;
+      }
+    } catch (error: any) {
+      toast.dismiss("loading");
+      if (isResponseModel(error?.response?.data)) {
+        if (error.response.data.result === 401) {
+          this.router.push(AuthorizationRoutes.logout);
+        } else {
+          toast.error(error.response.data.message);
         }
         return;
       } else {

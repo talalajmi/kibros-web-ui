@@ -186,7 +186,12 @@ export default function Register() {
               <div className="text-center">
                 <p className="text-white">
                   لديك حساب؟
-                  <span className="text-secondary-base">تسجيل الدخول</span>
+                  <span
+                    className="text-secondary-base"
+                    onClick={() => router.push(AuthorizationRoutes.login)}
+                  >
+                    تسجيل الدخول
+                  </span>
                 </p>
               </div>
             </Form>

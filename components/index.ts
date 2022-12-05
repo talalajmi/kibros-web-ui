@@ -7,6 +7,7 @@ import {
   AddLessonModal,
   AdminSettings,
   Users,
+  CustomPagination,
 } from "./admin";
 import { Login, Register, ForgotPassword } from "./auth";
 import {
@@ -29,6 +30,7 @@ export {
   AddLessonModal,
   AdminSettings,
   Users,
+  CustomPagination,
 };
 
 export { UserSettings };

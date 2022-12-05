@@ -48,7 +48,7 @@ const EditCategoryModal = ({ category }: ModalProps) => {
   return (
     <>
       <EditIcon
-        size="20"
+        size="18"
         className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
         opacity="0.68"
         onClick={() => setShowModal((current) => !current)}

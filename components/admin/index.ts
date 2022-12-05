@@ -6,6 +6,7 @@ import AddLessonModal from "./lesson/add/AddLessonModal";
 import AdminSettings from "./settings/AdminSettings";
 import CategoryTable from "./category/CategoryTable";
 import Users from "./user/Users";
+import CustomPagination from "./table/CustomPagination";
 
 export {
   AddCategoryModal,
@@ -16,4 +17,5 @@ export {
   AddLessonModal,
   AdminSettings,
   Users,
+  CustomPagination,
 };
