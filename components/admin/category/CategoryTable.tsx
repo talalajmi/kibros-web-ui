@@ -3,33 +3,33 @@ import styles from "./CategoryTable.module.css";
 import AddCategoryModal from "./AddCategoryModal";
 import { CategoryController } from "../../../controllers";
 import { useRouter } from "next/router";
-import { useUser } from "../../../utils/hooks";
-import { useCategories } from "../../../utils/hooks/useCategories";
+import { useUser, useCategories } from "../../../utils/hooks";
 import EditCategoryModal from "./EditCategoryModal";
 import DataTable, { TableColumn } from "react-data-table-component";
 import { ICategory } from "../../../interfaces/Category";
 import TrashIcon from "../../icons/TrashIcon";
 import ArrowUp from "../../icons/ArrowUp";
 import { toast } from "react-toastify";
-import CustomPagination from "../table/CustomPagination";
+import { ArrowLeft, ArrowRight } from "../../icons";
 
 const CategoryTable = () => {
+  // States
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchValue, setSearchValue] = useState("");
   const [filteredData, setFilteredData] = useState<ICategory[]>([]);
-  const [isGettingCategories, setIsGettingCategories] = useState(false);
   const [isNextPageDisabled, setIsNextPageDisabled] = useState(false);
+  const [isGettingCategories, setIsGettingCategories] = useState(false);
 
+  // Hooks
   const { accessToken } = useUser();
   const { categories, pagesCalled, setPagesCalled, setCategories } =
     useCategories();
   const router = useRouter();
 
-  const getCategories = async () => {
+  const fetchCategories = async () => {
     setIsLoading(true);
-
     const response = await new CategoryController(
       accessToken,
       router
@@ -40,32 +40,27 @@ const CategoryTable = () => {
       return;
     }
 
-    if (categories.length === 0) {
-      setIsLoading(false);
-      setCategories([...response]);
-      return;
-    }
-
-    setCategories([...categories, ...response]);
-    setCurrentPage(currentPage + 1);
+    setPagesCalled(currentPage);
+    setCategories([...response]);
     setIsLoading(false);
   };
 
   useEffect(() => {
     if (categories.length === 0) {
-      getCategories();
+      fetchCategories();
     }
   }, []);
 
   const callNextPage = async (page: number) => {
-    if (pagesCalled.includes(page + 1)) {
-      setCurrentPage(page);
+    const newPage = page + 1;
+    if (pagesCalled.includes(newPage)) {
+      setCurrentPage(newPage);
     } else {
       setIsGettingCategories(true);
       const response = await new CategoryController(
         accessToken,
         router
-      ).getCategories(page + 1, 5);
+      ).getCategories(newPage, 5);
 
       if (!response) {
         setIsGettingCategories(false);
@@ -73,17 +68,17 @@ const CategoryTable = () => {
       }
 
       if (response.length === 0) {
-        setCurrentPage(page - 1);
+        setCurrentPage(newPage - 1);
         setIsGettingCategories(false);
         setIsNextPageDisabled(true);
-        toast.error("No more orders can be found");
+        toast.error("No more categories can be found");
         return;
       }
 
       setIsGettingCategories(false);
       setCategories([...categories, ...response]);
-      setPagesCalled(page + 1);
-      setCurrentPage(page);
+      setPagesCalled(newPage);
+      setCurrentPage(newPage);
     }
   };
 
@@ -158,6 +153,47 @@ const CategoryTable = () => {
     return <p className="text-center text-white">loading</p>;
   }
 
+  const CustomPagination = () => {
+    return (
+      <div className={styles.paginationContainer}>
+        <div className={styles.row}>
+          <button
+            className={
+              currentPage === 1 ? styles.buttonDisabled : styles.button
+            }
+            disabled={currentPage === 1}
+            onClick={() => {
+              setCurrentPage((current) => current - 1);
+              setIsNextPageDisabled(false);
+            }}
+          >
+            <ArrowLeft
+              size={16}
+              className={`${
+                currentPage === 1 ? "fill-white/[0.7]" : "fill-white"
+              }`}
+            />
+          </button>
+          <p className={styles.currentPage}>{currentPage}</p>
+          <button
+            className={
+              isNextPageDisabled ? styles.buttonDisabled : styles.button
+            }
+            disabled={isNextPageDisabled}
+            onClick={() => callNextPage(currentPage)}
+          >
+            <ArrowRight
+              size={16}
+              className={`${
+                isNextPageDisabled ? "fill-white/[0.7]" : "fill-white"
+              } `}
+            />
+          </button>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <>
       <div className={showModal ? styles.blurryContainer : styles.container}>
@@ -190,10 +226,9 @@ const CategoryTable = () => {
                 />
               }
               paginationDefaultPage={currentPage}
-              paginationComponent={() =>
-                CustomPagination(currentPage, isNextPageDisabled, callNextPage)
-              }
-              progressComponent={<p className="text-white">loading...</p>}
+              progressComponent={<p>loading...</p>}
+              paginationComponent={CustomPagination}
+              progressPending={isGettingCategories}
               data={searchValue.length ? filteredData : categories}
             />
           </div>

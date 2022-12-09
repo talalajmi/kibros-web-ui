@@ -19,7 +19,7 @@ export const categorySlice = createSlice({
       state.categories = action.payload;
     },
     handlePagesCalled: (state, action) => {
-      state.pagesCalled = action.payload;
+      state.pagesCalled.push(action.payload);
     },
     handleReset: (state) => {
       state.categories = initialState.categories;

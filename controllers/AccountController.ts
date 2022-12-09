@@ -19,12 +19,12 @@ export default class AccountController {
     this.router = router;
   }
 
-  getAllAccounts = async () => {
+  getAllAccounts = async (page: number, size: number) => {
     try {
       const {
         data: { body, result },
       }: AxiosResponse<IResponseModel> = await axios.get(
-        accountEndpoints.getAllAccounts,
+        accountEndpoints.getAllAccounts(page, size),
         getConfigsWithAccessToken(this.accessToken)
       );
 
@@ -48,7 +48,7 @@ export default class AccountController {
   };
 
   addAdmin = async (addAdminModel: AddAdminModel) => {
-    const t = toast.loading("Logging in...", { toastId: "loading" });
+    toast.loading("Logging in...", { toastId: "loading" });
     try {
       const {
         data: { body, result, message },
@@ -59,23 +59,17 @@ export default class AccountController {
       );
 
       if (result === 200) {
-        toast.update(t, {
-          render: message,
-          type: "success",
-          isLoading: false,
-        });
+        toast.dismiss("loading");
+        toast.success("Admin Added");
         return body;
       }
     } catch (error: any) {
+      toast.dismiss("loading");
       if (isResponseModel(error?.response?.data)) {
         if (error.response.data.result === 401) {
           this.router.push(AuthorizationRoutes.logout);
         } else {
-          toast.update(t, {
-            render: error.response.data.message,
-            type: "error",
-            isLoading: false,
-          });
+          toast.error(error.response.data.message);
         }
         return;
       } else {
@@ -116,9 +110,7 @@ export default class AccountController {
     accountId: string,
     updateAccountModel: UpdateAccountModel
   ) => {
-    const t = toast.loading("Updating user information...", {
-      toastId: "loading",
-    });
+    toast.loading("Logging in...", { toastId: "loading" });
     try {
       const {
         data: { body, result },
@@ -129,23 +121,17 @@ export default class AccountController {
       );
 
       if (result === 200) {
-        toast.update(t, {
-          render: "User updated successfully",
-          type: "success",
-          isLoading: false,
-        });
+        toast.dismiss("loading");
+        toast.success("User updated successfully");
         return body;
       }
     } catch (error: any) {
+      toast.dismiss("loading");
       if (isResponseModel(error?.response?.data)) {
         if (error.response.data.result === 401) {
           this.router.push(AuthorizationRoutes.logout);
         } else {
-          toast.update(t, {
-            render: error.response.data.message,
-            type: "error",
-            isLoading: false,
-          });
+          toast.error(error.response.data.message);
         }
         return;
       } else {
@@ -170,23 +156,17 @@ export default class AccountController {
       );
 
       if (result === 200) {
-        toast.update(t, {
-          render: "Account activated",
-          type: "success",
-          isLoading: false,
-        });
+        toast.dismiss("loading");
+        toast.success("Account activated");
         return body;
       }
     } catch (error: any) {
+      toast.dismiss("loading");
       if (isResponseModel(error?.response?.data)) {
         if (error.response.data.result === 401) {
           this.router.push(AuthorizationRoutes.logout);
         } else {
-          toast.update(t, {
-            render: error.response.data.message,
-            type: "error",
-            isLoading: false,
-          });
+          toast.error(error.response.data.message);
         }
         return;
       } else {

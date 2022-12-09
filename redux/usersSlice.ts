@@ -3,12 +3,16 @@ import { IUser } from "../interfaces";
 
 export interface UsersState {
   users: IUser[];
+  userPagesCalled: number[];
   admins: IUser[];
+  adminPagesCalled: number[];
 }
 
 const initialState: UsersState = {
   users: [],
+  userPagesCalled: [],
   admins: [],
+  adminPagesCalled: [],
 };
 
 export const usersSlice = createSlice({
@@ -17,6 +21,12 @@ export const usersSlice = createSlice({
   reducers: {
     handleUsers: (state, action) => {
       state.users = action.payload;
+    },
+    handleUserPages: (state, action) => {
+      state.userPagesCalled.push(action.payload);
+    },
+    handleAdminPages: (state, action) => {
+      state.adminPagesCalled.push(action.payload);
     },
     handleAdmins: (state, action) => {
       state.admins = action.payload;
@@ -27,6 +37,12 @@ export const usersSlice = createSlice({
   },
 });
 
-export const { handleUsers, handleAdmins, handleReset } = usersSlice.actions;
+export const {
+  handleUsers,
+  handleUserPages,
+  handleAdminPages,
+  handleAdmins,
+  handleReset,
+} = usersSlice.actions;
 
 export default usersSlice.reducer;

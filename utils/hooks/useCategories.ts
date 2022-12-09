@@ -29,7 +29,7 @@ export const useCategories = () => {
   };
 
   const setPagesCalled = (page: number) => {
-    dispatch(handlePagesCalled(categories));
+    dispatch(handlePagesCalled(page));
   };
 
   const resetCategoryState = () => {
@@ -39,9 +39,8 @@ export const useCategories = () => {
   return {
     categories,
     pagesCalled,
-    setPagesCalled,
     setCategories,
-    handlePagesCalled,
+    setPagesCalled,
     resetCategoryState,
   };
 };

@@ -5,7 +5,9 @@ import styles from "./CustomPagination.module.css";
 const CustomPagination = (
   page: number,
   pageDisabled: boolean,
-  callNextPage: (page: number) => Promise<void>
+  callNextPage: (page: number) => Promise<void>,
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>,
+  setIsNextPageDisabled: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
   return (
     <div className={styles.container}>
@@ -13,6 +15,10 @@ const CustomPagination = (
         <button
           className={page === 1 ? styles.buttonDisabled : styles.button}
           disabled={page === 1}
+          onClick={() => {
+            setCurrentPage((current) => current - 1);
+            setIsNextPageDisabled(false);
+          }}
         >
           <ArrowLeft
             size={16}
@@ -21,7 +27,7 @@ const CustomPagination = (
         </button>
         <p className={styles.currentPage}>{page}</p>
         <button
-          className={styles.button}
+          className={pageDisabled ? styles.buttonDisabled : styles.button}
           disabled={pageDisabled}
           onClick={() => callNextPage(page)}
         >

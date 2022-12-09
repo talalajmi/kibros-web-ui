@@ -41,3 +41,23 @@
 .footerArrows {
   @apply flex items-center justify-center space-x-20;
 }
+
+.paginationContainer {
+  @apply flex justify-end p-10;
+}
+
+.row {
+  @apply flex items-center space-x-10;
+}
+
+.button {
+  @apply flex items-center justify-center rounded-100 bg-secondary-base py-[7px] px-[7px] transition duration-300 ease-in-out hover:bg-secondary-dark;
+}
+
+.buttonDisabled {
+  @apply flex items-center justify-center rounded-100 bg-[#844603] py-[7px] px-[7px];
+}
+
+.currentPage {
+  @apply rounded-100 bg-primary-base py-[3px] px-[11px] text-white;
+}

@@ -36,14 +36,14 @@ const options = [
 
 const EditUserModal = ({ user }: ModalProps) => {
   const [showModal, setShowModal] = useState(false);
-  const [role, setRole] = useState(2);
+  const [role, setRole] = useState(user.role);
 
   const { accessToken } = useUser();
   const { users, admins, setUsers, setAdmins } = useUsers();
   const router = useRouter();
 
   const editUser = async (userFormInputs: UserFormInputs) => {
-    const updatedUser = await new AccountController(
+    const updatedUser: IUser = await new AccountController(
       accessToken,
       router
     ).updateAccount(
@@ -61,15 +61,20 @@ const EditUserModal = ({ user }: ModalProps) => {
     if (!updatedUser) {
       return;
     }
+
     // Update users State
     const usersCopy = [...users];
     const userIndex = usersCopy.indexOf(user);
-    usersCopy.splice(userIndex, 1);
+
+    if (updatedUser.role === 0 || updatedUser.role === 1) {
+      usersCopy.splice(userIndex, 1, updatedUser);
+    } else {
+      usersCopy.splice(userIndex, 1);
+    }
     setUsers([...usersCopy]);
 
     // Update Admins State
     setAdmins([...admins, updatedUser]);
-
     setShowModal(false);
   };
 
@@ -135,8 +140,7 @@ const EditUserModal = ({ user }: ModalProps) => {
                 <ErrorMessage name="email" />
                 <Select
                   options={options}
-                  defaultValue={options[0]}
-                  onChange={(e) => setRole(e!.value)}
+                  onChange={(e) => setRole(e ? e.value : user.role)}
                   className="w-full"
                   placeholder="Please Select a role"
                   styles={getReactSelectStyles(kiBrosLightBlueColor)}

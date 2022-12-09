@@ -16,6 +16,7 @@ import { useUser, useUsers } from "../../utils/hooks";
 
 const AdminsTable = () => {
   const [showModal, setShowModal] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const router = useRouter();
   const { admins, setAdmins } = useUsers();
@@ -25,7 +26,7 @@ const AdminsTable = () => {
     const users = await new AccountController(
       accessToken,
       router
-    ).getAllAccounts();
+    ).getAllAccounts(currentPage, 5);
 
     if (!users) {
       return;
