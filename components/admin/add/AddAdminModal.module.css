@@ -1,5 +1,5 @@
 .modal {
-  @apply fixed top-58 left-0 right-0 bottom-0 z-10 flex items-center justify-center;
+  @apply fixed top-58 left-0 right-0 bottom-0 z-50 flex items-center justify-center backdrop-blur-sm;
 }
 
 .modalHidden {
@@ -8,9 +8,9 @@
 
 .modal__card {
   @apply max-h-screen w-350 space-y-[30px] rounded-10 bg-primary-light p-[40px] shadow-2xl;
-  @apply md:h-[860px] md:w-600;
-  @apply lg:h-[860px] lg:w-600;
-  @apply xl:h-[860px] xl:w-600;
+  @apply md:h-[820px] md:w-600;
+  @apply lg:h-[820px] lg:w-600;
+  @apply xl:h-[820px] xl:w-600;
 }
 
 .modal__close {
@@ -31,23 +31,22 @@
 }
 
 .modal__form {
-  @apply grid h-full w-full grid-rows-4 space-y-[30px];
-}
-
-.modal__formRow {
-  @apply flex items-end justify-center space-x-[24px];
+  @apply space-y-[20px];
 }
 
 .modal__input {
   @apply h-56 w-full rounded-8 border border-inputOutline/[0.2] bg-primary-light p-10 text-white;
 }
 
+.addButton {
+  @apply flex space-x-20 rounded-8 bg-secondary-base py-10 px-20 text-white transition duration-300 ease-in-out hover:scale-105 hover:bg-secondary-dark;
+}
 .modal__submitButton {
-  @apply rounded-10 bg-secondary-base py-10 px-[30px] text-white;
+  @apply w-full justify-self-end rounded-10 bg-secondary-base py-10 px-[30px] text-white md:w-1/2;
 }
 
 .modal__cancelButton {
-  @apply rounded-10 bg-primary-light px-[25px] py-10 text-white opacity-20 outline outline-1 outline-inputOutline;
+  @apply w-full justify-self-start rounded-10 bg-primary-light px-[25px] py-10 text-white opacity-20 outline outline-1 outline-inputOutline md:w-1/2;
 }
 
 .modal__note {

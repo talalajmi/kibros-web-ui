@@ -1,5 +1,5 @@
 .modal {
-  @apply fixed top-[16rem] right-0 left-0 z-50 flex items-center justify-center backdrop-blur-sm;
+  @apply fixed top-58 left-0 right-0 bottom-0 z-50 flex items-center justify-center backdrop-blur-sm;
 }
 
 .modalHidden {
@@ -35,7 +35,7 @@
 }
 
 .modal__form {
-  @apply flex flex-col space-y-20 p-10;
+  @apply flex flex-col items-center space-y-20 p-10;
 }
 
 .modal__row {

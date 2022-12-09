@@ -19,12 +19,72 @@ export default class AccountController {
     this.router = router;
   }
 
-  getAllAccounts = async (page: number, size: number) => {
+  getAccounts = async (page: number, size: number) => {
     try {
       const {
         data: { body, result },
       }: AxiosResponse<IResponseModel> = await axios.get(
-        accountEndpoints.getAllAccounts(page, size),
+        accountEndpoints.getAccounts(page, size),
+        getConfigsWithAccessToken(this.accessToken)
+      );
+
+      if (result === 200) {
+        return body;
+      }
+    } catch (error: any) {
+      if (isResponseModel(error?.response?.data)) {
+        if (error.response.data.result === 401) {
+          this.router.push(AuthorizationRoutes.logout);
+          return;
+        } else {
+          toast.error(error.response.data.message);
+        }
+        return;
+      } else {
+        this.router.push(customPages.error);
+        return;
+      }
+    }
+  };
+
+  getAllAccounts = async () => {
+    try {
+      const {
+        data: { body, result },
+      }: AxiosResponse<IResponseModel> = await axios.get(
+        accountEndpoints.getAllAccounts,
+        getConfigsWithAccessToken(this.accessToken)
+      );
+
+      if (result === 200) {
+        return body;
+      }
+    } catch (error: any) {
+      if (isResponseModel(error?.response?.data)) {
+        if (error.response.data.result === 401) {
+          this.router.push(AuthorizationRoutes.logout);
+          return;
+        } else {
+          toast.error(error.response.data.message);
+        }
+        return;
+      } else {
+        this.router.push(customPages.error);
+        return;
+      }
+    }
+  };
+
+  accountSuspenstion = async (
+    accountId: string,
+    updateAccountModel: UpdateAccountModel
+  ) => {
+    try {
+      const {
+        data: { body, result },
+      }: AxiosResponse<IResponseModel> = await axios.put(
+        accountEndpoints.toggleAccountSuspention(accountId),
+        updateAccountModel,
         getConfigsWithAccessToken(this.accessToken)
       );
 
@@ -48,7 +108,7 @@ export default class AccountController {
   };
 
   addAdmin = async (addAdminModel: AddAdminModel) => {
-    toast.loading("Logging in...", { toastId: "loading" });
+    toast.loading("Adding admin...", { toastId: "loading" });
     try {
       const {
         data: { body, result, message },
@@ -110,7 +170,7 @@ export default class AccountController {
     accountId: string,
     updateAccountModel: UpdateAccountModel
   ) => {
-    toast.loading("Logging in...", { toastId: "loading" });
+    toast.loading("Updating user...", { toastId: "loading" });
     try {
       const {
         data: { body, result },

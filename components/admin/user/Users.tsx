@@ -42,7 +42,7 @@ const Users = () => {
     const response = await new AccountController(
       accessToken,
       router
-    ).getAllAccounts(currentPage, 5);
+    ).getAccounts(currentPage, 5);
 
     if (!response) {
       setIsLoading(false);
@@ -119,7 +119,7 @@ const Users = () => {
       const response = await new AccountController(
         accessToken,
         router
-      ).getAllAccounts(newPage, 5);
+      ).getAccounts(newPage, 5);
 
       if (!response) {
         setIsGettingUsers(false);
@@ -211,15 +211,18 @@ const Users = () => {
     link.click();
   };
 
-  // const exportToCSV = async () => {
-  //   const orders = await new AccountController(accessToken, router).getAllOrders(
-  //     business.businessId
-  //   );
-  //   if (!orders) {
-  //     return;
-  //   }
-  //   downloadCsv(orders);
-  // };
+  const exportToCSV = async () => {
+    const response = await new AccountController(
+      accessToken,
+      router
+    ).getAllAccounts();
+
+    if (!response) {
+      return;
+    }
+
+    downloadCsv(response.users);
+  };
 
   const CustomPagination = () => {
     return (
@@ -283,7 +286,7 @@ const Users = () => {
           <div className={styles.header}>
             <button
               className={styles.exportButton}
-              onClick={() => downloadCsv(users)}
+              onClick={() => exportToCSV()}
             >
               <ExportIcon size="24" color={iconColor} opacity="0.68" />
               <span>Export to CSV</span>

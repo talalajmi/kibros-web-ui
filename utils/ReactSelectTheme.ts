@@ -2,6 +2,7 @@ import {
   borderColor,
   kiBrosDarkBlueColor,
   kiBrosOrangeColor,
+  kiBrosLightBlueColor,
   whiteColor,
 } from "./colors";
 
@@ -10,7 +11,7 @@ export const reactSelectTheme = (theme: any) => ({
   borderRadius: 8,
   colors: {
     ...theme.colors,
-    primary25: kiBrosOrangeColor,
+    primary25: kiBrosLightBlueColor,
     primary: kiBrosDarkBlueColor,
     neutral80: whiteColor,
     neutral90: whiteColor,
@@ -19,7 +20,7 @@ export const reactSelectTheme = (theme: any) => ({
 
 export const getReactSelectStyles = (color?: string) => {
   const styles = {
-    control: (baseStyles: any) => ({
+    control: (baseStyles: any, state: any) => ({
       ...baseStyles,
       backgroundColor: color ? color : kiBrosDarkBlueColor,
       borderColor: borderColor,

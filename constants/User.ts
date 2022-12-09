@@ -2,8 +2,9 @@ import { IUser } from "../interfaces";
 import { UserRoles } from "./UserRoles";
 
 let userCsvRows = ["User", "Email", "Role", "Status"];
+let adminCsvRows = ["User", "Email", "Role"];
 
-export const getUserValuesForExport = (user: IUser) => {
+const getUserValuesForExport = (user: IUser) => {
   let values = [
     user.fullName,
     user.email,
@@ -14,4 +15,19 @@ export const getUserValuesForExport = (user: IUser) => {
   return values;
 };
 
-export { userCsvRows };
+const getAdminValuesForExport = (user: IUser) => {
+  let values = [
+    user.fullName,
+    user.email,
+    UserRoles[user.role as keyof typeof UserRoles].title,
+  ];
+
+  return values;
+};
+
+export {
+  userCsvRows,
+  getUserValuesForExport,
+  adminCsvRows,
+  getAdminValuesForExport,
+};

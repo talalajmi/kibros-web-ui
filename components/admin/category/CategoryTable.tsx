@@ -226,9 +226,9 @@ const CategoryTable = () => {
                 />
               }
               paginationDefaultPage={currentPage}
+              progressPending={isGettingCategories}
               progressComponent={<p>loading...</p>}
               paginationComponent={CustomPagination}
-              progressPending={isGettingCategories}
               data={searchValue.length ? filteredData : categories}
             />
           </div>
