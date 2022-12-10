@@ -1,4 +1,3 @@
-import { getAllLessonsUrl, getHighlightedLessonsUrl } from "./../api/LessonApi";
 import axios, { AxiosResponse } from "axios";
 import { NextRouter } from "next/router";
 import { lessonEndpoints } from "../api";
@@ -29,7 +28,7 @@ export default class LessonController {
       const {
         data: { body, result },
       }: AxiosResponse<IResponseModel> = await axios.get(
-        getAllLessonsUrl(page, size, isActivated),
+        lessonEndpoints.getLessons(page, size, isActivated),
         getConfigsWithAccessToken(this.accessToken)
       );
 
@@ -56,7 +55,7 @@ export default class LessonController {
       const {
         data: { body, result },
       }: AxiosResponse<IResponseModel> = await axios.get(
-        getHighlightedLessonsUrl(page, size),
+        lessonEndpoints.getHighlightedLessons(page, size),
         getConfigsWithAccessToken(this.accessToken)
       );
 

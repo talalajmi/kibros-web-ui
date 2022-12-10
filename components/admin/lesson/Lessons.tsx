@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { iconColor } from "../../../utils/colors";
 import { ArrowLeft } from "../../icons";
 import ArrowRight from "../../icons/ArrowRight";
@@ -8,11 +8,236 @@ import AddLessonModal from "./add/AddLessonModal";
 
 import styles from "./Lessons.module.css";
 import AddFileIcon from "../../icons/AddFileIcon";
-import AddAttachmentModal from "./attachment/AddAttachmentModal";
+import { useUser } from "../../../utils/hooks";
+import { useRouter } from "next/router";
+import { ILesson } from "../../../interfaces";
+import { LessonController } from "../../../controllers";
+import DataTable, { TableColumn } from "react-data-table-component";
+import { toast } from "react-toastify";
+import { useLessons } from "../../../utils/hooks/useLessons";
+import { AdminRoutes } from "../../../routes/AdminRoutes";
 
 const Lessons = () => {
-  const [showAddLessonModal, setShowAddLessonModal] = useState(false);
-  const [showAddAttachmentModal, setShowAddAttachmentModal] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+  const [searchedData, setSearchedData] = useState<ILesson[]>([]);
+  const [isGetiingLessons, setIsGetiingLessons] = useState(false);
+  const [isNextPageDisabled, setIsNextPageDisabled] = useState(false);
+
+  const { accessToken } = useUser();
+  const { lessons, setLessons, pagesCalled, setPagesCalled } = useLessons();
+  const router = useRouter();
+
+  const getUsers = async () => {
+    setIsLoading(true);
+    const response = await new LessonController(accessToken, router).getLessons(
+      currentPage,
+      5,
+      true
+    );
+
+    if (!response) {
+      setIsLoading(false);
+      return;
+    }
+    setIsLoading(false);
+    setPagesCalled(currentPage);
+    setLessons([...response]);
+  };
+
+  useEffect(() => {
+    if (lessons.length === 0) {
+      getUsers();
+    }
+  }, []);
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    let updatedData = [];
+    setSearchValue(value);
+
+    if (value.length) {
+      updatedData = lessons.filter((lesson) => {
+        const startsWith =
+          lesson.title.toLowerCase().startsWith(value.toLowerCase()) ||
+          lesson.description.toLowerCase().startsWith(value.toLowerCase()) ||
+          lesson.isActivated
+            ? "Activated".toLowerCase().startsWith(value.toLowerCase())
+            : "Not Activated".toLowerCase().startsWith(value.toLowerCase()) ||
+              lesson.sortingId.toString() ||
+              lesson.isPaid
+            ? "Paid".toLowerCase().startsWith(value.toLowerCase())
+            : "Free".toLowerCase().startsWith(value.toLowerCase());
+
+        const includes =
+          lesson.title.toLowerCase().includes(value.toLowerCase()) ||
+          lesson.description.toLowerCase().includes(value.toLowerCase()) ||
+          lesson.isActivated
+            ? "Activated".toLowerCase().includes(value.toLowerCase())
+            : "Not Activated".toLowerCase().includes(value.toLowerCase()) ||
+              lesson.sortingId.toString() ||
+              lesson.isPaid
+            ? "Paid".toLowerCase().includes(value.toLowerCase())
+            : "Free".toLowerCase().includes(value.toLowerCase());
+
+        if (startsWith) {
+          return startsWith;
+        } else if (!startsWith && includes) {
+          return includes;
+        } else return null;
+      });
+      setSearchedData(updatedData);
+      setSearchValue(value);
+    }
+  };
+
+  const callNextPage = async (page: number) => {
+    const newPage = page + 1;
+    if (pagesCalled.includes(newPage)) {
+      setCurrentPage(newPage);
+    } else {
+      setIsGetiingLessons(true);
+      const response = await new LessonController(
+        accessToken,
+        router
+      ).getLessons(newPage, 5, true);
+
+      if (!response) {
+        setIsGetiingLessons(false);
+        return;
+      }
+
+      if (response.length === 0) {
+        setCurrentPage(newPage - 1);
+        setIsGetiingLessons(false);
+        setIsNextPageDisabled(true);
+        toast.error("No more lessons can be found");
+        return;
+      }
+
+      setIsGetiingLessons(false);
+      setLessons([...response]);
+      setPagesCalled(newPage);
+      setCurrentPage(newPage);
+    }
+  };
+
+  const columns: TableColumn<ILesson>[] = [
+    {
+      name: "#",
+      cell: (lesson, index) => index + 1,
+    },
+    {
+      name: "Name",
+      sortable: true,
+      selector: (lesson) => lesson.title,
+    },
+    {
+      name: "Description",
+      sortable: true,
+      selector: (lesson) => lesson.description,
+    },
+    {
+      name: "Activated",
+      sortable: true,
+      cell: (lesson) => (
+        <div
+          className={`flex items-center justify-center rounded-100 px-20 py-5 ${
+            lesson.isActivated
+              ? "bg-success-base/[0.2] text-success-base"
+              : "bg-error/[0.2] text-error"
+          } `}
+        >
+          {lesson.isActivated ? "Activated" : "Not Activated"}
+        </div>
+      ),
+    },
+    {
+      name: "Sorting No.",
+      sortable: true,
+      selector: (lesson) => lesson.sortingId,
+    },
+    {
+      name: "Lesson Date",
+      sortable: true,
+      selector: (lesson) => lesson.creationTime,
+    },
+    {
+      name: "Status",
+      sortable: true,
+      cell: (lesson) => (
+        <div
+          className={`flex items-center justify-center rounded-100 px-20 py-5 ${
+            lesson.isPaid
+              ? "bg-success-base/[0.2] text-success-base"
+              : "bg-secondary-base/[0.2] text-secondary-base"
+          } `}
+        >
+          {lesson.isPaid ? "Paid" : "Free"}
+        </div>
+      ),
+    },
+    {
+      name: "Actions",
+      cell: (lesson) => (
+        <div className="flex items-center justify-center space-x-10">
+          <EditIcon
+            size={18}
+            className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
+            onClick={() =>
+              router.push(AdminRoutes.editLessonPage.replace(":id", lesson.id))
+            }
+          />
+          <TrashIcon
+            size={18}
+            className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
+          />
+        </div>
+      ),
+    },
+  ];
+
+  const CustomPagination = () => {
+    return (
+      <div className={styles.paginationContainer}>
+        <div className={styles.row}>
+          <button
+            className={
+              currentPage === 1 ? styles.buttonDisabled : styles.button
+            }
+            disabled={currentPage === 1}
+            onClick={() => {
+              setCurrentPage((current) => current - 1);
+              setIsNextPageDisabled(false);
+            }}
+          >
+            <ArrowLeft
+              size={16}
+              className={`${
+                currentPage === 1 ? "fill-white/[0.7]" : "fill-white"
+              }`}
+            />
+          </button>
+          <p className={styles.currentPage}>{currentPage}</p>
+          <button
+            className={
+              isNextPageDisabled ? styles.buttonDisabled : styles.button
+            }
+            disabled={isNextPageDisabled}
+            onClick={() => callNextPage(currentPage)}
+          >
+            <ArrowRight
+              size={16}
+              className={`${
+                isNextPageDisabled ? "fill-white/[0.7]" : "fill-white"
+              } `}
+            />
+          </button>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className={styles.container}>
@@ -22,200 +247,21 @@ const Lessons = () => {
             <input
               placeholder="Search Lesson"
               className="rounded-8 border border-inputOutline border-opacity-20 bg-primary-light p-10 text-white"
+              onChange={handleSearch}
             />
-            <button
-              className={styles.addButton}
-              onClick={() => setShowAddLessonModal(true)}
-            >
-              Add Lesson
-            </button>
+            <button className={styles.addButton}>Add Lesson</button>
           </div>
         </div>
-        <table className="w-full">
-          <thead>
-            <tr className="flex bg-primary-base uppercase text-darkText">
-              <td className={styles.tableCell}>#</td>
-              <td className={styles.tableCell}>Name</td>
-              <td className={styles.tableCell}>Description</td>
-              <td className={styles.tableCell}>Is Activated</td>
-              <td className={styles.tableCell}>Sorting Number</td>
-              <td className={styles.tableCell}>Lesson Date</td>
-              <td className={styles.tableCell}>Status</td>
-              <td className={styles.tableCell}>Action</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className={styles.tableBodyRow}>
-              <td className={styles.tableCell}>1</td>
-              <td className={`${styles.tableCell}`}>اساسيات التصوير</td>
-              <td dir="rtl" className={`${styles.tableCell} truncate`}>
-                ذيييثييثثييث هكذا يبدا التصوير دعقد
-              </td>
-              <td className={styles.tableCell}>
-                <div className={styles.tablePill}>Activated</div>
-              </td>
-              <td className={styles.tableCell}>2</td>
-              <td className={styles.tableCell}>02/02/2022</td>
-              <td className={styles.tableCell}>02/02/2022</td>
-              <td className={styles.actionsCell}>
-                <AddFileIcon
-                  size="20"
-                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
-                  opacity="0.68"
-                  onClick={() => setShowAddAttachmentModal(true)}
-                />
-                <EditIcon
-                  size="20"
-                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
-                  opacity="0.68"
-                />
-                <TrashIcon
-                  size="20"
-                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
-                  opacity="0.68"
-                />
-                <AddAttachmentModal
-                  showModal={showAddAttachmentModal}
-                  setShowModal={setShowAddAttachmentModal}
-                  lesson={{}}
-                />
-                <AddLessonModal
-                  showModal={showAddLessonModal}
-                  setShowModal={setShowAddLessonModal}
-                />
-              </td>
-            </tr>
-            <tr className={styles.tableBodyRow}>
-              <td className={styles.tableCell}>1</td>
-              <td className={`${styles.tableCell}`}>اساسيات التصوير</td>
-              <td dir="rtl" className={`${styles.tableCell} truncate`}>
-                ذيييثييثثييث هكذا يبدا التصوير دعقد
-              </td>
-              <td className={styles.tableCell}>
-                <div className={styles.tablePill}>Activated</div>
-              </td>
-              <td className={styles.tableCell}>2</td>
-              <td className={styles.tableCell}>02/02/2022</td>
-              <td className={styles.tableCell}>02/02/2022</td>
-              <td className={styles.actionsCell}>
-                <AddFileIcon
-                  size="20"
-                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
-                  opacity="0.68"
-                />
-                <EditIcon
-                  size="20"
-                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
-                  opacity="0.68"
-                />
-                <TrashIcon
-                  size="20"
-                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
-                  opacity="0.68"
-                />
-              </td>
-            </tr>
-            <tr className={styles.tableBodyRow}>
-              <td className={styles.tableCell}>1</td>
-              <td className={`${styles.tableCell}`}>اساسيات التصوير</td>
-              <td dir="rtl" className={`${styles.tableCell} truncate`}>
-                ذيييثييثثييث هكذا يبدا التصوير دعقد
-              </td>
-              <td className={styles.tableCell}>
-                <div className={styles.tablePill}>Activated</div>
-              </td>
-              <td className={styles.tableCell}>2</td>
-              <td className={styles.tableCell}>02/02/2022</td>
-              <td className={styles.tableCell}>02/02/2022</td>
-              <td className={styles.actionsCell}>
-                <AddFileIcon
-                  size="20"
-                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
-                  opacity="0.68"
-                />
-                <EditIcon
-                  size="20"
-                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
-                  opacity="0.68"
-                />
-                <TrashIcon
-                  size="20"
-                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
-                  opacity="0.68"
-                />
-              </td>
-            </tr>
-            <tr className={styles.tableBodyRow}>
-              <td className={styles.tableCell}>1</td>
-              <td className={`${styles.tableCell}`}>اساسيات التصوير</td>
-              <td dir="rtl" className={`${styles.tableCell} truncate`}>
-                ذيييثييثثييث هكذا يبدا التصوير دعقد
-              </td>
-              <td className={styles.tableCell}>
-                <div className={styles.tablePill}>Activated</div>
-              </td>
-              <td className={styles.tableCell}>2</td>
-              <td className={styles.tableCell}>02/02/2022</td>
-              <td className={styles.tableCell}>02/02/2022</td>
-              <td className={styles.actionsCell}>
-                <AddFileIcon
-                  size="20"
-                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
-                  opacity="0.68"
-                />
-                <EditIcon
-                  size="20"
-                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
-                  opacity="0.68"
-                />
-                <TrashIcon
-                  size="20"
-                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
-                  opacity="0.68"
-                />
-              </td>
-            </tr>
-            <tr className={styles.tableBodyRow}>
-              <td className={styles.tableCell}>1</td>
-              <td className={`${styles.tableCell}`}>اساسيات التصوير</td>
-              <td dir="rtl" className={`${styles.tableCell} truncate`}>
-                ذيييثييثثييث هكذا يبدا التصوير دعقد
-              </td>
-              <td className={styles.tableCell}>
-                <div className={styles.tablePill}>Activated</div>
-              </td>
-              <td className={styles.tableCell}>2</td>
-              <td className={styles.tableCell}>02/02/2022</td>
-              <td className={styles.tableCell}>02/02/2022</td>
-              <td className={styles.actionsCell}>
-                <AddFileIcon
-                  size="20"
-                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
-                  opacity="0.68"
-                />
-                <EditIcon
-                  size="20"
-                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
-                  opacity="0.68"
-                />
-                <TrashIcon
-                  size="20"
-                  className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
-                  opacity="0.68"
-                />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <div className={styles.cardFooter}>
-          <p>1-5 of 13</p>
-          <div className={styles.footerArrows}>
-            <ArrowLeft size={17} color={iconColor} opacity={0.5} />
-            <ArrowRight
-              size={17}
-              className="cursor-pointer fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
-            />
-          </div>
+        <div className="react-dataTable">
+          <DataTable
+            noHeader
+            pagination
+            data={lessons}
+            columns={columns}
+            paginationComponent={CustomPagination}
+            paginationPerPage={5}
+            className="react-dataTable"
+          />
         </div>
       </div>
     </div>

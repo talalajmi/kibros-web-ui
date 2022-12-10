@@ -5,6 +5,8 @@ export const AdminRoutes = {
   categoriesPage: "/admin/categories",
   usersPage: "/admin/users",
   staffsPage: "/admin/staff",
+  editLessonPage: "admin/lesson/:id",
+  addLessonPage: "admin/lesson/:id",
 };
 
 export type AdminRoute = {

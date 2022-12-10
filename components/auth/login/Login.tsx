@@ -48,7 +48,7 @@ export default function Login() {
   const onSubmit = async ({ email, password }: FormInputs) => {
     setIsLoading(true);
     const accessToken = await new AuthController(router).login(
-      new LoginModel(email, password)
+      new LoginModel(email, await hashPassword(password))
     );
 
     if (!accessToken) {

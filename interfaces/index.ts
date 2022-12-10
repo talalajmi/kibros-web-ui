@@ -6,3 +6,4 @@ export { type ITerm } from "./Terms";
 export { type IResponseModel } from "./ResponseModel";
 export { type IUser } from "./User";
 export { type ICategory } from "./Category";
+export { type ILesson } from "./Lesson";
