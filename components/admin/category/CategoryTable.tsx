@@ -3,7 +3,7 @@ import styles from "./CategoryTable.module.css";
 import AddCategoryModal from "./AddCategoryModal";
 import { CategoryController } from "../../../controllers";
 import { useRouter } from "next/router";
-import { useUser, useCategories } from "../../../utils/hooks";
+import { useCategories, useAuth } from "../../../utils/hooks";
 import EditCategoryModal from "./EditCategoryModal";
 import DataTable, { TableColumn } from "react-data-table-component";
 import { ICategory } from "../../../interfaces/Category";
@@ -21,14 +21,22 @@ const CategoryTable = () => {
   const [filteredData, setFilteredData] = useState<ICategory[]>([]);
   const [isNextPageDisabled, setIsNextPageDisabled] = useState(false);
   const [isGettingCategories, setIsGettingCategories] = useState(false);
+  const [pages, setPages] = useState([1]);
 
   // Hooks
-  const { accessToken } = useUser();
-  const { categories, pagesCalled, setPagesCalled, setCategories } =
-    useCategories();
+  const { accessToken } = useAuth();
+  const {
+    categories,
+    pagesCount,
+    pagesCalled,
+    setPagesCalled,
+    setPagesCount,
+    setCategories,
+  } = useCategories();
   const router = useRouter();
 
   const fetchCategories = async () => {
+    console.log(accessToken);
     setIsLoading(true);
     const response = await new CategoryController(
       accessToken,
@@ -41,10 +49,16 @@ const CategoryTable = () => {
     }
 
     setPagesCalled(currentPage);
-    setCategories([...response]);
+    setCategories([...response.data]);
+
+    let p = [];
+    for (let index = 1; index <= response.pageCount; index++) {
+      p.push(index);
+    }
+    setPages([...p]);
+
     setIsLoading(false);
   };
-
   useEffect(() => {
     if (categories.length === 0) {
       fetchCategories();
@@ -76,7 +90,7 @@ const CategoryTable = () => {
       }
 
       setIsGettingCategories(false);
-      setCategories([...categories, ...response]);
+      setCategories([...categories, ...response.data]);
       setPagesCalled(newPage);
       setCurrentPage(newPage);
     }
@@ -174,7 +188,13 @@ const CategoryTable = () => {
               }`}
             />
           </button>
-          <p className={styles.currentPage}>{currentPage}</p>
+          <div className="flex -space-x-[8px]">
+            {pages.map((index: number) => (
+              <p key={index} className={styles.currentPage}>
+                {index}
+              </p>
+            ))}
+          </div>
           <button
             className={
               isNextPageDisabled ? styles.buttonDisabled : styles.button

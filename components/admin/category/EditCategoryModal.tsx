@@ -14,16 +14,22 @@ import { useRouter } from "next/router";
 import { useCategories, useUser } from "../../../utils/hooks";
 import { EditCategoryModel } from "../../../models";
 import EditIcon from "../../icons/EditIcon";
+import { Input } from "../../form";
+import { useAuth } from "../../../utils/hooks/useAuth";
 
 interface ModalProps {
   category: ICategory;
 }
 
 const EditCategoryModal = ({ category }: ModalProps) => {
+  const editCategoryInitialValue = {
+    categoryName: category.categoryName,
+  };
+
   const [showModal, setShowModal] = useState(false);
 
   const router = useRouter();
-  const { accessToken } = useUser();
+  const { accessToken } = useAuth();
   const { categories, setCategories } = useCategories();
 
   const editCategory = async ({ categoryName }: CategoryFormInputs) => {
@@ -74,36 +80,31 @@ const EditCategoryModal = ({ category }: ModalProps) => {
             />
           </div>
           <Formik
-            initialValues={categoryInitialValues}
+            initialValues={editCategoryInitialValue}
             onSubmit={editCategory}
             validationSchema={categorySchema}
           >
-            {({ handleChange }) => (
-              <Form>
-                <div className={styles.modal__inputContainer}>
-                  <input
-                    name="categoryName"
-                    placeholder="Category Name"
-                    className={styles.modal__input}
-                    defaultValue={category.categoryName}
-                    onChange={handleChange}
-                  />
-                  <ErrorMessage name="categoryName" />
-                </div>
-                <div className={styles.modal__buttonContainer}>
-                  <button className={styles.modal__submitButton} type="submit">
-                    Submit
-                  </button>
-                  <button
-                    type="button"
-                    className={styles.modal__cancelButton}
-                    onClick={() => setShowModal((current) => !current)}
-                  >
-                    Cancel
-                  </button>
-                </div>
-              </Form>
-            )}
+            <Form className="space-y-20">
+              <div className={styles.modal__inputContainer}>
+                <Field
+                  name="categoryName"
+                  placeholder="Category Name"
+                  component={Input}
+                />
+              </div>
+              <div className={styles.modal__buttonContainer}>
+                <button className={styles.modal__submitButton} type="submit">
+                  Submit
+                </button>
+                <button
+                  type="button"
+                  className={styles.modal__cancelButton}
+                  onClick={() => setShowModal((current) => !current)}
+                >
+                  Cancel
+                </button>
+              </div>
+            </Form>
           </Formik>
         </div>
       </div>

@@ -11,8 +11,9 @@ import {
 import { categorySchema } from "../../../schemas/categorySchema";
 import CategoryController from "../../../controllers/CategoryController";
 import { useRouter } from "next/router";
-import { useCategories, useUser } from "../../../utils/hooks";
+import { useAuth, useCategories, useUser } from "../../../utils/hooks";
 import { CreateCategoryModel } from "../../../models";
+import { Input } from "../../form";
 
 interface ModalProps {
   showModal: boolean;
@@ -21,7 +22,7 @@ interface ModalProps {
 
 const CategoryModal = ({ showModal, setShowModal }: ModalProps) => {
   const router = useRouter();
-  const { accessToken } = useUser();
+  const { accessToken } = useAuth();
   const { categories, setCategories } = useCategories();
 
   const addCategory = async ({ categoryName }: CategoryFormInputs) => {
@@ -62,14 +63,13 @@ const CategoryModal = ({ showModal, setShowModal }: ModalProps) => {
           onSubmit={addCategory}
           validationSchema={categorySchema}
         >
-          <Form>
+          <Form className="space-y-20">
             <div className={styles.modal__inputContainer}>
               <Field
                 name="categoryName"
                 placeholder="Category Name"
-                className={styles.modal__input}
+                component={Input}
               />
-              <ErrorMessage name="categoryName" />
             </div>
             <div className={styles.modal__buttonContainer}>
               <button className={styles.modal__submitButton} type="submit">

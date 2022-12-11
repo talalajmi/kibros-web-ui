@@ -80,7 +80,7 @@
 }
 
 .buttonDisabled {
-  @apply flex h-36 w-full cursor-default items-center justify-center space-x-20 rounded-8 bg-secondary-dark text-lg text-white;
+  @apply flex h-36 w-full cursor-default items-center justify-center space-x-20 rounded-8 bg-[#964E01] text-lg text-white;
   @apply md:h-40 md:text-lg;
   @apply lg:h-40 lg:text-lg;
   @apply xl:h-40 xl:text-lg;

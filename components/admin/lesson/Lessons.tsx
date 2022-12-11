@@ -8,7 +8,7 @@ import AddLessonModal from "./add/AddLessonModal";
 
 import styles from "./Lessons.module.css";
 import AddFileIcon from "../../icons/AddFileIcon";
-import { useUser } from "../../../utils/hooks";
+import { useAuth, useUser } from "../../../utils/hooks";
 import { useRouter } from "next/router";
 import { ILesson } from "../../../interfaces";
 import { LessonController } from "../../../controllers";
@@ -25,7 +25,7 @@ const Lessons = () => {
   const [isGetiingLessons, setIsGetiingLessons] = useState(false);
   const [isNextPageDisabled, setIsNextPageDisabled] = useState(false);
 
-  const { accessToken } = useUser();
+  const { accessToken } = useAuth();
   const { lessons, setLessons, pagesCalled, setPagesCalled } = useLessons();
   const router = useRouter();
 

@@ -23,7 +23,7 @@ import AccountController from "../../../controllers/AccountController";
 import { useUser } from "../../../utils/hooks/useUser";
 import { useRouter } from "next/router";
 import { UpdateAccountModel } from "../../../models";
-import { useUsers } from "../../../utils/hooks";
+import { useAuth, useUsers } from "../../../utils/hooks";
 
 interface ModalProps {
   user: IUser;
@@ -40,7 +40,7 @@ const EditUserModal = ({ user }: ModalProps) => {
   const [showModal, setShowModal] = useState(false);
   const [role, setRole] = useState(user.role);
 
-  const { accessToken } = useUser();
+  const { accessToken } = useAuth();
   const { users, admins, setUsers, setAdmins } = useUsers();
   const router = useRouter();
 

@@ -34,7 +34,7 @@
 }
 
 .modal__inputContainer {
-  @apply my-20 flex h-72 flex-col items-center justify-center;
+  @apply w-full px-58;
 }
 
 .modal__input {

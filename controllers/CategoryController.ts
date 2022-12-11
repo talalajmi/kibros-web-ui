@@ -47,7 +47,7 @@ export default class CategoryController {
   };
 
   addCategory = async (createCategoryModel: CreateCategoryModel) => {
-    const t = toast.loading("Adding category...", { toastId: "loading" });
+    toast.loading("Adding category...", { toastId: "loading" });
     try {
       const {
         data: { body, result },
@@ -58,11 +58,8 @@ export default class CategoryController {
       );
 
       if (result === 200) {
-        toast.update(t, {
-          render: "Category Added",
-          type: "success",
-          isLoading: false,
-        });
+        toast.dismiss("loading");
+        toast.success("Category Added");
         return body;
       }
     } catch (error: any) {
@@ -70,11 +67,7 @@ export default class CategoryController {
         if (error.response.data.result === 401) {
           this.router.push(AuthorizationRoutes.logout);
         } else {
-          toast.update(t, {
-            render: error.response.data.message,
-            type: "error",
-            isLoading: false,
-          });
+          toast.error(error.response.data.message);
         }
         return;
       } else {
@@ -88,7 +81,7 @@ export default class CategoryController {
     categoryId: string,
     editCategoryModel: EditCategoryModel
   ) => {
-    const t = toast.loading("Editing category...", { toastId: "loading" });
+    toast.loading("Editing category...", { toastId: "loading" });
     try {
       const {
         data: { body, result },
@@ -99,11 +92,8 @@ export default class CategoryController {
       );
 
       if (result === 200) {
-        toast.update(t, {
-          render: "Category Edited",
-          type: "success",
-          isLoading: false,
-        });
+        toast.dismiss("loading");
+        toast.success("Category Edited");
         return body;
       }
     } catch (error: any) {
@@ -111,11 +101,7 @@ export default class CategoryController {
         if (error.response.data.result === 401) {
           this.router.push(AuthorizationRoutes.logout);
         } else {
-          toast.update(t, {
-            render: error.response.data.message,
-            type: "error",
-            isLoading: false,
-          });
+          toast.error(error.response.data.message);
         }
         return;
       } else {

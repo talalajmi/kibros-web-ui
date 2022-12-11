@@ -38,12 +38,14 @@ export const registerSchema = yup.object().shape({
     ),
   phoneNumber: yup
     .string()
-    .required("الرجاء رقم الهاتف")
+    .nullable()
+    .transform((v, o) => (o === "" ? null : v))
     .min(6, "رقم الهاتف يجب ان لا يقل عن 6 ارقام")
     .max(8, "رقم الهاتف لا يجب ان لا يتعدى 8 ارقام"),
   country: yup
     .string()
-    .required("الرجاء إدخال الدولة")
+    .nullable()
+    .transform((v, o) => (o === "" ? null : v))
     .max(100, "اسم الدولة لا يجب ان لا يتعدى 100 حرفا"),
   password: yup
     .string()

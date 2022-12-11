@@ -3,7 +3,7 @@
 }
 
 .card {
-  @apply w-[370px] rounded-8 bg-primary-light py-[60px] px-[30px] md:w-[730px];
+  @apply w-[370px] rounded-8  py-[60px] px-[30px] md:w-[730px];
 }
 
 .content {
@@ -19,7 +19,7 @@
 }
 
 .form {
-  @apply grid w-full grid-flow-row grid-cols-1 gap-20;
+  @apply grid w-full grid-flow-row grid-cols-1 gap-[25px];
 }
 
 .row {

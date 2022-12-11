@@ -14,10 +14,10 @@ const Input = ({
   ...props
 }: FieldProps & CustomInputComponent) => {
   return (
-    <div className="space-y-5">
+    <div className="h-[60px] space-y-5">
       <input
         className={`w-full rounded-8 border ${
-          errors[field.name] && "border-error"
+          touched[field.name] && errors[field.name] && "border-error"
         } border-inputOutline/[0.22] bg-primary-light p-12 ${
           isRtl ? "text-end" : "text-start"
         }

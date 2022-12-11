@@ -30,7 +30,7 @@ interface FormInput {
 const initialValues = { email: "" };
 
 export default function ForgotPassword() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
 

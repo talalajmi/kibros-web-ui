@@ -97,39 +97,26 @@ export default function Register() {
             validationSchema={registerSchema}
             onSubmit={onSubmit}
           >
-            <Form className={styles.form}>
+            <Form dir="rtl" className={styles.form}>
               <div className={styles.row}>
+                <Field name="firstName" component={Input} placeholder="الأسم" />
                 <Field
                   name="lastName"
                   component={Input}
                   placeholder="الاسم الاخير"
-                  isRtl
-                />
-                <Field
-                  name="firstName"
-                  component={Input}
-                  placeholder="الأسم"
-                  isRtl
                 />
               </div>
               <Field
                 name="email"
                 component={Input}
                 placeholder="البريد الالكتروني"
-                isRtl
               />
               <div className={styles.row}>
+                <Field name="country" component={Input} placeholder="الدولة" />
                 <Field
                   name="phoneNumber"
                   component={Input}
-                  placeholder="الدولة"
-                  isRtl
-                />
-                <Field
-                  name="country"
-                  component={Input}
                   placeholder="رقم الهاتف"
-                  isRtl
                 />
               </div>
               <div className="relative">
@@ -151,18 +138,17 @@ export default function Register() {
                   component={Input}
                   type={isPasswordShown ? "text" : "password"}
                   placeholder="كلمة المرور"
-                  isRtl
                 />
               </div>
-              <div className={`${styles.row} justify-end`}>
-                <p className="text-white">
-                  قبلت ب
-                  <span className="text-secondary-base">الشروط و الأحكام</span>
-                </p>
+              <div className={`${styles.row} justify-start`}>
                 <input
                   type="checkbox"
                   onClick={() => setIsCheckboxChecked((current) => !current)}
                 />
+                <p className="text-white">
+                  قبلت ب
+                  <span className="text-secondary-base">الشروط و الأحكام</span>
+                </p>
               </div>
               <Button
                 text="انشاء حساب"
@@ -184,10 +170,10 @@ export default function Register() {
                 <hr style={{ color: whiteColor, width: "100%" }} />
               </div>
               <div className="text-center">
-                <p className="text-white">
+                <p className="p-5 text-white">
                   لديك حساب؟
                   <span
-                    className="text-secondary-base"
+                    className="px-5 text-secondary-base"
                     onClick={() => router.push(AuthorizationRoutes.login)}
                   >
                     تسجيل الدخول
