@@ -38,6 +38,7 @@ const options = [
 
 const EditUserModal = ({ user }: ModalProps) => {
   const [showModal, setShowModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [role, setRole] = useState(user.role);
 
   const { accessToken } = useAuth();
@@ -45,6 +46,7 @@ const EditUserModal = ({ user }: ModalProps) => {
   const router = useRouter();
 
   const editUser = async (userFormInputs: UserFormInputs) => {
+    setIsLoading(true);
     const updatedUser: IUser = await new AccountController(
       accessToken,
       router
@@ -85,10 +87,12 @@ const EditUserModal = ({ user }: ModalProps) => {
       adminsCopy.splice(adminIndex, 1);
     }
     setAdmins([...adminsCopy]);
+    setIsLoading(false);
     setShowModal(false);
   };
 
   const suspendAccount = async () => {
+    setIsLoading(true);
     const response: IUser = await new AccountController(
       accessToken,
       router
@@ -101,13 +105,15 @@ const EditUserModal = ({ user }: ModalProps) => {
         user.phoneNumber,
         user.country,
         user.role
-      )
+      ),
+      user.isSuspended
     );
 
     if (!response) {
       return;
     }
 
+    setIsLoading(false);
     if (user.role === 2 || user.role === 3) {
       const adminsCopy = [...admins];
       const adminIndex = adminsCopy.indexOf(user);
@@ -224,8 +230,13 @@ const EditUserModal = ({ user }: ModalProps) => {
                 <div className={styles.modal__row}>
                   <div className="flex justify-end">
                     <button
-                      className={styles.modal__submitButton}
+                      className={
+                        isLoading
+                          ? styles.modal__diasbledButton
+                          : styles.modal__submitButton
+                      }
                       type="submit"
+                      disabled={isLoading}
                     >
                       Submit
                     </button>

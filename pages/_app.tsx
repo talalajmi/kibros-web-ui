@@ -40,24 +40,26 @@ function MyApp({ Component, pageProps }: AppProps) {
     );
   } else if (Object.values(publicRoutes).includes(router.pathname)) {
     return (
-      <Provider store={store}>
-        <ThemeProvider theme={materialUiTheme}>
-          <Navbar />
-          <ToastContainer
-            position="top-right"
-            autoClose={3000}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="dark"
-          />
-          <Component {...pageProps} />
-          <PublicFooter />
-        </ThemeProvider>
-      </Provider>
+      <AuthProvider>
+        <Provider store={store}>
+          <ThemeProvider theme={materialUiTheme}>
+            <Navbar />
+            <ToastContainer
+              position="top-right"
+              autoClose={3000}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="dark"
+            />
+            <Component {...pageProps} />
+            <PublicFooter />
+          </ThemeProvider>
+        </Provider>
+      </AuthProvider>
     );
   } else {
     return (

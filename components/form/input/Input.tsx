@@ -17,10 +17,10 @@ const Input = ({
     <div className="h-[60px] space-y-5">
       <input
         className={`w-full rounded-8 border ${
-          touched[field.name] && errors[field.name] && "border-error"
-        } border-inputOutline/[0.22] bg-primary-light p-12 ${
-          isRtl ? "text-end" : "text-start"
-        }
+          touched[field.name] && errors[field.name]
+            ? "border-error"
+            : "border-inputOutline/[0.22]"
+        }  bg-primary-light p-12 ${isRtl ? "text-end" : "text-start"}
         text-white transition duration-300 ease-in-out  focus:border-secondary-base/[0.5] focus:outline-none focus:ring-0`}
         type={type}
         {...field}

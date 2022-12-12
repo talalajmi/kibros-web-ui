@@ -77,8 +77,12 @@ export default class AccountController {
 
   accountSuspenstion = async (
     accountId: string,
-    updateAccountModel: UpdateAccountModel
+    updateAccountModel: UpdateAccountModel,
+    isSuspended: boolean
   ) => {
+    toast.loading(isSuspended ? "Unsuspending user..." : "Suspending user...", {
+      toastId: "loading",
+    });
     try {
       const {
         data: { body, result },
@@ -89,9 +93,12 @@ export default class AccountController {
       );
 
       if (result === 200) {
+        toast.dismiss("loading");
+        toast.success(body.isSuspended ? "User suspended" : "User unsuspended");
         return body;
       }
     } catch (error: any) {
+      toast.dismiss("loading");
       if (isResponseModel(error?.response?.data)) {
         if (error.response.data.result === 401) {
           this.router.push(AuthorizationRoutes.logout);

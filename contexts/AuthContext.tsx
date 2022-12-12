@@ -36,10 +36,15 @@ const AuthProvider = ({ children }: Props) => {
     const accessTokenFromLocalStorage = window.localStorage.getItem("at");
     if (accessTokenFromLocalStorage) {
       setAccessToken(accessTokenFromLocalStorage);
-      await handleGetUser(accessTokenFromLocalStorage);
+      const accessTokenDecoded: { nameid: string; role: string } =
+        jwtDecode(accessToken);
+      await handleGetUser(
+        accessTokenFromLocalStorage,
+        accessTokenDecoded.nameid
+      );
     } else {
       setIsLoading(false);
-      router.push(AuthorizationRoutes.login);
+      router.push(router.pathname);
     }
   };
 
@@ -48,13 +53,11 @@ const AuthProvider = ({ children }: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleGetUser = async (accessToken: string) => {
+  const handleGetUser = async (accessToken: string, userId: string) => {
     setIsLoading(true);
-    const accessTokenDecoded: { nameid: string; role: string } =
-      jwtDecode(accessToken);
 
     const user = await new AccountController(accessToken, router).getAccount(
-      accessTokenDecoded.nameid
+      userId
     );
 
     if (!user) {
@@ -63,16 +66,6 @@ const AuthProvider = ({ children }: Props) => {
 
     setUser({ ...user });
     setIsLoading(false);
-
-    const currentPath = router.pathname;
-
-    if (accessTokenDecoded.role === "Admin") {
-      router.replace(
-        currentPath !== "/" ? currentPath : AdminRoutes.categoriesPage
-      );
-    } else {
-      router.replace("/");
-    }
   };
 
   const values = {

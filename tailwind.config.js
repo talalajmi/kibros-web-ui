@@ -13,7 +13,8 @@ module.exports = {
       },
       secondary: {
         base: "#FF8400",
-        dark: "#DC7200",
+        dark: "#C76700",
+        disabled: "#964E01",
       },
       success: {
         base: "#00d18a",

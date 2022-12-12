@@ -27,7 +27,7 @@
 }
 
 .exportButton {
-  @apply flex space-x-10 rounded-8 border border-inputOutline border-opacity-20 bg-primary-light p-12 text-darkTextSecondary/[0.68];
+  @apply flex space-x-10 rounded-8 border border-inputOutline border-opacity-20 bg-primary-light p-12 text-darkTextSecondary/[0.68] transition duration-300 ease-in-out hover:border-inputOutline/[.5];
 }
 
 .addButton {

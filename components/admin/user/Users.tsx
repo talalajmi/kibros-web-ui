@@ -294,7 +294,7 @@ const Users = () => {
             <div className={styles.searchContainer}>
               <input
                 placeholder="Search User"
-                className="rounded-8 border border-inputOutline/[.2] bg-primary-light p-10 text-white"
+                className="rounded-8 border border-inputOutline/[.2] bg-primary-light p-10 text-white transition duration-300 ease-in-out focus:border-secondary-base/[.4] focus:outline-none focus:ring-0"
                 onChange={handleSearch}
               />
             </div>
