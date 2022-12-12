@@ -31,7 +31,7 @@
 }
 
 .modal__form {
-  @apply space-y-[20px];
+  @apply space-y-[25px];
 }
 
 .modal__input {

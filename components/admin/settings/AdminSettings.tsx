@@ -1,13 +1,23 @@
 import { Field, Form, Formik } from "formik";
 import React, { useState } from "react";
+import { accountSettingsInitialValues } from "../../../helpers/userHelper";
+import { IUser } from "../../../interfaces";
 import { kiBrosOrangeColor, iconColor } from "../../../utils/colors";
+import { useAuth } from "../../../utils/hooks";
 import { Input, Label } from "../../form";
-import { SearchIcon } from "../../icons";
+import { Eye, EyeCrossed, SearchIcon } from "../../icons";
 import LockOpen from "../../icons/LockOpen";
 import styles from "./AdminSettings.module.css";
 
 const AdminSettings = () => {
   const [isSecurityChosen, setIsSecurityChosen] = useState(false);
+  const [isPasswordShown, setIsPasswordShown] = useState(false);
+
+  const { user } = useAuth();
+
+  const showPassword = () => {
+    setIsPasswordShown((current) => !current);
+  };
 
   return (
     <div className={styles.settings__container}>
@@ -42,24 +52,75 @@ const AdminSettings = () => {
             <p>SECURITY</p>
           </button>
         </div>
-        <Formik initialValues={{}} onSubmit={() => {}}>
+        <Formik
+          initialValues={accountSettingsInitialValues(user as IUser)}
+          onSubmit={() => {}}
+        >
           <Form className={styles.settings__body}>
             {isSecurityChosen ? (
               <>
                 <div className={styles.settings__row}>
                   <div className="relative">
-                    <Field component={Input} type="password" />
-                    <Label text="">Current Password</Label>
+                    <Field
+                      component={Input}
+                      type="password"
+                      name="currentPassword"
+                    />
+                    {isPasswordShown ? (
+                      <EyeCrossed
+                        size={24}
+                        className={styles.icon}
+                        onClick={() => showPassword()}
+                      />
+                    ) : (
+                      <Eye
+                        size={24}
+                        className={styles.icon}
+                        onClick={() => showPassword()}
+                      />
+                    )}
                   </div>
                 </div>
                 <div className={styles.settings__row}>
                   <div className="relative">
-                    <Field component={Input} type="password" />
-                    <Label text="">New Password</Label>
+                    <Field
+                      component={Input}
+                      type="password"
+                      name="newPassword"
+                    />
+                    {isPasswordShown ? (
+                      <EyeCrossed
+                        size={24}
+                        className={styles.icon}
+                        onClick={() => showPassword()}
+                      />
+                    ) : (
+                      <Eye
+                        size={24}
+                        className={styles.icon}
+                        onClick={() => showPassword()}
+                      />
+                    )}
                   </div>
                   <div className="relative">
-                    <Field component={Input} type="password" />
-                    <Label text="">Confirm Password</Label>
+                    <Field
+                      component={Input}
+                      type="password"
+                      name="confirmNewPassword"
+                    />
+                    {isPasswordShown ? (
+                      <EyeCrossed
+                        size={24}
+                        className={styles.icon}
+                        onClick={() => showPassword()}
+                      />
+                    ) : (
+                      <Eye
+                        size={24}
+                        className={styles.icon}
+                        onClick={() => showPassword()}
+                      />
+                    )}
                   </div>
                 </div>
                 <hr style={{ color: iconColor, opacity: 0.2 }} />
@@ -92,21 +153,25 @@ const AdminSettings = () => {
               <>
                 <div className={styles.settings__row}>
                   <div className="relative">
-                    <Field component={Input} />
+                    <Field
+                      component={Input}
+                      placeholder="First Name"
+                      name="firstName"
+                    />
                     <Label text="">First Name</Label>
                   </div>
                   <div className="relative">
-                    <Field component={Input} />
+                    <Field component={Input} name="lastName" />
                     <Label text="">Last Name</Label>
                   </div>
                 </div>
                 <div className={styles.settings__row}>
                   <div className="relative">
-                    <Field component={Input} />
+                    <Field component={Input} name="email" />
                     <Label text="">Email</Label>
                   </div>
                   <div className="relative">
-                    <Field component={Input} />
+                    <Field component={Input} name="role" disabled />
                     <Label text="">Role</Label>
                   </div>
                 </div>

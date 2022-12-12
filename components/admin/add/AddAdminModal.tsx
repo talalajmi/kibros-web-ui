@@ -7,6 +7,7 @@ import AccountController from "../../../controllers/AccountController";
 import {
   UserFormInputs,
   addAdminInitialValues,
+  AddAdminFormInputs,
 } from "../../../helpers/userHelper";
 import { AddAdminModel } from "../../../models";
 import { addAdminSchema } from "../../../schemas/userSchema";
@@ -21,7 +22,7 @@ const AddAdminModal = () => {
   const router = useRouter();
   const { accessToken } = useAuth();
 
-  const onSubmit = async (admin: UserFormInputs) => {
+  const onSubmit = async (admin: AddAdminFormInputs) => {
     const password = await new AccountController(accessToken, router).addAdmin(
       new AddAdminModel(
         admin.email,

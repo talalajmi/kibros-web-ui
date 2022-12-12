@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { iconColor } from "../../../../utils/colors";
-import { avatar, logo } from "../../../../constants";
+import { avatar, logo, UserRoles } from "../../../../constants";
 import { useRouter } from "next/router";
 import { AdminRoute, AdminRoutes } from "../../../../routes/AdminRoutes";
 import { AuthorizationRoutes } from "../../../../routes";
@@ -15,6 +15,7 @@ import {
 } from "../../../icons";
 import styles from "./Navbar.module.css";
 import NavbarButton from "./NavbarButton";
+import { useAuth } from "../../../../utils/hooks";
 
 const getAdminRoutes = () => {
   const routes: AdminRoute[] = [
@@ -49,6 +50,8 @@ const getAdminRoutes = () => {
 
 const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
+
+  const { user } = useAuth();
 
   const logout = () => {
     router.push(AuthorizationRoutes.logout);
@@ -93,8 +96,10 @@ const Navbar = () => {
                   height={40}
                 />
                 <div className="flex flex-col">
-                  <p className="text-white">Yasser Al Kiyomi</p>
-                  <p className="text-darkTextSecondary/[0.68]">Admin</p>
+                  <p className="text-white">{user?.fullName}</p>
+                  <p className="text-darkTextSecondary/[0.68]">
+                    {UserRoles[user?.role as keyof typeof UserRoles].title}
+                  </p>
                 </div>
               </div>
               <div

@@ -39,6 +39,7 @@ const options = [
 const EditUserModal = ({ user }: ModalProps) => {
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSuspended, setIsSuspended] = useState(user.isSuspended);
   const [role, setRole] = useState(user.role);
 
   const { accessToken } = useAuth();
@@ -53,12 +54,12 @@ const EditUserModal = ({ user }: ModalProps) => {
     ).updateAccount(
       user.id,
       new UpdateAccountModel(
-        userFormInputs.email,
         userFormInputs.firstName,
         userFormInputs.lastName,
         userFormInputs.phoneNumber,
         userFormInputs.country,
-        role
+        role,
+        isSuspended
       )
     );
 
@@ -89,54 +90,6 @@ const EditUserModal = ({ user }: ModalProps) => {
     setAdmins([...adminsCopy]);
     setIsLoading(false);
     setShowModal(false);
-  };
-
-  const suspendAccount = async () => {
-    setIsLoading(true);
-    const response: IUser = await new AccountController(
-      accessToken,
-      router
-    ).accountSuspenstion(
-      user.id,
-      new UpdateAccountModel(
-        user.email,
-        user.firstname,
-        user.lastname,
-        user.phoneNumber,
-        user.country,
-        user.role
-      ),
-      user.isSuspended
-    );
-
-    if (!response) {
-      return;
-    }
-
-    setIsLoading(false);
-    if (user.role === 2 || user.role === 3) {
-      const adminsCopy = [...admins];
-      const adminIndex = adminsCopy.indexOf(user);
-      let adminCopy = adminsCopy.find((a) => a.id === user.id);
-      if (!adminCopy) {
-        return;
-      }
-      adminCopy = { ...adminCopy, isSuspended: response.isSuspended };
-      adminsCopy.splice(adminIndex, 1, adminCopy);
-      setAdmins([...adminsCopy]);
-      return;
-    }
-
-    const usersCopy = [...admins];
-    const userIndex = usersCopy.indexOf(user);
-    let userCopy = usersCopy.find((u) => u.id === user.id);
-    if (!userCopy) {
-      return;
-    }
-    userCopy = { ...userCopy, isSuspended: response.isSuspended };
-    usersCopy.splice(userIndex, 1, userCopy);
-    setUsers([...usersCopy]);
-    return;
   };
 
   return (
@@ -194,6 +147,7 @@ const EditUserModal = ({ user }: ModalProps) => {
                   <Field
                     name="email"
                     type="email"
+                    disabled
                     placeholder="Email"
                     component={Input}
                   />
@@ -222,7 +176,7 @@ const EditUserModal = ({ user }: ModalProps) => {
                     <Switch
                       defaultChecked={user.isSuspended}
                       color="secondary"
-                      onChange={(e) => suspendAccount()}
+                      onClick={() => setIsSuspended((current) => !current)}
                     />
                     <p className="text-darkTextSecondary/[0.68]">Suspend</p>
                   </div>

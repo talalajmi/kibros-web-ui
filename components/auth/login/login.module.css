@@ -1,16 +1,11 @@
 .container {
   @apply flex h-screen w-screen items-center justify-center;
   @apply sm:h-screen sm:w-screen;
-  @apply md:h-screen md:w-screen;
-  @apply lg:h-screen lg:w-screen;
-  @apply xl:h-screen xl:w-screen;
 }
 
 .card {
-  @apply h-[700px] w-[370px] rounded-10 bg-primary-light p-20;
-  @apply md:h-[720px] md:w-[480px];
-  @apply lg:h-[720px] lg:w-[480px];
-  @apply xl:h-[720px] xl:w-[480px];
+  @apply max-h-fit w-[370px] rounded-10 bg-primary-light p-20;
+  @apply md:max-h-fit md:w-[480px];
 }
 
 .card__container {
@@ -22,13 +17,6 @@
   @apply md:h-70 md:w-250;
   @apply lg:h-70 lg:w-250;
   @apply xl:h-70 xl:w-250;
-}
-
-.card__bodyContainer {
-  @apply h-380 w-294;
-  @apply md:h-480 md:w-394;
-  @apply lg:h-480 lg:w-394;
-  @apply xl:h-480 xl:w-394;
 }
 
 .card__textContainer {
@@ -73,10 +61,8 @@
 }
 
 .button {
-  @apply flex h-36 w-full items-center justify-center space-x-20 rounded-8 bg-secondary-base text-lg text-white;
+  @apply flex w-full items-center justify-center space-x-20 rounded-8 bg-secondary-base text-lg text-white;
   @apply md:h-40 md:text-lg;
-  @apply lg:h-40 lg:text-lg;
-  @apply xl:h-40 xl:text-lg;
 }
 
 .buttonDisabled {
@@ -84,11 +70,6 @@
   @apply md:h-40 md:text-lg;
   @apply lg:h-40 lg:text-lg;
   @apply xl:h-40 xl:text-lg;
-}
-
-.submit__loadingButton {
-  @apply flex h-36 w-full animate-spin items-center justify-center space-x-20 rounded-8 bg-secondary-base text-lg text-white;
-  @apply animate-spin md:h-40 md:text-lg;
 }
 
 .socialLogin__container {
@@ -102,15 +83,11 @@
 .facebook__button {
   @apply flex h-36 w-140 items-center justify-center rounded-8 bg-facebook p-10 text-left text-sm text-white opacity-50;
   @apply md:h-40 md:w-190;
-  @apply lg:h-40 lg:w-190;
-  @apply xl:h-40 xl:w-190;
 }
 
 .social__icon {
   @apply absolute right-70 top-10;
   @apply md:right-90 md:top-10;
-  @apply lg:right-90 lg:top-10;
-  @apply xl:right-90 xl:top-10;
 }
 
 .googleButton__content {
@@ -120,8 +97,6 @@
 .google__button {
   @apply flex h-36 w-140 items-center justify-center rounded-8 bg-google p-10 text-left text-sm text-white opacity-50;
   @apply md:h-40 md:w-190;
-  @apply lg:h-40 lg:w-190;
-  @apply xl:h-40 xl:w-190;
 }
 
 .divider__container {
@@ -148,5 +123,5 @@
 }
 
 .register__actionText {
-  @apply cursor-pointer text-secondary-base;
+  @apply cursor-pointer text-secondary-base transition duration-300 ease-in-out hover:text-secondary-dark;
 }

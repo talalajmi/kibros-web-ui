@@ -39,6 +39,7 @@ export default function ForgotPassword() {
     await new PasswordController(router).createForgetPasswordRequest(
       new CreateForgetPasswordModel(email)
     );
+    router.push(AuthorizationRoutes.login);
     setIsLoading(false);
   };
 
@@ -87,7 +88,7 @@ export default function ForgotPassword() {
               <div className="flex w-full items-center justify-center space-x-10">
                 <ArrowLeft size={15} color={kiBrosOrangeColor} />
                 <p
-                  className="cursor-pointer text-secondary-base"
+                  className="cursor-pointer text-secondary-base transition duration-300 ease-in-out hover:text-secondary-dark"
                   onClick={() => router.push(AuthorizationRoutes.login)}
                 >
                   تسجيل الدخول

@@ -5,10 +5,10 @@ import React, { useState, useEffect } from "react";
 import styles from "./register.module.css";
 
 // Constants
-import { Eye, EyeCrossed } from "../../icons";
+import { Eye, EyeCrossed, FacebookIcon, GoogleIcon } from "../../icons";
 import { logo } from "../../../constants";
 import { iconColor, whiteColor } from "../../../utils/colors";
-import { AuthorizationRoutes } from "../../../routes";
+import { AuthorizationRoutes, publicRoutes } from "../../../routes";
 import { RegisterModel } from "../../../models";
 import { AuthController } from "../../../controllers";
 import { hashPassword } from "../../../helpers";
@@ -147,7 +147,13 @@ export default function Register() {
                 />
                 <p className="text-white">
                   قبلت ب
-                  <span className="text-secondary-base">الشروط و الأحكام</span>
+                  <a
+                    href="https://kibros-web-ui.vercel.app/terms-and-conditions"
+                    target="_blank"
+                    className="cursor-pointer text-secondary-base transition duration-300 ease-out hover:text-secondary-disabled"
+                  >
+                    الشروط و الأحكام
+                  </a>
                 </p>
               </div>
               <Button
@@ -161,8 +167,12 @@ export default function Register() {
                 <hr style={{ color: whiteColor, width: "100%" }} />
               </div>
               <div className={styles.row}>
-                <Button text="facebook" type="button" />
-                <Button text="google" type="button" />
+                <button className="flex w-full justify-center rounded-8 bg-google/50 px-20 py-10">
+                  <GoogleIcon size={18} className="fill-google" />
+                </button>
+                <button className="flex w-full justify-center rounded-8 bg-facebook/50 px-20 py-10">
+                  <FacebookIcon size={18} className="fill-facebook" />
+                </button>
               </div>
               <div className={styles.divider}>
                 <hr style={{ color: whiteColor, width: " 100%" }} />
@@ -173,7 +183,7 @@ export default function Register() {
                 <p className="p-5 text-white">
                   لديك حساب؟
                   <span
-                    className="px-5 text-secondary-base"
+                    className="cursor-pointer px-5 text-secondary-base transition duration-300 ease-in-out hover:text-secondary-dark"
                     onClick={() => router.push(AuthorizationRoutes.login)}
                   >
                     تسجيل الدخول

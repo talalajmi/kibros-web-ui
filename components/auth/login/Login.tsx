@@ -98,7 +98,7 @@ export default function Login() {
             validationSchema={loginSchema}
           >
             <Form>
-              <div className={styles.card__bodyContainer}>
+              <div className="space-y-10">
                 <div className={styles.card__textContainer}>
                   <p>!👋 مرحبا بك في ورشات كيبروس</p>
                   <p>{quote}</p>
@@ -132,12 +132,8 @@ export default function Login() {
                         onClick={() => showPassword()}
                       />
                     )}
-                  </div>
-                </div>
-                <div className={styles.forgetPassword__container}>
-                  <div className={styles.forgetPassword__content}>
                     <p
-                      className="cursor-pointer"
+                      className="z-50 w-fit cursor-pointer text-start text-secondary-base transition duration-300 ease-in-out hover:text-secondary-dark"
                       onClick={() =>
                         router.push(AuthorizationRoutes.forgotPassword)
                       }
