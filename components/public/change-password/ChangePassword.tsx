@@ -7,6 +7,7 @@ import { newPasswordSchema } from "../../../schemas/passowrdSchema";
 import { PasswordController } from "../../../controllers";
 import { ChangePasswordModel } from "../../../models";
 import { hashPassword } from "../../../helpers/hashPassword";
+import { Input } from "../../form";
 
 interface FormInput {
   password: string;
@@ -62,7 +63,7 @@ const ChangePassword = () => {
               )}
               <Field
                 name="password"
-                className="w-full rounded-8 border border-inputOutline/[.2] bg-primary-base p-12 font-sans text-white placeholder:p-12"
+                component={Input}
                 type={isPasswordShown ? "text" : "password"}
               />
             </div>
