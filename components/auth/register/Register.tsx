@@ -7,7 +7,11 @@ import styles from "./register.module.css";
 // Constants
 import { Eye, EyeCrossed, FacebookIcon, GoogleIcon } from "../../icons";
 import { logo } from "../../../constants";
-import { iconColor, whiteColor } from "../../../utils/colors";
+import {
+  iconColor,
+  kiBrosLightBlueColor,
+  whiteColor,
+} from "../../../utils/colors";
 import { AuthorizationRoutes, publicRoutes } from "../../../routes";
 import { RegisterModel } from "../../../models";
 import { AuthController } from "../../../controllers";
@@ -26,6 +30,12 @@ import {
   RegisterFormInputs,
   registerSchema,
 } from "../../../schemas/RegisterSchema";
+import Select from "react-select";
+import { countries, countriesHashTable } from "../../../constants/countries";
+import {
+  reactSelectTheme,
+  getReactSelectStyles,
+} from "../../../utils/ReactSelectTheme";
 
 export default function Register() {
   // States
@@ -33,6 +43,7 @@ export default function Register() {
   const [quote, setQuote] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
+  const [country, setCountry] = useState("");
 
   // Hooks
   const router = useRouter();
@@ -50,7 +61,7 @@ export default function Register() {
         formInputs.firstName,
         formInputs.lastName,
         formInputs.phoneNumber,
-        formInputs.country
+        country
       )
     );
 
@@ -112,7 +123,14 @@ export default function Register() {
                 placeholder="البريد الالكتروني"
               />
               <div className={styles.row}>
-                <Field name="country" component={Input} placeholder="الدولة" />
+                <Select
+                  isClearable
+                  className="mb-10 flex-1"
+                  options={countries}
+                  theme={reactSelectTheme}
+                  onChange={(e) => setCountry(e ? e.value : country)}
+                  styles={getReactSelectStyles(kiBrosLightBlueColor)}
+                />
                 <Field
                   name="phoneNumber"
                   component={Input}

@@ -43,11 +43,10 @@ export const registerSchema = yup.object().shape({
     .matches(/^[0-9]*$/, "رقم الهاتف لا يمكن ان يحتوي على حرف")
     .min(6, "رقم الهاتف يجب ان لا يقل عن 6 ارقام")
     .max(8, "رقم الهاتف لا يجب ان لا يتعدى 8 ارقام"),
-  country: yup
-    .string()
-    .nullable()
-    .transform((v, o) => (o === "" ? null : v))
-    .max(100, "اسم الدولة لا يجب ان لا يتعدى 100 حرفا"),
+  country: yup.object().shape({
+    label: yup.string().nullable(),
+    value: yup.string().nullable(),
+  }),
   password: yup
     .string()
     .required("الرجاء إدخال كلمة المرور")

@@ -1,22 +1,72 @@
 import { Field, Form, Formik } from "formik";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
-import { accountSettingsInitialValues } from "../../../helpers/userHelper";
+import { AccountController, PasswordController } from "../../../controllers";
+import {
+  AccountSettingsFormInputs,
+  accountSettingsInitialValues,
+  ChangePasswordFormInputs,
+  changePasswordInitialValues,
+} from "../../../helpers/userHelper";
 import { IUser } from "../../../interfaces";
+import {
+  changePasswordScheme,
+  userAccountSettingsSchema,
+} from "../../../schemas/userSchema";
 import { kiBrosOrangeColor, iconColor } from "../../../utils/colors";
 import { useAuth } from "../../../utils/hooks";
 import { Input, Label } from "../../form";
 import { Eye, EyeCrossed, SearchIcon } from "../../icons";
 import LockOpen from "../../icons/LockOpen";
 import styles from "./AdminSettings.module.css";
+import { ChangePasswordModel, UpdateAccountModel } from "../../../models";
+import { hashPassword } from "../../../helpers/hashPassword";
 
 const AdminSettings = () => {
   const [isSecurityChosen, setIsSecurityChosen] = useState(false);
   const [isPasswordShown, setIsPasswordShown] = useState(false);
 
-  const { user } = useAuth();
+  const { user, accessToken, setUser } = useAuth();
+  const router = useRouter();
 
   const showPassword = () => {
     setIsPasswordShown((current) => !current);
+  };
+
+  const changePassword = async ({
+    confirmNewPassword,
+  }: ChangePasswordFormInputs) => {
+    if (!user) {
+      return;
+    }
+    await new PasswordController(router).changePassword(
+      new ChangePasswordModel(user?.id, await hashPassword(confirmNewPassword))
+    );
+  };
+
+  const updateUser = async (data: AccountSettingsFormInputs) => {
+    if (!user) {
+      return;
+    }
+    const response = await new AccountController(
+      accessToken,
+      router
+    ).updateAccount(
+      user?.id,
+      new UpdateAccountModel(
+        data.firstName,
+        data.lastName,
+        user?.phoneNumber,
+        user?.country,
+        user?.role,
+        user?.isSuspended
+      )
+    );
+
+    if (!response) {
+      return;
+    }
+    setUser({ ...response });
   };
 
   return (
@@ -52,18 +102,20 @@ const AdminSettings = () => {
             <p>SECURITY</p>
           </button>
         </div>
-        <Formik
-          initialValues={accountSettingsInitialValues(user as IUser)}
-          onSubmit={() => {}}
-        >
-          <Form className={styles.settings__body}>
-            {isSecurityChosen ? (
-              <>
+
+        <div className={styles.settings__body}>
+          {isSecurityChosen ? (
+            <Formik
+              initialValues={changePasswordInitialValues()}
+              onSubmit={changePassword}
+              validationSchema={changePasswordScheme}
+            >
+              <Form className="space-y-20">
                 <div className={styles.settings__row}>
                   <div className="relative">
                     <Field
                       component={Input}
-                      type="password"
+                      type={isPasswordShown ? "text" : "password"}
                       name="currentPassword"
                     />
                     {isPasswordShown ? (
@@ -85,7 +137,7 @@ const AdminSettings = () => {
                   <div className="relative">
                     <Field
                       component={Input}
-                      type="password"
+                      type={isPasswordShown ? "text" : "password"}
                       name="newPassword"
                     />
                     {isPasswordShown ? (
@@ -105,7 +157,7 @@ const AdminSettings = () => {
                   <div className="relative">
                     <Field
                       component={Input}
-                      type="password"
+                      type={isPasswordShown ? "text" : "password"}
                       name="confirmNewPassword"
                     />
                     {isPasswordShown ? (
@@ -140,17 +192,29 @@ const AdminSettings = () => {
                 </div>
                 <div className={styles.settings__row}>
                   <div className={styles.settings__buttons}>
-                    <button className={styles.settings__submitButton}>
+                    <button
+                      className={styles.settings__submitButton}
+                      type="submit"
+                    >
                       SAVE CHANGES
                     </button>
-                    <button className={styles.settings__cancelButton}>
+                    <button
+                      className={styles.settings__cancelButton}
+                      type="button"
+                    >
                       CANCEL
                     </button>
                   </div>
                 </div>
-              </>
-            ) : (
-              <>
+              </Form>
+            </Formik>
+          ) : (
+            <Formik
+              initialValues={accountSettingsInitialValues(user as IUser)}
+              onSubmit={updateUser}
+              validationSchema={userAccountSettingsSchema}
+            >
+              <Form className="space-y-20">
                 <div className={styles.settings__row}>
                   <div className="relative">
                     <Field
@@ -178,18 +242,24 @@ const AdminSettings = () => {
                 <hr style={{ color: iconColor, opacity: 0.2 }} />
                 <div className={styles.settings__row}>
                   <div className={styles.settings__buttons}>
-                    <button className={styles.settings__submitButton}>
+                    <button
+                      className={styles.settings__submitButton}
+                      type="submit"
+                    >
                       SAVE CHANGES
                     </button>
-                    <button className={styles.settings__cancelButton}>
+                    <button
+                      className={styles.settings__cancelButton}
+                      type="button"
+                    >
                       CANCEL
                     </button>
                   </div>
                 </div>
-              </>
-            )}
-          </Form>
-        </Formik>
+              </Form>
+            </Formik>
+          )}
+        </div>
       </div>
     </div>
   );

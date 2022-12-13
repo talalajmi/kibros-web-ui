@@ -36,8 +36,9 @@ const AuthProvider = ({ children }: Props) => {
     const accessTokenFromLocalStorage = window.localStorage.getItem("at");
     if (accessTokenFromLocalStorage) {
       setAccessToken(accessTokenFromLocalStorage);
-      const accessTokenDecoded: { nameid: string; role: string } =
-        jwtDecode(accessToken);
+      const accessTokenDecoded: { nameid: string; role: string } = jwtDecode(
+        accessTokenFromLocalStorage
+      );
       await handleGetUser(
         accessTokenFromLocalStorage,
         accessTokenDecoded.nameid

@@ -18,11 +18,17 @@ interface AddAdminFormInputs {
   country: string;
 }
 
-interface AccountSettingsFromInputs {
+interface AccountSettingsFormInputs {
   firstName: string;
   lastName: string;
   email: string;
   role: string;
+}
+
+interface ChangePasswordFormInputs {
+  currentPassword: string;
+  newPassword: string;
+  confirmNewPassword: string;
 }
 
 const addAdminInitialValues: AddAdminFormInputs = {
@@ -46,7 +52,7 @@ const editUserInitialValues = (user: IUser) => {
 };
 
 const accountSettingsInitialValues = (user: IUser) => {
-  const initialValues: AccountSettingsFromInputs = {
+  const initialValues: AccountSettingsFormInputs = {
     firstName: user.firstname,
     lastName: user.lastname,
     email: user.email,
@@ -55,11 +61,22 @@ const accountSettingsInitialValues = (user: IUser) => {
   return initialValues;
 };
 
+const changePasswordInitialValues = () => {
+  const initialValues: ChangePasswordFormInputs = {
+    currentPassword: "",
+    newPassword: "",
+    confirmNewPassword: "",
+  };
+  return initialValues;
+};
+
 export {
   type UserFormInputs,
   type AddAdminFormInputs,
-  type AccountSettingsFromInputs,
+  type AccountSettingsFormInputs,
+  type ChangePasswordFormInputs,
   addAdminInitialValues,
   editUserInitialValues,
   accountSettingsInitialValues,
+  changePasswordInitialValues,
 };
