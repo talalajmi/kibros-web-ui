@@ -23,7 +23,7 @@
 }
 
 .error__button {
-  @apply h-44 w-full rounded-8 bg-secondary-base px-14 py-10 text-xl font-semibold;
+  @apply rounded-8 bg-secondary-base py-10 px-20 text-lg font-semibold transition duration-300 ease-in-out hover:bg-secondary-dark md:px-[30px] md:py-10 md:text-xl;
 }
 
 .image__container {

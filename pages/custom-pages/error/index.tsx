@@ -24,7 +24,7 @@ function Error() {
         />
         <p className="text-xl">نعتذر</p>
         <p className="text-xl">لم نستطع العثور على الصفحة المطلوبة</p>
-        <button className={styles.error__button} onClick={() => router.back}>
+        <button className={styles.error__button} onClick={() => router.back()}>
           ارجع الى الصفحة الماضية
         </button>
         <div className="pt-[150px]">

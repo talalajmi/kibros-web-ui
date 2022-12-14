@@ -1256,6 +1256,4 @@ for (const country of countries) {
   countriesHashTable[country.label] = country.value;
 }
 
-console.log(countriesHashTable["مايوت"]);
-
 export { countries, countriesHashTable };

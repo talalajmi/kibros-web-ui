@@ -1,13 +1,15 @@
 import axios, { AxiosResponse } from "axios";
 import { NextRouter } from "next/router";
-import { accountEndpoints } from "../api";
+import { accountEndpoints, getConfigsWithAccessToken } from "../api";
 import { isResponseModel } from "../helpers";
 import { IResponseModel } from "../interfaces";
 import { customPages } from "../routes";
-import { getConfigsWithAccessToken } from "../api/index";
-import AddAdminModel from "../models/AddAdminModel";
-import { AuthorizationRoutes } from "../routes/AuthorizationRoutes";
-import { ActivateAccountModel, UpdateAccountModel } from "../models";
+import { AuthorizationRoutes } from "../routes";
+import {
+  ActivateAccountModel,
+  UpdateAccountModel,
+  AddAdminModel,
+} from "../models";
 import { toast } from "react-toastify";
 
 export default class AccountController {
@@ -118,7 +120,7 @@ export default class AccountController {
     toast.loading("Adding admin...", { toastId: "loading" });
     try {
       const {
-        data: { body, result, message },
+        data: { body, result },
       }: AxiosResponse<IResponseModel> = await axios.post(
         accountEndpoints.addAdmin,
         addAdminModel,

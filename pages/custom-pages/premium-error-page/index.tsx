@@ -7,8 +7,10 @@ import styles from "./premium-error-page.module.css";
 // Image Paths
 import errorImage from "../../../public/assets/images/pages/Premium-error-page.png";
 import { logo } from "../../../constants";
+import { useRouter } from "next/router";
 
 function Error() {
+  const router = useRouter();
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -21,7 +23,7 @@ function Error() {
         />
         <p className="text-xl">نعتذر</p>
         <p className="text-xl">لم نستطع العثور على الصفحة المطلوبة</p>
-        <button className={styles.error__button}>
+        <button className={styles.error__button} onClick={() => router.back()}>
           ارجع الى الصفحة الماضية
         </button>
         <div className="pt-[90px]">

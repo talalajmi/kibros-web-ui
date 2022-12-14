@@ -36,7 +36,6 @@ const CategoryTable = () => {
   const router = useRouter();
 
   const fetchCategories = async () => {
-    console.log(accessToken);
     setIsLoading(true);
     const response = await new CategoryController(
       accessToken,

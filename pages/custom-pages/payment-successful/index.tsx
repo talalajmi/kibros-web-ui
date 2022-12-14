@@ -8,9 +8,12 @@ import styles from "./payment-success.module.css";
 import errorImage from "../../../public/assets/images/pages/Payment-successful.png";
 import { logo } from "../../../constants";
 import { motivationalQuotes } from "../../../constants/MotivationalQuotes";
+import { useRouter } from "next/router";
 
 function PaymentSuccessful() {
   const [quote, setQuote] = useState("");
+
+  const router = useRouter();
 
   const getMotivationalQuote = () => {
     const motivationalQuote =
@@ -36,7 +39,7 @@ function PaymentSuccessful() {
         />
         <p className="text-xl">تم الدفع بنجاح</p>
         <p className="text-justify text-xl">{quote}</p>
-        <button className={styles.error__button}>
+        <button className={styles.error__button} onClick={() => router.back()}>
           ارجع الى الصفحة الماضية
         </button>
         <div className="pt-[150px]">

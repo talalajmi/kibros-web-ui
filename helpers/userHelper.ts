@@ -51,12 +51,12 @@ const editUserInitialValues = (user: IUser) => {
   return initialValues;
 };
 
-const accountSettingsInitialValues = (user: IUser) => {
+const accountSettingsInitialValues = (user: IUser | null) => {
   const initialValues: AccountSettingsFormInputs = {
-    firstName: user.firstname,
-    lastName: user.lastname,
-    email: user.email,
-    role: UserRoles[user.role as keyof typeof UserRoles].title,
+    firstName: user ? user.firstname : "",
+    lastName: user ? user.lastname : "",
+    email: user ? user.email : "",
+    role: user ? UserRoles[user.role as keyof typeof UserRoles].title : "",
   };
   return initialValues;
 };

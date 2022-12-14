@@ -7,5 +7,5 @@
 }
 
 .error__button {
-  @apply rounded-8 bg-success-base py-10 px-20 text-lg font-semibold md:px-[30px] md:py-10 md:text-xl;
+  @apply rounded-8 bg-secondary-base py-10 px-20 text-lg font-semibold transition duration-300 ease-in-out hover:bg-secondary-dark md:px-[30px] md:py-10 md:text-xl;
 }

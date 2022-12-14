@@ -98,7 +98,9 @@ const Navbar = () => {
                 <div className="flex flex-col">
                   <p className="text-white">{user?.fullName}</p>
                   <p className="text-darkTextSecondary/[0.68]">
-                    {UserRoles[user?.role as keyof typeof UserRoles].title}
+                    {user
+                      ? UserRoles[user.role as keyof typeof UserRoles].title
+                      : ""}
                   </p>
                 </div>
               </div>

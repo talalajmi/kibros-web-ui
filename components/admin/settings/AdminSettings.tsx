@@ -210,7 +210,7 @@ const AdminSettings = () => {
             </Formik>
           ) : (
             <Formik
-              initialValues={accountSettingsInitialValues(user as IUser)}
+              initialValues={accountSettingsInitialValues(user)}
               onSubmit={updateUser}
               validationSchema={userAccountSettingsSchema}
             >

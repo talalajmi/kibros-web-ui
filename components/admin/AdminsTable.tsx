@@ -9,7 +9,7 @@ import AccountController from "../../controllers/AccountController";
 import { useRouter } from "next/router";
 import { IUser } from "../../interfaces";
 import { UserRoles } from "../../constants/UserRoles";
-import { useAuth, useUser, useUsers } from "../../utils/hooks";
+import { useAuth, useUsers } from "../../utils/hooks";
 import { toast } from "react-toastify";
 import DataTable, { TableColumn } from "react-data-table-component";
 import { adminCsvRows, getAdminValuesForExport } from "../../constants/User";
