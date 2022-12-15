@@ -3,7 +3,7 @@ import * as yup from "yup";
 export const forgetPasswordSchema = yup.object().shape({
   email: yup
     .string()
-    .email()
+    .email("يرجى إدخال البريد الإلكتروني الصحيح")
     .required("الرجاء إدخال بريد إلكتروني")
     .max(254, "لا يمكن أن يتجاوز البريد الإلكتروني 254 حرفا")
     .matches(
