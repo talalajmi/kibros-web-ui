@@ -69,24 +69,19 @@ const EditUserModal = ({ user }: ModalProps) => {
 
     // Update users State
     const usersCopy = [...users];
-    const userIndex = usersCopy.indexOf(user);
 
     if (updatedUser.role === 0 || updatedUser.role === 1) {
-      usersCopy.splice(userIndex, 1, updatedUser);
-    } else {
-      usersCopy.splice(userIndex, 1);
+      usersCopy.unshift(updatedUser);
     }
     setUsers([...usersCopy]);
 
     // Update admins State
     const adminsCopy = [...admins];
-    const adminIndex = adminsCopy.indexOf(user);
 
     if (updatedUser.role === 2 || updatedUser.role === 3) {
-      adminsCopy.splice(adminIndex, 1, updatedUser);
-    } else {
-      adminsCopy.splice(adminIndex, 1);
+      adminsCopy.unshift(updatedUser);
     }
+
     setAdmins([...adminsCopy]);
     setIsLoading(false);
     setShowModal(false);

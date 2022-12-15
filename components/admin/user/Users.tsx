@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 import { AccountController } from "../../../controllers";
 import { IUser } from "../../../interfaces";
 import { EditUserModal } from "..";
-import { useAuth, useUser, useUsers } from "../../../utils/hooks";
+import { useAuth, useUsers } from "../../../utils/hooks";
 import DataTable, { TableColumn } from "react-data-table-component";
 import { UserRoles } from "../../../constants/UserRoles";
 import { toast } from "react-toastify";
