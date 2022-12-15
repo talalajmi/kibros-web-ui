@@ -104,7 +104,7 @@ export default function Login() {
                   <p>{quote}</p>
                   <p>تسجيل الدخول</p>
                 </div>
-                <div className="space-y-10">
+                <div className="space-y-[30px]">
                   <Field
                     name="email"
                     component={Input}
