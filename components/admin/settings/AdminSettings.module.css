@@ -34,6 +34,10 @@
   @apply rounded-8 bg-secondary-base py-10 px-20 text-white transition duration-300 ease-out hover:bg-secondary-dark;
 }
 
+.settings__disabledButton {
+  @apply rounded-8 bg-secondary-disabled py-10 px-20 text-white;
+}
+
 .settings__cancelButton {
   @apply rounded-8 border border-inputOutline/20 bg-primary-light py-10 px-20 text-white transition duration-300 ease-in-out hover:border-inputOutline/50 hover:bg-white/[0.02];
 }

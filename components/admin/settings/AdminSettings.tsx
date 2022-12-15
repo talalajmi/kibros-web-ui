@@ -25,6 +25,7 @@ import { hashPassword } from "../../../helpers/hashPassword";
 const AdminSettings = () => {
   const [isSecurityChosen, setIsSecurityChosen] = useState(false);
   const [isPasswordShown, setIsPasswordShown] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { user, accessToken, setUser } = useAuth();
   const router = useRouter();
@@ -36,15 +37,18 @@ const AdminSettings = () => {
   const changePassword = async ({
     confirmNewPassword,
   }: ChangePasswordFormInputs) => {
+    setIsLoading(true);
     if (!user) {
       return;
     }
     await new PasswordController(router).changePassword(
       new ChangePasswordModel(user?.id, await hashPassword(confirmNewPassword))
     );
+    setIsLoading(false);
   };
 
   const updateUser = async (data: AccountSettingsFormInputs) => {
+    setIsLoading(true);
     if (!user) {
       return;
     }
@@ -67,6 +71,7 @@ const AdminSettings = () => {
       return;
     }
     setUser({ ...response });
+    setIsLoading(false);
   };
 
   return (
@@ -194,7 +199,12 @@ const AdminSettings = () => {
                 <div className={styles.settings__row}>
                   <div className={styles.settings__buttons}>
                     <button
-                      className={styles.settings__submitButton}
+                      className={
+                        isLoading
+                          ? styles.settings__disabledButton
+                          : styles.settings__submitButton
+                      }
+                      disabled={isLoading ? true : false}
                       type="submit"
                     >
                       SAVE CHANGES
@@ -244,7 +254,12 @@ const AdminSettings = () => {
                 <div className={styles.settings__row}>
                   <div className={styles.settings__buttons}>
                     <button
-                      className={styles.settings__submitButton}
+                      className={
+                        isLoading
+                          ? styles.settings__disabledButton
+                          : styles.settings__submitButton
+                      }
+                      disabled={isLoading ? true : false}
                       type="submit"
                     >
                       SAVE CHANGES
