@@ -67,7 +67,7 @@ export default function ForgotPassword() {
             onSubmit={onSubmit}
             validationSchema={forgetPasswordSchema}
           >
-            <Form className="space-y-[30px]">
+            <Form className="space-y-[25px]">
               <Field
                 name="email"
                 placeholder="البريد الالكتروني"

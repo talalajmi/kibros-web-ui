@@ -136,6 +136,7 @@ const AdminSettings = () => {
                 <div className={styles.settings__row}>
                   <div className="relative">
                     <Field
+                      id="new-pass"
                       component={Input}
                       type={isPasswordShown ? "text" : "password"}
                       name="newPassword"
