@@ -25,14 +25,12 @@ import { hashPassword } from "../../../helpers/hashPassword";
 const AdminSettings = () => {
   const [isSecurityChosen, setIsSecurityChosen] = useState(false);
   const [isPasswordShown, setIsPasswordShown] = useState(false);
+  const [isNewPasswordShown, setIsNewPasswordShown] = useState(false);
+  const [isConfirmPasswordShown, setIsConfirmPasswordShown] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const { user, accessToken, setUser } = useAuth();
   const router = useRouter();
-
-  const showPassword = () => {
-    setIsPasswordShown((current) => !current);
-  };
 
   const changePassword = async ({
     confirmNewPassword,
@@ -109,16 +107,20 @@ const AdminSettings = () => {
         </div>
 
         <div className={styles.settings__body}>
-          {isSecurityChosen ? (
+          {isSecurityChosen && (
             <Formik
-              initialValues={changePasswordInitialValues()}
+              initialValues={changePasswordInitialValues}
               onSubmit={changePassword}
               validationSchema={changePasswordScheme}
             >
-              <Form className="space-y-20">
+              <Form className="space-y-[25px]">
                 <div className={styles.settings__row}>
-                  <div className="relative">
+                  <div className="relative space-y-5">
+                    <label className="text-darkTextSecondary">
+                      Current Password
+                    </label>
                     <Field
+                      id="currentPassword"
                       component={Input}
                       type={isPasswordShown ? "text" : "password"}
                       name="currentPassword"
@@ -127,56 +129,63 @@ const AdminSettings = () => {
                       <EyeCrossed
                         size={24}
                         className={styles.icon}
-                        onClick={() => showPassword()}
+                        onClick={() => setIsPasswordShown(false)}
                       />
                     ) : (
                       <Eye
                         size={24}
                         className={styles.icon}
-                        onClick={() => showPassword()}
+                        onClick={() => setIsPasswordShown(true)}
                       />
                     )}
                   </div>
                 </div>
                 <div className={styles.settings__row}>
-                  <div className="relative">
+                  <div className="relative space-y-5">
+                    <label className="text-darkTextSecondary">
+                      New Password
+                    </label>
                     <Field
-                      id="new-pass"
+                      id="newPassword"
                       component={Input}
-                      type={isPasswordShown ? "text" : "password"}
+                      type={isNewPasswordShown ? "text" : "password"}
                       name="newPassword"
                     />
-                    {isPasswordShown ? (
+                    {isNewPasswordShown ? (
                       <EyeCrossed
                         size={24}
                         className={styles.icon}
-                        onClick={() => showPassword()}
+                        onClick={() => setIsNewPasswordShown(false)}
                       />
                     ) : (
                       <Eye
                         size={24}
                         className={styles.icon}
-                        onClick={() => showPassword()}
+                        onClick={() => setIsNewPasswordShown(true)}
                       />
                     )}
                   </div>
-                  <div className="relative">
+                  <div className="relative space-y-5">
+                    <label className="text-darkTextSecondary">
+                      Retype New Password
+                    </label>
                     <Field
+                      id="confirmNewPassword"
                       component={Input}
-                      type={isPasswordShown ? "text" : "password"}
+                      type={isConfirmPasswordShown ? "text" : "password"}
                       name="confirmNewPassword"
                     />
-                    {isPasswordShown ? (
+                    {isConfirmPasswordShown ? (
                       <EyeCrossed
                         size={24}
                         className={styles.icon}
-                        onClick={() => showPassword()}
+                        onClick={() => setIsConfirmPasswordShown(false)}
                       />
                     ) : (
                       <Eye
                         size={24}
                         className={styles.icon}
-                        onClick={() => showPassword()}
+                        onClick={() => setIsConfirmPasswordShown(true)}
                       />
                     )}
                   </div>
@@ -219,35 +228,36 @@ const AdminSettings = () => {
                 </div>
               </Form>
             </Formik>
-          ) : (
+          )}
+          {!isSecurityChosen && (
             <Formik
               initialValues={accountSettingsInitialValues(user)}
               onSubmit={updateUser}
               validationSchema={userAccountSettingsSchema}
             >
-              <Form className="space-y-20">
+              <Form className="space-y-[25px]">
                 <div className={styles.settings__row}>
-                  <div className="relative">
+                  <div className="relative space-y-5">
+                    <label className="text-darkTextSecondary">First Name</label>
                     <Field
                       component={Input}
                       placeholder="First Name"
                       name="firstName"
                     />
-                    <Label text="">First Name</Label>
                   </div>
-                  <div className="relative">
+                  <div className="relative space-y-5">
+                    <label className="text-darkTextSecondary">Last Name</label>
                     <Field component={Input} name="lastName" />
-                    <Label text="">Last Name</Label>
                   </div>
                 </div>
                 <div className={styles.settings__row}>
-                  <div className="relative">
+                  <div className="relative space-y-5">
+                    <label className="text-darkTextSecondary">Email</label>
                     <Field component={Input} name="email" />
-                    <Label text="">Email</Label>
                   </div>
-                  <div className="relative">
+                  <div className="relative space-y-5">
+                    <label className="text-darkTextSecondary">Role</label>
                     <Field component={Input} name="role" disabled />
-                    <Label text="">Role</Label>
                   </div>
                 </div>
                 <hr style={{ color: iconColor, opacity: 0.2 }} />

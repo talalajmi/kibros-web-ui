@@ -4,22 +4,18 @@ import styles from "./Navbarbutton.module.css";
 import { AdminRoute } from "../../../../routes/AdminRoutes";
 
 const NavbarButton = ({ icon, name, path }: AdminRoute) => {
+  const [selectedButton, setSelectedButton] = useState("");
+
   const router = useRouter();
 
   const redirectToPage = (path: string, name: string) => {
-    const button = document.getElementById(name);
-    if (!button?.classList.contains("buttonActive")) {
-      button?.classList.remove("button");
-      button?.classList.add("buttonActive");
-    }
-
+    setSelectedButton(name);
     router.push(path);
   };
 
   return (
     <button
-      id={name}
-      className={styles.button}
+      className={selectedButton === name ? styles.buttonActive : styles.button}
       onClick={(e) => redirectToPage(path, name)}
     >
       {icon}

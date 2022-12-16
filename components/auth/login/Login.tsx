@@ -97,114 +97,120 @@ export default function Login() {
             onSubmit={onSubmit}
             validationSchema={loginSchema}
           >
-            <Form>
-              <div className="space-y-10">
-                <div className={styles.card__textContainer}>
-                  <p>!👋 مرحبا بك في ورشات كيبروس</p>
-                  <p>{quote}</p>
-                  <p>تسجيل الدخول</p>
-                </div>
-                <div className="space-y-[25px]">
-                  <Field
-                    name="email"
-                    component={Input}
-                    isRtl={true}
-                    placeholder="البريد الالكتروني"
-                  />
-                  <div className="relative">
+            {({ isValid }) => (
+              <Form>
+                <div className="space-y-10">
+                  <div className={styles.card__textContainer}>
+                    <p>!👋 مرحبا بك في ورشات كيبروس</p>
+                    <p>{quote}</p>
+                    <p>تسجيل الدخول</p>
+                  </div>
+                  <div className="space-y-[25px]">
                     <Field
-                      name="password"
+                      name="email"
                       component={Input}
                       isRtl={true}
-                      placeholder="كلمة المرور"
-                      type={`${isPasswordShown ? "text" : "password"}`}
+                      placeholder="البريد الالكتروني"
                     />
-                    {isPasswordShown ? (
-                      <EyeCrossed
-                        size={24}
-                        className={styles.icon}
-                        onClick={() => showPassword()}
+                    <div className="relative">
+                      <Field
+                        name="password"
+                        component={Input}
+                        isRtl={true}
+                        placeholder="كلمة المرور"
+                        type={`${isPasswordShown ? "text" : "password"}`}
                       />
-                    ) : (
-                      <Eye
-                        size={24}
-                        className={styles.icon}
-                        onClick={() => showPassword()}
-                      />
-                    )}
-                    <p
-                      className="z-50 w-fit cursor-pointer text-start text-secondary-base transition duration-300 ease-in-out hover:text-secondary-dark"
-                      onClick={() =>
-                        router.push(AuthorizationRoutes.forgotPassword)
-                      }
-                    >
-                      نسيت كلمة المرور؟
-                    </p>
+                      {isPasswordShown ? (
+                        <EyeCrossed
+                          size={24}
+                          className={styles.icon}
+                          onClick={() => showPassword()}
+                        />
+                      ) : (
+                        <Eye
+                          size={24}
+                          className={styles.icon}
+                          onClick={() => showPassword()}
+                        />
+                      )}
+                      <p
+                        className="z-50 w-fit cursor-pointer text-start text-secondary-base transition duration-300 ease-in-out hover:text-secondary-dark"
+                        onClick={() =>
+                          router.push(AuthorizationRoutes.forgotPassword)
+                        }
+                      >
+                        نسيت كلمة المرور؟
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <motion.div
-                  whileHover={isLoading ? { scale: 1 } : { scale: 1.05 }}
-                  whileTap={isLoading ? { scale: 1 } : { scale: 0.8 }}
-                >
-                  <button
-                    className={
-                      isLoading ? styles.buttonDisabled : styles.button
-                    }
-                    type="submit"
-                    disabled={isLoading && true}
+                  <motion.div
+                    whileHover={isLoading ? { scale: 1 } : { scale: 1.05 }}
+                    whileTap={isLoading ? { scale: 1 } : { scale: 0.8 }}
                   >
-                    {isLoading ? "...جاري تسجيل الدخول" : "تسجيل الدخول"}
-                  </button>
-                </motion.div>
-                <div className={styles.divider__container}>
-                  <hr
-                    className={styles.hr}
-                    style={{ color: "white", width: "171px" }}
-                  />
-                  <p className={styles.divider__text}>او</p>
-                  <hr
-                    className={styles.hr}
-                    style={{ color: "white", width: "171px" }}
-                  />
-                </div>
-                <div className={styles.socialLogin__container}>
-                  <div className={styles.facebookButton__content}>
-                    <button className={styles.facebook__button}></button>
-                    <div className={styles.social__icon}>
-                      <FacebookIcon size="18" color={"#3b5998"} />
-                    </div>
-                  </div>
-                  <div className={styles.googleButton__content}>
-                    <button className={styles.google__button}></button>
-                    <div className={styles.social__icon}>
-                      <GoogleIcon size="18" color={"#De5246"} />
-                    </div>
-                  </div>
-                </div>
-                <div className={styles.divider__container}>
-                  <hr
-                    className={styles.hr}
-                    style={{ color: "white", width: "171px" }}
-                  />
-                  <p className={styles.divider__text}>او</p>
-                  <hr
-                    className={styles.hr}
-                    style={{ color: "white", width: "171px" }}
-                  />
-                </div>
-                <div className={styles.register__container}>
-                  <div className={styles.register__text}>
-                    جديد على منصتنا؟{" "}
-                    <span
-                      className={styles.register__actionText}
-                      onClick={() => router.push(AuthorizationRoutes.register)}
+                    <button
+                      className={
+                        isLoading || !isValid
+                          ? styles.buttonDisabled
+                          : styles.button
+                      }
+                      type="submit"
+                      disabled={isLoading || !isValid}
                     >
-                      انشاء حساب
-                    </span>
+                      {isLoading ? "...جاري تسجيل الدخول" : "تسجيل الدخول"}
+                    </button>
+                  </motion.div>
+                  <div className={styles.divider__container}>
+                    <hr
+                      className={styles.hr}
+                      style={{ color: "white", width: "171px" }}
+                    />
+                    <p className={styles.divider__text}>او</p>
+                    <hr
+                      className={styles.hr}
+                      style={{ color: "white", width: "171px" }}
+                    />
+                  </div>
+                  <div className={styles.socialLogin__container}>
+                    <div className={styles.facebookButton__content}>
+                      <button className={styles.facebook__button}></button>
+                      <div className={styles.social__icon}>
+                        <FacebookIcon size="18" color={"#3b5998"} />
+                      </div>
+                    </div>
+                    <div className={styles.googleButton__content}>
+                      <button className={styles.google__button}></button>
+                      <div className={styles.social__icon}>
+                        <GoogleIcon size="18" color={"#De5246"} />
+                      </div>
+                    </div>
+                  </div>
+                  <div className={styles.divider__container}>
+                    <hr
+                      className={styles.hr}
+                      style={{ color: "white", width: "171px" }}
+                    />
+                    <p className={styles.divider__text}>او</p>
+                    <hr
+                      className={styles.hr}
+                      style={{ color: "white", width: "171px" }}
+                    />
+                  </div>
+                  <div className={styles.register__container}>
+                    <div className={styles.register__text}>
+                      جديد على منصتنا؟{" "}
+                      <span
+                        className={styles.register__actionText}
+                        onClick={() =>
+                          router.push(AuthorizationRoutes.register)
+                        }
+                      >
+                        انشاء حساب
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Form>
+              </Form>
+            )}
           </Formik>
         </div>
       </div>

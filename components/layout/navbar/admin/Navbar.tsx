@@ -71,7 +71,7 @@ const Navbar = () => {
     }
   };
 
-  window.addEventListener("click", (e) => checkIfClickedOutside(e));
+  // window.addEventListener("click", (e) => checkIfClickedOutside(e));
 
   return (
     <header className={styles.conatiner}>

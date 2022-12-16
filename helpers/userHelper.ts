@@ -61,13 +61,10 @@ const accountSettingsInitialValues = (user: IUser | null) => {
   return initialValues;
 };
 
-const changePasswordInitialValues = () => {
-  const initialValues: ChangePasswordFormInputs = {
-    currentPassword: "",
-    newPassword: "",
-    confirmNewPassword: "",
-  };
-  return initialValues;
+const changePasswordInitialValues: ChangePasswordFormInputs = {
+  currentPassword: "",
+  newPassword: "",
+  confirmNewPassword: "",
 };
 
 export {

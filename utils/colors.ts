@@ -1,6 +1,8 @@
 export const kiBrosDarkBlueColor = "#162530";
 export const kiBrosLightBlueColor = "#1B2E3C";
 export const kiBrosOrangeColor = "#FF8400";
+export const kiBrosDarkOrangeColor = "#C76700";
+export const reactSelectBorderColor = "rgb(255 132 0 / 0.5)";
 export const kiBrosGreenColor = "#00D18A";
 export const whiteColor = "#ffffff";
 export const iconColor = "#EAEAFF";
