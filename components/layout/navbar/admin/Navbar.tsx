@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { iconColor } from "../../../../utils/colors";
 import { avatar, logo, UserRoles } from "../../../../constants";
 import { useRouter } from "next/router";
@@ -52,13 +52,26 @@ const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   const { user } = useAuth();
+  const dropdwonRef: any = useRef(null);
+  const router = useRouter();
+
+  const routes = getAdminRoutes();
 
   const logout = () => {
     router.push(AuthorizationRoutes.logout);
   };
 
-  const routes = getAdminRoutes();
-  const router = useRouter();
+  const checkIfClickedOutside = (e: MouseEvent) => {
+    if (
+      dropdwonRef.current &&
+      showDropdown &&
+      !dropdwonRef.current.contains(e.target)
+    ) {
+      setShowDropdown(false);
+    }
+  };
+
+  window.addEventListener("click", (e) => checkIfClickedOutside(e));
 
   return (
     <header className={styles.conatiner}>
@@ -73,7 +86,7 @@ const Navbar = () => {
           />
           <p className="text-xl font-bold text-darkText">Admin Panel</p>
         </div>
-        <div className={styles.iconContainer}>
+        <div ref={dropdwonRef} className={styles.iconContainer}>
           <div className="relative">
             <Image
               src={avatar}

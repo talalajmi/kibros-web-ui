@@ -21,15 +21,21 @@ export const registerFormInitialValues: RegisterFormInputs = {
 export const registerSchema = yup.object().shape({
   firstName: yup
     .string()
+    .transform((v, o) => (o.trim() === "" ? null : v))
+    .typeError("الاسم الاول لا يمكن ان يكون فارغا")
     .required("الرجاء إدخال الأسم")
     .max(100, "الأسم لا يجب ان لا يتعدى 100 حرفا"),
   lastName: yup
     .string()
+    .transform((v, o) => (o.trim() === "" ? null : v))
+    .typeError("الاسم الاخير لا يمكن ان يكون فارغا")
     .required("الرجاء إدخال اسم اخير")
     .max(100, "الأسم الاخير لا يجب ان لا يتعدى 100 حرفا"),
   email: yup
     .string()
-    .email()
+    .email("يرجى ادخال البريد الكتروني الصحيح")
+    .transform((v, o) => (o.trim() === "" ? null : v))
+    .typeError("البريد الاكتروني لا يمكن ان يكون فارغا")
     .required("الرجاء إدخال بريد إلكتروني")
     .max(254, "لا يمكن أن يتجاوز البريد الإلكتروني 254 حرفا")
     .matches(

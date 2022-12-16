@@ -15,7 +15,7 @@
 }
 
 .dropdown {
-  @apply absolute top-58 right-0 h-[170px] w-[230px] rounded-8 bg-primary-light;
+  @apply absolute top-58 right-0 max-h-fit w-[230px] rounded-8 bg-primary-light py-5 shadow-2xl;
 }
 
 .dropdownHidden {
