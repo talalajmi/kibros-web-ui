@@ -95,6 +95,7 @@ const Users = () => {
 
   const handleFilter = (status: string | undefined) => {
     if (!status) {
+      setFilteredData([...users]);
       return;
     }
 
@@ -107,7 +108,7 @@ const Users = () => {
       return;
     }
 
-    setFilteredData(filteredUsers);
+    setFilteredData([...filteredUsers]);
   };
 
   const callNextPage = async (page: number) => {
@@ -164,11 +165,22 @@ const Users = () => {
     {
       name: "Status",
       sortable: true,
-      cell: (user) => (
-        <div className="flex w-1/2 items-center justify-center rounded-100 bg-success-base/[0.2] text-success-base">
-          {user.subsecriptions ? user.subsecriptions : "Free"}
-        </div>
-      ),
+      cell: (user) => {
+        const isPremium =
+          UserRoles[user.role as keyof typeof UserRoles].title ===
+          "Premium User";
+        return (
+          <div
+            className={`flex w-fit items-center justify-center rounded-100 px-10 py-5 ${
+              isPremium
+                ? "bg-success-base/[0.2] text-success-base"
+                : "bg-secondary-base/[0.2] text-secondary-base"
+            }`}
+          >
+            {isPremium ? "Subscribed" : "Not Subscribed"}
+          </div>
+        );
+      },
     },
     {
       name: "Subscription",
@@ -265,6 +277,22 @@ const Users = () => {
     );
   };
 
+  const BackgroundComponent = () => {
+    if (users.length === 0) {
+      return (
+        <div className="flex w-full justify-center bg-primary-light py-[11rem] text-white">
+          No users have been found
+        </div>
+      );
+    } else {
+      return (
+        <div className="flex w-full justify-center bg-primary-light py-[11rem] text-white">
+          Fetching data...
+        </div>
+      );
+    }
+  };
+
   return (
     <div className="relative flex items-center justify-center">
       <div className={styles.container}>
@@ -302,12 +330,14 @@ const Users = () => {
           <div className="react-dataTable">
             <DataTable
               noHeader
-              columns={columns}
               pagination
+              columns={columns}
               paginationPerPage={5}
-              paginationComponent={CustomPagination}
               className="react-dataTable"
               progressPending={isGettingUsers}
+              paginationComponent={CustomPagination}
+              noDataComponent={<BackgroundComponent />}
+              progressComponent={<BackgroundComponent />}
               data={
                 searchValue.length
                   ? searchedData
