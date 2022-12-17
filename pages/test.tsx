@@ -1,71 +1,65 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import React, { useState } from "react";
 import {
-  Card,
-  CardContent,
-  Tabs,
-  Tab,
+  Modal,
+  IconButton,
   Typography,
-  Box,
+  Button,
+  makeStyles,
 } from "@material-ui/core";
-import AccountBoxIcon from "@material-ui/icons/AccountBox";
-import SecurityIcon from "@material-ui/icons/Security";
+import { Grid } from "@mui/material";
+import { X } from "../components/icons";
 
-const useStyles = makeStyles({
-  root: {
-    minWidth: 275,
+const useStyles = makeStyles((theme) => ({
+  modal: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
-});
+  paper: {
+    backgroundColor: theme.palette.background.paper,
+    border: "2px solid #000",
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+  },
+}));
 
-function TabPanel(props: any) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`tabpanel-${index}`}
-      aria-labelledby={`tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box p={3}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-function a11yProps(index: number) {
-  return {
-    id: `tab-${index}`,
-    "aria-controls": `tabpanel-${index}`,
-  };
-}
-
-export default function TabsCard() {
+const MyModal = () => {
+  const [modalOpen, setModalOpen] = useState(false);
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
 
-  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
-    setValue(newValue);
+  const handleModalClose = () => {
+    setModalOpen(false);
+  };
+
+  const handleModalOpen = () => {
+    setModalOpen(true);
   };
 
   return (
-    <Card className={classes.root}>
-      <CardContent>
-        <Tabs value={value} onChange={handleChange} aria-label="tabs">
-          <Tab label="Account" icon={<AccountBoxIcon />} {...a11yProps(0)} />
-          <Tab label="Security" icon={<SecurityIcon />} {...a11yProps(1)} />
-        </Tabs>
-        <TabPanel value={value} index={0}>
-          Account tab content goes here
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          Security tab content goes here
-        </TabPanel>
-      </CardContent>
-    </Card>
+    <>
+      <Button onClick={handleModalOpen}>Open Modal</Button>
+      <Modal
+        open={modalOpen}
+        onClose={handleModalClose}
+        className={classes.modal}
+      >
+        <Grid container direction="column" rowSpacing={2}>
+          <Grid item>
+            <X className="fill-white" size={10} />
+          </Grid>
+          <Typography variant="h5">Create Catgeory</Typography>
+          <Grid>
+            <Button variant="contained" color="secondary" type="submit">
+              Submit
+            </Button>
+            <Button type="reset" onClick={handleModalClose}>
+              Cancel
+            </Button>
+          </Grid>
+        </Grid>
+      </Modal>
+    </>
   );
-}
+};
+
+export default MyModal;

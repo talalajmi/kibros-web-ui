@@ -8,19 +8,13 @@
   @apply md:max-h-fit md:w-[480px];
 }
 
-.card__container {
-  @apply flex w-full flex-col items-center  text-center;
-}
-
 .logo__container {
-  @apply flex h-70 w-190 items-center justify-center;
-  @apply md:h-70 md:w-250;
-  @apply lg:h-70 lg:w-250;
-  @apply xl:h-70 xl:w-250;
+  @apply flex h-70 w-full items-center justify-center;
+  @apply md:h-70;
 }
 
 .card__textContainer {
-  @apply my-10 flex flex-col space-y-10 text-lg text-white;
+  @apply my-10 flex flex-col space-y-10 text-center text-lg text-white;
 }
 
 .primary__text {
@@ -61,8 +55,8 @@
 }
 
 .button {
-  @apply flex w-full items-center justify-center space-x-20 rounded-8 bg-secondary-base text-lg text-white;
-  @apply md:h-40 md:text-lg;
+  @apply flex w-full items-center justify-center space-x-20 rounded-8 bg-secondary-base px-20 py-10 text-lg text-white;
+  @apply md:text-lg;
 }
 
 .buttonDisabled {
@@ -73,7 +67,7 @@
 }
 
 .socialLogin__container {
-  @apply flex  items-end space-x-14;
+  @apply flex justify-center space-x-14;
 }
 
 .facebookButton__content {
@@ -102,8 +96,6 @@
 .divider__container {
   @apply flex h-44 items-center justify-center;
   @apply md:h-64;
-  @apply lg:h-64;
-  @apply xl:h-64;
 }
 
 .hr {
