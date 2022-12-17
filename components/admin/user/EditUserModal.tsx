@@ -20,10 +20,9 @@ import {
 } from "../../../helpers/userHelper";
 import { editUserSchema } from "../../../schemas/userSchema";
 import AccountController from "../../../controllers/AccountController";
-import { useUser } from "../../../utils/hooks/useUser";
 import { useRouter } from "next/router";
 import { UpdateAccountModel } from "../../../models";
-import { useAuth, useUsers } from "../../../utils/hooks";
+import { useUser, useUsers } from "../../../utils/hooks";
 
 interface ModalProps {
   user: IUser;
@@ -42,7 +41,7 @@ const EditUserModal = ({ user }: ModalProps) => {
   const [isSuspended, setIsSuspended] = useState(user.isSuspended);
   const [role, setRole] = useState(user.role);
 
-  const { accessToken } = useAuth();
+  const { accessToken } = useUser();
   const { users, admins, setUsers, setAdmins } = useUsers();
   const router = useRouter();
 

@@ -10,7 +10,7 @@ import { iconColor } from "../../../utils/colors";
 
 // Hooks
 import { useRouter } from "next/router";
-import { useAuth, useUser } from "../../../utils/hooks";
+import { useUser } from "../../../utils/hooks";
 
 // Constants
 import { AuthorizationRoutes } from "../../../routes";
@@ -39,7 +39,7 @@ export default function Login() {
 
   // Hooks
   const router = useRouter();
-  const { setAccessToken, setUser } = useAuth();
+  const { setAccessToken, setUser } = useUser();
 
   const showPassword = () => {
     setIsPasswordShown((current) => !current);

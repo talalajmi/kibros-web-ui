@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { iconColor } from "../../../../utils/colors";
 import { avatar, logo, UserRoles } from "../../../../constants";
 import { useRouter } from "next/router";
@@ -15,7 +15,7 @@ import {
 } from "../../../icons";
 import styles from "./Navbar.module.css";
 import NavbarButton from "./NavbarButton";
-import { useAuth } from "../../../../utils/hooks";
+import { useUser } from "../../../../utils/hooks";
 
 const getAdminRoutes = () => {
   const routes: AdminRoute[] = [
@@ -51,7 +51,7 @@ const getAdminRoutes = () => {
 const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
 
-  const { user } = useAuth();
+  const { user } = useUser();
   const dropdwonRef: any = useRef(null);
   const router = useRouter();
 
@@ -61,17 +61,26 @@ const Navbar = () => {
     router.push(AuthorizationRoutes.logout);
   };
 
-  const checkIfClickedOutside = (e: MouseEvent) => {
-    if (
-      dropdwonRef.current &&
-      showDropdown &&
-      !dropdwonRef.current.contains(e.target)
-    ) {
-      setShowDropdown(false);
+  useEffect(() => {
+    const checkIfClickedOutside = (e: MouseEvent) => {
+      if (
+        dropdwonRef.current &&
+        showDropdown &&
+        !dropdwonRef.current.contains(e.target)
+      ) {
+        setShowDropdown(false);
+      }
+    };
+    if (showDropdown) {
+      document.addEventListener("click", checkIfClickedOutside);
+    } else {
+      document.removeEventListener("click", checkIfClickedOutside);
     }
-  };
 
-  // window.addEventListener("click", (e) => checkIfClickedOutside(e));
+    return () => {
+      document.removeEventListener("click", checkIfClickedOutside);
+    };
+  }, [showDropdown, setShowDropdown]);
 
   return (
     <header className={styles.conatiner}>

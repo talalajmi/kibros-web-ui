@@ -15,7 +15,6 @@ import { useCategories, useUser } from "../../../utils/hooks";
 import { EditCategoryModel } from "../../../models";
 import EditIcon from "../../icons/EditIcon";
 import { Input } from "../../form";
-import { useAuth } from "../../../utils/hooks/useAuth";
 
 interface ModalProps {
   category: ICategory;
@@ -29,7 +28,7 @@ const EditCategoryModal = ({ category }: ModalProps) => {
   const [showModal, setShowModal] = useState(false);
 
   const router = useRouter();
-  const { accessToken } = useAuth();
+  const { accessToken } = useUser();
   const { categories, setCategories } = useCategories();
 
   const editCategory = async ({ categoryName }: CategoryFormInputs) => {

@@ -28,3 +28,13 @@ body {
     scrollbar-width: none; /* Firefox */
   }
 }
+
+@layer components {
+  .button__secondary {
+    @apply rounded-8 bg-secondary-base py-10 px-20 text-white transition duration-300 ease-in-out hover:bg-secondary-dark;
+  }
+
+  .button__secondary-disabled {
+    @apply rounded-8 bg-secondary-disabled py-10 px-20 text-white;
+  }
+}

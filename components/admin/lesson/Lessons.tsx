@@ -8,7 +8,7 @@ import AddLessonModal from "./add/AddLessonModal";
 
 import styles from "./Lessons.module.css";
 import AddFileIcon from "../../icons/AddFileIcon";
-import { useAuth, useUser } from "../../../utils/hooks";
+import { useUser } from "../../../utils/hooks";
 import { useRouter } from "next/router";
 import { ILesson } from "../../../interfaces";
 import { LessonController } from "../../../controllers";
@@ -25,7 +25,7 @@ const Lessons = () => {
   const [isGetiingLessons, setIsGetiingLessons] = useState(false);
   const [isNextPageDisabled, setIsNextPageDisabled] = useState(false);
 
-  const { accessToken } = useAuth();
+  const { accessToken } = useUser();
   const { lessons, setLessons, pagesCalled, setPagesCalled } = useLessons();
   const router = useRouter();
 
@@ -249,7 +249,12 @@ const Lessons = () => {
               className="rounded-8 border border-inputOutline border-opacity-20 bg-primary-light p-10 text-white"
               onChange={handleSearch}
             />
-            <button className={styles.addButton}>Add Lesson</button>
+            <button
+              className="button__secondary"
+              onClick={() => router.push("/admin/lessons/add")}
+            >
+              Add Lesson
+            </button>
           </div>
         </div>
         <div className="react-dataTable">

@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { iconColor, kiBrosLightBlueColor } from "../../../utils/colors";
+import { iconColor } from "../../../utils/colors";
 import ExportIcon from "../../icons/ExportIcon";
 import styles from "./Users.module.css";
-import Select from "react-select";
-import {
-  reactSelectTheme,
-  getReactSelectStyles,
-} from "../../../utils/ReactSelectTheme";
 import { useRouter } from "next/router";
 import { AccountController } from "../../../controllers";
 import { IUser } from "../../../interfaces";
 import { EditUserModal } from "..";
-import { useAuth, useUsers } from "../../../utils/hooks";
+import { useUser, useUsers } from "../../../utils/hooks";
 import DataTable, { TableColumn } from "react-data-table-component";
 import { UserRoles } from "../../../constants/UserRoles";
 import { toast } from "react-toastify";
@@ -28,11 +23,10 @@ const Users = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchValue, setSearchValue] = useState("");
   const [searchedData, setSearchedData] = useState<IUser[]>([]);
-  const [filteredData, setFilteredData] = useState<IUser[]>([]);
   const [isNextPageDisabled, setIsNextPageDisabled] = useState(false);
   const [isGettingUsers, setIsGettingUsers] = useState(false);
 
-  const { accessToken } = useAuth();
+  const { accessToken } = useUser();
   const { users, setUsers, userPagesCalled, setUserPagesCalled } = useUsers();
 
   const router = useRouter();
@@ -68,18 +62,18 @@ const Users = () => {
       updatedData = users.filter((user) => {
         const startsWith =
           user.fullName.toLowerCase().startsWith(value.toLowerCase()) ||
-          user.email.toLowerCase().startsWith(value.toLowerCase());
-        UserRoles[user.role as keyof typeof UserRoles].title
-          .toLowerCase()
-          .startsWith(value.toLowerCase());
+          user.email.toLowerCase().startsWith(value.toLowerCase()) ||
+          UserRoles[user.role as keyof typeof UserRoles].title
+            .toLowerCase()
+            .startsWith(value.toLowerCase());
         // user.subsecriptions.toLowerCase().startsWith(value.toLowerCase());
 
         const includes =
           user.fullName.toLowerCase().includes(value.toLowerCase()) ||
-          user.email.toLowerCase().includes(value.toLowerCase());
-        UserRoles[user.role as keyof typeof UserRoles].title
-          .toLowerCase()
-          .includes(value.toLowerCase());
+          user.email.toLowerCase().includes(value.toLowerCase()) ||
+          UserRoles[user.role as keyof typeof UserRoles].title
+            .toLowerCase()
+            .includes(value.toLowerCase());
         // user.subsecriptions.toLowerCase().includes(value.toLowerCase());
 
         if (startsWith) {
@@ -91,24 +85,6 @@ const Users = () => {
       setSearchedData(updatedData);
       setSearchValue(value);
     }
-  };
-
-  const handleFilter = (status: string | undefined) => {
-    if (!status) {
-      setFilteredData([...users]);
-      return;
-    }
-
-    const filteredUsers = users.filter(
-      (u) => UserRoles[u.role as keyof typeof UserRoles].title === status
-    );
-
-    if (filteredUsers.length === 0) {
-      toast.error("No users were found");
-      return;
-    }
-
-    setFilteredData([...filteredUsers]);
   };
 
   const callNextPage = async (page: number) => {
@@ -277,39 +253,9 @@ const Users = () => {
     );
   };
 
-  const BackgroundComponent = () => {
-    if (users.length === 0) {
-      return (
-        <div className="flex w-full justify-center bg-primary-light py-[11rem] text-white">
-          No users have been found
-        </div>
-      );
-    } else {
-      return (
-        <div className="flex w-full justify-center bg-primary-light py-[11rem] text-white">
-          Fetching data...
-        </div>
-      );
-    }
-  };
-
   return (
     <div className="relative flex items-center justify-center">
       <div className={styles.container}>
-        <div className={styles.filtersCard}>
-          <p className="text-lg text-white">Search Filters</p>
-          <div className={styles.inputs}>
-            <Select
-              isClearable
-              options={options}
-              className="w-full"
-              theme={reactSelectTheme}
-              placeholder="Please Select a status"
-              onChange={(e) => handleFilter(e?.value)}
-              styles={getReactSelectStyles(kiBrosLightBlueColor)}
-            />
-          </div>
-        </div>
         <div className={styles.tableCard}>
           <div className={styles.header}>
             <button
@@ -336,15 +282,7 @@ const Users = () => {
               className="react-dataTable"
               progressPending={isGettingUsers}
               paginationComponent={CustomPagination}
-              noDataComponent={<BackgroundComponent />}
-              progressComponent={<BackgroundComponent />}
-              data={
-                searchValue.length
-                  ? searchedData
-                  : filteredData.length
-                  ? filteredData
-                  : users
-              }
+              data={searchValue.length ? searchedData : users}
             />
           </div>
         </div>

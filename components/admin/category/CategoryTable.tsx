@@ -3,7 +3,7 @@ import styles from "./CategoryTable.module.css";
 import AddCategoryModal from "./AddCategoryModal";
 import { CategoryController } from "../../../controllers";
 import { useRouter } from "next/router";
-import { useCategories, useAuth } from "../../../utils/hooks";
+import { useCategories, useUser } from "../../../utils/hooks";
 import EditCategoryModal from "./EditCategoryModal";
 import DataTable, { TableColumn } from "react-data-table-component";
 import { ICategory } from "../../../interfaces/Category";
@@ -24,7 +24,7 @@ const CategoryTable = () => {
   const [pages, setPages] = useState([1]);
 
   // Hooks
-  const { accessToken } = useAuth();
+  const { accessToken } = useUser();
   const {
     categories,
     pagesCount,

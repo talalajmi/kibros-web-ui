@@ -13,6 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { customPages } from "../routes/PublicRoutes";
 import "../styles/react-dataTable-component.scss";
 import { AuthProvider } from "../contexts/AuthContext";
+import RequireAdmin from "../components/admin/RequireAdmin";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -65,24 +66,26 @@ function MyApp({ Component, pageProps }: AppProps) {
     return (
       <AuthProvider>
         <Provider store={store}>
-          <ThemeProvider theme={materialUiTheme}>
-            <ToastContainer
-              position="top-right"
-              autoClose={3000}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme="dark"
-            />
-            <div className="flex h-screen flex-col justify-between font-sans">
-              <AdminNavbar />
-              <Component {...pageProps} />
-              <Footer />
-            </div>
-          </ThemeProvider>
+          <RequireAdmin>
+            <ThemeProvider theme={materialUiTheme}>
+              <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+              />
+              <div className="flex h-screen flex-col justify-between font-sans">
+                <AdminNavbar />
+                <Component {...pageProps} />
+                <Footer />
+              </div>
+            </ThemeProvider>
+          </RequireAdmin>
         </Provider>
       </AuthProvider>
     );

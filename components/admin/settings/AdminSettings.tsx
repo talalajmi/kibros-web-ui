@@ -14,7 +14,7 @@ import {
   userAccountSettingsSchema,
 } from "../../../schemas/userSchema";
 import { kiBrosOrangeColor, iconColor } from "../../../utils/colors";
-import { useAuth } from "../../../utils/hooks";
+import { useUser } from "../../../utils/hooks";
 import { Input, Label } from "../../form";
 import { Eye, EyeCrossed, SearchIcon } from "../../icons";
 import LockOpen from "../../icons/LockOpen";
@@ -29,7 +29,7 @@ const AdminSettings = () => {
   const [isConfirmPasswordShown, setIsConfirmPasswordShown] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const { user, accessToken, setUser } = useAuth();
+  const { user, accessToken, setUser } = useUser();
   const router = useRouter();
 
   const changePassword = async ({

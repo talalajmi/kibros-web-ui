@@ -63,6 +63,9 @@ module.exports = {
       gridTemplateRows: {
         9: "repeat(9, minmax(0, 1fr))",
       },
+      animation: {
+        "spin-slow": "spin 3s linear infinite",
+      },
       width: {
         70: "70px",
         100: "100px",

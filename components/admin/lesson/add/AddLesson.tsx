@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import { borderColor, kiBrosDarkBlueColor } from "../../../../utils/colors";
+import {
+  borderColor,
+  kiBrosDarkBlueColor,
+  kiBrosLightBlueColor,
+} from "../../../../utils/colors";
 import { Input } from "../../../form";
 import Select from "react-select";
 import {
@@ -46,92 +50,115 @@ const AddLesson = () => {
                 Please enter lesson details here
               </p>
             </div>
-            <div className="flex flex-col items-center space-y-20">
-              <div className="flex w-full space-x-20">
-                <Field
-                  name="title"
-                  className={styles.input}
-                  placeholder="Lesson Name"
-                />
-                <Field
-                  name="subtitle"
-                  className={styles.input}
-                  placeholder="Lesson Subtitle"
-                />
+            <div className="flex flex-col items-center space-y-[25px] text-white">
+              <div className="grid w-full grid-flow-col grid-rows-1 gap-20 overflow-clip">
+                <div className="flex flex-col space-y-5">
+                  <label>Lesson Name</label>
+                  <Field
+                    name="title"
+                    component={Input}
+                    placeholder="Lesson Name"
+                  />
+                </div>
+                <div className="flex flex-col space-y-5">
+                  <label>Lesson Subtitle</label>
+
+                  <Field
+                    name="subtitle"
+                    component={Input}
+                    placeholder="Lesson Subtitle"
+                  />
+                </div>
               </div>
-              <Field
-                name="description"
-                className={styles.input}
-                placeholder="Lesson Description"
-              />
-              <div className="flex w-full space-x-20">
-                <Field
-                  name="videoUrl"
-                  className={styles.input}
-                  placeholder="Video Url"
-                />
-                <Field
-                  name="vimeoVideoId"
-                  className={styles.input}
-                  placeholder="Vimeo Video Id"
-                />
+              <div className="w-full">
+                <div className="flex flex-col space-y-5">
+                  <label>Lesson Description</label>
+                  <Field
+                    name="description"
+                    component={Input}
+                    placeholder="Lesson Description"
+                  />
+                </div>
               </div>
-              <Field
-                name="instructorName"
-                className={styles.input}
-                placeholder="Instructor Name"
-              />
-              <div className="flex w-full space-x-20">
-                <Field
-                  name="duration"
-                  className={styles.input}
-                  placeholder="Duration"
-                />
-                <Field
-                  name="sortingId"
-                  className={styles.input}
-                  placeholder="Sorting Number"
-                />
+              <div className="grid w-full grid-flow-col grid-rows-1 gap-20 overflow-clip">
+                <div className="flex flex-col space-y-5">
+                  <label>Video Url (YouTube)</label>
+                  <Field
+                    name="videoUrl"
+                    component={Input}
+                    placeholder="Video Url"
+                  />
+                </div>
+                <div className="flex flex-col space-y-5">
+                  <label>Vimeo Video ID</label>
+                  <Field
+                    name="vimeoVideoId"
+                    component={Input}
+                    placeholder="Vimeo Video Id"
+                  />
+                </div>
               </div>
-              <Select
-                placeholder="Choose Level"
-                className="w-full"
-                theme={reactSelectTheme}
-                options={lessonLevelOptions}
-                styles={getReactSelectStyles(kiBrosDarkBlueColor)}
-              />
-              <div className="flex w-full space-x-20">
+              <div className="w-full">
+                <div className="flex flex-col space-y-5">
+                  <label>Instructor Name</label>
+                  <Field
+                    name="instructorName"
+                    component={Input}
+                    placeholder="Instructor Name"
+                  />
+                </div>
+              </div>
+              <div className="grid w-full grid-flow-col grid-rows-1 gap-20 overflow-clip">
+                <div className="flex flex-col space-y-5">
+                  <label>Duration</label>
+                  <Field
+                    name="duration"
+                    component={Input}
+                    placeholder="Duration"
+                  />
+                </div>
+                <div className="flex flex-col space-y-5">
+                  <label>Dorting Number</label>
+                  <Field
+                    name="sortingId"
+                    component={Input}
+                    placeholder="Sorting Number"
+                  />
+                </div>
+              </div>
+              <div className="flex w-full flex-col space-y-5">
+                <label>Lesson Level</label>
                 <Select
-                  placeholder="Choose category"
-                  className="w-full"
+                  placeholder="Choose Level"
+                  options={lessonLevelOptions}
                   theme={reactSelectTheme}
-                  styles={{
-                    control: (baseStyles: any) => ({
-                      ...baseStyles,
-                      backgroundColor: kiBrosDarkBlueColor,
-                      borderColor: borderColor,
-                      padding: 6,
-                    }),
-                  }}
+                  styles={getReactSelectStyles(kiBrosLightBlueColor)}
                 />
-                <Select
-                  placeholder="Choose Lessons"
-                  className="w-full"
-                  theme={reactSelectTheme}
-                  styles={{
-                    control: (baseStyles: any) => ({
-                      ...baseStyles,
-                      backgroundColor: kiBrosDarkBlueColor,
-                      borderColor: borderColor,
-                      padding: 6,
-                    }),
-                  }}
-                />
+              </div>
+              <div className="flex w-full space-x-20">
+                <div className="flex w-full flex-col space-y-5">
+                  <label>Lesson Category</label>
+                  <Select
+                    placeholder="Choose category"
+                    className="w-full"
+                    theme={reactSelectTheme}
+                    styles={getReactSelectStyles(kiBrosLightBlueColor)}
+                  />
+                </div>
+                <div className="flex w-full flex-col space-y-5">
+                  <label>Related Lessons</label>
+                  <Select
+                    placeholder="Choose Lessons"
+                    className="w-full"
+                    theme={reactSelectTheme}
+                    styles={getReactSelectStyles(kiBrosLightBlueColor)}
+                  />
+                </div>
               </div>
               <div className="flex w-full flex-col space-y-5">
                 <label className="w-full text-white">Upload Thumbnail</label>
                 <input
-                  className="block w-full cursor-pointer rounded-8 border border-inputOutline/[.2] bg-primary-base text-sm text-white file:p-12 focus:outline-none"
+                  className="block w-full cursor-pointer rounded-8 border border-inputOutline/[.2] bg-primary-light text-sm text-white file:p-12 focus:outline-none"
                   id="file_input"
                   type="file"
                   onChange={handleImg}
@@ -139,9 +166,15 @@ const AddLesson = () => {
               </div>
               <div className="flex w-full flex-col space-y-20">
                 <p className="text-white">Attachments</p>
-                <div className="flex w-full space-x-20">
-                  <Field className={styles.input} placeholder="File Name" />
-                  <Field className={styles.input} placeholder="Download Url" />
+                <div className="grid w-full grid-flow-col grid-rows-1 gap-20 overflow-clip">
+                  <div className="flex flex-col space-y-5">
+                    <label>File Name</label>
+                    <Field component={Input} placeholder="File Name" />
+                  </div>
+                  <div className="flex flex-col space-y-5">
+                    <label>Download Url</label>
+                    <Field component={Input} placeholder="Download Url" />
+                  </div>
                 </div>
                 <div className="flex justify-start">
                   <button className="rounded-8 bg-secondary-base py-10 px-20 uppercase text-white">

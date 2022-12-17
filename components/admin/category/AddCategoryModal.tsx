@@ -11,7 +11,7 @@ import {
 import { categorySchema } from "../../../schemas/categorySchema";
 import CategoryController from "../../../controllers/CategoryController";
 import { useRouter } from "next/router";
-import { useAuth, useCategories, useUser } from "../../../utils/hooks";
+import { useUser, useCategories } from "../../../utils/hooks";
 import { CreateCategoryModel } from "../../../models";
 import { Input } from "../../form";
 
@@ -22,7 +22,7 @@ interface ModalProps {
 
 const CategoryModal = ({ showModal, setShowModal }: ModalProps) => {
   const router = useRouter();
-  const { accessToken } = useAuth();
+  const { accessToken } = useUser();
   const { categories, setCategories } = useCategories();
 
   const addCategory = async ({ categoryName }: CategoryFormInputs) => {

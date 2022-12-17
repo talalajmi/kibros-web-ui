@@ -7,10 +7,10 @@ export const publicRoutes = {
 };
 
 export const customPages = {
-  401: "/custom-pages/401",
-  403: "/custom-pages/403",
-  404: "/custom-pages/404",
-  500: "/custom-pages/500",
+  error401: "/custom-pages/401",
+  error403: "/custom-pages/403",
+  error404: "/custom-pages/404",
+  error500: "/custom-pages/500",
   error: "/custom-pages/error",
   paymentFailed: "/custom-pages/payment-failed",
   paymentSuccessful: "/custom-pages/payment-successful",

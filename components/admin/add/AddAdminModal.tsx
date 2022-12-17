@@ -11,7 +11,7 @@ import {
 } from "../../../helpers/userHelper";
 import { AddAdminModel } from "../../../models";
 import { addAdminSchema } from "../../../schemas/userSchema";
-import { useAuth, useUser, useUsers } from "../../../utils/hooks";
+import { useUser, useUsers } from "../../../utils/hooks";
 import { Input } from "../../form";
 import { X } from "../../icons";
 import styles from "./AddAdminModal.module.css";
@@ -20,7 +20,7 @@ const AddAdminModal = () => {
   const [showModal, setShowModal] = useState(false);
 
   const router = useRouter();
-  const { accessToken } = useAuth();
+  const { accessToken } = useUser();
 
   const onSubmit = async (admin: AddAdminFormInputs) => {
     const password = await new AccountController(accessToken, router).addAdmin(
