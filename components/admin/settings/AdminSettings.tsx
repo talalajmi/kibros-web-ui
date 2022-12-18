@@ -113,120 +113,122 @@ const AdminSettings = () => {
               onSubmit={changePassword}
               validationSchema={changePasswordScheme}
             >
-              <Form className="space-y-[25px]">
-                <div className={styles.settings__row}>
-                  <div className="relative space-y-5">
-                    <label className="text-darkTextSecondary">
-                      Current Password
-                    </label>
-                    <Field
-                      id="currentPassword"
-                      component={Input}
-                      type={isPasswordShown ? "text" : "password"}
-                      name="currentPassword"
-                    />
-                    {isPasswordShown ? (
-                      <EyeCrossed
-                        size={24}
-                        className={styles.icon}
-                        onClick={() => setIsPasswordShown(false)}
+              {({ isValid }) => (
+                <Form className="space-y-[25px]">
+                  <div className={styles.settings__row}>
+                    <div className="relative space-y-5">
+                      <label className="text-darkTextSecondary">
+                        Current Password
+                      </label>
+                      <Field
+                        id="currentPassword"
+                        component={Input}
+                        type={isPasswordShown ? "text" : "password"}
+                        name="currentPassword"
                       />
-                    ) : (
-                      <Eye
-                        size={24}
-                        className={styles.icon}
-                        onClick={() => setIsPasswordShown(true)}
-                      />
-                    )}
+                      {isPasswordShown ? (
+                        <EyeCrossed
+                          size={24}
+                          className={styles.icon}
+                          onClick={() => setIsPasswordShown(false)}
+                        />
+                      ) : (
+                        <Eye
+                          size={24}
+                          className={styles.icon}
+                          onClick={() => setIsPasswordShown(true)}
+                        />
+                      )}
+                    </div>
                   </div>
-                </div>
-                <div className={styles.settings__row}>
-                  <div className="relative space-y-5">
-                    <label className="text-darkTextSecondary">
-                      New Password
-                    </label>
-                    <Field
-                      id="newPassword"
-                      component={Input}
-                      type={isNewPasswordShown ? "text" : "password"}
-                      name="newPassword"
-                    />
-                    {isNewPasswordShown ? (
-                      <EyeCrossed
-                        size={24}
-                        className={styles.icon}
-                        onClick={() => setIsNewPasswordShown(false)}
+                  <div className={styles.settings__row}>
+                    <div className="relative space-y-5">
+                      <label className="text-darkTextSecondary">
+                        New Password
+                      </label>
+                      <Field
+                        id="newPassword"
+                        component={Input}
+                        type={isNewPasswordShown ? "text" : "password"}
+                        name="newPassword"
                       />
-                    ) : (
-                      <Eye
-                        size={24}
-                        className={styles.icon}
-                        onClick={() => setIsNewPasswordShown(true)}
+                      {isNewPasswordShown ? (
+                        <EyeCrossed
+                          size={24}
+                          className={styles.icon}
+                          onClick={() => setIsNewPasswordShown(false)}
+                        />
+                      ) : (
+                        <Eye
+                          size={24}
+                          className={styles.icon}
+                          onClick={() => setIsNewPasswordShown(true)}
+                        />
+                      )}
+                    </div>
+                    <div className="relative space-y-5">
+                      <label className="text-darkTextSecondary">
+                        Retype New Password
+                      </label>
+                      <Field
+                        id="confirmNewPassword"
+                        component={Input}
+                        type={isConfirmPasswordShown ? "text" : "password"}
+                        name="confirmNewPassword"
                       />
-                    )}
+                      {isConfirmPasswordShown ? (
+                        <EyeCrossed
+                          size={24}
+                          className={styles.icon}
+                          onClick={() => setIsConfirmPasswordShown(false)}
+                        />
+                      ) : (
+                        <Eye
+                          size={24}
+                          className={styles.icon}
+                          onClick={() => setIsConfirmPasswordShown(true)}
+                        />
+                      )}
+                    </div>
                   </div>
-                  <div className="relative space-y-5">
-                    <label className="text-darkTextSecondary">
-                      Retype New Password
-                    </label>
-                    <Field
-                      id="confirmNewPassword"
-                      component={Input}
-                      type={isConfirmPasswordShown ? "text" : "password"}
-                      name="confirmNewPassword"
-                    />
-                    {isConfirmPasswordShown ? (
-                      <EyeCrossed
-                        size={24}
-                        className={styles.icon}
-                        onClick={() => setIsConfirmPasswordShown(false)}
-                      />
-                    ) : (
-                      <Eye
-                        size={24}
-                        className={styles.icon}
-                        onClick={() => setIsConfirmPasswordShown(true)}
-                      />
-                    )}
+                  <hr style={{ color: iconColor, opacity: 0.2 }} />
+                  <div className={styles.textContainer}>
+                    <p>PASSWORD REQUIREMENTS</p>
+                    <ul>
+                      <li className={styles.bulletPoint}>
+                        Minimum 8 characters long - the more, the better.
+                      </li>
+                      <li className={styles.bulletPoint}>
+                        At least one lowercase character.
+                      </li>
+                      <li className={styles.bulletPoint}>
+                        At least one number, symbol.
+                      </li>
+                    </ul>
                   </div>
-                </div>
-                <hr style={{ color: iconColor, opacity: 0.2 }} />
-                <div className={styles.textContainer}>
-                  <p>PASSWORD REQUIREMENTS</p>
-                  <ul>
-                    <li className={styles.bulletPoint}>
-                      Minimum 8 characters long - the more, the better.
-                    </li>
-                    <li className={styles.bulletPoint}>
-                      At least one lowercase character.
-                    </li>
-                    <li className={styles.bulletPoint}>
-                      At least one number, symbol.
-                    </li>
-                  </ul>
-                </div>
-                <div className={styles.settings__row}>
-                  <div className={styles.settings__buttons}>
-                    <button
-                      className={
-                        isLoading
-                          ? styles.settings__disabledButton
-                          : styles.settings__submitButton
-                      }
-                      disabled={isLoading ? true : false}
-                      type="submit"
-                    >
-                      SAVE CHANGES
-                    </button>
-                    <button
-                      className={styles.settings__cancelButton}
-                      type="button"
-                    >
-                      CANCEL
-                    </button>
+                  <div className={styles.settings__row}>
+                    <div className={styles.settings__buttons}>
+                      <button
+                        className={
+                          isLoading || !isValid
+                            ? styles.settings__disabledButton
+                            : styles.settings__submitButton
+                        }
+                        disabled={isLoading || !isValid}
+                        type="submit"
+                      >
+                        SAVE CHANGES
+                      </button>
+                      <button
+                        className={styles.settings__cancelButton}
+                        type="button"
+                      >
+                        CANCEL
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </Form>
+                </Form>
+              )}
             </Formik>
           )}
           {!isSecurityChosen && (
