@@ -20,6 +20,7 @@ import {
 import { Input, Label } from "./form";
 import { UserSettings } from "./user";
 import InvoiceAr from "./shared/InvoiceAr";
+import Spinner from "./shared/Spinner";
 
 export {
   AddCategoryModal,
@@ -41,4 +42,4 @@ export { Footer, AdminNavbar, UserNavbar, Navbar, PublicFooter };
 
 export { Input, Label };
 
-export { InvoiceAr };
+export { InvoiceAr, Spinner };

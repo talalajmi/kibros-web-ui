@@ -7,6 +7,7 @@ import { useUser } from "../../utils/hooks";
 import AccountController from "../../controllers/AccountController";
 import { isObjEmpty } from "../../utils/utils";
 import Error401 from "../../pages/custom-pages/401";
+import Spinner from "../shared/Spinner";
 
 type Props = {
   children: ReactNode;
@@ -14,7 +15,7 @@ type Props = {
 
 const RequireAdmin = ({ children }: Props) => {
   // ** States
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   // ** Hooks
   const { user, setUser, setAccessToken } = useUser();
@@ -64,7 +65,7 @@ const RequireAdmin = ({ children }: Props) => {
   }, []);
 
   if (isLoading) {
-    return <p className="animate-spin text-center text-white">loading</p>;
+    return <Spinner />;
   }
 
   if (!isObjEmpty(user)) {

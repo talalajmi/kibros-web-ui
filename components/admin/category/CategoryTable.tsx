@@ -11,6 +11,9 @@ import TrashIcon from "../../icons/TrashIcon";
 import ArrowUp from "../../icons/ArrowUp";
 import { toast } from "react-toastify";
 import { ArrowLeft, ArrowRight } from "../../icons";
+import Spinner from "../../shared/Spinner";
+import ArrowDown from "../../icons/ArrowDown";
+import NoData from "../table/NoData";
 
 const CategoryTable = () => {
   // States
@@ -58,6 +61,7 @@ const CategoryTable = () => {
 
     setIsLoading(false);
   };
+
   useEffect(() => {
     if (categories.length === 0) {
       fetchCategories();
@@ -163,7 +167,7 @@ const CategoryTable = () => {
   ];
 
   if (isLoading) {
-    return <p className="text-center text-white">loading</p>;
+    return <Spinner />;
   }
 
   const CustomPagination = () => {
@@ -238,17 +242,18 @@ const CategoryTable = () => {
               columns={columns}
               className="react-dataTable"
               paginationPerPage={5}
+              paginationDefaultPage={currentPage}
+              progressPending={isGettingCategories}
+              paginationComponent={CustomPagination}
+              progressComponent={<Spinner tableLoader />}
+              data={searchValue.length ? filteredData : categories}
+              noDataComponent={<NoData listName="categories" item="category" />}
               sortIcon={
-                <ArrowUp
+                <ArrowDown
                   size={18}
                   className="fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
                 />
               }
-              paginationDefaultPage={currentPage}
-              progressPending={isGettingCategories}
-              progressComponent={<p>loading...</p>}
-              paginationComponent={CustomPagination}
-              data={searchValue.length ? filteredData : categories}
             />
           </div>
         </div>

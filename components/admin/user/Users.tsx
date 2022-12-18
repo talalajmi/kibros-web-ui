@@ -12,6 +12,9 @@ import { UserRoles } from "../../../constants/UserRoles";
 import { toast } from "react-toastify";
 import { ArrowLeft, ArrowRight } from "../../icons";
 import { getUserValuesForExport, userCsvRows } from "../../../constants/User";
+import Spinner from "../../shared/Spinner";
+import ArrowDown from "../../icons/ArrowDown";
+import NoData from "../table/NoData";
 
 const options = [
   { label: "Free", value: "Free User" },
@@ -253,6 +256,10 @@ const Users = () => {
     );
   };
 
+  if (isLoading) {
+    <Spinner />;
+  }
+
   return (
     <div className="relative flex items-center justify-center">
       <div className={styles.container}>
@@ -282,7 +289,15 @@ const Users = () => {
               className="react-dataTable"
               progressPending={isGettingUsers}
               paginationComponent={CustomPagination}
+              progressComponent={<Spinner tableLoader />}
               data={searchValue.length ? searchedData : users}
+              noDataComponent={<NoData listName="users" item="user" />}
+              sortIcon={
+                <ArrowDown
+                  size={18}
+                  className="fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
+                />
+              }
             />
           </div>
         </div>

@@ -16,13 +16,16 @@ import DataTable, { TableColumn } from "react-data-table-component";
 import { toast } from "react-toastify";
 import { useLessons } from "../../../utils/hooks/useLessons";
 import { AdminRoutes } from "../../../routes/AdminRoutes";
+import Spinner from "../../shared/Spinner";
+import ArrowDown from "../../icons/ArrowDown";
+import NoData from "../table/NoData";
 
 const Lessons = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [searchedData, setSearchedData] = useState<ILesson[]>([]);
-  const [isGetiingLessons, setIsGetiingLessons] = useState(false);
+  const [isGettingLessons, setIsGettingLessons] = useState(false);
   const [isNextPageDisabled, setIsNextPageDisabled] = useState(false);
 
   const { accessToken } = useUser();
@@ -97,26 +100,26 @@ const Lessons = () => {
     if (pagesCalled.includes(newPage)) {
       setCurrentPage(newPage);
     } else {
-      setIsGetiingLessons(true);
+      setIsGettingLessons(true);
       const response = await new LessonController(
         accessToken,
         router
       ).getLessons(newPage, 5, true);
 
       if (!response) {
-        setIsGetiingLessons(false);
+        setIsGettingLessons(false);
         return;
       }
 
       if (response.length === 0) {
         setCurrentPage(newPage - 1);
-        setIsGetiingLessons(false);
+        setIsGettingLessons(false);
         setIsNextPageDisabled(true);
         toast.error("No more lessons can be found");
         return;
       }
 
-      setIsGetiingLessons(false);
+      setIsGettingLessons(false);
       setLessons([...response]);
       setPagesCalled(newPage);
       setCurrentPage(newPage);
@@ -239,6 +242,10 @@ const Lessons = () => {
     );
   };
 
+  if (isLoading) {
+    <Spinner />;
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.tableCard}>
@@ -261,11 +268,20 @@ const Lessons = () => {
           <DataTable
             noHeader
             pagination
-            data={lessons}
             columns={columns}
-            paginationComponent={CustomPagination}
             paginationPerPage={5}
             className="react-dataTable"
+            progressPending={isGettingLessons}
+            paginationComponent={CustomPagination}
+            progressComponent={<Spinner tableLoader />}
+            data={searchedData.length ? searchedData : lessons}
+            noDataComponent={<NoData listName="lessons" item="lesson" />}
+            sortIcon={
+              <ArrowDown
+                size={18}
+                className="fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
+              />
+            }
           />
         </div>
       </div>

@@ -15,6 +15,9 @@ import DataTable, { TableColumn } from "react-data-table-component";
 import { adminCsvRows, getAdminValuesForExport } from "../../constants/User";
 import EditUserModal from "./user/EditUserModal";
 import AddAdminModal from "./add/AddAdminModal";
+import Spinner from "../shared/Spinner";
+import ArrowDown from "../icons/ArrowDown";
+import NoData from "./table/NoData";
 
 const AdminsTable = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -47,7 +50,7 @@ const AdminsTable = () => {
 
   useEffect(() => {
     if (admins.length === 0) {
-      getUsers();
+      // getUsers();
     }
   }, []);
 
@@ -227,6 +230,9 @@ const AdminsTable = () => {
     );
   };
 
+  if (isLoading) {
+    <Spinner />;
+  }
   return (
     <>
       <div className={styles.container}>
@@ -257,9 +263,16 @@ const AdminsTable = () => {
               paginationPerPage={5}
               className="react-dataTable"
               progressPending={isGettingAdmins}
-              progressComponent={<p>loading...</p>}
               paginationComponent={CustomPagination}
+              progressComponent={<Spinner tableLoader />}
               data={searchedData.length ? searchedData : admins}
+              noDataComponent={<NoData listName="users" item="user" />}
+              sortIcon={
+                <ArrowDown
+                  size={18}
+                  className="fill-white transition duration-300 ease-in-out hover:fill-secondary-base"
+                />
+              }
             />
           </div>
         </div>
