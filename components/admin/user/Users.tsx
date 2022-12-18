@@ -36,6 +36,7 @@ const Users = () => {
 
   const getUsers = async () => {
     setIsLoading(true);
+    setIsGettingUsers(true);
     const response = await new AccountController(
       accessToken,
       router
@@ -43,8 +44,10 @@ const Users = () => {
 
     if (!response) {
       setIsLoading(false);
+      setIsGettingUsers(false);
       return;
     }
+    setIsGettingUsers(false);
     setIsLoading(false);
     setUserPagesCalled(currentPage);
     setUsers([...response.users]);

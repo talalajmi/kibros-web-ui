@@ -3,7 +3,7 @@ import { Filter, X } from "../../icons";
 import styles from "./AddCategoryModal.module.css";
 import { lightBlue } from "../../../utils/colors";
 import { ICategory } from "../../../interfaces/Category";
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import { Field, Form, Formik } from "formik";
 import {
   categoryInitialValues,
   CategoryFormInputs,

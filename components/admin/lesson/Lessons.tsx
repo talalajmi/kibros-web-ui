@@ -32,8 +32,9 @@ const Lessons = () => {
   const { lessons, setLessons, pagesCalled, setPagesCalled } = useLessons();
   const router = useRouter();
 
-  const getUsers = async () => {
+  const getLessons = async () => {
     setIsLoading(true);
+    setIsGettingLessons(true);
     const response = await new LessonController(accessToken, router).getLessons(
       currentPage,
       5,
@@ -42,16 +43,18 @@ const Lessons = () => {
 
     if (!response) {
       setIsLoading(false);
+      setIsGettingLessons(false);
       return;
     }
     setIsLoading(false);
+    setIsGettingLessons(false);
     setPagesCalled(currentPage);
     setLessons([...response]);
   };
 
   useEffect(() => {
     if (lessons.length === 0) {
-      getUsers();
+      getLessons();
     }
   }, []);
 

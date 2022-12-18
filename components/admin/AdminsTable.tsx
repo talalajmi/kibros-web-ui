@@ -34,6 +34,7 @@ const AdminsTable = () => {
 
   const getUsers = async () => {
     setIsLoading(true);
+    setIsGettingAdmins(true);
     const users = await new AccountController(accessToken, router).getAccounts(
       currentPage,
       5
@@ -41,16 +42,18 @@ const AdminsTable = () => {
 
     if (!users) {
       setIsLoading(false);
+      setIsGettingAdmins(false);
       return;
     }
     setIsLoading(false);
+    setIsGettingAdmins(false);
     setAdminPagesCalled(currentPage);
     setAdmins([...users.admins]);
   };
 
   useEffect(() => {
     if (admins.length === 0) {
-      // getUsers();
+      getUsers();
     }
   }, []);
 

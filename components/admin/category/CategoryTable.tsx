@@ -40,6 +40,7 @@ const CategoryTable = () => {
 
   const fetchCategories = async () => {
     setIsLoading(true);
+    setIsGettingCategories(true);
     const response = await new CategoryController(
       accessToken,
       router
@@ -47,6 +48,7 @@ const CategoryTable = () => {
 
     if (!categories) {
       setIsLoading(false);
+      setIsGettingCategories(false);
       return;
     }
 
@@ -60,6 +62,7 @@ const CategoryTable = () => {
     setPages([...p]);
 
     setIsLoading(false);
+    setIsGettingCategories(false);
   };
 
   useEffect(() => {
